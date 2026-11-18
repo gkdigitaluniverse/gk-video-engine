@@ -1,0 +1,260 @@
+[
+ {
+  "s": 0.0,
+  "e": 0.915,
+  "beat": 0,
+  "cap": "COPY ANY APP?"
+ },
+ {
+  "s": 0.915,
+  "e": 1.83,
+  "beat": 0,
+  "cap": "IN 3 STEPS"
+ },
+ {
+  "s": 1.83,
+  "e": 2.313,
+  "beat": 1,
+  "cap": "STUDY"
+ },
+ {
+  "s": 2.313,
+  "e": 2.797,
+  "beat": 1,
+  "cap": "BUILD"
+ },
+ {
+  "s": 2.797,
+  "e": 3.28,
+  "beat": 1,
+  "cap": "CHECK"
+ },
+ {
+  "s": 3.28,
+  "e": 3.96,
+  "beat": 2,
+  "cap": "CRAFT ANYTHING"
+ },
+ {
+  "s": 3.96,
+  "e": 4.64,
+  "beat": 2,
+  "cap": "PURE RUST"
+ },
+ {
+  "s": 4.64,
+  "e": 5.32,
+  "beat": 2,
+  "cap": "OPEN SOURCE ENGINE"
+ },
+ {
+  "s": 5.32,
+  "e": 6.043,
+  "beat": 3,
+  "cap": "WEBSITE"
+ },
+ {
+  "s": 6.043,
+  "e": 6.767,
+  "beat": 3,
+  "cap": "APP"
+ },
+ {
+  "s": 6.767,
+  "e": 7.49,
+  "beat": 3,
+  "cap": "GAME"
+ },
+ {
+  "s": 7.49,
+  "e": 8.67,
+  "beat": 4,
+  "cap": "COPY"
+ },
+ {
+  "s": 8.67,
+  "e": 9.85,
+  "beat": 4,
+  "cap": "ANYTHING"
+ },
+ {
+  "s": 9.85,
+  "e": 11.173,
+  "beat": 5,
+  "cap": "STEP 1"
+ },
+ {
+  "s": 11.173,
+  "e": 12.497,
+  "beat": 5,
+  "cap": "STUDY & INSPECT"
+ },
+ {
+  "s": 12.497,
+  "e": 13.82,
+  "beat": 5,
+  "cap": "EVERY ELEMENT"
+ },
+ {
+  "s": 13.82,
+  "e": 14.45,
+  "beat": 6,
+  "cap": "STEP 2"
+ },
+ {
+  "s": 14.45,
+  "e": 15.08,
+  "beat": 6,
+  "cap": "BUILD"
+ },
+ {
+  "s": 15.08,
+  "e": 15.91,
+  "beat": 7,
+  "cap": "CLAUDE CODE"
+ },
+ {
+  "s": 15.91,
+  "e": 16.74,
+  "beat": 7,
+  "cap": "BUILDS IT"
+ },
+ {
+  "s": 16.74,
+  "e": 18.285,
+  "beat": 8,
+  "cap": "ANY LANGUAGE"
+ },
+ {
+  "s": 18.285,
+  "e": 19.83,
+  "beat": 8,
+  "cap": "YOU PICK"
+ },
+ {
+  "s": 19.83,
+  "e": 20.78,
+  "beat": 9,
+  "cap": "STEP 3"
+ },
+ {
+  "s": 20.78,
+  "e": 21.73,
+  "beat": 9,
+  "cap": "CHECK & COMPARE"
+ },
+ {
+  "s": 21.73,
+  "e": 22.483,
+  "beat": 10,
+  "cap": "COMPARED"
+ },
+ {
+  "s": 22.483,
+  "e": 23.237,
+  "beat": 10,
+  "cap": "TO THE ORIGINAL"
+ },
+ {
+  "s": 23.237,
+  "e": 23.99,
+  "beat": 10,
+  "cap": "FIXED"
+ },
+ {
+  "s": 23.99,
+  "e": 25.035,
+  "beat": 11,
+  "cap": "FIX WHAT'S OFF"
+ },
+ {
+  "s": 25.035,
+  "e": 26.08,
+  "beat": 11,
+  "cap": "UNTIL MATCH"
+ },
+ {
+  "s": 26.08,
+  "e": 28.41,
+  "beat": 12,
+  "cap": "91% COPY"
+ },
+ {
+  "s": 28.41,
+  "e": 30.74,
+  "beat": 12,
+  "cap": "IN 29 MIN"
+ },
+ {
+  "s": 30.74,
+  "e": 31.515,
+  "beat": 13,
+  "cap": "I CHECKED"
+ },
+ {
+  "s": 31.515,
+  "e": 32.29,
+  "beat": 13,
+  "cap": "MYSELF"
+ },
+ {
+  "s": 32.29,
+  "e": 33.91,
+  "beat": 14,
+  "cap": "35,250 STARS"
+ },
+ {
+  "s": 33.91,
+  "e": 35.53,
+  "beat": 14,
+  "cap": "LIVE"
+ },
+ {
+  "s": 35.53,
+  "e": 36.545,
+  "beat": 15,
+  "cap": "EARLY ALPHA"
+ },
+ {
+  "s": 36.545,
+  "e": 37.56,
+  "beat": 15,
+  "cap": "RESULTS VARY"
+ },
+ {
+  "s": 37.56,
+  "e": 38.975,
+  "beat": 16,
+  "cap": "YOUR OWN"
+ },
+ {
+  "s": 38.975,
+  "e": 40.39,
+  "beat": 16,
+  "cap": "SOFTWARE ONLY"
+ },
+ {
+  "s": 40.39,
+  "e": 41.305,
+  "beat": 17,
+  "cap": "COMMENT CRAFT"
+ },
+ {
+  "s": 41.305,
+  "e": 42.22,
+  "beat": 17,
+  "cap": "FOLLOW"
+ },
+ {
+  "s": 42.22,
+  "e": 43.13,
+  "beat": 18,
+  "cap": "LIVE DEMO"
+ },
+ {
+  "s": 43.13,
+  "e": 44.04,
+  "beat": 18,
+  "cap": "NEXT VIDEO"
+ }
+]
