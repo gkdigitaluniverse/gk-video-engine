@@ -154,10 +154,13 @@ export const Craft: React.FC = () => {
   for (let i = 0; i < BEATS.length; i++) if (t >= BEATS[i].s) idx = i;
   const b = BEATS[idx];
   const lf = frame - b.s * fps;
-  const blen = (b.e - b.s) * fps;
+  // a beat stays on screen until the NEXT beat begins, so a pause in the voice
+  // never leaves an empty frame; the exit only runs in the last 3 frames
+  const bEnd = idx < BEATS.length - 1 ? BEATS[idx + 1].s : BEATS[idx].e;
+  const blen = Math.max(6, (bEnd - b.s) * fps);
 
-  const ein = Math.min(1, Math.max(0, lf / 7));
-  const ex = Math.min(1, Math.max(0, (lf - (blen - 6)) / 6));
+  const ein = Math.min(1, Math.max(0, lf / 4));
+  const ex = Math.min(1, Math.max(0, (lf - (blen - 3)) / 3));
   const push = 1 + 0.03 * Math.min(1, lf / blen);
   const sc = (0.96 + 0.04 * ein) * push;
   const yoff = 70 * (1 - ein) - 100 * ex;
