@@ -482,24 +482,6 @@ export const Craft: React.FC = () => {
         </>}
       </div>
 
-      {/* caption — sentence with one highlighted word, safe zone */}
-      <div style={{
-        position: "absolute", left: 0, right: 0, top: 1400, display: "flex", justifyContent: "center",
-        transform: `translateY(${24 * (1 - capS)}px)`, opacity: hold ? 0 : Math.min(1, capS * 2),
-      }}>
-        <div style={{
-          background: WHITE, border: `4px solid ${INK}`, borderRadius: 22, padding: "16px 34px",
-          fontFamily: FONT, fontWeight: 900, fontSize: 46, color: INK, whiteSpace: "nowrap",
-          boxShadow: "0 8px 0 rgba(20,16,12,0.10)",
-        }}>
-          {capWords.map((w, i) => (
-            i === hl
-              ? <span key={i} style={{ background: ORANGE, color: WHITE, borderRadius: 10, padding: "2px 12px", margin: "0 4px" }}>{w}</span>
-              : <span key={i}>{w} </span>
-          ))}
-        </div>
-      </div>
-
       {/* progress bar */}
       <div style={{ position: "absolute", left: 0, top: 0, height: 8, width: 1080 * prog, background: ORANGE }} />
       <div style={{ position: "absolute", right: 46, bottom: 40 }}><span style={{ fontFamily: MONO, fontSize: 24, color: "#A79C90" }}>gkhacktech</span></div>
