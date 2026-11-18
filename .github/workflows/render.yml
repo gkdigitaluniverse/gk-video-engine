@@ -18,7 +18,7 @@ jobs:
           B=https://raw.githubusercontent.com/storytold/craft-anything/main
           curl -sL "$B/assets/app-icon/hicolor/256x256/apps/ai.storyteller.craft-anything.png" -o public/assets/craft_icon.png
           for n in make workbench project-website project-game; do curl -sL "$B/docs/images/$n.png" -o "public/assets/$n.png"; done
-          for s in rust github claude ycombinator; do curl -sL "https://cdn.jsdelivr.net/npm/simple-icons@13/icons/$s.svg" -o "public/assets/$s.svg"; done
+          for s in rust github claude ycombinator typescript python go; do curl -sL "https://cdn.jsdelivr.net/npm/simple-icons@13/icons/$s.svg" -o "public/assets/$s.svg"; done
           pip install --quiet cairosvg
           python3 -c "import cairosvg,glob;[cairosvg.svg2png(url=f,write_to=f[:-4]+'.png',output_width=512,output_height=512) for f in glob.glob('public/assets/*.svg')]"
           curl -sL "https://raw.githubusercontent.com/JulietaUla/Montserrat/master/fonts/ttf/Montserrat-Black.ttf" -o public/fonts/Montserrat-Black.ttf
@@ -53,7 +53,7 @@ jobs:
       - name: Fallback assets
         run: |
           # fallback: never let a missing live shot kill the render
-          for f in live_repo live_hn; do
+          for f in live_repo live_hn typescript python go; do
             [ -s "public/assets/$f.png" ] || cp public/assets/workbench.png "public/assets/$f.png"
           done
           ls -la public/assets
