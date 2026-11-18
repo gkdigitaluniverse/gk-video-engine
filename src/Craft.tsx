@@ -24,12 +24,12 @@ const FONT = "Montserrat, Inter, Helvetica, Arial, sans-serif";
 
 
 export const BEATS = [
-  { s: 0.00, e: 1.43 },  // hook
-  { s: 1.83, e: 3.26 },  // 3 steps
-  { s: 3.75, e: 5.37 },  // craft anything / pure rust
-  { s: 5.37, e: 7.49 },  // website app game
-  { s: 7.49, e: 8.68 },  // copies anything
-  { s: 8.68, e: 13.85 }, // STEP 1 STUDY  <-- corrected: was 9.85
+  { s: 0.00, e: 1.60 },  // hook
+  { s: 1.60, e: 3.30 },  // 3 steps
+  { s: 3.30, e: 5.10 },  // craft anything / pure rust
+  { s: 5.10, e: 6.30 },  // website app game
+  { s: 6.30, e: 7.70 },  // copies anything
+  { s: 7.70, e: 13.85 }, // STEP 1 STUDY (gemini audio-verified)
   { s: 13.85, e: 15.09 },// STEP 2 BUILD
   { s: 15.09, e: 16.40 },// claude code
   { s: 16.40, e: 19.84 },// any language
