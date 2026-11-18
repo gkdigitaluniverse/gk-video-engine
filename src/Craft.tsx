@@ -24,25 +24,25 @@ const FONT = "Montserrat, Inter, Helvetica, Arial, sans-serif";
 
 
 export const BEATS = [
-  { s: 0.00, e: 1.60 },  // hook
-  { s: 1.60, e: 3.30 },  // 3 steps
-  { s: 3.30, e: 5.10 },  // craft anything / pure rust
-  { s: 5.10, e: 6.30 },  // website app game
-  { s: 6.30, e: 7.70 },  // copies anything
-  { s: 7.70, e: 13.85 }, // STEP 1 STUDY (gemini audio-verified)
-  { s: 13.85, e: 15.09 },// STEP 2 BUILD
-  { s: 15.09, e: 16.40 },// claude code
-  { s: 16.40, e: 19.84 },// any language
-  { s: 19.84, e: 21.75 },// STEP 3 CHECK
-  { s: 21.75, e: 23.99 },// compared
-  { s: 23.99, e: 26.08 },// fix
-  { s: 26.08, e: 30.74 },// 91%
-  { s: 30.74, e: 32.29 },// i checked
-  { s: 32.29, e: 35.54 },// stars
-  { s: 35.54, e: 37.65 },// early alpha
-  { s: 37.65, e: 40.40 },// own software
-  { s: 40.40, e: 42.22 },// comment craft
-  { s: 42.22, e: 44.04 },// live demo
+  { s: 0.00, e: 1.50 },  // kisi bhi app ki copy chahiye
+  { s: 1.50, e: 3.00 },  // yeh tool teen step me banata hai
+  { s: 3.00, e: 5.10 },  // yeh hai craft anything pure rust
+  { s: 5.10, e: 6.40 },  // website app game
+  { s: 6.40, e: 7.90 },  // kisi ki bhi copy banata hai
+  { s: 7.90, e: 13.90 }, // pehla step study
+  { s: 13.90, e: 14.90 },// dusra step build
+  { s: 14.90, e: 16.20 },// coding agent claude code
+  { s: 16.20, e: 19.40 },// tumhari pasand ki language
+  { s: 19.40, e: 20.40 },// teesra step check
+  { s: 20.40, e: 22.80 },// har build original se milaya jata hai
+  { s: 22.80, e: 26.00 },// jo na mile wo sudhara jata hai
+  { s: 26.00, e: 30.20 },// 91% copy 29 minute
+  { s: 30.20, e: 32.20 },// maine khud check kiya
+  { s: 32.20, e: 35.50 },// 35250 stars
+  { s: 35.50, e: 37.30 },// sach yeh hai early alpha
+  { s: 37.30, e: 39.50 },// sirf apna ya allowed software
+  { s: 39.50, e: 41.60 },// comment me craft likh kar follow
+  { s: 41.60, e: 44.04 },// pin comment me github link
 ];
 
 /* ---------- brand furniture ---------- */
