@@ -1,0 +1,15 @@
+name: diag
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+jobs:
+  specs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner specs
+        run: |
+          echo "=== CPU ==="; nproc; lscpu | grep -E "^Model name|^CPU\(s\)"
+          echo "=== RAM ==="; free -h | head -2
+          echo "=== DISK ==="; df -h / | tail -1
+          echo "=== OS ==="; grep PRETTY /etc/os-release; uname -m
