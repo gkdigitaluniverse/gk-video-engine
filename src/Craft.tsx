@@ -27,11 +27,25 @@ const FONT = "Montserrat, Inter, Helvetica, Arial, sans-serif";
 
 
 export const BEATS = [
-  { s: 0.0, e: 1.83 }, { s: 1.83, e: 3.28 }, { s: 3.28, e: 5.32 }, { s: 5.32, e: 7.49 },
-  { s: 7.49, e: 9.85 }, { s: 9.85, e: 13.82 }, { s: 13.82, e: 15.08 }, { s: 15.08, e: 16.74 },
-  { s: 16.74, e: 19.83 }, { s: 19.83, e: 21.73 }, { s: 21.73, e: 23.99 }, { s: 23.99, e: 26.08 },
-  { s: 26.08, e: 30.74 }, { s: 30.74, e: 32.29 }, { s: 32.29, e: 35.53 }, { s: 35.53, e: 37.56 },
-  { s: 37.56, e: 40.39 }, { s: 40.39, e: 42.22 }, { s: 42.22, e: 44.04 },
+  { s: 0.00, e: 1.43 },  // hook
+  { s: 1.83, e: 3.26 },  // 3 steps
+  { s: 3.75, e: 5.37 },  // craft anything / pure rust
+  { s: 5.37, e: 7.49 },  // website app game
+  { s: 7.49, e: 8.68 },  // copies anything
+  { s: 8.68, e: 13.85 }, // STEP 1 STUDY  <-- corrected: was 9.85
+  { s: 13.85, e: 15.09 },// STEP 2 BUILD
+  { s: 15.09, e: 16.75 },// claude code
+  { s: 16.75, e: 19.84 },// any language
+  { s: 19.84, e: 21.75 },// STEP 3 CHECK
+  { s: 21.75, e: 23.99 },// compared
+  { s: 23.99, e: 26.08 },// fix
+  { s: 26.08, e: 30.74 },// 91%
+  { s: 30.74, e: 32.29 },// i checked
+  { s: 32.29, e: 35.54 },// stars
+  { s: 35.54, e: 37.65 },// early alpha
+  { s: 37.65, e: 40.40 },// own software
+  { s: 40.40, e: 42.22 },// comment craft
+  { s: 42.22, e: 44.04 },// live demo
 ];
 
 /* ---------- brand furniture ---------- */
