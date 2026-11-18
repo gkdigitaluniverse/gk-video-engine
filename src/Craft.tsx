@@ -219,7 +219,7 @@ export const Craft: React.FC = () => {
           <div style={{ position: "absolute", left: 54, top: 190 }}>
             <Boxed pre="PURE " box="RUST" post=" ENGINE" size={86} />
           </div>
-          <Browser x={54} y={400} w={620} h={480} src="assets/workbench.png" label="OPEN SOURCE" labelBg="#3FA34D" rot={-2} />
+          <Browser x={40} y={390} w={700} h={520} src="assets/workbench.png" label="OPEN SOURCE" labelBg="#3FA34D" rot={-2} />
           <div style={{ position: "absolute", left: 710, top: 420, width: 320 }}>
             {["RUST + APACHE-2.0", "320 CLI TOOLS", "MCP READY", "NO PAID API"].map((l, i) => (
               <div key={l} style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 22, opacity: lf > 8 + i * 6 ? 1 : 0.2 }}>
@@ -268,7 +268,7 @@ export const Craft: React.FC = () => {
         {idx === 5 && <>
           <Chip logo="assets/github.png" a="STEP 01" b="STUDY & INSPECT" />
           <StepBand t="STEP 01: STUDY & INSPECT" bg="#F4C95D" />
-          <Browser x={54} y={300} w={760} h={560} src="assets/workbench.png" label="LIVE UI" rot={-1.5} />
+          <Browser x={40} y={290} w={830} h={610} src="assets/workbench.png" label="LIVE UI" rot={-1.5} />
           <div style={{ position: "absolute", left: 850, top: 320, width: 190 }}>
             {["LAYOUT", "COLOURS", "FONTS", "MENUS", "STATES"].map((l, i) => (
               <div key={l} style={{ marginTop: 16, background: lf > 10 + i * 7 ? ORANGE : WHITE, border: `3px solid ${INK}`, borderRadius: 10, padding: "8px 12px", fontFamily: MONO, fontSize: 20, fontWeight: 700, color: lf > 10 + i * 7 ? WHITE : INK }}>{l}</div>
@@ -295,11 +295,11 @@ export const Craft: React.FC = () => {
 
         {/* 7 CLAUDE CODE */}
         {idx === 7 && <>
-          <Chip logo="assets/claude.png" a="CLAUDE CODE" b="CODING AGENT" />
+          <Chip logo="assets/craft_icon.png" a="CLAUDE CODE" b="CODING AGENT" />
           <div style={{ position: "absolute", left: 54, top: 200 }}>
             <Boxed pre="STEP 2: " box="CLAUDE" post=" CODE" size={86} /><Boxed pre="BUILDS IT " box="FOR YOU" size={86} />
           </div>
-          <Img src={staticFile("assets/claude.png")} style={{ position: "absolute", left: 400, top: 560, width: 280, height: 280 }} />
+          <Img src={staticFile("assets/craft_icon.png")} style={{ position: "absolute", left: 380, top: 540, width: 300, height: 300, borderRadius: 36 }} />
           <DataPill t="NO HUMAN CODING" x={330} y={900} bg={ORANGE} />
         </>}
 
@@ -309,13 +309,13 @@ export const Craft: React.FC = () => {
           <div style={{ position: "absolute", left: 54, top: 200 }}>
             <Boxed pre="IN ANY " box="LANGUAGE" size={96} /><Boxed pre="" box="YOU PICK" size={96} />
           </div>
-          {["RUST", "TYPESCRIPT", "PYTHON", "GO"].map((l, i) => {
-            const s = spring({ frame: lf - i * 5, fps, config: { damping: 12, stiffness: 150 } });
+          {[["RUST","assets/rust.png"],["TYPESCRIPT","assets/typescript.png"],["PYTHON","assets/python.png"],["GO","assets/go.png"]].map(([l, ico], i) => {
+            const sp = spring({ frame: lf - i * 5, fps, config: { damping: 12, stiffness: 150 } });
             return <div key={l} style={{
               position: "absolute", left: 54 + (i % 2) * 500, top: 500 + Math.floor(i / 2) * 200, width: 460, height: 150,
-              background: WHITE, border: `4px solid ${INK}`, borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: FONT, fontWeight: 900, fontSize: 46, opacity: Math.min(1, s * 2), transform: `scale(${0.85 + 0.15 * s})`,
-            }}>{l}</div>;
+              background: WHITE, border: `4px solid ${INK}`, borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", gap: 20,
+              fontFamily: FONT, fontWeight: 900, fontSize: 46, opacity: Math.min(1, sp * 2), transform: `scale(${0.85 + 0.15 * sp})`,
+            }}><Img src={staticFile(ico as string)} style={{ width: 64, height: 64 }} />{l}</div>;
           })}
         </>}
 
@@ -323,7 +323,7 @@ export const Craft: React.FC = () => {
         {idx === 9 && <>
           <Chip logo="assets/github.png" a="STEP 03" b="CHECK & COMPARE" />
           <StepBand t="STEP 03: CHECK & COMPARE" bg="#9BE3B8" />
-          <Browser x={54} y={300} w={760} h={560} src="assets/make.png" label="SCORED" labelBg="#3FA34D" rot={-1.5} />
+          <Browser x={40} y={290} w={830} h={610} src="assets/make.png" label="SCORED" labelBg="#3FA34D" rot={-1.5} />
           <div style={{ position: "absolute", left: 850, top: 340, width: 190 }}>
             {[["START PAGE", "96%"], ["LIKENESS", "93%"], ["LAYOUT", "98%"]].map(([k, v], i) => (
               <div key={k} style={{ marginTop: 18, opacity: lf > 10 + i * 8 ? 1 : 0.2 }}>
@@ -425,7 +425,9 @@ export const Craft: React.FC = () => {
             {Math.round(35250 * Math.min(1, Math.max(0, (lf - 2) / 22))).toLocaleString("en-US")}
           </div>
           <DataPill t="7,125 FORKS · APACHE-2.0" x={54} y={640} />
-          <Browser x={54} y={740} w={620} h={320} src="assets/live_repo.png" label="GITHUB LIVE" rot={-2} />
+          <Browser x={40} y={720} w={720} h={380} src="assets/live_repo.png" label="GITHUB LIVE" rot={-2} />
+          <div style={{ position: "absolute", left: 470, top: 760, width: 210, height: 74, border: `6px solid ${ORANGE}`, borderRadius: 16, boxShadow: `0 0 0 6px rgba(234,88,12,0.22)` }} />
+          <div style={{ position: "absolute", left: 470, top: 700, background: ORANGE, color: WHITE, fontFamily: FONT, fontWeight: 900, fontSize: 22, padding: "4px 14px", borderRadius: 8 }}>LIVE STARS</div>
           <Img src={staticFile("assets/github.png")} style={{ position: "absolute", left: 760, top: 780, width: 200, height: 200 }} />
         </>}
 
