@@ -3,9 +3,6 @@ import {
   AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig,
 } from "remotion";
 import { MONO } from "./theme";
-import SCENES from "./scenes.json";
-type Scene = { s: number; e: number; beat: number; cap: string };
-const SC = SCENES as Scene[];
 
 /* ============================================================
    GK HACKTECH — light-editorial house style, built from the
@@ -152,10 +149,9 @@ export const Craft: React.FC = () => {
   const { fps } = useVideoConfig();
   const t = frame / fps;
 
-  // word-proportional sub-events: caption + timing land on the words, not the line
-  let sc0 = SC[0];
-  for (let i = 0; i < SC.length; i++) if (t >= SC[i].s) sc0 = SC[i];
-  const idx = sc0.beat;
+  // beat index comes from the measured BEATS list (speech-verified), not from scenes
+  let idx = 0;
+  for (let i = 0; i < BEATS.length; i++) if (t >= BEATS[i].s) idx = i;
   const b = BEATS[idx];
   const lf = frame - b.s * fps;
   const blen = (b.e - b.s) * fps;
@@ -168,9 +164,6 @@ export const Craft: React.FC = () => {
   const op = (ein < 0.1 ? ein / 0.1 : 1) * (1 - ex);
 
   // caption is locked to the SAME beat as the visual — they can never drift
-  const cap = { t: sc0.cap };
-  const capLf = frame - sc0.s * fps;
-  const capS = spring({ frame: capLf, fps, config: { damping: 15, stiffness: 180 } });
   const hold = frame >= 626 && frame <= 640;
   const prog = Math.min(1, t / 44.04);
 
