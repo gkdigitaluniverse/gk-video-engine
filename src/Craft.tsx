@@ -3,7 +3,6 @@ import {
   AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig,
 } from "remotion";
 import { MONO } from "./theme";
-import CAPTIONS from "./captions.json";
 
 /* ============================================================
    GK HACKTECH — light-editorial house style, built from the
@@ -23,8 +22,6 @@ const DARK = "#1B1720";
 
 const FONT = "Montserrat, Inter, Helvetica, Arial, sans-serif";
 
-type Cap = { s: number; e: number; t: string };
-const CAPS = CAPTIONS as Cap[];
 
 export const BEATS = [
   { s: 0.0, e: 1.83 }, { s: 1.83, e: 3.28 }, { s: 3.28, e: 5.32 }, { s: 5.32, e: 7.49 },
@@ -151,8 +148,10 @@ export const Craft: React.FC = () => {
   const yoff = 70 * (1 - ein) - 100 * ex;
   const op = (ein < 0.1 ? ein / 0.1 : 1) * (1 - ex);
 
-  const cap = CAPS.find((c) => t >= c.s && t < c.e) || CAPS[CAPS.length - 1];
-  const capLf = frame - cap.s * fps;
+  // caption is locked to the SAME beat as the visual — they can never drift
+  const BEAT_CAPS = ["COPY ANY APP? IN 3 STEPS", "STUDY · BUILD · CHECK", "PURE RUST ENGINE", "WEBSITE · APP · GAME", "COPY ANYTHING", "REAL INSPECTION", "CLAUDE CODE BUILDS IT", "STEP 2: CLAUDE CODE", "ANY LANGUAGE YOU PICK", "CHECK & COMPARE", "COMPARED TO ORIGINAL", "FIX WHAT'S OFF", "91% COPY IN 29 MIN", "I CHECKED MYSELF", "35,250 STARS LIVE", "EARLY ALPHA", "YOUR OWN SOFTWARE ONLY", "COMMENT CRAFT", "LIVE DEMO NEXT VIDEO"];
+  const cap = { t: BEAT_CAPS[idx] };
+  const capLf = lf;               // same clock as the visual entrance
   const capS = spring({ frame: capLf, fps, config: { damping: 15, stiffness: 180 } });
   const hold = frame >= 626 && frame <= 640;
   const prog = Math.min(1, t / 44.04);
