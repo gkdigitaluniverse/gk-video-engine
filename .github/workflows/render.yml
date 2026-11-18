@@ -50,6 +50,14 @@ jobs:
           })();
           JS
 
+      - name: Fallback assets
+        run: |
+          # fallback: never let a missing live shot kill the render
+          for f in live_repo live_hn; do
+            [ -s "public/assets/$f.png" ] || cp public/assets/workbench.png "public/assets/$f.png"
+          done
+          ls -la public/assets
+
       - name: Render
         run: npx remotion render src/index.ts Craft out/craft-anything.mp4 --codec=h264 --crf=18 --concurrency=2
 
