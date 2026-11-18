@@ -24,25 +24,25 @@ const FONT = "Montserrat, Inter, Helvetica, Arial, sans-serif";
 
 
 export const BEATS = [
-  { s: 0.00, e: 1.50 },  // kisi bhi app ki copy chahiye
-  { s: 1.50, e: 3.00 },  // yeh tool teen step me banata hai
-  { s: 3.00, e: 5.10 },  // yeh hai craft anything pure rust
-  { s: 5.10, e: 6.40 },  // website app game
-  { s: 6.40, e: 7.90 },  // kisi ki bhi copy banata hai
-  { s: 7.90, e: 13.90 }, // pehla step study
-  { s: 13.90, e: 14.90 },// dusra step build
-  { s: 14.90, e: 16.20 },// coding agent claude code
-  { s: 16.20, e: 19.40 },// tumhari pasand ki language
-  { s: 19.40, e: 20.40 },// teesra step check
-  { s: 20.40, e: 22.80 },// har build original se milaya jata hai
-  { s: 22.80, e: 26.00 },// jo na mile wo sudhara jata hai
-  { s: 26.00, e: 30.20 },// 91% copy 29 minute
-  { s: 30.20, e: 32.20 },// maine khud check kiya
-  { s: 32.20, e: 35.50 },// 35250 stars
-  { s: 35.50, e: 37.30 },// sach yeh hai early alpha
-  { s: 37.30, e: 39.50 },// sirf apna ya allowed software
-  { s: 39.50, e: 41.60 },// comment me craft likh kar follow
-  { s: 41.60, e: 44.04 },// pin comment me github link
+  { s: 0.15, e: 1.83 },  // kisi bhi app ki copy chahiye
+  { s: 1.83, e: 3.75 },  // yeh tool teen step me banata hai
+  { s: 3.75, e: 7.49 },  // craft anything / pure rust engine
+  { s: 7.49, e: 8.60 },  // website app game
+  { s: 8.60, e: 10.25 }, // kisi ki bhi copy banata hai
+  { s: 10.25, e: 13.85 },// pehla step study
+  { s: 13.85, e: 15.09 },// dusra step build
+  { s: 15.09, e: 16.75 },// coding agent claude code
+  { s: 16.75, e: 19.84 },// tumhari pasand ki language
+  { s: 19.84, e: 21.75 },// teesra step check
+  { s: 21.75, e: 23.99 },// har build original se milaya
+  { s: 23.99, e: 26.08 },// jo na mile wo sudhara
+  { s: 26.08, e: 30.74 },// 91% copy 29 minute
+  { s: 30.74, e: 32.29 },// maine khud check kiya
+  { s: 32.29, e: 35.54 },// 35250 stars
+  { s: 35.54, e: 37.57 },// early alpha
+  { s: 37.57, e: 40.40 },// allowed software only
+  { s: 40.40, e: 42.22 },// comment craft follow
+  { s: 42.22, e: 44.04 },// pin comment github link
 ];
 
 /* ---------- brand furniture ---------- */
