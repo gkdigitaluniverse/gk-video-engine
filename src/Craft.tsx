@@ -168,8 +168,6 @@ export const Craft: React.FC = () => {
   const prog = Math.min(1, t / 44.04);
 
   /* caption with one highlighted word */
-  const capWords = cap.t.split(" ");
-  const hl = Math.min(1, Math.floor(capWords.length / 2));
 
   return (
     <AbsoluteFill style={{ backgroundColor: CREAM }}>
