@@ -31,8 +31,8 @@ export const BEATS = [
   { s: 7.49, e: 8.68 },  // copies anything
   { s: 8.68, e: 13.85 }, // STEP 1 STUDY  <-- corrected: was 9.85
   { s: 13.85, e: 15.09 },// STEP 2 BUILD
-  { s: 15.09, e: 16.75 },// claude code
-  { s: 16.75, e: 19.84 },// any language
+  { s: 15.09, e: 16.40 },// claude code
+  { s: 16.40, e: 19.84 },// any language
   { s: 19.84, e: 21.75 },// STEP 3 CHECK
   { s: 21.75, e: 23.99 },// compared
   { s: 23.99, e: 26.08 },// fix
