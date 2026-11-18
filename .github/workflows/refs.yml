@@ -1,0 +1,41 @@
+name: refs
+on:
+  workflow_dispatch:
+jobs:
+  grab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install --quiet yt-dlp
+      - name: Try android client download
+        run: |
+          mkdir -p refs
+          yt-dlp --extractor-args "youtube:player_client=android" \
+            -f "best[height<=720][ext=mp4]/best" -o "refs/%(id)s.%(ext)s" \
+            "https://www.youtube.com/watch" || echo "ANDROID_FAILED"
+          ls -la refs || true
+      - name: Frames
+        run: |
+          python3 - <<'PY'
+          import glob, subprocess, os
+          from PIL import Image
+          for f in glob.glob("refs/*.mp4"):
+              vid=os.path.basename(f).split(".")[0]
+              os.makedirs(f"fr/{vid}",exist_ok=True)
+              subprocess.run(["ffmpeg","-y","-v","error","-i",f,"-vf","fps=2,scale=216:-1",f"fr/{vid}/%03d.png"],check=False)
+              fs=sorted(glob.glob(f"fr/{vid}/*.png"))
+              if not fs: continue
+              th=[Image.open(p).convert("RGB") for p in fs[:48]]
+              w,h=th[0].size; cols=8; rows=(len(th)+cols-1)//cols
+              s=Image.new("RGB",(w*cols+4*(cols+1),h*rows+4*(rows+1)),(20,20,20))
+              for i,im in enumerate(th): s.paste(im,(4+(i%cols)*(w+4),4+(i//cols)*(h+4)))
+              s.save(f"fr/{vid}/sheet.png")
+              print("sheet", vid, len(th))
+          PY
+      - uses: actions/upload-artifact@v4
+        with: { name: refs, path: fr, retention-days: 5, if-no-files-found: ignore }
