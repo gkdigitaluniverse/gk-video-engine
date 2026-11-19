@@ -11,15 +11,19 @@ def post(b):
             except:pass
     return o[-1] if o else {}
 post({"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"r","version":"1"}}})
-def ex(tools, _id=[10]):
+def ex(tools,_id=[10]):
     _id[0]+=1
     r=post({"jsonrpc":"2.0","id":_id[0],"method":"tools/call","params":{"name":"COMPOSIO_MULTI_EXECUTE_TOOL","arguments":{"tools":tools}}})
     try: return json.loads(r["result"]["content"][0]["text"])
     except Exception: return r
-
-print("=== BRAND ===")
-print(json.dumps(ex([{"tool_slug":"METRICOOL_MCP_GET_BRAND_SETTINGS","arguments":{}}]))[:2500])
-print("\n=== SCHEDULED ===")
-print(json.dumps(ex([{"tool_slug":"METRICOOL_MCP_GET_SCHEDULED_POSTS","arguments":{}}]))[:1500])
-print("\n=== METRICS youtube ===")
-print(json.dumps(ex([{"tool_slug":"METRICOOL_MCP_GET_ANALYTICS_AVAILABLE_METRICS","arguments":{"network":"youtube"}}]))[:2000])
+B=8098055
+F="2026-10-20T00:00:00+05:30"; T="2026-11-19T23:59:59+05:30"
+def pull(net, metrics):
+    return {"tool_slug":"METRICOOL_MCP_GET_ANALYTICS_DATA_BY_METRICS","arguments":{
+        "brandId":B,"from":F,"to":T,"network":net,"metrics":metrics}}
+print("=== YOUTUBE DATA ===")
+print(json.dumps(ex([pull("youtube",["videos","videoViews","subscribers","gained","lost"])]))[:2500])
+print("\n=== INSTAGRAM METRICS LIST ===")
+print(json.dumps(ex([{"tool_slug":"METRICOOL_MCP_GET_ANALYTICS_AVAILABLE_METRICS","arguments":{"network":"instagram"}}]))[:1200])
+print("\n=== FACEBOOK METRICS LIST ===")
+print(json.dumps(ex([{"tool_slug":"METRICOOL_MCP_GET_ANALYTICS_AVAILABLE_METRICS","arguments":{"network":"facebook"}}]))[:1200])
