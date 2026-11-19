@@ -1,0 +1,52 @@
+name: tts-test
+on:
+  push:
+    paths:
+      - "tts/**"
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install chatterbox
+        continue-on-error: true
+        run: |
+          exec > TTS-RESULT.txt 2>&1
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install --quiet chatterbox-tts 2>&1 | tail -5
+          python -c "import chatterbox; print('chatterbox import OK')" 2>&1 | tail -3
+      - name: Generate a Hindi line
+        continue-on-error: true
+        run: |
+          exec >> TTS-RESULT.txt 2>&1
+          python - <<'PY'
+          import torch, time
+          t0=time.time()
+          try:
+              from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+              m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+              lang="hi"
+          except Exception as e:
+              print("multilingual failed:", str(e)[:200])
+              from chatterbox.tts import ChatterboxTTS
+              m = ChatterboxTTS.from_pretrained(device="cpu"); lang=None
+          print("model loaded in", round(time.time()-t0,1), "s")
+          kw = {"language_id": lang} if lang else {}
+          wav = m.generate("नमस्ते दोस्तों, यह GK Hacktech है।", **kw)
+          import torchaudio as ta
+          ta.save("tts_out.wav", wav, m.sr)
+          print("SAVED tts_out.wav sr=", m.sr, "dur=", round(wav.shape[-1]/m.sr,2))
+          PY
+          ls -la tts_out.wav || echo "no wav"
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -la TTS-RESULT.txt tts_out.wav 2>/dev/null || true
+          gh release delete "tts" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "tts" TTS-RESULT.txt tts_out.wav --title "tts" --notes "chatterbox cpu test" 2>&1 | tail -3 || gh release create "tts" TTS-RESULT.txt --title "tts" --notes "no wav"
