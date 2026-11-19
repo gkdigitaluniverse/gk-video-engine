@@ -1,11 +1,18 @@
-RUNNER: Thu Nov 19 05:26:06 UTC 2026
-=== toolkits ===
-bytes: 218
-{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"e18d44ec-0ac0-4f67-a373-dcd90fd9ecde","suggested_fix":"Please check you are using a valid API key."}}
-METRICOOL_MATCHES: 0
-=== connected accounts ===
-bytes: 218
-{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"091b2303-e32d-4615-8175-bc668c011bfa","suggested_fix":"Please check you are using a valid API key."}}
-=== auth configs ===
-bytes: 218
-{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"3eba8587-f62f-4db8-a3da-abc3658844bb","suggested_fix":"Please check you are using a valid API key."}}
+RUNNER: Thu Nov 19 05:27:05 UTC 2026
+=== A. initialize with Bearer ===
+--- status/headers ---
+HTTP/2 200 
+access-control-allow-headers: Authorization, Content-Type, MCP-Protocol-Version, Mcp-Session-Id, x-consumer-api-key
+access-control-expose-headers: WWW-Authenticate, Mcp-Session-Id, X-Mcp-Auth-Failure-Reason
+--- body ---
+: connected
+
+: connected
+
+event: message
+data: {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"mcp-typescript server on vercel","version":"0.1.0"}}}
+
+
+SESSION: Authorization,
+WWW-Authenticate,
+=== B. tools/list ===
