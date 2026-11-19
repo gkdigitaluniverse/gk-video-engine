@@ -1,0 +1,30 @@
+name: net-diag
+on:
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Which hosts can the runner reach
+        run: |
+          set +e
+          check () {
+            name="$1"; url="$2"
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 -A "Mozilla/5.0" "$url")
+            echo "$name | $url | HTTP $code"
+          }
+          echo "=== HOST REACHABILITY ==="
+          check "YouTube Data API"      "https://www.googleapis.com/youtube/v3/videos?part=id&id=dQw4w9WgXcQ"
+          check "YouTube Upload API"    "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet"
+          check "Google OAuth token"    "https://oauth2.googleapis.com/token"
+          check "Facebook Graph API"    "https://graph.facebook.com/v20.0/me"
+          check "Instagram Graph API"   "https://graph.instagram.com/me"
+          check "GitHub API"            "https://api.github.com"
+          check "Composio dashboard"    "https://dashboard.composio.dev"
+          check "Composio backend"      "https://backend.composio.dev/api/v3/toolkits"
+          echo "=== TOOLS AVAILABLE ==="
+          python3 --version
+          which ffmpeg && ffmpeg -version | head -1
+          echo "=== NETWORK ==="
+          curl -s --max-time 15 https://api.ipify.org && echo ""
