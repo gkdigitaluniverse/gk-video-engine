@@ -10,28 +10,16 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Search metricool
+      - name: Metricool report
         continue-on-error: true
         env:
           CK: "ck_ernrxI8ZCZomDrXJDAlX"
         run: |
-          exec > PROBE-RESULT.txt 2>&1
-          U="https://connect.composio.dev/mcp"
-          AC="Accept: application/json, text/event-stream"
-          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$AC" -H "Authorization: Bearer $CK" \
-            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"p","version":"1"}}}' -D h.txt -o a.txt
-          echo "=== SEARCH METRICOOL ==="
-          curl -s --max-time 90 -X POST "$U" -H "Content-Type: application/json" -H "$AC" -H "Authorization: Bearer $CK" \
-            -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"COMPOSIO_SEARCH_TOOLS","arguments":{"query":"metricool analytics reports instagram youtube facebook"}}}' -o s.txt
-          echo "bytes: $(wc -c < s.txt)"
-          sed 's/^data: //' s.txt | grep -v '^$' | grep -v '^event:' | head -c 3500; echo
-          echo "=== LIST CONNECTIONS ==="
-          curl -s --max-time 90 -X POST "$U" -H "Content-Type: application/json" -H "$AC" -H "Authorization: Bearer $CK" \
-            -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"COMPOSIO_MANAGE_CONNECTIONS","arguments":{"toolkits":[{"name":"metricool","action":"list"}]}}}' -o c.txt
-          sed 's/^data: //' c.txt | grep -v '^$' | grep -v '^event:' | head -c 1500; echo
+          python3 MCP-SCRIPT.py > PROBE-RESULT.txt 2>&1 || true
+          cat PROBE-RESULT.txt
       - name: Commit
         run: |
           ls -la PROBE-RESULT.txt || echo "none" > PROBE-RESULT.txt
           git config user.email ci@local && git config user.name ci
-          git add -f PROBE-RESULT.txt && git commit -m "ci: metricool search" || true
+          git add -f PROBE-RESULT.txt MCP-SCRIPT.py && git commit -m "ci: metricool report" || true
           git push origin HEAD:probe/run1 || true
