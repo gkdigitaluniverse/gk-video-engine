@@ -1,0 +1,27 @@
+name: release-test
+on:
+  push:
+    paths:
+      - "trigger/**"
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make a file
+        run: |
+          mkdir -p out
+          echo "hello from the runner at $(date -u)" > out/proof.txt
+          curl -s -o /dev/null -w "youtube_api HTTP %{http_code}\n" --max-time 20 "https://www.googleapis.com/youtube/v3/videos?part=id&id=dQw4w9WgXcQ"
+          curl -s -o /dev/null -w "facebook_graph HTTP %{http_code}\n" --max-time 20 "https://graph.facebook.com/v20.0/me"
+          curl -s -o /dev/null -w "instagram_graph HTTP %{http_code}\n" --max-time 20 "https://graph.instagram.com/me"
+          curl -s -o /dev/null -w "google_oauth HTTP %{http_code}\n" --max-time 20 "https://oauth2.googleapis.com/token"
+          curl -s -o /dev/null -w "composio HTTP %{http_code}\n" --max-time 20 "https://dashboard.composio.dev"
+      - name: Publish as a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "proof" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "proof" out/proof.txt --title "proof" --notes "runner proof" 
