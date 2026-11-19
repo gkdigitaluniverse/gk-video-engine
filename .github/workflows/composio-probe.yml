@@ -10,7 +10,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Probe MCP endpoint
+      - name: Probe MCP tools
         continue-on-error: true
         env:
           CK: "ck_ernrxI8ZCZomDrXJDAlX"
@@ -18,31 +18,24 @@ jobs:
           exec > PROBE-RESULT.txt 2>&1
           echo "RUNNER: $(date -u)"
           U="https://connect.composio.dev/mcp"
-          H_ACCEPT="Accept: application/json, text/event-stream"
-          echo "=== A. initialize with Bearer ==="
-          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$H_ACCEPT" \
+          AC="Accept: application/json, text/event-stream"
+          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$AC" \
             -H "Authorization: Bearer $CK" \
             -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"probe","version":"1.0"}}}' \
-            -D headers_a.txt -o a.txt
-          echo "--- status/headers ---"; grep -iE "^HTTP|mcp-session" headers_a.txt | head -5
-          echo "--- body ---"; head -c 600 a.txt; echo
-          SID=$(grep -i "mcp-session-id" headers_a.txt | tr -d '\r' | awk '{print $2}')
-          echo "SESSION: $SID"
-          echo "=== B. tools/list ==="
-          curl -s --max-time 60 -X POST "$U" -H "Content-Type: application/json" -H "$H_ACCEPT" \
-            -H "Authorization: Bearer $CK" ${SID:+-H "mcp-session-id: $SID"} \
+            -D h.txt -o a.txt
+          SID=$(grep -i "^mcp-session-id:" h.txt | head -1 | sed 's/^[^:]*: *//' | tr -d '\r\n')
+          echo "SESSION: [$SID]"
+          echo "=== tools/list ==="
+          curl -s --max-time 60 -X POST "$U" -H "Content-Type: application/json" -H "$AC" \
+            -H "Authorization: Bearer $CK" -H "mcp-session-id: $SID" \
             -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' -o b.txt
           echo "bytes: $(wc -c < b.txt)"
-          head -c 1500 b.txt; echo
-          echo "METRICOOL_MATCHES: $(grep -o -i metricool b.txt | wc -l)"
-          echo "=== C. x-api-key variant ==="
-          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$H_ACCEPT" \
-            -H "x-api-key: $CK" \
-            -d '{"jsonrpc":"2.0","id":3,"method":"tools/list","params":{}}' -o c.txt
-          head -c 600 c.txt; echo
+          sed 's/^data: //' b.txt | grep -v '^$' | grep -v '^event:' | head -c 4000; echo
+          echo "TOOL_COUNT: $(grep -o '"name":"' b.txt | wc -l)"
+          echo "METRICOOL: $(grep -o -i metricool b.txt | wc -l)"
       - name: Commit result
         run: |
           ls -la PROBE-RESULT.txt || echo "no result" > PROBE-RESULT.txt
           git config user.email ci@local && git config user.name ci
-          git add -f PROBE-RESULT.txt && git commit -m "ci: probe result 2" || true
-          git push
+          git add -f PROBE-RESULT.txt && git commit -m "ci: mcp tools result" || true
+          git push origin HEAD:probe/run1 || true
