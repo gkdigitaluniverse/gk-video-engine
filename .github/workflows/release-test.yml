@@ -10,18 +10,34 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Make a file
+      - name: Reachability + write report
         run: |
           mkdir -p out
-          echo "hello from the runner at $(date -u)" > out/proof.txt
-          curl -s -o /dev/null -w "youtube_api HTTP %{http_code}\n" --max-time 20 "https://www.googleapis.com/youtube/v3/videos?part=id&id=dQw4w9WgXcQ"
-          curl -s -o /dev/null -w "facebook_graph HTTP %{http_code}\n" --max-time 20 "https://graph.facebook.com/v20.0/me"
-          curl -s -o /dev/null -w "instagram_graph HTTP %{http_code}\n" --max-time 20 "https://graph.instagram.com/me"
-          curl -s -o /dev/null -w "google_oauth HTTP %{http_code}\n" --max-time 20 "https://oauth2.googleapis.com/token"
-          curl -s -o /dev/null -w "composio HTTP %{http_code}\n" --max-time 20 "https://dashboard.composio.dev"
-      - name: Publish as a release
+          {
+            echo "RUNNER: $(date -u)"
+            echo "IP: $(curl -s --max-time 15 https://api.ipify.org)"
+            echo "--- API reachability ---"
+            for pair in \
+              "youtube_data|https://www.googleapis.com/youtube/v3/videos?part=id&id=dQw4w9WgXcQ" \
+              "youtube_upload|https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet" \
+              "google_oauth|https://oauth2.googleapis.com/token" \
+              "facebook_graph|https://graph.facebook.com/v20.0/me" \
+              "instagram_graph|https://graph.instagram.com/me" \
+              "composio_dashboard|https://dashboard.composio.dev" \
+              "composio_backend|https://backend.composio.dev/api/v3/toolkits" \
+              "github_api|https://api.github.com" ; do
+              n="${pair%%|*}"; u="${pair##*|}"
+              c=$(curl -s -o /dev/null -w "%{http_code}" --max-time 25 -A "Mozilla/5.0" "$u")
+              echo "$n | HTTP $c | $u"
+            done
+            echo "--- tools ---"
+            ffmpeg -version 2>/dev/null | head -1 || echo "no ffmpeg"
+            python3 --version
+          } > out/report.txt
+          cat out/report.txt
+      - name: Publish
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete "proof" --yes --cleanup-tag 2>/dev/null || true
-          gh release create "proof" out/proof.txt --title "proof" --notes "runner proof" 
+          gh release create "proof" out/report.txt --title "proof" --notes "reachability report"
