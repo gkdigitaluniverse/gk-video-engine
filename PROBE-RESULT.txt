@@ -1,10 +1,3 @@
-=== BRAND SETTINGS ===
-{"jsonrpc": "2.0", "id": 11, "result": {"content": [{"type": "text", "text": "MCP error -32602: Tool METRICOOL_MCP_GET_BRAND_SETTINGS not found"}], "isError": true}}
-
-=== AVAILABLE METRICS ===
-youtube -> {"jsonrpc": "2.0", "id": 12, "result": {"content": [{"type": "text", "text": "MCP error -32602: Tool METRICOOL_MCP_GET_ANALYTICS_AVAILABLE_METRICS not found"}], "isError": true}}
-instagram -> {"jsonrpc": "2.0", "id": 13, "result": {"content": [{"type": "text", "text": "MCP error -32602: Tool METRICOOL_MCP_GET_ANALYTICS_AVAILABLE_METRICS not found"}], "isError": true}}
-facebook -> {"jsonrpc": "2.0", "id": 14, "result": {"content": [{"type": "text", "text": "MCP error -32602: Tool METRICOOL_MCP_GET_ANALYTICS_AVAILABLE_METRICS not found"}], "isError": true}}
-
-=== SCHEDULED POSTS ===
-{"jsonrpc": "2.0", "id": 15, "result": {"content": [{"type": "text", "text": "MCP error -32602: Tool METRICOOL_MCP_GET_SCHEDULED_POSTS not found"}], "isError": true}}
+TOOLS: ['COMPOSIO_GET_TOOL_SCHEMAS', 'COMPOSIO_MANAGE_CONNECTIONS', 'COMPOSIO_MULTI_EXECUTE_TOOL', 'COMPOSIO_PROXY_EXECUTE', 'COMPOSIO_REMOTE_BASH_TOOL', 'COMPOSIO_REMOTE_WORKBENCH', 'COMPOSIO_SEARCH_TOOLS', 'COMPOSIO_SUBMIT_FEEDBACK', 'COMPOSIO_WAIT_FOR_CONNECTIONS', 'COMPOSIO_MANAGE_SKILL', 'COMPOSIO_SEARCH_SKILLS', 'COMPOSIO_USE_SKILL']
+EXECUTOR: ['COMPOSIO_MULTI_EXECUTE_TOOL', 'COMPOSIO_PROXY_EXECUTE']
+BRAND: {"jsonrpc": "2.0", "id": 3, "result": {"content": [{"type": "text", "text": "{\"successful\":false,\"data\":{},\"error\":\"Invalid request for COMPOSIO_MULTI_EXECUTE_TOOL: Validation error: Required at \\\"tools\\\"\",\"log_id\":\"log_ugWgAFypHcRr\"}"}], "isError": true}}
