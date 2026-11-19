@@ -1,0 +1,41 @@
+name: composio-probe
+on:
+  push:
+    paths:
+      - "probe/**"
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Probe Composio
+        env:
+          CK: "ck_ernrxI8ZCZomDrXJDAlX"
+        run: |
+          mkdir -p out
+          {
+            echo "RUNNER: $(date -u)"
+            echo "=== 1. toolkits list (metricool search) ==="
+            curl -s --max-time 40 -H "x-api-key: $CK" \
+              "https://backend.composio.dev/api/v3/toolkits?limit=1000" -o tk.json
+            echo "bytes: $(wc -c < tk.json)"
+            head -c 400 tk.json; echo
+            echo "=== metricool mentions ==="
+            grep -o -i "metricool" tk.json | head -3
+            echo "=== 2. connected accounts ==="
+            curl -s --max-time 40 -H "x-api-key: $CK" \
+              "https://backend.composio.dev/api/v3/connected_accounts?limit=50" -o ca.json
+            echo "bytes: $(wc -c < ca.json)"; head -c 800 ca.json; echo
+            echo "=== 3. auth configs ==="
+            curl -s --max-time 40 -H "x-api-key: $CK" \
+              "https://backend.composio.dev/api/v3/auth_configs?limit=50" -o ac.json
+            echo "bytes: $(wc -c < ac.json)"; head -c 600 ac.json; echo
+          } > out/probe.txt 2>&1
+          cat out/probe.txt
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "probe" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "probe" out/probe.txt --title "probe" --notes "composio probe"
