@@ -10,32 +10,28 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Probe MCP tools
+      - name: Search metricool
         continue-on-error: true
         env:
           CK: "ck_ernrxI8ZCZomDrXJDAlX"
         run: |
           exec > PROBE-RESULT.txt 2>&1
-          echo "RUNNER: $(date -u)"
           U="https://connect.composio.dev/mcp"
           AC="Accept: application/json, text/event-stream"
-          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$AC" \
-            -H "Authorization: Bearer $CK" \
-            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"probe","version":"1.0"}}}' \
-            -D h.txt -o a.txt
-          SID=$(grep -i "^mcp-session-id:" h.txt | head -1 | sed 's/^[^:]*: *//' | tr -d '\r\n')
-          echo "SESSION: [$SID]"
-          echo "=== tools/list ==="
-          curl -s --max-time 60 -X POST "$U" -H "Content-Type: application/json" -H "$AC" \
-            -H "Authorization: Bearer $CK" -H "mcp-session-id: $SID" \
-            -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' -o b.txt
-          echo "bytes: $(wc -c < b.txt)"
-          sed 's/^data: //' b.txt | grep -v '^$' | grep -v '^event:' | head -c 4000; echo
-          echo "TOOL_COUNT: $(grep -o '"name":"' b.txt | wc -l)"
-          echo "METRICOOL: $(grep -o -i metricool b.txt | wc -l)"
-      - name: Commit result
+          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$AC" -H "Authorization: Bearer $CK" \
+            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"p","version":"1"}}}' -D h.txt -o a.txt
+          echo "=== SEARCH METRICOOL ==="
+          curl -s --max-time 90 -X POST "$U" -H "Content-Type: application/json" -H "$AC" -H "Authorization: Bearer $CK" \
+            -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"COMPOSIO_SEARCH_TOOLS","arguments":{"query":"metricool analytics reports instagram youtube facebook"}}}' -o s.txt
+          echo "bytes: $(wc -c < s.txt)"
+          sed 's/^data: //' s.txt | grep -v '^$' | grep -v '^event:' | head -c 3500; echo
+          echo "=== LIST CONNECTIONS ==="
+          curl -s --max-time 90 -X POST "$U" -H "Content-Type: application/json" -H "$AC" -H "Authorization: Bearer $CK" \
+            -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"COMPOSIO_MANAGE_CONNECTIONS","arguments":{"toolkits":[{"name":"metricool","action":"list"}]}}}' -o c.txt
+          sed 's/^data: //' c.txt | grep -v '^$' | grep -v '^event:' | head -c 1500; echo
+      - name: Commit
         run: |
-          ls -la PROBE-RESULT.txt || echo "no result" > PROBE-RESULT.txt
+          ls -la PROBE-RESULT.txt || echo "none" > PROBE-RESULT.txt
           git config user.email ci@local && git config user.name ci
-          git add -f PROBE-RESULT.txt && git commit -m "ci: mcp tools result" || true
+          git add -f PROBE-RESULT.txt && git commit -m "ci: metricool search" || true
           git push origin HEAD:probe/run1 || true
