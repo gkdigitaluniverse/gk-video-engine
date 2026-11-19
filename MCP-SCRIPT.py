@@ -17,10 +17,8 @@ def ex(tools,_id=[10]):
     try: return json.loads(r["result"]["content"][0]["text"])
     except Exception: return r
 B="8098055"; F="2026-10-20T00:00:00+05:30"; T="2026-11-19T23:59:59+05:30"
-def pull(metrics):
+def pull(ids):
     return {"tool_slug":"METRICOOL_MCP_GET_ANALYTICS_DATA_BY_METRICS",
-            "arguments":{"brandId":B,"from":F,"to":T,"metrics":metrics}}
-res = ex([pull(["videos","videoViews","subscribers"]),
-          pull(["followers"]),
-          pull(["pageViews"])])
-print(json.dumps(res)[:4000])
+            "arguments":{"brandId":B,"from":F,"to":T,"metrics":ids}}
+res=ex([pull(["YTEV04","YTEV02","YTEV01"]), pull(["IGEV01"]), pull(["FBEV03"])])
+print(json.dumps(res)[:4500])
