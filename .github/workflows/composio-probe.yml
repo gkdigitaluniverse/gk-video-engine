@@ -10,28 +10,39 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Probe
+      - name: Probe MCP endpoint
         continue-on-error: true
         env:
           CK: "ck_ernrxI8ZCZomDrXJDAlX"
         run: |
           exec > PROBE-RESULT.txt 2>&1
           echo "RUNNER: $(date -u)"
-          echo "=== toolkits ==="
-          curl -s --max-time 40 -H "x-api-key: $CK" "https://backend.composio.dev/api/v3/toolkits?limit=1000" -o tk.json
-          echo "bytes: $(wc -c < tk.json)"
-          head -c 300 tk.json; echo
-          echo "METRICOOL_MATCHES: $(grep -o -i metricool tk.json | wc -l)"
-          echo "=== connected accounts ==="
-          curl -s --max-time 40 -H "x-api-key: $CK" "https://backend.composio.dev/api/v3/connected_accounts?limit=50" -o ca.json
-          echo "bytes: $(wc -c < ca.json)"; head -c 700 ca.json; echo
-          echo "=== auth configs ==="
-          curl -s --max-time 40 -H "x-api-key: $CK" "https://backend.composio.dev/api/v3/auth_configs?limit=50" -o ac.json
-          echo "bytes: $(wc -c < ac.json)"; head -c 500 ac.json; echo
+          U="https://connect.composio.dev/mcp"
+          H_ACCEPT="Accept: application/json, text/event-stream"
+          echo "=== A. initialize with Bearer ==="
+          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$H_ACCEPT" \
+            -H "Authorization: Bearer $CK" \
+            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"probe","version":"1.0"}}}' \
+            -D headers_a.txt -o a.txt
+          echo "--- status/headers ---"; grep -iE "^HTTP|mcp-session" headers_a.txt | head -5
+          echo "--- body ---"; head -c 600 a.txt; echo
+          SID=$(grep -i "mcp-session-id" headers_a.txt | tr -d '\r' | awk '{print $2}')
+          echo "SESSION: $SID"
+          echo "=== B. tools/list ==="
+          curl -s --max-time 60 -X POST "$U" -H "Content-Type: application/json" -H "$H_ACCEPT" \
+            -H "Authorization: Bearer $CK" ${SID:+-H "mcp-session-id: $SID"} \
+            -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' -o b.txt
+          echo "bytes: $(wc -c < b.txt)"
+          head -c 1500 b.txt; echo
+          echo "METRICOOL_MATCHES: $(grep -o -i metricool b.txt | wc -l)"
+          echo "=== C. x-api-key variant ==="
+          curl -s --max-time 40 -X POST "$U" -H "Content-Type: application/json" -H "$H_ACCEPT" \
+            -H "x-api-key: $CK" \
+            -d '{"jsonrpc":"2.0","id":3,"method":"tools/list","params":{}}' -o c.txt
+          head -c 600 c.txt; echo
       - name: Commit result
         run: |
-          ls -la PROBE-RESULT.txt || echo "no result file" > PROBE-RESULT.txt
+          ls -la PROBE-RESULT.txt || echo "no result" > PROBE-RESULT.txt
           git config user.email ci@local && git config user.name ci
-          git add -f PROBE-RESULT.txt
-          git commit -m "ci: probe result" || echo "nothing to commit"
+          git add -f PROBE-RESULT.txt && git commit -m "ci: probe result 2" || true
           git push
