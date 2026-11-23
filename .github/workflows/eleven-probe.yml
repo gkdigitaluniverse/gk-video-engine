@@ -1,0 +1,90 @@
+name: eleven-aarush
+on:
+  push:
+    paths: ["probe3/**"]
+  workflow_dispatch:
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests
+      - name: Use Aarush voice id and make a Hindi sample
+        env:
+          K1: ${{ secrets.ELEVEN_KEY_1 }}
+          K2: ${{ secrets.ELEVEN_KEY_2 }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          VID: "PGnJCOJM679NpBwi71JI"
+        run: |
+          exec > ELEVEN-PROBE.txt 2>&1
+          python3 - <<'PY'
+          import os, json, requests
+          B="https://api.elevenlabs.io/v1"
+          K=os.environ["K1"]; H={"xi-api-key":K}; VID=os.environ["VID"]
+          print("target voice id:", VID)
+
+          txt=("GitHub Actions पर हर महीने दो हज़ार मिनट फ्री मिलते हैं। "
+               "लेकिन यह लिमिट आपके पूरे अकाउंट की है, हर रेपो की नहीं। "
+               "अगर आपकी रेपो पब्लिक है, तो आपके मिनट गिने ही नहीं जाते। "
+               "यानी पब्लिक रेपो में आप जितना चाहे उतना रेंडर कर सकते हैं।")
+          print("text chars:", len(txt))
+
+          def tts(voice_id, tag):
+              r=requests.post(f"{B}/text-to-speech/{voice_id}",
+                  headers={"xi-api-key":K,"Content-Type":"application/json"},
+                  json={"text":txt,"model_id":"eleven_multilingual_v2",
+                        "voice_settings":{"stability":0.5,"similarity_boost":0.75,
+                                          "style":0.35,"use_speaker_boost":True}},
+                  timeout=300)
+              print(f"[{tag}] TTS HTTP {r.status_code} bytes {len(r.content)}")
+              if r.status_code!=200: print("   ", r.text[:300])
+              return r
+
+          r=tts(VID,"direct library id")
+          used=VID
+
+          if r.status_code!=200:
+              print("\n--- direct failed, searching library for public_owner_id ---")
+              s=requests.get(f"{B}/shared-voices",headers=H,params={"search":"aarush","page_size":40},timeout=120)
+              print("shared-voices HTTP",s.status_code)
+              owner=None
+              if s.status_code==200:
+                  for v in s.json().get("voices",[]):
+                      print("  ",v.get("voice_id"),"| pub=",v.get("public_owner_id"),"|",v.get("name"))
+                      if v.get("voice_id")==VID: owner=v.get("public_owner_id")
+              if owner:
+                  a=requests.post(f"{B}/voices/add/{owner}/{VID}",headers=H,
+                                  json={"new_name":"Aarush"},timeout=120)
+                  print("voices/add HTTP",a.status_code,a.text[:200])
+                  if a.status_code==200:
+                      used=a.json().get("voice_id"); print("added as",used)
+                      r=tts(used,"after add")
+
+          if r.status_code==200:
+              open("aarush-test.mp3","wb").write(r.content)
+              print("SAVED aarush-test.mp3")
+              # write the working id as a repo variable
+              PAT=os.environ["GH_PAT"]
+              PH={"Authorization":f"Bearer {PAT}","Accept":"application/vnd.github+json"}
+              for repo in ("gk-control","gk-video-engine"):
+                  p=requests.post(f"https://api.github.com/repos/gkdigitaluniverse/{repo}/actions/variables",
+                      headers=PH,json={"name":"ELEVEN_VOICE_ID","value":used})
+                  if p.status_code==409:
+                      p=requests.patch(f"https://api.github.com/repos/gkdigitaluniverse/{repo}/actions/variables/ELEVEN_VOICE_ID",
+                          headers=PH,json={"name":"ELEVEN_VOICE_ID","value":used})
+                  print(f"var ELEVEN_VOICE_ID in {repo} -> {p.status_code}")
+              json.dump({"voice_id":used,"requested":VID,"name":"Aarush"},
+                        open("AARUSH.json","w"))
+          PY
+          ls -la *.mp3 2>/dev/null
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f ELEVEN-PROBE.txt AARUSH.json aarush-test.mp3 2>/dev/null || true
+          git commit -m "eleven: aarush sample" || true
+          git pull --rebase -q origin main || true
+          git push || true
