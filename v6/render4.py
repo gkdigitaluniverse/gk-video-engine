@@ -1,0 +1,382 @@
+#!/usr/bin/env python3
+"""gkhackter v4 — dense motion graphics. A different device in every beat."""
+import os, json, math, subprocess, glob, random
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+W, H, FPS = 1080, 1920, 30
+NAVY   = (10, 14, 32)
+WHITE  = (246, 247, 252)
+GREY   = (140, 146, 170)
+ORANGE = (255, 122, 48)
+AMBER  = (255, 190, 70)
+TEAL   = (60, 210, 180)
+RED    = (255, 92, 92)
+VIOLET = (150, 120, 255)
+
+BEATS = json.load(open("beats.json"))
+TOTAL = BEATS[-1]["e"]
+FDIR = "frames"
+
+def F(sz):
+    for p in ["fonts/Montserrat-Bold.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]:
+        if os.path.exists(p):
+            try: return ImageFont.truetype(p, sz)
+            except Exception: pass
+    return ImageFont.load_default()
+
+RF = sorted(glob.glob(f"{FDIR}/*.jpg"))
+_c = {}
+def rf(i):
+    if not RF: return Image.new("RGB",(1280,800),(20,24,44))
+    i = max(0, min(len(RF)-1, i))
+    if i not in _c:
+        if len(_c) > 70: _c.clear()
+        _c[i] = Image.open(RF[i]).convert("RGB")
+    return _c[i]
+
+def ease(x): return 1 - (1 - min(1.0, max(0.0, x))) ** 3
+def ease_out(x):
+    x = min(1.0, max(0.0, x)); return 1 - (1-x)**2
+def back_out(x):
+    x = min(1.0, max(0.0, x)); c1, c3 = 1.70158, 2.70158
+    return 1 + c3*(x-1)**3 + c1*(x-1)**2
+
+# ---------- background ----------
+_glow = {}
+def background(t, hue=ORANGE):
+    g = Image.new("RGB", (W, H), NAVY)
+    d = ImageDraw.Draw(g)
+    for y in range(H):
+        k = y/H
+        d.line([(0,y),(W,y)], fill=(int(10+7*k), int(14+5*k), int(32-20*k)))
+    key = hue
+    if key not in _glow:
+        gl = Image.new("RGB",(W,H),(0,0,0)); gd = ImageDraw.Draw(gl)
+        gd.ellipse([-320,-460,W+320,940], fill=hue)
+        _glow[key] = gl.filter(ImageFilter.GaussianBlur(190))
+    g = Image.blend(g, _glow[key], 0.32)
+    d = ImageDraw.Draw(g)
+    off = int((t*14) % 64)
+    for x in range(-64, W+64, 64): d.line([(x+off,0),(x+off,H)], fill=(25,31,56))
+    for y in range(-64, H+64, 64): d.line([(0,y+off//2),(W,y+off//2)], fill=(23,29,52))
+    return g
+
+def ghost(base, txt, y=380, size=460, alpha=34):
+    d = ImageDraw.Draw(base)
+    f = F(size); w = d.textlength(txt, font=f)
+    d.text(((W-w)/2, y), txt, font=f, fill=(alpha, alpha+6, alpha+26))
+
+def orbit_shapes(base, t, n=5, seed=0):
+    lay = Image.new("RGBA",(W,H),(0,0,0,0)); d = ImageDraw.Draw(lay)
+    rnd = random.Random(seed)
+    for i in range(n):
+        cx = rnd.randint(80, W-80); cy = rnd.randint(150, 1400)
+        r  = rnd.randint(40, 130)
+        sp = rnd.uniform(0.4, 1.1); ph = rnd.uniform(0, 6.28)
+        col = rnd.choice([ORANGE, AMBER, TEAL, VIOLET])
+        x = cx + math.sin(t*sp+ph)*46
+        y = cy + math.cos(t*sp*0.8+ph)*38
+        a = 16 + int(10*(0.5+0.5*math.sin(t*1.6+ph)))
+        if rnd.random() < 0.5:
+            d.ellipse([x-r,y-r,x+r,y+r], outline=col+(a+22,), width=4)
+        else:
+            d.rounded_rectangle([x-r*0.7,y-r*0.7,x+r*0.7,y+r*0.7], radius=18,
+                                outline=col+(a+22,), width=4)
+    base.alpha_composite(lay)
+
+# ---------- chrome ----------
+def chapter_rail(base, idx, t, prog_total):
+    d = ImageDraw.Draw(base)
+    x = W - 34
+    d.rounded_rectangle([x-3, 120, x+3, 1560], radius=6, fill=(30,36,62,255))
+    n = len(BEATS); span = 1440
+    hgt = int(span * prog_total)
+    d.rounded_rectangle([x-3, 120, x+3, 120+hgt], radius=6, fill=ORANGE+(255,))
+    for i in range(n):
+        y = 120 + int(span*i/(n-1))
+        c = ORANGE if i <= idx else (52,58,88)
+        d.ellipse([x-7, y-7, x+7, y+7], fill=c+(255,))
+
+def watermark(base):
+    d = ImageDraw.Draw(base); f = F(26); s = "@gkhackter"
+    d.text((W-90-d.textlength(s,font=f), 66), s, font=f, fill=(78,84,110,255))
+
+def footer(base, src, t):
+    d = ImageDraw.Draw(base)
+    d.text((56, 1792), src, font=F(21), fill=(96,102,128,255))
+    d.rectangle([0,H-7,W,H], fill=(26,30,52,255))
+    d.rectangle([0,H-7,int(W*t/TOTAL),H], fill=ORANGE+(255,))
+
+# ---------- header ----------
+def header(base, kicker, title, sub):
+    d = ImageDraw.Draw(base)
+    fk, ft, fs = F(24), F(50), F(26)
+    k = kicker.upper()
+    d.text((56, 92), k, font=fk, fill=AMBER+(255,))
+    d.rectangle([56, 126, 56+d.textlength(k,font=fk), 130], fill=AMBER+(255,))
+    d.text((56, 156), title, font=ft, fill=WHITE+(255,))
+    d.text((56, 222), sub, font=fs, fill=GREY+(255,))
+
+# ---------- caption: karaoke word by word ----------
+def karaoke(base, t1, t2, prog, y=1180):
+    d = ImageDraw.Draw(base)
+    def fit(txt, s):
+        while s > 26:
+            f = F(s)
+            if d.textlength(txt, font=f) <= W-160: return f
+            s -= 3
+        return F(26)
+    f1, f2 = fit(t1, 78), fit(t2, 78)
+    words1 = t1.split(); words2 = t2.split()
+    total = len(words1)+len(words2)
+    shown = prog * (total+1.2)
+    idx = 0
+    yy = y
+    for txt, f, col in ((t1, f1, WHITE), (t2, f2, ORANGE)):
+        line = ""; lines = []
+        for wd in txt.split():
+            test = (line+" "+wd).strip()
+            if d.textlength(test, font=f) <= W-160: line = test
+            else: lines.append(line); line = wd
+        if line: lines.append(line)
+        buf = ""
+        for ln in lines:
+            for wd in ln.split():
+                idx += 1
+                if idx <= shown:
+                    buf = (buf+" "+wd).strip()
+            if buf:
+                d.text((56, yy), buf, font=f, fill=col+(255,))
+            hh = d.textbbox((0,0), buf or "A", font=f)[3]
+            yy += hh+6; buf = ""
+        yy += 4
+    uw = int((W-160) * min(1.0, prog/0.5))
+    d.rectangle([56, y+250, 56+uw, y+260], fill=AMBER+(255,))
+
+# ---------- devices ----------
+def browser(base, shot, box, prog, url, kb=1.10):
+    x,y,w,h = box; bar = 50
+    card = Image.new("RGBA",(w,h),(0,0,0,0)); d = ImageDraw.Draw(card)
+    d.rounded_rectangle([0,0,w,h], radius=18, fill=(22,26,46,255))
+    d.rounded_rectangle([0,0,w,bar], radius=18, fill=(32,38,64,255))
+    d.rectangle([0,bar-18,w,bar], fill=(32,38,64,255))
+    for i,c in enumerate([(255,95,86),(255,189,46),(39,201,63)]):
+        d.ellipse([14+i*21,16,28+i*21,30], fill=c+(255,))
+    d.rounded_rectangle([92,10,w-12,bar-10], radius=10, fill=(18,22,40,255))
+    f = F(20)
+    d.text(((w+92)/2-d.textlength(url,font=f)/2, 16), url, font=f, fill=(150,156,182,255))
+    cw, ch = w-4, h-bar-2
+    z = 1.0+(kb-1.0)*ease(prog)
+    sw, sh = int(shot.width/z), int(shot.height/z)
+    ox, oy = (shot.width-sw)//2, (shot.height-sh)//2
+    im = shot.crop((ox,oy,ox+sw,oy+sh)).resize((cw,ch), Image.LANCZOS)
+    card.paste(im,(2,bar+1))
+    m = Image.new("L",(w,h),0)
+    ImageDraw.Draw(m).rounded_rectangle([0,0,w,h], radius=18, fill=255)
+    card.putalpha(m)
+    base.alpha_composite(card,(x,y))
+
+def bar_race(base, rows, prog, box):
+    """Animated horizontal bar race with counting values and rank chips."""
+    x,y,w,h = box
+    pn = Image.new("RGBA",(W,H),(0,0,0,0))
+    ImageDraw.Draw(pn).rounded_rectangle([x-20,y-26,x+w+20,y+h+16], radius=22, fill=(16,20,40,165))
+    base.alpha_composite(pn)
+    d = ImageDraw.Draw(base)
+    rowh = h // max(1,len(rows))
+    for i,r in enumerate(rows):
+        ap = min(1.0, max(0.0,(prog - i*0.12)/0.32))
+        if ap <= 0: continue
+        ry = y + i*rowh
+        sl = int((1-back_out(ap))*70)
+        col = r.get("col", WHITE)
+        d.rounded_rectangle([x+sl-14, ry+10, x+sl+34, ry+52], radius=10,
+                            fill=(r.get("bcol",ORANGE) if i==0 else (70,78,110))+(230,))
+        d.text((x+sl-2, ry+20), f"{i+1}", font=F(26), fill=(12,14,26,255))
+        d.text((x+sl+52, ry+14), r["label"], font=F(32), fill=col+(255,))
+        cp = min(1.0, max(0.0,(prog - i*0.12 - 0.12)/0.42))
+        v = r["num"] if cp >= 0.98 else int(r["num"]*ease(cp))
+        vtxt = f"{v:,}"+r.get("suffix","")
+        fv = F(34); vw = d.textlength(vtxt, font=fv)
+        d.text((x+w-vw-sl, ry+12), vtxt, font=fv, fill=col+(255,))
+        bw = int((w-20)*min(1.0,r.get("frac",0.8))*ease(ap))
+        d.rounded_rectangle([x+sl, ry+rowh-32, x+sl+bw, ry+rowh-14], radius=8,
+                            fill=r.get("bcol",ORANGE)+(235,))
+
+def stickers(base, items, prog, t, y0=430):
+    """Cards flying in from alternating sides."""
+    d = ImageDraw.Draw(base)
+    for i,it in enumerate(items):
+        ap = min(1.0, max(0.0,(prog - i*0.13)/0.34))
+        if ap <= 0: continue
+        side = -1 if i%2==0 else 1
+        dx = int(side * (1-back_out(ap)) * 260)
+        yy = y0 + i*170
+        col = it.get("col", RED)
+        x0 = 96 + dx
+        w = W-192
+        pn = Image.new("RGBA",(W,H),(0,0,0,0))
+        pd = ImageDraw.Draw(pn)
+        pd.rounded_rectangle([x0,yy,x0+w,yy+128], radius=20,
+                             fill=(20,24,46,240), outline=col+(200,), width=3)
+        base.alpha_composite(pn)
+        d = ImageDraw.Draw(base)
+        d.text((x0+24, yy+18), it["label"], font=F(36), fill=col+(255,))
+        if it.get("value"):
+            fv = F(30); vw = d.textlength(it["value"], font=fv)
+            d.text((x0+w-vw-24, yy+24), it["value"], font=fv, fill=(180,186,210,255))
+        if it.get("strike") and ap > 0.6:
+            lw = d.textlength(it["label"], font=F(36))
+            d.line([(x0+24, yy+40),(x0+24+lw, yy+40)], fill=RED+(235,), width=5)
+        if it.get("bar") is not None:
+            bw = int((w-48)*min(1.0,it["bar"])*ease(ap))
+            d.rounded_rectangle([x0+24, yy+96, x0+24+bw, yy+112], radius=7,
+                                fill=it.get("bcol",col)+(230,))
+
+def callout(base, label, text, prog, y=1520):
+    d = ImageDraw.Draw(base); x,w,h = 56, W-112, 172
+    a = int(255*min(1.0,max(0.0,(prog-0.15)/0.4)))
+    if a <= 0: return
+    ov = Image.new("RGBA",(W,H),(0,0,0,0)); od = ImageDraw.Draw(ov)
+    od.rounded_rectangle([x,y,x+w,y+h], radius=18, fill=(18,22,42,a))
+    od.rounded_rectangle([x,y,x+w,y+h], radius=18, outline=(58,66,104,a), width=2)
+    base.alpha_composite(ov)
+    d.text((x+22,y+16), label.upper(), font=F(21), fill=AMBER+(a,))
+    f = F(26); line=""; yy=y+50
+    for wd in text.split():
+        tt=(line+" "+wd).strip()
+        if d.textlength(tt,font=f)<=w-44: line=tt
+        else:
+            d.text((x+22,yy),line,font=f,fill=(214,218,236,a)); yy+=33; line=wd
+    if line: d.text((x+22,yy),line,font=f,fill=(214,218,236,a))
+
+def bigword(base, txt, prog, y=560, size=210, col=WHITE):
+    d = ImageDraw.Draw(base)
+    f = F(size)
+    while d.textlength(txt, font=f) > W-120 and size > 60:
+        size -= 8; f = F(size)
+    w = d.textlength(txt, font=f)
+    sc = back_out(min(1.0, prog/0.35))
+    if sc < 0.98:
+        im = Image.new("RGBA",(int(w)+40,int(size*1.4)+40),(0,0,0,0))
+        ImageDraw.Draw(im).text((20,20), txt, font=f, fill=col+(255,))
+        im = im.resize((max(1,int(im.width*sc)), max(1,int(im.height*sc))), Image.LANCZOS)
+        base.alpha_composite(im, (int((W-im.width)/2), int(y+(1-sc)*80)))
+    else:
+        d.text(((W-w)/2, y), txt, font=f, fill=col+(255,))
+    return y + int(size*1.4)
+
+# ---------- beat plan: a DIFFERENT device each beat ----------
+PLAN = {
+ "B1":  dict(dev="bigword", kicker="free tier", title="No server needed", sub="Cloudflare Workers Playground",
+             big="TEST IN BROWSER", call=("hook","API ko browser mein test karo, bina server khareede."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="0"),
+ "B2":  dict(dev="stickers", kicker="what you skip", title="The usual setup", sub="three steps before you see anything",
+             call=("context","Chhota web app banate ho? Pehle ye teen step."),
+             src="developers.cloudflare.com/workers/get-started/guide · checked 24 Nov 2026", ghost="1",
+             items=[dict(label="Node.js install", value="step 1", col=RED, strike=True, bar=.55),
+                    dict(label="npm + wrangler", value="step 2", col=RED, strike=True, bar=.72),
+                    dict(label="Deploy to test", value="step 3", col=RED, strike=True, bar=.88)]),
+ "B3":  dict(dev="browser", kicker="free tier", title="Cloudflare Workers Playground", sub="no account, no install",
+             rec=10.6, call=("value","Playground kholo, code likho, live preview dekho. Koi sign-in nahi."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="2"),
+ "B4":  dict(dev="stickers", kicker="before vs now", title="Setup gone, preview live", sub="same second",
+             call=("value","Pehle project setup aur deploy. Ab editor aur preview saath."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="3",
+             items=[dict(label="Pehle: setup + deploy", value="minutes", col=RED, bar=.92, bcol=RED),
+                    dict(label="Ab: editor + preview", value="live", col=TEAL, bar=.28, bcol=TEAL)]),
+ "B5":  dict(dev="browser", kicker="live", title="Editor aur preview saath", sub="ek hi screen par",
+             rec=18.6, call=("value","Code likho, output wahin dekho."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="4"),
+ "B6":  dict(dev="browser", kicker="live", title="Apna response likho", sub="Hello World badlo",
+             rec=21.8, call=("value","Hello World badlo, apna response likho, output dekho."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="5"),
+ "B7":  dict(dev="stickers", kicker="http", title="Request bhi bhejo", sub="HTTP tab se",
+             call=("value","HTTP tab se request bhejo, response wahin."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="6",
+             items=[dict(label="GET /", value="200 OK", col=TEAL, bar=.30, bcol=TEAL),
+                    dict(label="Response time", value="fast", col=TEAL, bar=.18, bcol=TEAL)]),
+ "B8":  dict(dev="browser", kicker="proof", title="Maine khud check kiya", sub="official limits page",
+             rec=26.4, call=("proof","Ye number maine khud official page par dekhe."),
+             src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="7"),
+ "B9":  dict(dev="race", kicker="proof · verified today", title="Free plan ki limit", sub="Workers Free vs Paid",
+             call=("proof","Free plan mein 1,00,000 requests roz. Midnight UTC par reset."),
+             src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="100K",
+             rows=[dict(label="Free / day", num=100000, col=WHITE, bcol=TEAL, frac=.62),
+                   dict(label="Paid plan", num=99999999, suffix="+", col=GREY, bcol=(80,88,124), frac=1.0)]),
+ "B10": dict(dev="race", kicker="proof · verified today", title="Har request ko CPU", sub="Workers Free",
+             call=("proof","Har request ko 10 ms CPU. Average Worker sirf 2.2 ms leta hai."),
+             src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="10",
+             rows=[dict(label="CPU / request", num=10, suffix=" ms", col=WHITE, bcol=AMBER, frac=.30),
+                   dict(label="Average Worker", num=2, suffix=".2 ms", col=GREY, bcol=(80,88,124), frac=.10)]),
+ "B11": dict(dev="stickers", kicker="the catch", title="Ek kami bhi hai", sub="honest",
+             call=("catch","Playground sirf Chrome aur Firefox desktop par chalta hai."),
+             src="developers.cloudflare.com/workers/playground · checked 24 Nov 2026", ghost="!",
+             items=[dict(label="Chrome / Firefox", value="works", col=TEAL, bar=.85, bcol=TEAL),
+                    dict(label="Mobile browser", value="not this", col=RED, bar=.25, bcol=RED)]),
+ "B12": dict(dev="stickers", kicker="the catch", title="Deploy ke liye account", sub="test ke liye nahi",
+             call=("catch","Test ke liye account nahi chahiye. Deploy ke liye chahiye."),
+             src="developers.cloudflare.com/workers/get-started/guide · checked 24 Nov 2026", ghost="?",
+             items=[dict(label="Test in playground", value="no account", col=TEAL, bar=.22, bcol=TEAL),
+                    dict(label="Deploy to edge", value="account", col=AMBER, bar=.70, bcol=AMBER)]),
+ "B13": dict(dev="browser", kicker="next", title="Aage kya", sub="deploy jab chaho",
+             rec=6.0, call=("next","Deploy karna ho to account. Test ke liye zaroorat nahi."),
+             src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="13"),
+ "B14": dict(dev="bigword", kicker="link", title="Link description mein", sub="workers.cloudflare.com/playground",
+             big="LINK IN DESCRIPTION", call=("cta","workers.cloudflare.com/playground"),
+             src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="14"),
+}
+
+def frame(t):
+    idx = len(BEATS)-1
+    for i,b in enumerate(BEATS):
+        if b["s"] <= t < b["e"]: idx=i; break
+    b = BEATS[idx]; P = PLAN.get(b["id"], PLAN["B1"])
+    local = t-b["s"]; blen = max(0.05, b["e"]-b["s"]); prog = min(1.0, local/blen)
+
+    img = background(t, P.get("hue", ORANGE)).convert("RGBA")
+    ghost(img, P.get("ghost",""), y=300 if P["dev"]!="race" else 250)
+    orbit_shapes(img, t, n=5, seed=idx)
+    header(img, P["kicker"], P["title"], P["sub"])
+
+    dev = P["dev"]
+    if dev == "browser":
+        browser(img, rf(int((P["rec"]+local)*30)), (56, 300, W-112, 830), prog,
+                "workers.cloudflare.com/playground", kb=1.14)
+    elif dev == "race":
+        bar_race(img, P["rows"], prog, (56, 380, W-112, 340))
+    elif dev == "stickers":
+        stickers(img, P["items"], prog, t, y0=400)
+    elif dev == "bigword":
+        bigword(img, P["big"], prog, y=520, size=190)
+
+    karaoke(img, b["t1"], b["t2"], prog, y=1230)
+    callout(img, P["call"][0], P["call"][1], prog)
+    watermark(img)
+    chapter_rail(img, idx, t, t/TOTAL)
+    footer(img, P["src"], t)
+    return img.convert("RGB")
+
+def main():
+    n = int(round(TOTAL*FPS)); print(n, "frames", flush=True)
+    cmd = ["ffmpeg","-y","-v","error","-f","rawvideo","-pix_fmt","rgb24","-s",f"{W}x{H}",
+           "-r",str(FPS),"-i","-","-i","voice.wav","-i","channel-bgm.mp3",
+           "-filter_complex",
+           "[1:a]volume=1.0[v];[2:a]volume=0.13,atrim=0:42.1,afade=t=out:st=38.5:d=3.5[bg];"
+           "[v][bg]amix=inputs=2:duration=first:dropout_transition=0[mix];"
+           "[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]",
+           "-map","0:v","-map","[a]","-c:v","libx264","-preset","veryfast","-crf","20",
+           "-pix_fmt","yuv420p","-movflags","+faststart","-c:a","aac","-b:a","192k",
+           "-shortest","video4.mp4"]
+    p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    for i in range(n):
+        p.stdin.write(frame(i/FPS).tobytes())
+        if i % 250 == 0: print(" ", i, flush=True)
+    p.stdin.close(); p.wait(); print("exit", p.returncode, flush=True)
+    for tt,nm in ((1.2,"a"),(4.0,"b"),(12.0,"c"),(20.0,"d"),(28.0,"e"),(35.0,"f"),(41.0,"g")):
+        frame(tt).save(f"q_{nm}.png")
+    frame(27.8).save("thumb4.png")
+    print("done", flush=True)
+
+main()
