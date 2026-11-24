@@ -1,15 +1,14 @@
-captured playground from https://workers.cloudflare.com/
-captured limits from https://developers.cloudflare.com/workers/platform/limits/
-captured guide from https://developers.cloudflare.com/workers/get-started/guide/
-rendering 1262 frames at 1080x1920 30fps for 42.07s
-  frame 0/1262
-  frame 150/1262
-  frame 300/1262
-  frame 450/1262
-  frame 600/1262
-  frame 750/1262
-  frame 900/1262
-  frame 1050/1262
-  frame 1200/1262
+captured playground
+captured landing
+captured limits
+captured guide
+1262 frames 1080x1920 30fps 42.07s
+  0/1262
+  200/1262
+  400/1262
+  600/1262
+  800/1262
+  1000/1262
+  1200/1262
 encode exit 0
 thumb saved
