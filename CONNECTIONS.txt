@@ -1,0 +1,15 @@
+===== instagram =====
+{"jsonrpc": "2.0", "id": 32, "result": {"content": [{"type": "text", "text": "{\"successful\":true,\"data\":{\"message\":\"All connections are active\",\"results\":{\"instagram\":{\"toolkit\":\"instagram\",\"status\":\"active\",\"accounts\":[{\"id\":\"instagram_quiles-adorer\",\"status\":\"active\",\"is_default\":true,\"user_info\":{\"id\":\"29161770546783780\",\"username\":\"gkhackter\"},\"account_type\":\"PRIVATE\"}]}},\"summary\":{\"total_toolkits\":1,\"active_connections\":1,\"initiated_connections\":0,\"failed_connections\":0}},\"error\":null,\"log_id\":\"log_fC5GdUcdMA7s\"}"}], "isError": false}}
+
+===== facebook =====
+{"jsonrpc": "2.0", "id": 41, "result": {"content": [{"type": "text", "text": "{\"successful\":true,\"data\":{\"message\":\"All connections are active\",\"results\":{\"facebook\":{\"toolkit\":\"facebook\",\"status\":\"active\",\"accounts\":[{\"id\":\"facebook_unwise-planch\",\"status\":\"active\",\"is_default\":true,\"user_info\":{\"id\":\"122119689777512928\",\"name\":\"Hackter Gk\"},\"account_type\":\"PRIVATE\"}]}},\"summary\":{\"total_toolkits\":1,\"active_connections\":1,\"initiated_connections\":0,\"failed_connections\":0}},\"error\":null,\"log_id\":\"log_yz8ITCHpm2ft\"}"}], "isError": false}}
+
+===== youtube =====
+{"jsonrpc": "2.0", "id": 23, "result": {"content": [{"type": "text", "text": "{\"successful\":true,\"data\":{\"message\":\"All connections are active\",\"results\":{\"youtube\":{\"toolkit\":\"youtube\",\"status\":\"active\",\"accounts\":[{\"id\":\"youtube_easier-algoid\",\"status\":\"active\",\"is_default\":true,\"account_type\":\"PRIVATE\"}]}},\"summary\":{\"total_toolkits\":1,\"active_connections\":1,\"initiated_connections\":0,\"failed_connections\":0}},\"error\":null,\"log_id\":\"log_n_BjDARLqsMa\"}"}], "isError": false}}
+
+===== youtube_content =====
+{"jsonrpc": "2.0", "id": 10, "result": {"content": [{"type": "text", "text": "{\"successful\":true,\"data\":{\"message\":\"All connections have been initiated and are pending completion\",\"results\":{\"youtube_content\":{\"toolkit\":\"youtube_content\",\"status\":\"initiated\",\"accounts\":[]}},\"summary\":{\"total_toolkits\":1,\"active_connections\":0,\"initiated_connections\":1,\"failed_connections\":0}},\"error\":null,\"log_id\":\"log_OC6uabCPDUeE\"}"}], "isError": false}}
+
+===== gmail =====
+{"jsonrpc": "2.0", "id": 58, "result": {"content": [{"type": "text", "text": "{\"successful\":true,\"data\":{\"message\":\"All connections have been initiated and are pending completion\",\"results\":{\"gmail\":{\"toolkit\":\"gmail\",\"status\":\"initiated\",\"accounts\":[]}},\"summary\":{\"total_toolkits\":1,\"active_connections\":0,\"initiated_connections\":1,\"failed_connections\":0}},\"error\":null,\"log_id\":\"log_HENPo8TyoYmt\"}"}], "isError": false}}
+
