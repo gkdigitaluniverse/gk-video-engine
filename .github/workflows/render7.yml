@@ -24,6 +24,8 @@ jobs:
           curl -sL -o public/limits.png $B/limits.png
           curl -sL -o public/blog.png $B/blog.png
           curl -sL -o public/support.png $B/support.png
+          curl -sL -o public/proof_blog.png $B/proof_blog.png
+          curl -sL -o public/proof_support.png $B/proof_support.png
           curl -sL -o public/voice2.wav $B/voice.wav
           curl -sL -o public/bgm.mp3 $B/channel-bgm.mp3
           curl -sL -o public/play.mp4 $B/play.mp4
