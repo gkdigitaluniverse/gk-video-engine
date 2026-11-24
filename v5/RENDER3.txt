@@ -3,15 +3,7 @@
   250
   500
   750
-Traceback (most recent call last):
-  File "/home/runner/work/gk-video-engine/gk-video-engine/v5/render3.py", line 254, in <module>
-    main()
-  File "/home/runner/work/gk-video-engine/gk-video-engine/v5/render3.py", line 246, in main
-    p.stdin.write(frame(i/FPS).tobytes())
-                  ^^^^^^^^^^^^
-  File "/home/runner/work/gk-video-engine/gk-video-engine/v5/render3.py", line 226, in frame
-    data_rows(img, P["rows"], prog, (64, 470, W-128, 380))
-  File "/home/runner/work/gk-video-engine/gk-video-engine/v5/render3.py", line 120, in data_rows
-    vtxt = r["value"]
-           ~^^^^^^^^^
-KeyError: 'value'
+  1000
+  1250
+exit 0
+done
