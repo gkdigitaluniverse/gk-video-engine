@@ -152,16 +152,26 @@ const Headline: React.FC<{ beat: any; f: number; start: number }> = ({ beat, f, 
         const mp = interpolate(local - i * 5 - 10, [0, 14], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
         return (
           <div key={i} style={{ position: "relative", height: lh, opacity: op, transform: `translateY(${y}px)` }}>
-            {r.boxed && <Marker p={mp} w={r.txt.length * 52 + 40} h={lh - 14} seed={i + 3} />}
-            <span style={{
-              position: "relative",
-              fontFamily: "Anton, Impact, sans-serif",
-              fontSize: r.boxed ? 92 : 100,
-              lineHeight: `${lh}px`,
-              letterSpacing: -1,
-              color: r.boxed ? "#FFFFFF" : INK,
-              whiteSpace: "nowrap",
-            }}>{r.txt}</span>
+            {r.boxed ? (
+              <span style={{
+                position: "relative", display: "inline-block",
+                fontFamily: "Anton, Impact, sans-serif",
+                fontSize: 92, lineHeight: `${lh - 10}px`, letterSpacing: -1,
+                color: "#FFFFFF", whiteSpace: "nowrap",
+                background: ORANGE, padding: "0 16px",
+                clipPath: "polygon(0 4%, 100% 0%, 100% 96%, 0 100%)",
+                transform: `scaleX(${0.55 + 0.45 * mp})`,
+                transformOrigin: "left center",
+                opacity: 0.4 + 0.6 * mp,
+              }}>{r.txt}</span>
+            ) : (
+              <span style={{
+                position: "relative",
+                fontFamily: "Anton, Impact, sans-serif",
+                fontSize: 100, lineHeight: `${lh}px`, letterSpacing: -1,
+                color: INK, whiteSpace: "nowrap",
+              }}>{r.txt}</span>
+            )}
           </div>
         );
       })}
@@ -295,7 +305,7 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
   const camScale = interpolate(f, [0, dur], [1.0, 1.035]);
   const camY = interpolate(f, [0, dur], [0, -10]);
 
-  const heroTop = 470;
+  const heroTop = 440;
 
   return (
     <AbsoluteFill style={{ transform: `scale(${camScale}) translateY(${camY}px)` }}>
@@ -309,21 +319,21 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
 
       {beat.hero === "screen" && (
         <>
-          <Card f={f} start={16} y={heroTop} h={700} title="workers.cloudflare.com/playground" pill="LIVE">
+          <Card f={f} start={16} y={heroTop} h={880} title="workers.cloudflare.com/playground" pill="LIVE">
             <ScreenClip rec={beat.rec} local={f / FPS} dur={dur / FPS} />
           </Card>
-          <Chip f={f} start={40} text={beat.chip} x={66} y={heroTop + 726} />
-          <Chip f={f} start={52} text={beat.chip2} x={66 + beat.chip.length * 15 + 46} y={heroTop + 726} green />
+          <Chip f={f} start={40} text={beat.chip} x={66} y={heroTop + 906} />
+          <Chip f={f} start={52} text={beat.chip2} x={66 + beat.chip.length * 15 + 46} y={heroTop + 906} green />
         </>
       )}
 
       {beat.hero === "rows" && (
         <>
           {beat.rows.map((r: any, i: number) => (
-            <CheckRow key={i} f={f} start={16 + i * 7} label={r[0]} value={r[1]} y={heroTop + i * 118} />
+            <CheckRow key={i} f={f} start={16 + i * 7} label={r[0]} value={r[1]} y={heroTop + i * 132} />
           ))}
           <div style={{
-            position: "absolute", left: 66, top: heroTop + beat.rows.length * 118 + 22,
+            position: "absolute", left: 66, top: heroTop + beat.rows.length * 132 + 30,
             width: 948, height: 88, background: PAPER, border: "3px solid #1C1C1C",
             borderRadius: 14, display: "flex", alignItems: "center", paddingLeft: 24,
             boxShadow: "0 12px 26px rgba(0,0,0,0.16)",
@@ -335,8 +345,8 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
 
       {beat.hero === "stat" && (
         <>
-          <BigStat f={f} start={8} num={beat.num} unit={beat.unit} y={heroTop + 60} />
-          <div style={{ position: "absolute", left: 66, top: heroTop + 470, width: 948, opacity: interpolate(f, [30, 46], [0, 1], { extrapolateRight: "clamp" }) }}>
+          <BigStat f={f} start={8} num={beat.num} unit={beat.unit} y={heroTop + 230} />
+          <div style={{ position: "absolute", left: 66, top: heroTop + 700, width: 948, opacity: interpolate(f, [30, 46], [0, 1], { extrapolateRight: "clamp" }) }}>
             {[["Verified at", "developers.cloudflare.com"], ["Checked", "24 Nov 2026"]].map((r, i) => (
               <div key={i} style={{
                 height: 70, background: PAPER, border: "3px solid #1C1C1C", borderRadius: 12,
@@ -355,15 +365,15 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
       {beat.hero === "url" && (
         <>
           <div style={{
-            position: "absolute", left: 66, top: heroTop + 40, width: 948, height: 120,
+            position: "absolute", left: 66, top: heroTop + 240, width: 948, height: 130,
             background: INK, borderRadius: 18, display: "flex", alignItems: "center",
             justifyContent: "center", boxShadow: "0 20px 44px rgba(0,0,0,0.25)",
             fontFamily: "monospace", fontSize: 34, color: "#fff", letterSpacing: 0.5,
             opacity: interpolate(f, [10, 26], [0, 1], { extrapolateRight: "clamp" }),
           }}>workers.cloudflare.com/playground</div>
-          <Chip f={f} start={34} text="FREE TIER" x={66} y={heroTop + 200} green />
-          <Chip f={f} start={44} text="NO ACCOUNT" x={266} y={heroTop + 200} />
-          <Chip f={f} start={54} text="BROWSER ONLY" x={490} y={heroTop + 200} />
+          <Chip f={f} start={34} text="FREE TIER" x={66} y={heroTop + 420} green />
+          <Chip f={f} start={44} text="NO ACCOUNT" x={266} y={heroTop + 420} />
+          <Chip f={f} start={54} text="BROWSER ONLY" x={490} y={heroTop + 420} />
         </>
       )}
 
