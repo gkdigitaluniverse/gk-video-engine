@@ -1,0 +1,43 @@
+name: record
+on:
+  push:
+    paths: ["v2/**"]
+  workflow_dispatch:
+jobs:
+  r:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Record the real browser
+        working-directory: v2
+        run: python record.py 2>&1 | tee RECORD.txt
+      - name: Convert and upload
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd v2
+          ls -la rec/ || true
+          if [ -f rec/playwright.webm ]; then
+            ffmpeg -y -v error -i rec/playwright.webm -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p rec/play.mp4
+            ffprobe -v error -show_entries format=duration -of default=nw=1 rec/play.mp4 || true
+          fi
+          gh release upload run1 rec/play.mp4 rec/pg_end.png -R gkdigitaluniverse/gk-video-engine --clobber || true
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f v2/RECORD.txt v2/rec/pg_end.png 2>/dev/null || git add -f v2/RECORD.txt
+          git commit -m "record: result" || true
+          git pull --rebase -q origin main || true
+          git push || true
