@@ -29,14 +29,14 @@ export const B2 = [
     hero: "rows", rows: [["Excel users","WELCOME"],["Project tracker","YES"],["One cell","MANY STATUS"]] },
   { s: 8.54,  e: 13.08, top: "(3) PROOF / ANNOUNCED",
     l1: "26 JULY", box: "2024",
-    hero: "proof", img: "proof_blog.png", hl: { x: 14.0, y: 32.0, w: 21.0, h: 12.0 },
+    hero: "proof", img: "blog.png", hl: null,
     cap: "Google Workspace Updates · 26 July 2024" },
   { s: 13.08, e: 16.10, top: "(4) BEFORE",
     l1: "ONE VALUE", box: "ONLY",
     hero: "single" },
   { s: 16.10, e: 21.90, top: "(5) PROOF / HOW TO TURN IT ON",
     l1: "ALLOW MULTIPLE", box: "SELECTIONS",
-    hero: "proof", img: "proof_support.png", hl: { x: 31.0, y: 41.0, w: 36.0, h: 16.0 },
+    hero: "proof", img: "support.png", hl: null,
     cap: "support.google.com · Docs Editors Help" },
   { s: 21.90, e: 23.60, top: "(6) DISPLAY STYLE",
     l1: "CHOOSE", box: "CHIP",
@@ -174,14 +174,15 @@ const Proof: React.FC<{ f: number; img: string; hl: any; start: number; y: numbe
   return (
     <Card f={f} start={start} y={y} h={h} title="google.com" pill="PROOF">
       <div style={{ position: "absolute", inset: 0 }}>
-        <Img src={staticFile(img)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-        <div style={{
-          position: "absolute", left: `${hl.x}%`, top: `${hl.y}%`,
-          width: `${hl.w * hp}%`, height: `${hl.h}%`,
-          border: "5px solid #E8551F", borderRadius: 8,
-          background: `rgba(232,85,31,${0.14 * hp})`,
-          boxShadow: `0 0 0 ${3 * hp}px rgba(232,85,31,0.16)`,
-        }} />
+        <Img src={staticFile(img)} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "top" }} />
+        {hl && (
+          <div style={{
+            position: "absolute", left: `${hl.x}%`, top: `${hl.y}%`,
+            width: `${hl.w * hp}%`, height: `${hl.h}%`,
+            border: "5px solid #E8551F", borderRadius: 8,
+            background: `rgba(232,85,31,${0.14 * hp})`,
+          }} />
+        )}
       </div>
     </Card>
   );
