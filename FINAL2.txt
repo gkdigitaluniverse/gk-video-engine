@@ -1,0 +1,15 @@
+===== does a Facebook VIDEO upload tool exist? =====
+  primary: ['FACEBOOK_CREATE_VIDEO_POST']
+  related: ['FACEBOOK_LIST_MANAGED_PAGES', 'FACEBOOK_GET_PAGE_POSTS', 'FACEBOOK_GET_PAGE_VIDEOS', 'FACEBOOK_GET_POST', 'FACEBOOK_UPDATE_POST']
+
+##### IG media (permalink) -> FAIL #####
+{"successful":false,"data":{"results":[{"response":{"successful":false,"data":{"message":"Instagram API Error: Tried accessing nonexisting field (total_views_count). This field is not supported on the Media node. Supported fields are: id, caption, comments_count, is_comment_enabled, like_count, media_type, media_url, media_product_type, owner, permalink, shortcode, thumbnail_url, timestamp, username, children, comments. Note: tagged-media retrieval is unavailable through this Instagram Login toolkit.","status_code":400},"error":"Instagram API Error: Tried accessing nonexisting field (total_views_count). This field is not supported on the Media node. Supported fields are: id, caption, comments_count, is_comment_enabled, like_count, media_type, media_url, media_product_type, owner, permalink, shortcode, thumbnail_url, timestamp, username, children, comments. Note: tagged-media retrieval is unavailable through this Instagram Login toolkit."},"error":"Instagram API Error: Tried accessing nonexisting field (total_views_count). This field is not supported on the Media node. Supported field
+
+##### IG comments on new reel -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"data":[]}},"tool_slug":"INSTAGRAM_GET_IG_MEDIA_COMMENTS","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_6-pp2TP9Dm9j"}
+
+##### FB read my post -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"created_time":"2026-11-24T06:50:25+0000","from":{"id":"1270080059532814","name":"Gk Hackter"},"id":"1270080059532814_122122021401511062","likes":{"data":[],"summary":{"can_like":true,"has_liked":false,"total_count":0}},"message":"Pipeline test â safe to delete.","permalink_url":"https://www.facebook.com/122121992907511062/posts/122122021401511062","updated_time":"2026-11-24T06:50:25+0000"}},"tool_slug":"FACEBOOK_GET_POST","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_xveIzPoLGoQB"}
+
+##### FB comments on post -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"data":[]}},"tool_slug":"FACEBOOK_GET_COMMENTS","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_SlYNCsZmtlSQ"}
