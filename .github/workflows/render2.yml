@@ -20,11 +20,14 @@ jobs:
           mkdir -p v3/fonts
           curl -sL -o v3/fonts/Montserrat-Bold.ttf "https://github.com/JulietaUla/Montserrat/raw/master/fonts/ttf/Montserrat-Bold.ttf" || true
           ls -la v3/fonts/
-      - name: Fetch the screen recording
+      - name: Fetch the assets
         run: |
           cd v3 && mkdir -p rec
-          curl -sL -o rec/play.mp4 "https://github.com/gkdigitaluniverse/gk-video-engine/releases/download/run1/play.mp4"
-          ffprobe -v error -show_entries format=duration -of default=nw=1 rec/play.mp4
+          B=https://github.com/gkdigitaluniverse/gk-video-engine/releases/download/run1
+          curl -sL -o rec/play.mp4 $B/play.mp4
+          curl -sL -o voice.wav $B/voice.wav
+          curl -sL -o channel-bgm.mp3 $B/channel-bgm.mp3
+          ls -la rec/play.mp4 voice.wav channel-bgm.mp3
       - name: Render v2
         working-directory: v3
         run: python render2.py 2>&1 | tee RENDER2.txt
