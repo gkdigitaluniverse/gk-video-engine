@@ -29,14 +29,14 @@ export const B2 = [
     hero: "rows", rows: [["Excel users","WELCOME"],["Project tracker","YES"],["One cell","MANY STATUS"]] },
   { s: 8.54,  e: 13.08, top: "(3) PROOF / ANNOUNCED",
     l1: "26 JULY", box: "2024",
-    hero: "proof", img: "blog_crop.png", hl: { x: 8, y: 6, w: 30, h: 34 },
+    hero: "proof", img: "blog.png", hl: { x: 7.0, y: 56.0, w: 8.0, h: 3.5 },
     cap: "Google Workspace Updates · 26 July 2024" },
   { s: 13.08, e: 16.10, top: "(4) BEFORE",
     l1: "ONE VALUE", box: "ONLY",
     hero: "single" },
   { s: 16.10, e: 21.90, top: "(5) PROOF / HOW TO TURN IT ON",
     l1: "ALLOW MULTIPLE", box: "SELECTIONS",
-    hero: "proof", img: "support_crop.png", hl: { x: 55, y: 52, w: 40, h: 34 },
+    hero: "proof", img: "support.png", hl: { x: 55.0, y: 90.4, w: 15.0, h: 3.0 },
     cap: "support.google.com · Docs Editors Help" },
   { s: 21.90, e: 23.60, top: "(6) DISPLAY STYLE",
     l1: "CHOOSE", box: "CHIP",
@@ -174,7 +174,7 @@ const Proof: React.FC<{ f: number; img: string; hl: any; start: number; y: numbe
   return (
     <Card f={f} start={start} y={y} h={h} title="google.com" pill="PROOF">
       <div style={{ position: "absolute", inset: 0 }}>
-        <Img src={staticFile(img)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <Img src={staticFile(img)} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "top" }} />
         <div style={{
           position: "absolute", left: `${hl.x}%`, top: `${hl.y}%`,
           width: `${hl.w * hp}%`, height: `${hl.h}%`,
@@ -238,6 +238,39 @@ const Rows: React.FC<{ f: number; rows: string[][]; start: number; y: number }> 
   </div>
 );
 
+const STRIP2: Record<number, [string,string][]> = {
+  0:  [["WHERE","SHEETS"],["COST","FREE"],["STYLE","CHIP"]],
+  1:  [["USE","TRACKING"],["IN","ONE CELL"],["SETUP","NONE"]],
+  2:  [["DATE","26 JUL 2024"],["SOURCE","GOOGLE BLOG"],["VERIFIED","TODAY"]],
+  3:  [["BEFORE","ONE VALUE"],["AFTER","MANY"],["SAME CELL","YES"]],
+  4:  [["MENU","DATA VALIDATION"],["CHOOSE","DROPDOWN"],["TICK","MULTIPLE"]],
+  5:  [["STYLE","CHIP"],["OTHER","DISABLED"],["ONLY WAY","CHIP"]],
+  6:  [["CELL","ONE"],["STATUS","THREE"],["CHIPS","YES"]],
+  7:  [["SOURCE","OFFICIAL"],["READ","TODAY"],["GUESS","NONE"]],
+  8:  [["COMPUTER","YES"],["MOBILE","NOT YET"],["HONEST","YES"]],
+  9:  [["LABEL","CLEAN"],["SPACES","REMOVE"],["BREAKS","YES"]],
+  10: [["SITE","SHEETS"],["OPEN","COMPUTER"],["LINK","BELOW"]],
+};
+
+const BottomStrip: React.FC<{ f: number; items: [string,string][] }> = ({ f, items }) => (
+  <div style={{ position: "absolute", left: 66, top: 1480, width: 948, display: "flex", gap: 14 }}>
+    {items.map((it, i) => {
+      const d = Math.max(0, f - 34 - i * 7);
+      const sp = spring({ frame: d, fps: FPS, config: { damping: 14, stiffness: 150, mass: 0.5 } });
+      const y = interpolate(sp, [0, 1], [34, 0]);
+      const op = interpolate(sp, [0, 0.5], [0, 1], { extrapolateRight: "clamp" });
+      return (
+        <div key={i} style={{ flex: 1, background: PAPER, border: "3px solid #1C1C1C", borderRadius: 14,
+          padding: "16px 18px", transform: `translateY(${y}px)`, opacity: op,
+          boxShadow: "0 12px 26px rgba(0,0,0,0.14)" }}>
+          <div style={{ fontFamily: "monospace", fontSize: 16, color: GREY, letterSpacing: 1 }}>{it[0]}</div>
+          <div style={{ fontFamily: "Anton, Impact, sans-serif", fontSize: 30, color: INK, marginTop: 6 }}>{it[1]}</div>
+        </div>
+      );
+    })}
+  </div>
+);
+
 const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, idx }) => {
   const f = useCurrentFrame();
   const camScale = interpolate(f, [0, dur], [1.0, 1.035]);
@@ -254,8 +287,8 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
 
       {beat.hero === "proof" && (
         <>
-          <Proof f={f} img={beat.img} hl={beat.hl} start={14} y={heroTop} h={620} />
-          <div style={{ position: "absolute", left: 66, top: heroTop + 680, width: 948,
+          <Proof f={f} img={beat.img} hl={beat.hl} start={14} y={heroTop} h={780} />
+          <div style={{ position: "absolute", left: 66, top: heroTop + 812, width: 948,
             fontFamily: "monospace", fontSize: 24, color: GREY,
             opacity: interpolate(f, [40, 56], [0, 1], { extrapolateRight: "clamp" }) }}>
             {beat.cap}
@@ -294,6 +327,8 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
           <ChipRow f={f} labels={["COMPUTER", "FREE", "LINK BELOW"]} start={34} y={heroTop + 230} />
         </>
       )}
+
+      <BottomStrip f={f} items={STRIP2[idx] || STRIP2[0]} />
 
       <div style={{ position: "absolute", left: 0, bottom: 0, width: 1080, height: 10, background: "#DCDAD2" }}>
         <div style={{ width: `${Math.min(100, (idx + f / dur) / B2.length * 100)}%`, height: 10, background: ORANGE }} />
