@@ -1,0 +1,21 @@
+script | ?dl=1 | HTTP 200 | 233333 bytes | <!DOCTYPE html>
+script | ?raw=1 | HTTP 200 | 232725 bytes | <!DOCTYPE html>
+script | ?dl=0 | HTTP 200 | 233343 bytes | <!DOCTYPE html>
+script |  | HTTP 200 | 232143 bytes | <!DOCTYPE html>
+beatsheet | ?dl=1 | HTTP 200 | 233619 bytes | <!DOCTYPE html>
+beatsheet | ?raw=1 | HTTP 200 | 233043 bytes | <!DOCTYPE html>
+beatsheet | ?dl=0 | HTTP 200 | 232915 bytes | <!DOCTYPE html>
+beatsheet |  | HTTP 200 | 233149 bytes | <!DOCTYPE html>
+research | ?dl=1 | HTTP 200 | 233543 bytes | <!DOCTYPE html>
+research | ?raw=1 | HTTP 200 | 232917 bytes | <!DOCTYPE html>
+research | ?dl=0 | HTTP 200 | 232821 bytes | <!DOCTYPE html>
+research |  | HTTP 200 | 233045 bytes | <!DOCTYPE html>
+handoff | ?dl=1 | HTTP 200 | 233427 bytes | <!DOCTYPE html>
+handoff | ?raw=1 | HTTP 200 | 232825 bytes | <!DOCTYPE html>
+handoff | ?dl=0 | HTTP 200 | 232729 bytes | <!DOCTYPE html>
+handoff |  | HTTP 200 | 232245 bytes | <!DOCTYPE html>
+
+=== saved ===
+----- FETCHED/*.md -----
+head: cannot open 'FETCHED/*.md' for reading: No such file or directory
+
