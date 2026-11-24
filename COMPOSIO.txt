@@ -1,23 +1,31 @@
-date: Tue Nov 24 05:29:45 UTC 2026  keylen: 23
+init HTTP 200 | session: None
+tools/list HTTP 200
+TOOLS: 12
+  - COMPOSIO_GET_TOOL_SCHEMAS: Retrieve input schemas for tools by slug. Returns complete parameter definitions required to execute each tool. Only pass tool slugs returned by COMPO
+  - COMPOSIO_MANAGE_CONNECTIONS: 
+Create or manage connections to user's apps. Supports multiple accounts per toolkit.
 
-=== A. v3 connected_accounts ===
-{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"6e4c7e7c-f3a6-4435-b18d-bec932768eb5","suggested_fix":"Please check you are using a valid API key."}}
-[HTTP 401]
+Call policy:
+- First call COMPOSIO_SEARCH_TOOLS for the user's 
+  - COMPOSIO_MULTI_EXECUTE_TOOL: 
+  Fast and parallel tool executor for tools discovered through COMPOSIO_SEARCH_TOOLS. Use this tool to execute up to 50 tools in parallel across apps
+  - COMPOSIO_PROXY_EXECUTE: 
+Send a raw HTTP request to a connected app's own API, authenticated with the user's connected account for that toolkit. Use it only when no existing 
+  - COMPOSIO_REMOTE_BASH_TOOL: 
+  Execute bash commands in a REMOTE sandbox for file operations, data processing, and system tasks. Essential for handling large tool responses saved
+  - COMPOSIO_REMOTE_WORKBENCH: 
+Use this persistent Jupyter sandbox only for **remote files** or scripted **bulk tool executions**. Do not use it for inline data, quick parsing or s
+  - COMPOSIO_SEARCH_TOOLS: 
+  Tool Server Info: Composio connects 500+ appsâSlack, GitHub, Notion, Google Workspace (Gmail, Sheets, Drive, Calendar), Microsoft (Outlook, Teams
+  - COMPOSIO_SUBMIT_FEEDBACK: 
+Report a problem with a tool execution or a COMPOSIO_SEARCH_TOOLS plan.
+tool_execution: pass tool_slug; its latest run in this session is reported.
+p
+  - COMPOSIO_WAIT_FOR_CONNECTIONS: 
+Wait for user auth to finish. Call only after the user confirms they have completed authentication.
+Wait until mode=any/all toolkits reach a terminal
+  - COMPOSIO_MANAGE_SKILL: Create, update, or delete a Skill when the user explicitly asks. Pass exactly one of create (a new Skill), update (change an existing Skill), or delet
+  - COMPOSIO_SEARCH_SKILLS: Searches the Skills saved in the user's organization by name or topic. A Skill is a set of steps a member of that organization wrote down for a task t
+  - COMPOSIO_USE_SKILL: Returns the Markdown of one Skill saved in the user's organization, looked up by its exact slug: the steps a member of that organization wrote down fo
 
-=== B. v3 toolkits (connected) ===
-{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"8b58f6eb-2ef5-4f72-88b9-eb2da6404d4d","suggested_fix":"Please check you are using a valid API key."}}
-[HTTP 401]
-
-=== C. MCP initialize ===
-: connected
-
-: connected
-
-event: message
-data: {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"mcp-typescript server on vercel","version":"0.1.0"}}}
-
-
-[HTTP 200]
---- session header ---
-access-control-allow-headers: Authorization, Content-Type, MCP-Protocol-Version, Mcp-Session-Id, x-consumer-api-key
-access-control-expose-headers: WWW-Authenticate, Mcp-Session-Id, X-Mcp-Auth-Failure-Reason
+SAVED MCP-TOOLS.json
