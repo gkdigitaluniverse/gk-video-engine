@@ -35,8 +35,11 @@ def gql(label, query, variables=None):
     except Exception:
         print(f"\n##### {label} RAW #####"); print(t[:900]); return None
 
-gql("posts on the YouTube channel", """
-{ posts(input: { organizationId: "6afe914c34b70aac8c250902", filter: { channelIds: ["6afe91afece6dfde5f19c312"] } }) {
-    edges { node { id text status dueAt channelId } }
-} }
+gql("buffer posts via Composio tool", """
+{ account { id } }
 """)
+
+m=call("COMPOSIO_MULTI_EXECUTE_TOOL",{"tools":[{"tool_slug":"BUFFER_LIST_POSTS",
+   "arguments":{"organization_id":"6afe914c34b70aac8c250902","page_size":10}}],"memory":{}})
+print("\n##### BUFFER_LIST_POSTS #####")
+print(txt(m)[:2500])
