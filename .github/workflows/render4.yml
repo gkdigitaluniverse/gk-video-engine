@@ -1,0 +1,47 @@
+name: render4
+on:
+  push:
+    paths: ["v6/**"]
+  workflow_dispatch:
+jobs:
+  r:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu
+          pip install -q pillow
+          mkdir -p v6/fonts
+          curl -sL -o v6/fonts/Montserrat-Bold.ttf "https://github.com/JulietaUla/Montserrat/raw/master/fonts/ttf/Montserrat-Bold.ttf" || true
+      - name: Fetch assets
+        run: |
+          cd v6 && mkdir -p rec frames
+          B=https://github.com/gkdigitaluniverse/gk-video-engine/releases/download/run1
+          curl -sL -o rec/play.mp4 $B/play.mp4
+          curl -sL -o voice.wav $B/voice.wav
+          curl -sL -o channel-bgm.mp3 $B/channel-bgm.mp3
+          ffmpeg -y -v error -i rec/play.mp4 -vf fps=30 -q:v 3 frames/%06d.jpg
+          ls frames | wc -l
+      - name: Render v4
+        working-directory: v6
+        run: python render4.py 2>&1 | tee RENDER4.txt
+      - name: Upload
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload run1 v6/video4.mp4 v6/thumb4.png v6/q_a.png v6/q_b.png v6/q_c.png v6/q_d.png v6/q_e.png v6/q_f.png v6/q_g.png -R gkdigitaluniverse/gk-video-engine --clobber || true
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f v6/RENDER4.txt v6/q_*.png v6/thumb4.png 2>/dev/null || git add -f v6/RENDER4.txt
+          git commit -m "render4: dense motion, device per beat" || true
+          git pull --rebase -q origin main || true
+          git push || true
