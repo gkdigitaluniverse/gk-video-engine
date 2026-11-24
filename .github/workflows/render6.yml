@@ -1,0 +1,61 @@
+name: render6
+on:
+  push:
+    paths: ["v8/**"]
+  workflow_dispatch:
+jobs:
+  r:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install deps
+        working-directory: v8
+        run: npm install --no-audit --no-fund 2>&1 | tail -5
+      - name: Fetch assets
+        run: |
+          cd v8
+          mkdir -p public out
+          B=https://github.com/gkdigitaluniverse/gk-video-engine/releases/download/run1
+          curl -sL -o public/play.mp4 $B/play.mp4
+          curl -sL -o public/voice.wav $B/voice.wav
+          curl -sL -o public/bgm.mp3 $B/channel-bgm.mp3
+          ffmpeg -y -v error -i public/play.mp4 -c:v libx264 -preset ultrafast -crf 26 public/play_web.mp4 || cp public/play.mp4 public/play_web.mp4
+          mv public/play_web.mp4 public/play.mp4
+          ls -la public/
+      - name: Render stills first (QA gate)
+        working-directory: v8
+        run: |
+          for t in 30 150 420 900 1680 2100 2400; do
+            npx remotion still index.ts Main out/still_$t.png --frame=$t --image-format=png 2>&1 | tail -2
+          done
+          ls -la out/
+      - name: Render video 60fps crf16
+        working-directory: v8
+        run: npx remotion render index.ts Main out/video6.mp4 --crf=16 --concurrency=4 2>&1 | tail -15
+      - name: Mux audio
+        run: |
+          cd v8
+          ffmpeg -y -v error -i out/video6.mp4 -i public/voice.wav -i public/bgm.mp3 \
+            -filter_complex "[1:a]volume=1.0[v];[2:a]volume=0.13,atrim=0:42.1,afade=t=out:st=38.5:d=3.5[bg];[v][bg]amix=inputs=2:duration=first:dropout_transition=0[mix];[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]" \
+            -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest out/final6.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1 out/final6.mp4
+      - name: Upload
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload run1 v8/out/final6.mp4 v8/out/still_30.png v8/out/still_150.png v8/out/still_420.png v8/out/still_900.png v8/out/still_1680.png v8/out/still_2100.png v8/out/still_2400.png -R gkdigitaluniverse/gk-video-engine --clobber || true
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f v8/out/still_*.png 2>/dev/null || true
+          git commit -m "render6: remotion 60fps" || true
+          git pull --rebase -q origin main || true
+          git push || true
