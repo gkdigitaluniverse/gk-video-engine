@@ -1,0 +1,2 @@
+=== PROXY_EXECUTE schema ===
+{"successful":false,"data":{"success":false,"tool_schemas":{},"not_found":["COMPOSIO_PROXY_EXECUTE"],"not_found_message":"The following tool slugs were not found: COMPOSIO_PROXY_EXECUTE. Verify the exact slugs via COMPOSIO_SEARCH_TOOLS and try again."},"error":"Some tools were not found","log_id":"log_1WhRMlVRAV-R"}
