@@ -12,14 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: Buffer channels and schemas
+      - name: Buffer video capability test
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_buf2.py > BUFFER2.txt 2>&1
+        run: python3 mcp_buf3.py > BUFFER3.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f BUFFER2.txt && git commit -m "buffer: channels" || true
+          git add -f BUFFER3.txt && git commit -m "buffer: video capability" || true
           git pull --rebase -q origin main || true
           git push || true
