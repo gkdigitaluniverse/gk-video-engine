@@ -1,0 +1,23 @@
+date: Tue Nov 24 05:29:45 UTC 2026  keylen: 23
+
+=== A. v3 connected_accounts ===
+{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"6e4c7e7c-f3a6-4435-b18d-bec932768eb5","suggested_fix":"Please check you are using a valid API key."}}
+[HTTP 401]
+
+=== B. v3 toolkits (connected) ===
+{"error":{"message":"Invalid API key: ck_**DAlX","code":801,"slug":"APIKey_InvalidAPIKey","status":401,"request_id":"8b58f6eb-2ef5-4f72-88b9-eb2da6404d4d","suggested_fix":"Please check you are using a valid API key."}}
+[HTTP 401]
+
+=== C. MCP initialize ===
+: connected
+
+: connected
+
+event: message
+data: {"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"mcp-typescript server on vercel","version":"0.1.0"}}}
+
+
+[HTTP 200]
+--- session header ---
+access-control-allow-headers: Authorization, Content-Type, MCP-Protocol-Version, Mcp-Session-Id, x-consumer-api-key
+access-control-expose-headers: WWW-Authenticate, Mcp-Session-Id, X-Mcp-Auth-Failure-Reason
