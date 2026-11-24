@@ -1,0 +1,24 @@
+name: cap2
+on:
+  push:
+    paths: ["v9/**"]
+  workflow_dispatch:
+jobs:
+  c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          pip install -q playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Capture
+        working-directory: v9
+        run: python cap2.py 2>&1 | tee CAP.txt
+      - name: Upload
+        if: always()
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: gh release upload run1 v9/shots/support.png v9/shots/blog.png -R gkdigitaluniverse/gk-video-engine --clobber || true
