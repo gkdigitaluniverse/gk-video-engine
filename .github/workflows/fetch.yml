@@ -11,12 +11,14 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - run: bash fetch.sh > FETCH.txt 2>&1
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          bash getvoice.sh > VOICE.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f FETCH.txt FETCHED 2>/dev/null || git add -f FETCH.txt
-          git commit -m "run1: fetch paper files" || true
+          git add -f VOICE.txt voice.mp3 2>/dev/null || git add -f VOICE.txt
+          git commit -m "run1: voice download" || true
           git pull --rebase -q origin main || true
           git push || true
