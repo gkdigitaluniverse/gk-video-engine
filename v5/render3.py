@@ -117,7 +117,7 @@ def data_rows(base, rows, prog, box, y0=None):
         d.text((x+sl, ry+12), r["label"], font=fl, fill=col+(int(255*appear),))
         # value counting
         fv = F(40)
-        vtxt = r["value"]
+        vtxt = r.get("value", "")
         if r.get("num") is not None:
             cp = min(1.0, max(0.0,(prog - i*0.10 - 0.15)/0.55))
             v = r["num"] if cp>=0.98 else int(r["num"]*ease(cp))
