@@ -3,5 +3,5 @@
 
 === IG REEL test post ===
 
-##### IG reel -> FAIL #####
-{"successful":false,"data":{"results":[{"response":{"successful":false,"data":{"message":"Invalid request data provided\n- String should match pattern '^https?://' on parameter `video_url`","status_code":400},"error":"Invalid request data provided\n- String should match pattern '^https?://' on parameter `video_url`"},"error":"Invalid request data provided\n- String should match pattern '^https?://' on parameter `video_url`","tool_slug":"INSTAGRAM_POST_IG_USER_MEDIA","index":0}],"total_count":1,"success_count":0,"error_count":1},"error":"1 out of 1 tools failed","log_id":"log_XX_gDB-nCJcp"}
+##### IG reel -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"id":"17934918903245148"}},"tool_slug":"INSTAGRAM_POST_IG_USER_MEDIA","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_sqbq7izPvZBu"}
