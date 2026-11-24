@@ -1,0 +1,13 @@
+
+##### IG reel container -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"id":"17934943788245148"}},"tool_slug":"INSTAGRAM_POST_IG_USER_MEDIA","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_N66eemnqSbZI"}
+IG container: 17934943788245148
+
+##### IG publish -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"composio_execution_message":"Container reached FINISHED status after 24.8s (9 status checks)","id":"18136041943681903"}},"tool_slug":"INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_dDi1tf2uU8ok"}
+
+##### FB video -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"id":"1557643422869687"}},"tool_slug":"FACEBOOK_CREATE_VIDEO_POST","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_csCvYOAEjXvg"}
+
+##### YouTube via Buffer #####
+{"data": {"createPost": {"__typename": "PostActionSuccess", "post": {"id": "6b055b085e1f4df6a058d0f1", "text": "Cloudflare Workers Playground: account banaye bina code likho, live preview dekho. Free plan mein 100,000 requests roz aur har request ko 10 ms CPU. Link: https://workers.cloudflare.com/playground\n\n#cloudflare #workers #webdevelopment #coding #hindi #techtips"}}}}
