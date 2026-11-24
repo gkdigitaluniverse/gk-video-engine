@@ -12,14 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: List connected accounts
+      - name: Search publish tools
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_conn.py > CONNECTIONS.txt 2>&1
+        run: python3 mcp_search.py > PUBLISH-TOOLS.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f CONNECTIONS.txt && git commit -m "composio: connections" || true
+          git add -f PUBLISH-TOOLS.txt SEARCH.txt 2>/dev/null || git add -f PUBLISH-TOOLS.txt
+          git commit -m "composio: publish tools" || true
           git pull --rebase -q origin main || true
           git push || true
