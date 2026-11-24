@@ -1,0 +1,52 @@
+name: render7
+on:
+  push:
+    paths: ["v8/go2.txt"]
+  workflow_dispatch:
+jobs:
+  r:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Install
+        working-directory: v8
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          npm install --no-audit --no-fund 2>&1 | tail -4
+      - name: Fetch assets
+        run: |
+          cd v8 && mkdir -p public out
+          B=https://github.com/gkdigitaluniverse/gk-video-engine/releases/download/run1
+          curl -sL -o public/limits.png $B/limits.png
+          curl -sL -o public/blog_crop.png $B/blog_crop.png
+          curl -sL -o public/support_crop.png $B/support_crop.png
+          curl -sL -o public/voice2.wav $B/voice.wav
+          curl -sL -o public/bgm.mp3 $B/channel-bgm.mp3
+          curl -sL -o public/play.mp4 $B/play.mp4
+          ls -la public/
+      - name: Stills
+        working-directory: v8
+        run: |
+          for t in 120 600 1000 1400 1900 2250 2600; do
+            npx remotion still index.ts Sheets out/s2_$t.png --frame=$t 2>&1 | tail -1
+          done
+          ls -la out/
+      - name: Render
+        working-directory: v8
+        run: npx remotion render index.ts Sheets out/video7.mp4 --crf=16 --concurrency=4 2>&1 | tail -8
+      - name: Mux
+        run: |
+          cd v8
+          ffmpeg -y -v error -i out/video7.mp4 -i public/voice2.wav -i public/bgm.mp3 \
+            -filter_complex "[1:a]volume=1.0[v];[2:a]volume=0.13,atrim=0:45.0,afade=t=out:st=41:d=4[bg];[v][bg]amix=inputs=2:duration=first:dropout_transition=0[mix];[mix]loudnorm=I=-14:TP=-1.5:LRA=11[a]" \
+            -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest out/final7.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1 out/final7.mp4
+      - name: Upload
+        if: always()
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          gh release upload run1 v8/out/final7.mp4 v8/out/s2_120.png v8/out/s2_600.png v8/out/s2_1000.png v8/out/s2_1400.png v8/out/s2_1900.png v8/out/s2_2250.png v8/out/s2_2600.png -R gkdigitaluniverse/gk-video-engine --clobber || true
