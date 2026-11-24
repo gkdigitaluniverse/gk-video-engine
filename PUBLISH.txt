@@ -1,0 +1,12 @@
+
+##### IG PUBLISH reel -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"id":"18147730507590066"}},"tool_slug":"INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_IveM6fZ6jTzo"}
+
+##### IG verify media -> FAIL #####
+{"successful":false,"data":{"results":[{"response":{"successful":false,"data":{"message":"Instagram API Error: Tried accessing nonexisting field (alt_text). This field is not supported on the Media node. Supported fields are: id, caption, comments_count, is_comment_enabled, like_count, media_type, media_url, media_product_type, owner, permalink, shortcode, thumbnail_url, timestamp, username, children, comments. Note: tagged-media retrieval is unavailable through this Instagram Login toolkit.","status_code":400},"error":"Instagram API Error: Tried accessing nonexisting field (alt_text). This field is not supported on the Media node. Supported fields are: id, caption, comments_count, is_comment_enabled, like_count, media_type, media_url, media_product_type, owner, permalink, shortcode, thumbnail_url, timestamp, username, children, comments. Note: tagged-media retrieval is unavailable through this Instagram Login toolkit."},"error":"Instagram API Error: Tried accessing nonexisting field (alt_text). This field is not supported on the Media node. Supported fields are: id, caption, comments_count, is_comment_enabled, like_count, media_type, media_url, media_product_type, owner, permalink, shortcode, thumbnail_url, timestamp, username, children, comments. Note: tagged-media retrieval is unavailable through this Instagram Login toolkit.","tool_slug":"INSTAGRAM_GET_IG_MEDIA","index":0}],"total_count":1,"success_count":0,"error_count":1},"error":"1 out of 1 tools failed","log_id":"log_
+
+##### IG media list -> FAIL #####
+
+
+##### FB text post -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"id":"1270080059532814_122122021401511062"}},"tool_slug":"FACEBOOK_CREATE_POST","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_J4s4Zp3iaPjS"}
