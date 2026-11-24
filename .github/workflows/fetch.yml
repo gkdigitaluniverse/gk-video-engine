@@ -1,0 +1,22 @@
+name: fetch
+on:
+  push:
+    paths: ["fetch/**"]
+  workflow_dispatch:
+jobs:
+  f:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash fetch.sh > FETCH.txt 2>&1
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f FETCH.txt FETCHED 2>/dev/null || git add -f FETCH.txt
+          git commit -m "run1: fetch paper files" || true
+          git pull --rebase -q origin main || true
+          git push || true
