@@ -41,6 +41,11 @@ def gql(label, query, variables=None):
 # introspect the Mutation type
 def inp(name):
     return gql(name, """
-    { __type(name: "%s") { inputFields { name description type { name kind ofType { name kind ofType { name kind } } } } } }
+    { __type(name: "%s") { inputFields { name description type { name kind ofType { name kind ofType { name kind ofType { name kind } } } } } } }
     """ % name)
-inp("CreatePostInput")
+
+# find the exact asset type name
+gql("asset type", """
+{ __type(name: "CreatePostInput") { inputFields { name type { kind ofType { kind ofType { kind ofType { name kind } } } } } } }
+""")
+inp("PostInputMetaData")
