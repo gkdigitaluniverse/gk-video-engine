@@ -12,14 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: Verify the YouTube post
+      - name: Take the video down
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_verify2.py > VERIFY1.txt 2>&1
+        run: python3 mcp_unpublish.py > UNPUB.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f VERIFY1.txt && git commit -m "publish1: verify" || true
+          git add -f UNPUB.txt && git commit -m "unpublish attempt" || true
           git pull --rebase -q origin main || true
           git push || true
