@@ -296,6 +296,28 @@ const Chip: React.FC<{ f: number; start: number; text: string; x: number; y: num
   );
 };
 
+/* ---------- bottom strip ---------- */
+const BottomStrip: React.FC<{ f: number; items: [string, string][] }> = ({ f, items }) => (
+  <div style={{ position: "absolute", left: 66, top: 1480, width: 948, display: "flex", gap: 14 }}>
+    {items.map((it, i) => {
+      const d = Math.max(0, f - 34 - i * 7);
+      const sp = spring({ frame: d, fps: FPS, config: { damping: 14, stiffness: 150, mass: 0.5 } });
+      const y = interpolate(sp, [0, 1], [34, 0]);
+      const op = interpolate(sp, [0, 0.5], [0, 1], { extrapolateRight: "clamp" });
+      return (
+        <div key={i} style={{
+          flex: 1, background: PAPER, border: "3px solid #1C1C1C", borderRadius: 14,
+          padding: "16px 18px", transform: `translateY(${y}px)`, opacity: op,
+          boxShadow: "0 12px 26px rgba(0,0,0,0.14)",
+        }}>
+          <div style={{ fontFamily: "monospace", fontSize: 17, color: GREY, letterSpacing: 1 }}>{it[0]}</div>
+          <div style={{ fontFamily: "Anton, Impact, sans-serif", fontSize: 34, color: INK, marginTop: 6, letterSpacing: 0.5 }}>{it[1]}</div>
+        </div>
+      );
+    })}
+  </div>
+);
+
 /* ---------- one beat ---------- */
 const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, idx }) => {
   const f = useCurrentFrame();
@@ -306,6 +328,22 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
   const camY = interpolate(f, [0, dur], [0, -10]);
 
   const heroTop = 440;
+  const STRIP: Record<number, [string,string][]> = {
+    0:  [["COST","FREE"],["SETUP","NONE"],["WHERE","BROWSER"]],
+    1:  [["STEPS","3"],["TIME","MINUTES"],["BEFORE","ANYTHING"]],
+    2:  [["ACCOUNT","NOT NEEDED"],["PREVIEW","LIVE"],["EDITOR","BUILT IN"]],
+    3:  [["BEFORE","MINUTES"],["NOW","LIVE"],["SCREEN","ONE"]],
+    4:  [["EDITOR","LEFT"],["PREVIEW","RIGHT"],["DELAY","NONE"]],
+    5:  [["CHANGE","ANY LINE"],["SEE","OUTPUT"],["INSTANT","YES"]],
+    6:  [["TAB","HTTP"],["SEND","REQUEST"],["SEE","RESPONSE"]],
+    7:  [["SOURCE","OFFICIAL"],["CHECKED","TODAY"],["GUESS","NO"]],
+    8:  [["REQUESTS","100,000"],["RESET","MIDNIGHT UTC"],["PLAN","FREE"]],
+    9:  [["CPU","10 ms"],["AVERAGE","2.2 ms"],["PER","REQUEST"]],
+    10: [["CHROME","YES"],["FIREFOX","YES"],["MOBILE","NO"]],
+    11: [["TEST","NO ACCOUNT"],["DEPLOY","ACCOUNT"],["YOUR","CALL"]],
+    12: [["NEXT","DEPLOY"],["NETWORK","EDGE"],["WHEN","READY"]],
+    13: [["LINK","BELOW"],["SITE","CLOUDFLARE"],["COST","FREE"]],
+  };
 
   return (
     <AbsoluteFill style={{ transform: `scale(${camScale}) translateY(${camY}px)` }}>
@@ -376,6 +414,8 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
           <Chip f={f} start={54} text="BROWSER ONLY" x={490} y={heroTop + 420} />
         </>
       )}
+
+      <BottomStrip f={f} items={STRIP[idx] || STRIP[0]} />
 
       {/* progress */}
       <div style={{ position: "absolute", left: 0, bottom: 0, width: 1080, height: 10, background: "#DCDAD2" }}>
