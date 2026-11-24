@@ -1,5 +1,16 @@
+1262 frames
+  0
+  250
+  500
+  750
+  1000
 Traceback (most recent call last):
-  File "/home/runner/work/gk-video-engine/gk-video-engine/v7/render5.py", line 19, in <module>
-    BEATS = json.load(open("beats.json"))
-                      ^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'beats.json'
+  File "/home/runner/work/gk-video-engine/gk-video-engine/v7/render5.py", line 335, in <module>
+    main()
+  File "/home/runner/work/gk-video-engine/gk-video-engine/v7/render5.py", line 327, in main
+    p.stdin.write(frame(i/FPS).tobytes())
+                  ^^^^^^^^^^^^
+  File "/home/runner/work/gk-video-engine/gk-video-engine/v7/render5.py", line 299, in frame
+    base.alpha_composite(shadow_panel((W-160, 120), radius=18, blur=22, op=44), (50, yy-60))
+    ^^^^
+NameError: name 'base' is not defined. Did you mean: 'ease'?
