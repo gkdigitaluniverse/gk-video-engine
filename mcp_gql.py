@@ -39,10 +39,8 @@ def gql(label, query, variables=None):
         print(f"\n##### {label} RAW #####"); print(t[:900]); return None
 
 # introspect the Mutation type
-gql("Mutation fields", """
-{
-  __type(name: "Mutation") {
-    fields { name args { name type { name kind ofType { name kind } } } }
-  }
-}
-""")
+def inp(name):
+    return gql(name, """
+    { __type(name: "%s") { inputFields { name description type { name kind ofType { name kind ofType { name kind } } } } } }
+    """ % name)
+inp("CreatePostInput")
