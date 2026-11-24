@@ -1,0 +1,37 @@
+
+########## gpu_character ##########
+
+########## gpu_character ##########
+asset 201 {"_id":"6b0570d9a12c0cdd491dd386","method":"url","status":"processing","filename":"gpu_character.mp4","file_type":"video/mp4","created_at":"2026-11-24T11:11:21.05Z"}
+
+  status: processing
+  status: ready
+analyze 200
+[00:00-00:02] The video starts with a grid of glowing green squares on a dark background. A cartoon man in a green hoodie appears at the bottom, pointing at the screen. The words 'Claude, ChatGPT' appear at the top, followed by 'Gemini, Grok, Meta AI' as the man waves.
+
+[00:02-00:04] The grid of green squares continues to be displayed. The cartoon man gestures with his hands. The words 'Ye saare AI Big Tech ke servers pe chalte hain' appear at the top.
+
+[00:04-00:06] The scene changes to a close-up of a computer chip with the words 'CPU' and 'AI SERVER' above it. The cartoon man points at the chip. The words 'CPU not here' appear next to the CPU.
+
+[00:06-00:08] The scene zooms in on the computer chip, showing the CPU and GPU components. The cartoon man holds a small chip in his hand. The words 'Ye saare AI Big Tech ke servers pe chalte hain, CPU cores pe nahi' appear at the top.
+
+[00:08-00:10] The scene shows a close-up of the GPU component on the chip. The cartoon man gestures with his hands. The words 'GPU jaise AI chips ke thousands of cores pe' appear at the top.
+
+[00:10-00:12] The scene shows a close-up of the GPU chip with the words 'THOUSANDS OF CORES in one GPU chip' above 
+
+########## ai_dashboard ##########
+asset 201 {"_id":"6b0570f2a12c0cdd491dd39d","method":"url","status":"processing","filename":"ai_dashboard.mp4","file_type":"video/mp4","created_at":"2026-11-24T11:11:46.272Z"}
+
+  status: processing
+  status: ready
+analyze 200
+00:00-00:02: The screen is dark with a purple glow. The words 'WHO'S THE SMARTEST AI?' are at the top in white and blue. Below, '3 YEARS' is written in white, and '2023 -> 2026' is in blue. A list of AI models appears with bars showing their scores. The bars are green, blue, and orange. The numbers next to the bars change quickly.
+
+00:02-00:04: The screen shows '258 AI MODELS' in white. The list of AI models continues to change, with new names appearing and old ones disappearing. The bars move up and down, showing changes in scores. The background remains dark with a purple glow.
+
+00:04-00:06: The screen shows 'Feb 2023' in white. The list of AI models is still changing, with bars moving up and down. The background is dark with a purple glow. The words 'AI CAPABILITY RACE - 2023 -> 2026' appear at the top in white.
+
+00:06-00:08: The screen shows 'Mar 2023' in white. The list of AI models continues to change, with bars moving up and down. The background remains dark with a purple glow. The words 'Which AI is the smartest?' appear at the top in white.
+
+00:08-00:10: The screen shows 'GPT-4 sets the bar' in white. The list of AI models continues to change, with bars moving up and down.
+done
