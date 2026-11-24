@@ -1,0 +1,16 @@
+[
+ {"id":"B1","s":0.00,"e":2.62,"line":"API को बिना सर्वर खरीदे ब्राउज़र में टेस्ट करें","t1":"TEST IN","t2":"BROWSER","shot":"playground"},
+ {"id":"B2","s":2.62,"e":5.48,"line":"अगर आप छोटा web app बनाते हैं","t1":"SMALL WEB","t2":"APP?","shot":"playground"},
+ {"id":"B3","s":5.48,"e":10.40,"line":"Playground में account बनाए बिना code लिखकर live preview","t1":"CLOUDFLARE","t2":"PLAYGROUND","shot":"playground"},
+ {"id":"B4","s":10.40,"e":14.06,"line":"पहले प्रोजेक्ट सेटप और डिप्लॉय करना पड़ता था","t1":"NO LOCAL","t2":"SETUP","shot":"terminal"},
+ {"id":"B5","s":14.06,"e":17.86,"line":"यहाँ editor और preview साथ चलते हैं","t1":"EDITOR +","t2":"LIVE PREVIEW","shot":"playground"},
+ {"id":"B6","s":17.86,"e":22.02,"line":"Hello World बदलें, response लिखें, output देखें","t1":"EDIT THE","t2":"CODE","shot":"playground"},
+ {"id":"B7","s":22.02,"e":25.32,"line":"HTTP tab से request भी भेजें","t1":"SEND AN","t2":"HTTP REQUEST","shot":"playground"},
+ {"id":"B8","s":25.32,"e":26.72,"line":"मैंने खुद check किया","t1":"I CHECKED","t2":"MYSELF","shot":"limits"},
+ {"id":"B9","s":26.72,"e":29.38,"line":"Free plan में 1,00,000 requests रोज़","t1":"100,000","t2":"REQUESTS / DAY","shot":"limits"},
+ {"id":"B10","s":29.38,"e":32.32,"line":"हर request को 10 ms CPU मिलता है","t1":"10 ms","t2":"CPU / REQUEST","shot":"limits"},
+ {"id":"B11","s":32.32,"e":34.44,"line":"कमी","t1":"THE","t2":"CATCH","shot":"playground"},
+ {"id":"B12","s":34.44,"e":37.66,"line":"Playground सिर्फ़ Chrome और Firefox desktop","t1":"DESKTOP","t2":"ONLY","shot":"limits"},
+ {"id":"B13","s":37.66,"e":39.72,"line":"Deploy करने के लिए account चाहिए","t1":"ACCOUNT TO","t2":"DEPLOY","shot":"playground"},
+ {"id":"B14","s":39.72,"e":42.07,"line":"Link description में है","t1":"LINK IN","t2":"DESCRIPTION","shot":"playground"}
+]
