@@ -1,3 +1,6 @@
 
-##### posts on the YouTube channel RAW #####
+##### buffer posts via Composio tool #####
+{"data": {"account": {"id": "6afe914c34b70aac8c250900"}}}
+
+##### BUFFER_LIST_POSTS #####
 
