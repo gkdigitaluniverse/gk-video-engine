@@ -61,11 +61,11 @@ def background(t, hue):
         d.line([(0, y + off // 2), (W, y + off // 2)], fill=(22, 28, 50))
     return g
 
-def ghost(base, txt, prog, y=520):
+def ghost(base, txt, prog, y=430):
     d = ImageDraw.Draw(base)
     f = F(430)
     w = d.textlength(txt, font=f)
-    d.text(((W - w) / 2, y), txt, font=f, fill=(28, 34, 62))
+    d.text(((W - w) / 2, y), txt, font=f, fill=(20, 25, 48))
 
 # ---------- fixed header ----------
 def header(base, kicker, title, sub):
@@ -119,7 +119,7 @@ def data_rows(base, rows, prog, box, y0=None):
         fv = F(40)
         vtxt = r.get("value", "")
         if r.get("num") is not None:
-            cp = min(1.0, max(0.0,(prog - i*0.10 - 0.15)/0.55))
+            cp = min(1.0, max(0.0,(prog - i*0.08 - 0.10)/0.40))
             v = r["num"] if cp>=0.98 else int(r["num"]*ease(cp))
             vtxt = f"{v:,}" + r.get("suffix","")
         vw = d.textlength(vtxt, font=fv)
@@ -129,7 +129,8 @@ def data_rows(base, rows, prog, box, y0=None):
         d.rounded_rectangle([x+sl, ry+rowh-22, x+sl+bw, ry+rowh-12], radius=5,
                             fill=r.get("bcol", ORANGE)+(int(230*appear),))
         if r.get("strike") and appear > 0.5:
-            d.line([(x, ry+28), (x+w, ry+28)], fill=RED+(220,), width=5)
+            lw = d.textlength(r["label"], font=fl)
+            d.line([(x+sl, ry+30), (x+sl+lw, ry+30)], fill=RED+(220,), width=5)
 
 # ---------- caption + callout ----------
 def caption(base, t1, t2, prog, y):
@@ -221,9 +222,9 @@ def frame(t):
 
     if P["hero"] == "panel":
         shot = rf(int((P["rec"] + local) * 30))
-        panel(img, shot, prog, (64, 420, W-128, 900), "workers.cloudflare.com/playground")
+        panel(img, shot, prog, (64, 380, W-128, 920), "workers.cloudflare.com/playground")
     else:
-        data_rows(img, P["rows"], prog, (64, 470, W-128, 380))
+        data_rows(img, P["rows"], prog, (64, 400, W-128, 300))
 
     caption(img, b["t1"], b["t2"], prog, 1300)
     callout(img, P["call"][0], P["call"][1], prog)
