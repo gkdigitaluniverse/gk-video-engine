@@ -1,0 +1,40 @@
+name: cprobe
+on:
+  push:
+    paths: ["cprobe/**"]
+  workflow_dispatch:
+jobs:
+  c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe Composio
+        env:
+          CK: ${{ secrets.COMPOSIO_KEY }}
+        run: |
+          exec > COMPOSIO.txt 2>&1
+          echo "date: $(date -u)  keylen: ${#CK}"
+          echo
+          echo "=== A. v3 connected_accounts ==="
+          curl -s --max-time 40 -H "x-api-key: $CK" "https://backend.composio.dev/api/v3/connected_accounts" -w "\n[HTTP %{http_code}]\n" | head -c 2500
+          echo
+          echo "=== B. v3 toolkits (connected) ==="
+          curl -s --max-time 40 -H "x-api-key: $CK" "https://backend.composio.dev/api/v3/toolkits?limit=50" -w "\n[HTTP %{http_code}]\n" | head -c 800
+          echo
+          echo "=== C. MCP initialize ==="
+          curl -s --max-time 40 -X POST "https://connect.composio.dev/mcp" \
+            -H "Authorization: Bearer $CK" -H "Content-Type: application/json" \
+            -H "Accept: application/json, text/event-stream" \
+            -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"p","version":"1"}}}' \
+            -D /tmp/h.txt -w "\n[HTTP %{http_code}]\n" | head -c 1200
+          echo "--- session header ---"; grep -i "mcp-session-id" /tmp/h.txt || echo none
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f COMPOSIO.txt && git commit -m "composio: probe" || true
+          git pull --rebase -q origin main || true
+          git push || true
