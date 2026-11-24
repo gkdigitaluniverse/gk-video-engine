@@ -12,17 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: Post a real test reel to Instagram
+      - name: Publish the reel and test Facebook
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-          VURL: "https://uc33e18feb2140f28a698a065d9f.dl.dropboxusercontent.com/cd/0/get/DMhz_pNvrbO6Xga8Z2z6bbY2JbxTmCK1WIiSRBuFmJq4A3cbI2w9zp8gCAwogHD3h6NqkICJaufwIfMn8ElkBZG8T1sJGReTA_x-BVHmB-WtGPSeEOlUodTlvIalB6qfoZlWoCO3EReIykyeKO9CHkehnO2yuATxRAh4sugNhe2cPw/file?c_luid=be6dc3b5"
-        run: |
-          echo "URL len: ${#VURL}"
-          python3 mcp_post.py > POSTTEST.txt 2>&1
+        run: python3 mcp_pub.py > PUBLISH.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f POSTTEST.txt && git commit -m "test: ig post" || true
+          git add -f PUBLISH.txt && git commit -m "test: publish reel + fb post" || true
           git pull --rebase -q origin main || true
           git push || true
