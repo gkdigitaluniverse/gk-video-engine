@@ -160,7 +160,7 @@ def kinetic_text(base, t1, t2, prog, y0, size=100, col1=INK, col2=ORANGE, align=
 def bottom_band(base, t, prog, idx):
     d = ImageDraw.Draw(base)
     # animated waveform bars
-    x0, y0, n, bw, gap = 62, 1560, 46, 10, 9
+    x0, y0, n, bw, gap = 62, 1470, 46, 10, 9
     for i in range(n):
         ph = t * 5.2 + i * 0.42
         hgt = int(16 + 46 * (0.5 + 0.5 * math.sin(ph)) * (0.35 + 0.65 * abs(math.sin(ph * 0.7))))
@@ -170,11 +170,11 @@ def bottom_band(base, t, prog, idx):
     # big faint beat number
     f = F(210)
     lab = f"{idx+1:02d}"
-    d.text((W - 70 - d.textlength(lab, font=f), 1440), lab, font=f, fill=(222, 220, 213, 255))
+    d.text((W - 70 - d.textlength(lab, font=f), 1360), lab, font=f, fill=(222, 220, 213, 255))
     # diagonal stripes
     for i in range(9):
         sx = 62 + i * 26
-        d.line([(sx, 1700), (sx + 40, 1660)], fill=(206, 204, 197, 255), width=6)
+        d.line([(sx, 1600), (sx + 40, 1560)], fill=(206, 204, 197, 255), width=6)
 
 def chrome(base, idx, t):
     d = ImageDraw.Draw(base)
@@ -233,24 +233,24 @@ def frame(t):
 
     lay = b.get("lay", "card_top")
     if lay == "full":
-        card = browser_frame(shot, prog, b.get("url", "workers.cloudflare.com/playground"), (36, 140, W - 72, 1020))
-        base.alpha_composite(card, (36, 140))
+        card = browser_frame(shot, prog, b.get("url", "workers.cloudflare.com/playground"), (36, 130, W - 72, 1060))
+        base.alpha_composite(card, (36, 130))
         ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        ImageDraw.Draw(ov).rectangle([0, 1040, W, 1330], fill=(236, 236, 231, 252))
+        ImageDraw.Draw(ov).rectangle([0, 1030, W, 1330], fill=(236, 236, 231, 252))
         base.alpha_composite(ov.filter(ImageFilter.GaussianBlur(40)))
-        kinetic_text(base, b["t1"], b["t2"], prog, 1120)
+        kinetic_text(base, b["t1"], b["t2"], prog, 1120, size=112)
     elif lay == "counter":
         card = browser_frame(shot, prog, b.get("url", ""), (36, 80, W - 72, 580))
         base.alpha_composite(card, (36, 80))
         big_counter(base, b.get("num", 0), b["t1"], prog, b.get("sub", ""))
     elif lay == "card_bot":
-        kinetic_text(base, b["t1"], b["t2"], prog, 210)
-        card = browser_frame(shot, prog, b.get("url", ""), (48, 560, W - 96, 940))
+        kinetic_text(base, b["t1"], b["t2"], prog, 200, size=112)
+        card = browser_frame(shot, prog, b.get("url", ""), (48, 560, W - 96, 850))
         base.alpha_composite(card, (48, 560))
     else:
-        card = browser_frame(shot, prog, b.get("url", ""), (48, 130, W - 96, 960))
+        card = browser_frame(shot, prog, b.get("url", ""), (48, 130, W - 96, 1010))
         base.alpha_composite(card, (48, 130))
-        kinetic_text(base, b["t1"], b["t2"], prog, 1140)
+        kinetic_text(base, b["t1"], b["t2"], prog, 1160, size=112)
 
     if b.get("ring"):
         rx, ry, rr = b["ring"]
