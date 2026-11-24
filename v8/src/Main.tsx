@@ -270,7 +270,7 @@ const BigStat: React.FC<{ f: number; start: number; num: string; unit: string; y
   const sp = spring({ frame: d, fps: FPS, config: { damping: 18, stiffness: 90, mass: 1.1 } });
   const sc = interpolate(sp, [0, 1], [0.72, 1]);
   const op = interpolate(sp, [0, 0.5], [0, 1], { extrapolateRight: "clamp" });
-  const size = num.length > 5 ? 190 : 240;
+  const size = num.length > 5 ? 150 : 180;
   return (
     <div style={{ position: "absolute", left: 0, top: y, width: 1080, textAlign: "center", opacity: op, transform: `scale(${sc})` }}>
       <div style={{ fontFamily: "Anton, Impact, sans-serif", fontSize: size, lineHeight: `${size * 1.02}px`, color: ORANGE, letterSpacing: -2 }}>{num}</div>
@@ -293,6 +293,39 @@ const Chip: React.FC<{ f: number; start: number; text: string; x: number; y: num
       padding: "7px 14px", fontFamily: "monospace", fontSize: 22,
       color: green ? GREEN : ORANGE, letterSpacing: 1,
     }}>{text}</div>
+  );
+};
+
+/* ---------- real docs screenshot with an animated highlight ---------- */
+const ProofShot: React.FC<{ f: number; start: number; target: "requests" | "cpu" }> =
+({ f, start, target }) => {
+  const d = Math.max(0, f - start);
+  const sp = spring({ frame: d, fps: FPS, config: { damping: 15, stiffness: 120, mass: 0.7 } });
+  const sc = interpolate(sp, [0, 1], [0.94, 1]);
+  const op = interpolate(sp, [0, 0.5], [0, 1], { extrapolateRight: "clamp" });
+  // crop is 1300x560 shown at 948 x 408
+  const K = 948 / 1300;
+  const boxes = {
+    requests: { x: 396, y: 58, w: 92, h: 34 },
+    cpu:      { x: 396, y: 102, w: 46, h: 34 },
+  };
+  const b = boxes[target];
+  const hp = interpolate(f - start - 22, [0, 16], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const hx = b.x * 2 * K, hy = b.y * 2 * K, hw = b.w * 2 * K, hh = b.h * 2 * K;
+  return (
+    <div style={{ position: "absolute", left: 66, top: 440, width: 948, height: 408,
+      transform: `scale(${sc})`, opacity: op,
+      borderRadius: 18, border: "3px solid #1C1C1C", background: "#fff",
+      boxShadow: "0 22px 48px rgba(0,0,0,0.20)", overflow: "hidden" }}>
+      <Img src={staticFile("limits.png")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      <div style={{
+        position: "absolute", left: hx - 6, top: hy - 6,
+        width: hw * hp + 12, height: hh + 12,
+        border: `5px solid ${ORANGE}`, borderRadius: 8,
+        background: `rgba(232,85,31,${0.16 * hp})`,
+        boxShadow: `0 0 0 ${3 * hp}px rgba(232,85,31,0.18)`,
+      }} />
+    </div>
   );
 };
 
@@ -383,19 +416,17 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
 
       {beat.hero === "stat" && (
         <>
-          <BigStat f={f} start={8} num={beat.num} unit={beat.unit} y={heroTop + 230} />
-          <div style={{ position: "absolute", left: 66, top: heroTop + 700, width: 948, opacity: interpolate(f, [30, 46], [0, 1], { extrapolateRight: "clamp" }) }}>
-            {[["Verified at", "developers.cloudflare.com"], ["Checked", "24 Nov 2026"]].map((r, i) => (
-              <div key={i} style={{
-                height: 70, background: PAPER, border: "3px solid #1C1C1C", borderRadius: 12,
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                padding: "0 22px", marginBottom: 16,
-                fontFamily: "monospace", fontSize: 25,
-              }}>
-                <span style={{ color: GREY }}>{r[0]}</span>
-                <span style={{ color: INK }}>{r[1]}</span>
-              </div>
-            ))}
+          <ProofShot f={f} start={6} target={idx === 8 ? "requests" : "cpu"} />
+          <BigStat f={f} start={34} num={beat.num} unit={beat.unit} y={heroTop + 620} />
+          <div style={{
+            position: "absolute", left: 66, top: heroTop + 940, width: 948,
+            height: 54, background: PAPER, border: "3px solid #1C1C1C", borderRadius: 12,
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "0 22px", fontFamily: "monospace", fontSize: 23,
+            opacity: interpolate(f, [26, 40], [0, 1], { extrapolateRight: "clamp" }),
+          }}>
+            <span style={{ color: GREY }}>developers.cloudflare.com</span>
+            <span style={{ color: INK }}>checked 24 Nov 2026</span>
           </div>
         </>
       )}
@@ -415,7 +446,7 @@ const Beat: React.FC<{ beat: any; dur: number; idx: number }> = ({ beat, dur, id
         </>
       )}
 
-      <BottomStrip f={f} items={STRIP[idx] || STRIP[0]} />
+      {beat.hero !== "stat" && <BottomStrip f={f} items={STRIP[idx] || STRIP[0]} />}
 
       {/* progress */}
       <div style={{ position: "absolute", left: 0, bottom: 0, width: 1080, height: 10, background: "#DCDAD2" }}>
