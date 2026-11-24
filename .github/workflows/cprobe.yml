@@ -11,17 +11,15 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          pip install -q requests
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - name: Full test, nothing skipped
+      - run: pip install -q requests
+      - name: Final complete test
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_testall.py > FULLTEST.txt 2>&1
+        run: python3 mcp_final.py > FINALTEST.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f FULLTEST.txt && git commit -m "test: full run" || true
+          git add -f FINALTEST.txt && git commit -m "test: final complete" || true
           git pull --rebase -q origin main || true
           git push || true
