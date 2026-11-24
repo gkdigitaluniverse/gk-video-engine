@@ -1,7 +1,3 @@
-captured playground
-captured landing
-captured limits
-captured guide
 1262 frames 1080x1920 30fps 42.07s
   0/1262
   200/1262
