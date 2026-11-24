@@ -37,9 +37,6 @@ def gql(label, query, variables=None):
 
 gql("posts on the YouTube channel", """
 { posts(input: { organizationId: "6afe914c34b70aac8c250902", filter: { channelIds: ["6afe91afece6dfde5f19c312"] } }) {
-    edges { node { id text status dueAt channelId
-      assets { __typename ... on VideoAsset { source } }
-      metadata { ... on PostMetadata { youtube { title categoryId privacy } } }
-    } }
+    edges { node { id text status dueAt channelId } }
 } }
 """)
