@@ -6,20 +6,21 @@ on:
 jobs:
   c:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: YouTube read test
+      - name: YouTube upload test (private)
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_yt_test.py > YT-TEST.txt 2>&1
+          S3KEY: "project_scope/ok_MI5WEzhyITR7/pr_qSx6sTyshHxf/files/wfmvsislhjpq.mp4"
+        run: python3 mcp_yt_upload.py > YT-UPLOAD.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f YT-TEST.txt && git commit -m "yt: schema + read test" || true
+          git add -f YT-UPLOAD.txt && git commit -m "yt: upload test" || true
           git pull --rebase -q origin main || true
           git push || true
