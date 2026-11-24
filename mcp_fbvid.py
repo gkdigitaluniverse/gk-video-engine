@@ -38,5 +38,5 @@ print(txt(m)[:1800])
 ex("FB VIDEO post","FACEBOOK_CREATE_VIDEO_POST",{
   "page_id":"1270080059532814",
   "description":"Pipeline test video - safe to delete.",
-  "video_url":VURL},to=300)
+  "file_url":VURL},to=300)
 ex("FB page videos","FACEBOOK_GET_PAGE_VIDEOS",{"page_id":"1270080059532814","limit":3})
