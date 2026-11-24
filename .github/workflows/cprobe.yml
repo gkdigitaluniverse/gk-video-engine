@@ -6,20 +6,21 @@ on:
 jobs:
   c:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: Buffer GraphQL introspection
+      - name: Post video to YouTube via Buffer GraphQL
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_gql.py > GQL.txt 2>&1
+          VURL: "https://uc33e18feb2140f28a698a065d9f.dl.dropboxusercontent.com/cd/0/get/DMhz_pNvrbO6Xga8Z2z6bbY2JbxTmCK1WIiSRBuFmJq4A3cbI2w9zp8gCAwogHD3h6NqkICJaufwIfMn8ElkBZG8T1sJGReTA_x-BVHmB-WtGPSeEOlUodTlvIalB6qfoZlWoCO3EReIykyeKO9CHkehnO2yuATxRAh4sugNhe2cPw/file?c_luid=be6dc3b5"
+        run: python3 mcp_ytbuf.py > YTBUF.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f GQL.txt && git commit -m "buffer: graphql introspection" || true
+          git add -f YTBUF.txt && git commit -m "buffer: youtube video post" || true
           git pull --rebase -q origin main || true
           git push || true
