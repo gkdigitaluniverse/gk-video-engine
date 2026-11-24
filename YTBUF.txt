@@ -1,6 +1,3 @@
 
-##### VideoAssetInput + YoutubePrivacy #####
-{"data": {"a": {"inputFields": [{"name": "metadata", "description": "Video specific metadata", "type": {"name": "VideoMetadataInput", "kind": "INPUT_OBJECT"}}, {"name": "thumbnailUrl", "description": "Do not use: social networks do not accept custom video thumbnail images, and\nthe API rejects video assets that set this field. To choose the video\nthumbnail, set `metadata.thumbnailOffset` to select a frame from the video\n(supported for Instagram, TikTok, and Pinterest only).", "type": {"name": "String", "kind": "SCALAR"}}, {"name": "url", "description": "URL to the file source", "type": {"name": null, "kind": "NON_NULL"}}]}, "b": {"enumValues": [{"name": "private"}, {"name": "public"}, {"name": "unlisted"}]}}}
-
 ##### createPost -> YouTube #####
-{"data": {"createPost": {"__typename": "InvalidInputError", "message": "Invalid post: Video could not be read from its URL."}}}
+{"data": {"createPost": {"__typename": "PostActionSuccess", "post": {"id": "6b05423ff1f04351232d803d", "text": "Pipeline test via Buffer â safe to delete."}}}}
