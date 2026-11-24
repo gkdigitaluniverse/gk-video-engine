@@ -231,6 +231,27 @@ def stickers(base, items, prog, t, y0=430):
             d.rounded_rectangle([x0+22, yy+112, x0+22+bw, yy+130], radius=7,
                                 fill=it.get("bcol",col)+(230,))
 
+def chips(base, items, prog, y=1250):
+    d = ImageDraw.Draw(base)
+    x = 56
+    for i, it in enumerate(items):
+        ap = min(1.0, max(0.0,(prog - 0.20 - i*0.10)/0.28))
+        if ap <= 0: continue
+        f = F(24)
+        tw = d.textlength(it[0], font=f)
+        cw = int(tw + 44)
+        sc = back_out(ap)
+        hh = int(52*sc); yy = y + (52-hh)//2
+        col = it[1]
+        pn = Image.new("RGBA",(W,H),(0,0,0,0))
+        ImageDraw.Draw(pn).rounded_rectangle([x, yy, x+cw, yy+hh], radius=14,
+            fill=(20,24,46,235), outline=col+(200,), width=2)
+        base.alpha_composite(pn)
+        if ap > 0.6:
+            d.text((x+22, y+13), it[0], font=f, fill=col+(255,))
+        x += cw + 14
+        if x > W - 180: break
+
 def callout(base, label, text, prog, y=1420):
     d = ImageDraw.Draw(base); x,w,h = 56, W-112, 172
     a = int(255*min(1.0,max(0.0,(prog-0.15)/0.4)))
@@ -266,61 +287,61 @@ def bigword(base, txt, prog, y=560, size=210, col=WHITE):
 
 # ---------- beat plan: a DIFFERENT device each beat ----------
 PLAN = {
- "B1":  dict(dev="bigword", kicker="free tier", title="No server needed", sub="Cloudflare Workers Playground",
+ "B1":  dict(chips=[("no server",TEAL),("no account",AMBER),("browser only",VIOLET)], dev="bigword", kicker="free tier", title="No server needed", sub="Cloudflare Workers Playground",
              big="TEST IN BROWSER", call=("hook","API ko browser mein test karo, bina server khareede."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="0"),
- "B2":  dict(dev="stickers", kicker="what you skip", title="The usual setup", sub="three steps before you see anything",
+ "B2":  dict(chips=[("node.js",RED),("wrangler",RED),("deploy",RED)], dev="stickers", kicker="what you skip", title="The usual setup", sub="three steps before you see anything",
              call=("context","Chhota web app banate ho? Pehle ye teen step."),
              src="developers.cloudflare.com/workers/get-started/guide · checked 24 Nov 2026", ghost="1",
              items=[dict(label="Node.js install", value="step 1", col=RED, strike=True, bar=.55),
                     dict(label="npm + wrangler", value="step 2", col=RED, strike=True, bar=.72),
                     dict(label="Deploy to test", value="step 3", col=RED, strike=True, bar=.88)]),
- "B3":  dict(dev="browser", kicker="free tier", title="Cloudflare Workers Playground", sub="no account, no install",
+ "B3":  dict(chips=[("account-free",TEAL),("live preview",AMBER),("1 click",TEAL)], dev="browser", kicker="free tier", title="Cloudflare Workers Playground", sub="no account, no install",
              rec=10.6, call=("value","Playground kholo, code likho, live preview dekho. Koi sign-in nahi."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="2"),
- "B4":  dict(dev="stickers", kicker="before vs now", title="Setup gone, preview live", sub="same second",
+ "B4":  dict(chips=[("minutes",RED),("live",TEAL),("same screen",AMBER)], dev="stickers", kicker="before vs now", title="Setup gone, preview live", sub="same second",
              call=("value","Pehle project setup aur deploy. Ab editor aur preview saath."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="3",
              items=[dict(label="Pehle: setup + deploy", value="minutes", col=RED, bar=.92, bcol=RED),
                     dict(label="Ab: editor + preview", value="live", col=TEAL, bar=.28, bcol=TEAL)]),
- "B5":  dict(dev="browser", kicker="live", title="Editor aur preview saath", sub="ek hi screen par",
+ "B5":  dict(chips=[("editor",TEAL),("preview",AMBER),("side by side",VIOLET)], dev="browser", kicker="live", title="Editor aur preview saath", sub="ek hi screen par",
              rec=18.6, call=("value","Code likho, output wahin dekho."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="4"),
- "B6":  dict(dev="browser", kicker="live", title="Apna response likho", sub="Hello World badlo",
+ "B6":  dict(chips=[("hello world",TEAL),("your response",AMBER),("instant",TEAL)], dev="browser", kicker="live", title="Apna response likho", sub="Hello World badlo",
              rec=21.8, call=("value","Hello World badlo, apna response likho, output dekho."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="5"),
- "B7":  dict(dev="stickers", kicker="http", title="Request bhi bhejo", sub="HTTP tab se",
+ "B7":  dict(chips=[("HTTP tab",TEAL),("send request",AMBER),("see response",TEAL)], dev="stickers", kicker="http", title="Request bhi bhejo", sub="HTTP tab se",
              call=("value","HTTP tab se request bhejo, response wahin."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="6",
              items=[dict(label="GET /", value="200 OK", col=TEAL, bar=.30, bcol=TEAL),
                     dict(label="Response time", value="fast", col=TEAL, bar=.18, bcol=TEAL)]),
- "B8":  dict(dev="browser", kicker="proof", title="Maine khud check kiya", sub="official limits page",
+ "B8":  dict(chips=[("official docs",AMBER),("checked today",TEAL),("not a guess",VIOLET)], dev="browser", kicker="proof", title="Maine khud check kiya", sub="official limits page",
              rec=26.4, call=("proof","Ye number maine khud official page par dekhe."),
              src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="7"),
- "B9":  dict(dev="race", kicker="proof · verified today", title="Free plan ki limit", sub="Workers Free vs Paid",
+ "B9":  dict(chips=[("100,000/day",TEAL),("midnight UTC",AMBER),("free plan",TEAL)], dev="race", kicker="proof · verified today", title="Free plan ki limit", sub="Workers Free vs Paid",
              call=("proof","Free plan mein 1,00,000 requests roz. Midnight UTC par reset."),
              src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="100K",
              rows=[dict(label="Free / day", num=100000, col=WHITE, bcol=TEAL, frac=.62),
                    dict(label="Paid plan", num=0, suffix="  no limit", col=GREY, bcol=(80,88,124), frac=1.0)]),
- "B10": dict(dev="race", kicker="proof · verified today", title="Har request ko CPU", sub="Workers Free",
+ "B10": dict(chips=[("10 ms CPU",AMBER),("avg 2.2 ms",TEAL),("per request",VIOLET)], dev="race", kicker="proof · verified today", title="Har request ko CPU", sub="Workers Free",
              call=("proof","Har request ko 10 ms CPU. Average Worker sirf 2.2 ms leta hai."),
              src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="10",
              rows=[dict(label="CPU / request", num=10, suffix=" ms", col=WHITE, bcol=AMBER, frac=.30),
                    dict(label="Average Worker", num=2, suffix=".2 ms", col=GREY, bcol=(80,88,124), frac=.10)]),
- "B11": dict(dev="stickers", kicker="the catch", title="Ek kami bhi hai", sub="honest",
+ "B11": dict(chips=[("chrome",TEAL),("firefox",TEAL),("desktop only",RED)], dev="stickers", kicker="the catch", title="Ek kami bhi hai", sub="honest",
              call=("catch","Playground sirf Chrome aur Firefox desktop par chalta hai."),
              src="developers.cloudflare.com/workers/playground · checked 24 Nov 2026", ghost="!",
              items=[dict(label="Chrome / Firefox", value="works", col=TEAL, bar=.85, bcol=TEAL),
                     dict(label="Mobile browser", value="not this", col=RED, bar=.25, bcol=RED)]),
- "B12": dict(dev="stickers", kicker="the catch", title="Deploy ke liye account", sub="test ke liye nahi",
+ "B12": dict(chips=[("test: no account",TEAL),("deploy: account",AMBER),("your call",VIOLET)], dev="stickers", kicker="the catch", title="Deploy ke liye account", sub="test ke liye nahi",
              call=("catch","Test ke liye account nahi chahiye. Deploy ke liye chahiye."),
              src="developers.cloudflare.com/workers/get-started/guide · checked 24 Nov 2026", ghost="?",
              items=[dict(label="Test in playground", value="no account", col=TEAL, bar=.22, bcol=TEAL),
                     dict(label="Deploy to edge", value="account", col=AMBER, bar=.70, bcol=AMBER)]),
- "B13": dict(dev="browser", kicker="next", title="Aage kya", sub="deploy jab chaho",
+ "B13": dict(chips=[("deploy",AMBER),("edge network",TEAL),("when ready",VIOLET)], dev="browser", kicker="next", title="Aage kya", sub="deploy jab chaho",
              rec=6.0, call=("next","Deploy karna ho to account. Test ke liye zaroorat nahi."),
              src="workers.cloudflare.com/playground · checked 24 Nov 2026", ghost="13"),
- "B14": dict(dev="bigword", kicker="link", title="Link description mein", sub="workers.cloudflare.com/playground",
+ "B14": dict(chips=[("link below",AMBER),("workers.cloudflare.com",TEAL),("playground",VIOLET)], dev="bigword", kicker="link", title="Link description mein", sub="workers.cloudflare.com/playground",
              big="LINK IN DESCRIPTION", call=("cta","workers.cloudflare.com/playground"),
              src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="14"),
 }
@@ -354,7 +375,8 @@ def frame(t):
     elif dev == "bigword":
         bigword(img, P["big"], prog, y=560, size=190)
 
-    karaoke(img, b["t1"], b["t2"], prog, y=1020)
+    karaoke(img, b["t1"], b["t2"], prog, y=800)
+    chips(img, P.get("chips", [("free tier",TEAL),("no account",AMBER),("browser only",VIOLET)]), prog, y=1180)
     callout(img, P["call"][0], P["call"][1], prog)
     watermark(img)
     chapter_rail(img, idx, t, t/TOTAL)
