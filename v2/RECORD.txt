@@ -1,3 +1,4 @@
-webm files: ['rec/page@9ccefeba079ed5804a43f1dd7852a479.webm']
-copied -> 5328869 bytes
+cookie banner dismissed: Accept Cookies
+webm: ['rec/page@e07251e09a07014ce4fb1cf5c0ffd863.webm']
+size: 6659635
 done
