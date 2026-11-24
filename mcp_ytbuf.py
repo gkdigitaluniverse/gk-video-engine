@@ -36,10 +36,6 @@ def gql(label, query, variables=None):
     except Exception:
         print(f"\n##### {label} RAW #####"); print(t[:1000]); return None
 
-gql("VideoAssetInput + YoutubePrivacy", """
-{ a: __type(name:"VideoAssetInput"){inputFields{name description type{name kind}}} b: __type(name:"YoutubePrivacy"){enumValues{name}} }
-""")
-
 YT="6afe91afece6dfde5f19c312"
 MUT = """
 mutation CreatePost($input: CreatePostInput!) {
