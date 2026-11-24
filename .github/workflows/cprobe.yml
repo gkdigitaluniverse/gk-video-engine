@@ -6,24 +6,20 @@ on:
 jobs:
   c:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests
-      - name: YouTube video via Buffer, GitHub release URL
+      - name: Verify the YouTube post in Buffer
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-          VURL: "https://github.com/gkdigitaluniverse/gk-video-engine/releases/download/test-assets/test-reel.mp4"
-        run: |
-          echo "trying: $VURL"
-          curl -sIL --max-time 30 "$VURL" | grep -E "^HTTP|content-type" | head -4
-          python3 mcp_ytbuf.py > YTBUF.txt 2>&1
+        run: python3 mcp_verify.py > VERIFY.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f YTBUF.txt && git commit -m "buffer: youtube via release url" || true
+          git add -f VERIFY.txt && git commit -m "buffer: verify youtube post" || true
           git pull --rebase -q origin main || true
           git push || true
