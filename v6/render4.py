@@ -62,7 +62,7 @@ def background(t, hue=ORANGE):
     for y in range(-64, H+64, 64): d.line([(0,y+off//2),(W,y+off//2)], fill=(23,29,52))
     return g
 
-def ghost(base, txt, y=380, size=460, alpha=20):
+def ghost(base, txt, y=250, size=420, alpha=13):
     d = ImageDraw.Draw(base)
     f = F(size); w = d.textlength(txt, font=f)
     d.text(((W-w)/2, y), txt, font=f, fill=(alpha, alpha+6, alpha+26))
@@ -187,8 +187,11 @@ def bar_race(base, rows, prog, box):
         d.text((x+sl-2, ry+20), f"{i+1}", font=F(26), fill=(12,14,26,255))
         d.text((x+sl+52, ry+14), r["label"], font=F(32), fill=col+(255,))
         cp = min(1.0, max(0.0,(prog - i*0.12 - 0.12)/0.42))
-        v = r["num"] if cp >= 0.98 else int(r["num"]*ease(cp))
-        vtxt = f"{v:,}"+r.get("suffix","")
+        if r.get("num", 0) == 0:
+            vtxt = r.get("suffix","").strip()
+        else:
+            v = r["num"] if cp >= 0.98 else int(r["num"]*ease(cp))
+            vtxt = f"{v:,}"+r.get("suffix","")
         fv = F(34); vw = d.textlength(vtxt, font=fv)
         d.text((x+w-vw-sl, ry+12), vtxt, font=fv, fill=col+(255,))
         bw = int((w-20)*min(1.0,r.get("frac",0.8))*ease(ap))
@@ -228,7 +231,7 @@ def stickers(base, items, prog, t, y0=430):
             d.rounded_rectangle([x0+22, yy+112, x0+22+bw, yy+130], radius=7,
                                 fill=it.get("bcol",col)+(230,))
 
-def callout(base, label, text, prog, y=1520):
+def callout(base, label, text, prog, y=1420):
     d = ImageDraw.Draw(base); x,w,h = 56, W-112, 172
     a = int(255*min(1.0,max(0.0,(prog-0.15)/0.4)))
     if a <= 0: return
@@ -336,30 +339,22 @@ def frame(t):
 
     dev = P["dev"]
     if dev == "browser":
-        browser(img, rf(int((P["rec"]+local)*30)), (56, 300, W-112, 820), prog,
+        browser(img, rf(int((P["rec"]+local)*30)), (56, 296, W-112, 716), prog,
                 "workers.cloudflare.com/playground", kb=1.14)
     elif dev == "race":
-        rows = P["rows"]; rh = 200
-        top = 300 + max(0,(820 - rh*len(rows) - 160)//2)
+        rows = P["rows"]; rh = 260
+        top = 320 + max(0,(700 - rh*len(rows))//2)
         bar_race(img, rows, prog, (56, top, W-112, rh*len(rows)))
-        d = ImageDraw.Draw(img)
-        cp = min(1.0, max(0.0,(prog-0.3)/0.45))
-        v = rows[0]["num"] if cp >= 0.98 else int(rows[0]["num"]*ease(cp))
-        big = f"{v:,}" + rows[0].get("suffix","")
-        fb = F(150)
-        while d.textlength(big, font=fb) > W-140 and fb.size > 60:
-            fb = F(fb.size-8)
-        wv = d.textlength(big, font=fb)
-        d.text(((W-wv)/2, top+rh*len(rows)+20), big, font=fb, fill=WHITE+(255,))
+        pass
     elif dev == "stickers":
         items = P["items"]; ch, gap = 150, 26
         total = len(items)*ch + (len(items)-1)*gap
-        top = 300 + max(0,(820 - total)//2)
+        top = 296 + max(0,(716 - total)//2)
         stickers(img, items, prog, t, y0=top)
     elif dev == "bigword":
         bigword(img, P["big"], prog, y=560, size=190)
 
-    karaoke(img, b["t1"], b["t2"], prog, y=1230)
+    karaoke(img, b["t1"], b["t2"], prog, y=1050)
     callout(img, P["call"][0], P["call"][1], prog)
     watermark(img)
     chapter_rail(img, idx, t, t/TOTAL)
