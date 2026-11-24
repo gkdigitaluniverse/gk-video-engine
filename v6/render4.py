@@ -53,16 +53,16 @@ def background(t, hue=ORANGE):
     key = hue
     if key not in _glow:
         gl = Image.new("RGB",(W,H),(0,0,0)); gd = ImageDraw.Draw(gl)
-        gd.ellipse([-320,-460,W+320,940], fill=hue)
+        gd.ellipse([-320,-520,W+320,820], fill=hue)
         _glow[key] = gl.filter(ImageFilter.GaussianBlur(190))
-    g = Image.blend(g, _glow[key], 0.32)
+    g = Image.blend(g, _glow[key], 0.15)
     d = ImageDraw.Draw(g)
     off = int((t*14) % 64)
     for x in range(-64, W+64, 64): d.line([(x+off,0),(x+off,H)], fill=(25,31,56))
     for y in range(-64, H+64, 64): d.line([(0,y+off//2),(W,y+off//2)], fill=(23,29,52))
     return g
 
-def ghost(base, txt, y=380, size=460, alpha=34):
+def ghost(base, txt, y=380, size=460, alpha=20):
     d = ImageDraw.Draw(base)
     f = F(size); w = d.textlength(txt, font=f)
     d.text(((W-w)/2, y), txt, font=f, fill=(alpha, alpha+6, alpha+26))
@@ -119,40 +119,31 @@ def header(base, kicker, title, sub):
     d.text((56, 222), sub, font=fs, fill=GREY+(255,))
 
 # ---------- caption: karaoke word by word ----------
-def karaoke(base, t1, t2, prog, y=1180):
+def karaoke(base, t1, t2, prog, y=1150):
     d = ImageDraw.Draw(base)
-    def fit(txt, s):
-        while s > 26:
-            f = F(s)
-            if d.textlength(txt, font=f) <= W-160: return f
-            s -= 3
+    def fit(txt, sz):
+        while sz > 26:
+            f = F(sz)
+            if d.textlength(txt, font=f) <= W-150: return f
+            sz -= 3
         return F(26)
-    f1, f2 = fit(t1, 78), fit(t2, 78)
-    words1 = t1.split(); words2 = t2.split()
-    total = len(words1)+len(words2)
-    shown = prog * (total+1.2)
-    idx = 0
+    f1, f2 = fit(t1, 82), fit(t2, 82)
+    words = [(w,0) for w in t1.split()] + [(w,1) for w in t2.split()]
+    n = len(words)
+    shown = int(prog * (n + 2))
+    l1 = " ".join(w for i,(w,ln) in enumerate(words) if ln==0 and i < shown)
+    l2 = " ".join(w for i,(w,ln) in enumerate(words) if ln==1 and i < shown)
     yy = y
-    for txt, f, col in ((t1, f1, WHITE), (t2, f2, ORANGE)):
-        line = ""; lines = []
-        for wd in txt.split():
-            test = (line+" "+wd).strip()
-            if d.textlength(test, font=f) <= W-160: line = test
-            else: lines.append(line); line = wd
-        if line: lines.append(line)
-        buf = ""
-        for ln in lines:
-            for wd in ln.split():
-                idx += 1
-                if idx <= shown:
-                    buf = (buf+" "+wd).strip()
-            if buf:
-                d.text((56, yy), buf, font=f, fill=col+(255,))
-            hh = d.textbbox((0,0), buf or "A", font=f)[3]
-            yy += hh+6; buf = ""
-        yy += 4
-    uw = int((W-160) * min(1.0, prog/0.5))
-    d.rectangle([56, y+250, 56+uw, y+260], fill=AMBER+(255,))
+    if l1:
+        d.text((56, yy), l1, font=f1, fill=WHITE+(255,))
+    h1 = d.textbbox((0,0), l1 or "Ag", font=f1)[3]
+    yy2 = yy + (h1 + 12 if l1 else 0)
+    if l2:
+        d.text((56, yy2), l2, font=f2, fill=ORANGE+(255,))
+    h2 = d.textbbox((0,0), l2 or "Ag", font=f2)[3] if l2 else 0
+    uw = int((W-150) * min(1.0, max(0.0,(prog-0.55)/0.4)))
+    if uw > 0:
+        d.rectangle([56, yy2+h2+18, 56+uw, yy2+h2+28], fill=AMBER+(255,))
 
 # ---------- devices ----------
 def browser(base, shot, box, prog, url, kb=1.10):
@@ -212,26 +203,29 @@ def stickers(base, items, prog, t, y0=430):
         if ap <= 0: continue
         side = -1 if i%2==0 else 1
         dx = int(side * (1-back_out(ap)) * 260)
-        yy = y0 + i*170
+        yy = y0 + i*176
         col = it.get("col", RED)
         x0 = 96 + dx
         w = W-192
         pn = Image.new("RGBA",(W,H),(0,0,0,0))
         pd = ImageDraw.Draw(pn)
-        pd.rounded_rectangle([x0,yy,x0+w,yy+128], radius=20,
+        pd.rounded_rectangle([x0,yy,x0+w,yy+150], radius=20,
                              fill=(20,24,46,240), outline=col+(200,), width=3)
         base.alpha_composite(pn)
         d = ImageDraw.Draw(base)
-        d.text((x0+24, yy+18), it["label"], font=F(36), fill=col+(255,))
+        fl = F(34)
+        while d.textlength(it["label"], font=fl) > w-200 and fl.size > 20:
+            fl = F(fl.size-2)
+        d.text((x0+22, yy+20), it["label"], font=fl, fill=col+(255,))
         if it.get("value"):
-            fv = F(30); vw = d.textlength(it["value"], font=fv)
-            d.text((x0+w-vw-24, yy+24), it["value"], font=fv, fill=(180,186,210,255))
+            fv = F(26); vw = d.textlength(it["value"], font=fv)
+            d.text((x0+w-vw-20, yy+26), it["value"], font=fv, fill=(180,186,210,255))
         if it.get("strike") and ap > 0.6:
-            lw = d.textlength(it["label"], font=F(36))
-            d.line([(x0+24, yy+40),(x0+24+lw, yy+40)], fill=RED+(235,), width=5)
+            lw = d.textlength(it["label"], font=fl)
+            d.line([(x0+22, yy+44),(x0+22+lw, yy+44)], fill=RED+(235,), width=5)
         if it.get("bar") is not None:
-            bw = int((w-48)*min(1.0,it["bar"])*ease(ap))
-            d.rounded_rectangle([x0+24, yy+96, x0+24+bw, yy+112], radius=7,
+            bw = int((w-44)*min(1.0,it["bar"])*ease(ap))
+            d.rounded_rectangle([x0+22, yy+112, x0+22+bw, yy+130], radius=7,
                                 fill=it.get("bcol",col)+(230,))
 
 def callout(base, label, text, prog, y=1520):
@@ -304,7 +298,7 @@ PLAN = {
              call=("proof","Free plan mein 1,00,000 requests roz. Midnight UTC par reset."),
              src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="100K",
              rows=[dict(label="Free / day", num=100000, col=WHITE, bcol=TEAL, frac=.62),
-                   dict(label="Paid plan", num=99999999, suffix="+", col=GREY, bcol=(80,88,124), frac=1.0)]),
+                   dict(label="Paid plan", num=0, suffix="  no limit", col=GREY, bcol=(80,88,124), frac=1.0)]),
  "B10": dict(dev="race", kicker="proof · verified today", title="Har request ko CPU", sub="Workers Free",
              call=("proof","Har request ko 10 ms CPU. Average Worker sirf 2.2 ms leta hai."),
              src="developers.cloudflare.com/workers/platform/limits · checked 24 Nov 2026", ghost="10",
@@ -342,14 +336,28 @@ def frame(t):
 
     dev = P["dev"]
     if dev == "browser":
-        browser(img, rf(int((P["rec"]+local)*30)), (56, 300, W-112, 830), prog,
+        browser(img, rf(int((P["rec"]+local)*30)), (56, 300, W-112, 820), prog,
                 "workers.cloudflare.com/playground", kb=1.14)
     elif dev == "race":
-        bar_race(img, P["rows"], prog, (56, 380, W-112, 340))
+        rows = P["rows"]; rh = 200
+        top = 300 + max(0,(820 - rh*len(rows) - 160)//2)
+        bar_race(img, rows, prog, (56, top, W-112, rh*len(rows)))
+        d = ImageDraw.Draw(img)
+        cp = min(1.0, max(0.0,(prog-0.3)/0.45))
+        v = rows[0]["num"] if cp >= 0.98 else int(rows[0]["num"]*ease(cp))
+        big = f"{v:,}" + rows[0].get("suffix","")
+        fb = F(150)
+        while d.textlength(big, font=fb) > W-140 and fb.size > 60:
+            fb = F(fb.size-8)
+        wv = d.textlength(big, font=fb)
+        d.text(((W-wv)/2, top+rh*len(rows)+20), big, font=fb, fill=WHITE+(255,))
     elif dev == "stickers":
-        stickers(img, P["items"], prog, t, y0=400)
+        items = P["items"]; ch, gap = 150, 26
+        total = len(items)*ch + (len(items)-1)*gap
+        top = 300 + max(0,(820 - total)//2)
+        stickers(img, items, prog, t, y0=top)
     elif dev == "bigword":
-        bigword(img, P["big"], prog, y=520, size=190)
+        bigword(img, P["big"], prog, y=560, size=190)
 
     karaoke(img, b["t1"], b["t2"], prog, y=1230)
     callout(img, P["call"][0], P["call"][1], prog)
