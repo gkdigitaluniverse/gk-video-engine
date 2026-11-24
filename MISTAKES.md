@@ -174,3 +174,50 @@ file is there before triggering.
 **What happened:** The 100,000 counter showed 99,223 mid-beat.
 **Fix:** Clamp to the exact value once progress passes 0.98, so the beat always lands on
 the true figure.
+
+---
+
+## Round 3 additions (the real rebuild)
+
+## 25. I "analysed" the reference videos without ever looking at them
+**What happened:** I asked TwelveLabs for measurements — beat length, text position, palette —
+read the returned text, and believed I understood the videos. I had never seen a single frame.
+When the user finally showed me frames, the biggest fact was one I had missed entirely: one of
+the references is hosted by an animated cartoon character standing in every shot.
+**Fix:** Extract real frames and LOOK at them. A text description of a video is not the video.
+The order is: pull frames, view them, then ask the model for what frames cannot tell you.
+
+## 26. I asked the model for measurements instead of a picture
+**What happened:** My prompt asked for averages and positions. It returned averages and
+positions, which is exactly what I asked for and exactly what was useless.
+**Fix:** Ask for a description so vivid that a person who cannot see it can picture every second:
+"dark clouds have gathered, rain is falling slowly, a child is walking through it." No technical
+words. Time-blocked. That prompt produced the real structure — grid of glowing squares, character
+gesturing, chip close-ups, bars reordering, months advancing.
+
+## 27. I designed a card-in-a-box when both references are full-bleed
+**What happened:** My frames had a rounded card floating in a margin with empty space beneath.
+Both references fill the entire 9:16 frame and never leave a void.
+**Fix:** Full-bleed. Gradient background with glow, a fixed header block, a hero that occupies the
+middle, a callout box at the bottom, a source line at the very bottom. No floating cards.
+
+## 28. I used one giant headline where the references use a structured header
+**What happened:** One 100px headline was all my type.
+**Fix:** Four type levels, fixed across the whole video: kicker (small caps, underlined),
+title (large), subtitle (grey), caption (bold, two lines, second line in the accent colour).
+
+## 29. I put data in words instead of showing it as an object
+**What happened:** "100,000 requests per day" was a sentence on screen.
+**Fix:** Show it as a row: label, counting value, and a bar that grows. That is what both
+references do, and it reads instantly.
+
+## 30. My workflow pushes kept failing because local git was dirty
+**What happened:** `git commit` refused, so the workflow file never reached the remote and two
+renders produced nothing.
+**Fix:** Push workflow files and scripts through the contents API, one file at a time, then confirm
+they are on the remote before triggering. Never trust that a push succeeded because the command
+did not print an error.
+
+## 31. `KeyError: 'value'` killed a render 3 minutes in
+**What happened:** Some data rows carry a counting number instead of a text value.
+**Fix:** `r.get("value", "")`. Guard every dict read in a renderer; a render is expensive to lose.
