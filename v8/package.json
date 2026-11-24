@@ -1,0 +1,18 @@
+{
+  "name": "gkhackter-video",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "render": "remotion render index.ts Main out/video.mp4" },
+  "dependencies": {
+    "@remotion/cli": "4.0.380",
+    "@remotion/gsap": "4.0.380",
+    "gsap": "^3.12.5",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.380"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "typescript": "5.6.3"
+  }
+}
