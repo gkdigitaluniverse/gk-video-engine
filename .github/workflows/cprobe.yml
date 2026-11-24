@@ -6,20 +6,22 @@ on:
 jobs:
   c:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - run: pip install -q requests
-      - name: Find the file staging route
+      - run: |
+          pip install -q requests
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Full test, nothing skipped
         env:
           CK: ${{ secrets.COMPOSIO_KEY }}
-        run: python3 mcp_full.py > FULL1.txt 2>&1
+        run: python3 mcp_testall.py > FULLTEST.txt 2>&1
       - name: Commit
         if: always()
         run: |
           git config user.email ci@local && git config user.name ci
-          git add -f FULL1.txt && git commit -m "test: file staging route" || true
+          git add -f FULLTEST.txt && git commit -m "test: full run" || true
           git pull --rebase -q origin main || true
           git push || true
