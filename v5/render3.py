@@ -65,7 +65,7 @@ def ghost(base, txt, prog, y=430):
     d = ImageDraw.Draw(base)
     f = F(430)
     w = d.textlength(txt, font=f)
-    d.text(((W - w) / 2, y), txt, font=f, fill=(20, 25, 48))
+    d.text(((W - w) / 2, y), txt, font=f, fill=(15, 19, 38))
 
 # ---------- fixed header ----------
 def header(base, kicker, title, sub):
@@ -104,6 +104,9 @@ def panel(base, shot, prog, box, url, kb=1.10):
 # ---------- hero: animated data rows ----------
 def data_rows(base, rows, prog, box, y0=None):
     x, y, w, h = box
+    pn = Image.new("RGBA",(W,H),(0,0,0,0))
+    ImageDraw.Draw(pn).rounded_rectangle([x-24,y-30,x+w+24,y+h+20], radius=26, fill=(16,20,40,150))
+    base.alpha_composite(pn)
     d = ImageDraw.Draw(base)
     rowh = h // max(1, len(rows))
     for i, r in enumerate(rows):
@@ -113,24 +116,24 @@ def data_rows(base, rows, prog, box, y0=None):
         sl = int((1-ease(appear))*50)
         col = r.get("col", WHITE)
         # label
-        fl = F(34)
-        d.text((x+sl, ry+12), r["label"], font=fl, fill=col+(int(255*appear),))
+        fl = F(40)
+        d.text((x+sl, ry+26), r["label"], font=fl, fill=col+(int(255*appear),))
         # value counting
-        fv = F(40)
+        fv = F(46)
         vtxt = r.get("value", "")
         if r.get("num") is not None:
             cp = min(1.0, max(0.0,(prog - i*0.08 - 0.10)/0.40))
             v = r["num"] if cp>=0.98 else int(r["num"]*ease(cp))
             vtxt = f"{v:,}" + r.get("suffix","")
         vw = d.textlength(vtxt, font=fv)
-        d.text((x+w-vw-sl, ry+8), vtxt, font=fv, fill=col+(int(255*appear),))
+        d.text((x+w-vw-sl, ry+20), vtxt, font=fv, fill=col+(int(255*appear),))
         # bar
         bw = int((w-20) * min(1.0, r.get("frac",0.8)) * ease(appear))
-        d.rounded_rectangle([x+sl, ry+rowh-22, x+sl+bw, ry+rowh-12], radius=5,
-                            fill=r.get("bcol", ORANGE)+(int(230*appear),))
+        d.rounded_rectangle([x+sl, ry+rowh-46, x+sl+bw, ry+rowh-30], radius=8,
+                            fill=r.get("bcol", ORANGE)+(int(235*appear),))
         if r.get("strike") and appear > 0.5:
             lw = d.textlength(r["label"], font=fl)
-            d.line([(x+sl, ry+30), (x+sl+lw, ry+30)], fill=RED+(220,), width=5)
+            d.line([(x+sl, ry+48), (x+sl+lw, ry+48)], fill=RED+(220,), width=5)
 
 # ---------- caption + callout ----------
 def caption(base, t1, t2, prog, y):
@@ -224,7 +227,7 @@ def frame(t):
         shot = rf(int((P["rec"] + local) * 30))
         panel(img, shot, prog, (64, 380, W-128, 920), "workers.cloudflare.com/playground")
     else:
-        data_rows(img, P["rows"], prog, (64, 400, W-128, 300))
+        data_rows(img, P["rows"], prog, (64, 400, W-128, 740))
 
     caption(img, b["t1"], b["t2"], prog, 1300)
     callout(img, P["call"][0], P["call"][1], prog)
