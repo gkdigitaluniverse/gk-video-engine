@@ -186,7 +186,7 @@ def bar_race(base, rows, prog, box):
                             fill=(r.get("bcol",ORANGE) if i==0 else (70,78,110))+(230,))
         d.text((x+sl-2, ry+20), f"{i+1}", font=F(26), fill=(12,14,26,255))
         d.text((x+sl+52, ry+14), r["label"], font=F(32), fill=col+(255,))
-        cp = min(1.0, max(0.0,(prog - i*0.12 - 0.12)/0.42))
+        cp = min(1.0, max(0.0,(prog - i*0.10 - 0.08)/0.30))
         if r.get("num", 0) == 0:
             vtxt = r.get("suffix","").strip()
         else:
@@ -208,8 +208,8 @@ def stickers(base, items, prog, t, y0=430):
         dx = int(side * (1-back_out(ap)) * 260)
         yy = y0 + i*176
         col = it.get("col", RED)
-        x0 = 96 + dx
         w = W-192
+        x0 = min(W-56-w, max(56, 96 + dx))
         pn = Image.new("RGBA",(W,H),(0,0,0,0))
         pd = ImageDraw.Draw(pn)
         pd.rounded_rectangle([x0,yy,x0+w,yy+150], radius=20,
@@ -354,7 +354,7 @@ def frame(t):
     elif dev == "bigword":
         bigword(img, P["big"], prog, y=560, size=190)
 
-    karaoke(img, b["t1"], b["t2"], prog, y=1050)
+    karaoke(img, b["t1"], b["t2"], prog, y=1020)
     callout(img, P["call"][0], P["call"][1], prog)
     watermark(img)
     chapter_rail(img, idx, t, t/TOTAL)
