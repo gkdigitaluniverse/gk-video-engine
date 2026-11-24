@@ -21,7 +21,9 @@ jobs:
           pip install -q pillow playwright
           python -m playwright install --with-deps chromium
           mkdir -p v1/fonts
-          curl -sL -o v1/fonts/Montserrat-Bold.ttf "https://github.com/google/fonts/raw/main/ofl/montserrat/Montserrat%5Bwght%5D.ttf" || true
+          curl -sL -o v1/fonts/Montserrat-Bold.ttf "https://github.com/JulietaUla/Montserrat/raw/master/fonts/ttf/Montserrat-Bold.ttf" || true
+          curl -sL -o /tmp/alt.ttf "https://github.com/googlefonts/Montserrat/raw/main/fonts/ttf/Montserrat-Bold.ttf" || true
+          [ -s v1/fonts/Montserrat-Bold.ttf ] || cp /tmp/alt.ttf v1/fonts/Montserrat-Bold.ttf || true
           ls -la v1/fonts/
       - name: Render
         working-directory: v1
@@ -31,9 +33,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          gh release delete run1 -R gkdigitaluniverse/gk-video-engine -y >/dev/null 2>&1 || true
           gh release view run1 -R gkdigitaluniverse/gk-video-engine >/dev/null 2>&1 || \
             gh release create run1 -R gkdigitaluniverse/gk-video-engine --title "run1" --notes "cloudflare video"
-          gh release upload run1 v1/video-noaudio.mp4 v1/thumb.png -R gkdigitaluniverse/gk-video-engine --clobber || true
+          gh release upload run1 v1/video.mp4 v1/thumb.png -R gkdigitaluniverse/gk-video-engine --clobber || true
       - name: Commit
         if: always()
         run: |
