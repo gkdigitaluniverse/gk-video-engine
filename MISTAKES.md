@@ -129,3 +129,48 @@ instead of checking the thing.** A workflow that produced no file, a search that
 returned nothing, a measurement without motion, a screenshot instead of a recording.
 
 The rule that covers all seventeen: **check the artefact, not the report of the artefact.**
+
+---
+
+## Round 2 additions (the rebuild)
+
+## 18. I built the first video with one layer per beat
+**What happened:** Every beat was a screenshot in a box with text under it. The user's
+verdict was immediate and correct.
+**Fix:** A beat is not finished until it has a background layer, a shape layer, the
+screen layer, a callout layer, a number layer and a type layer, each moving at a
+different speed.
+
+## 19. I recorded stills where the brief said screen recording
+**What happened:** The user asked for screen recordings between beats. I shipped
+screenshots, so nothing moved.
+**Fix:** Playwright `record_video_dir` on the context. Type into the editor, click the
+tabs, scroll the table, then `ctx.close()` writes the webm. Convert to mp4 for the
+renderer.
+
+## 20. Playwright video save failed after closing the context
+**What happened:** `page.video.save_as()` after `ctx.close()` raised. The webm is
+already written into `record_video_dir` by then.
+**Fix:** Do not call `save_as` after close. List the directory for `*.webm` and copy.
+
+## 21. Monaco editor selector timed out
+**What happened:** `.monaco-editor` never appeared, so the typing step was skipped and
+the recording had no typing in it.
+**Fix:** Click the editor by coordinates with `page.mouse.click(x, y)`, then type with
+`page.keyboard`. Coordinate clicks survive whatever DOM the site ships.
+
+## 22. The cookie banner covered the table
+**What happened:** The Cloudflare consent bar sat over the limits table.
+**Fix:** Click `get_by_role("button", name="Accept Cookies")` before scrolling, wrapped
+in try/except so a missing banner is harmless.
+
+## 23. The workflow file was never pushed, so nothing ran
+**What happened:** I pushed `v2/record.py` and the trigger file but not
+`.github/workflows/record.yml`. Two runs produced nothing.
+**Fix:** After any workflow push, list `.github/workflows` on the remote and confirm the
+file is there before triggering.
+
+## 24. Counter animations stopped short of the real number
+**What happened:** The 100,000 counter showed 99,223 mid-beat.
+**Fix:** Clamp to the exact value once progress passes 0.98, so the beat always lands on
+the true figure.
