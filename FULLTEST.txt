@@ -1,0 +1,24 @@
+test video bytes: 5562
+base64 chars: 7416
+
+##### STAGE FILE :: BOLDSIGN_FILE_UPLOAD -> FAIL #####
+{"successful":false,"data":{"results":[{"error":"No active connection found for toolkit(s) 'boldsign' in this session. To fix this, call COMPOSIO_MANAGE_CONNECTIONS with toolkits=['boldsign'] to establish a connection, then retry this tool call.","tool_slug":"BOLDSIGN_FILE_UPLOAD","index":0}],"total_count":1,"success_count":0,"error_count":1},"error":"1 out of 1 tools failed","log_id":"log_o1r_MYSbcFvc"}
+STAGED KEY: None
+
+##### YT comments :: YOUTUBE_LIST_COMMENT_THREADS2 -> FAIL #####
+{"successful":false,"data":{"results":[{"response":{"successful":false,"data":{"message":"Access forbidden. You may not have permission to view these comments, or the resource may be private. Ensure you have the necessary OAuth scopes and permissions.","status_code":403},"error":"Access forbidden. You may not have permission to view these comments, or the resource may be private. Ensure you have the necessary OAuth scopes and permissions."},"error":"Access forbidden. You may not have permission to view these comments, or the resource may be private. Ensure you have the necessary OAuth scopes and permissions.","tool_slug":"YOUTUBE_LIST_COMMENT_THREADS2","index":0}],"total_count":1,"success_count":0,"error_count":1},"error":"1 out of 1 tools failed","log_id":"log_o_Ak5IMT9Z6h"}
+
+##### YT channel mine :: YOUTUBE_LIST_CHANNEL_VIDEOS -> FAIL #####
+{"successful":false,"data":{"results":[{"response":{"successful":false,"data":{"message":"Access forbidden when fetching channel information for authenticated user 'me'. Please ensure you have the necessary permissions and the channel is accessible.","status_code":403},"error":"Access forbidden when fetching channel information for authenticated user 'me'. Please ensure you have the necessary permissions and the channel is accessible."},"error":"Access forbidden when fetching channel information for authenticated user 'me'. Please ensure you have the necessary permissions and the channel is accessible.","tool_slug":"YOUTUBE_LIST_CHANNEL_VIDEOS","index":0}],"total_count":1,"success_count":0,"error_count":1},"error":"1 out of 1 tools failed","log_id":"log_wtGx-oJhfzHE"}
+
+##### IG media list :: INSTAGRAM_GET_IG_USER_MEDIA -> FAIL #####
+{"successful":false,"data":{"results":[{"response":{"successful":false,"data":{"message":"Invalid request data provided\n- Following fields are missing: {'ig_user_id'}","status_code":400},"error":"Invalid request data provided\n- Following fields are missing: {'ig_user_id'}"},"error":"Invalid request data provided\n- Following fields are missing: {'ig_user_id'}","tool_slug":"INSTAGRAM_GET_IG_USER_MEDIA","index":0}],"total_count":1,"success_count":0,"error_count":1},"error":"1 out of 1 tools failed","log_id":"log_JS-A7PPBeIpo"}
+
+##### IG limit :: INSTAGRAM_GET_IG_USER_CONTENT_PUBLISHING_LIMIT -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"data":[{"config":{"quota_duration":86400,"quota_total":50},"quota_usage":0}]}},"tool_slug":"INSTAGRAM_GET_IG_USER_CONTENT_PUBLISHING_LIMIT","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_UshZ1yY9agSd"}
+
+##### IG conversations :: INSTAGRAM_LIST_ALL_CONVERSATIONS -> PASS #####
+{"successful":true,"data":{"results":[{"response":{"successful":true,"data":{"composio_execution_message":"No conversations found. Possible reasons: (1) No DM conversations exist for this account yet. (2) Missing 'instagram_business_manage_messages' permission scope - ensure your app has this permission enabled. (3) The account must be an Instagram Business or Creator account; Instagram Login does not require it to be connected to a Facebook Page. (4) The access token may not have sufficient permissions for the messages endpoint. To troubleshoot: verify your app permissions in the Meta App Dashboard and ensure the account is properly configured.","data":[]}},"tool_slug":"INSTAGRAM_LIST_ALL_CONVERSATIONS","index":0}],"total_count":1,"success_count":1,"error_count":0},"error":null,"log_id":"log_JJlDcdANQq3G"}
+
+##### FB page posts :: FACEBOOK_GET_PAGE_POSTS -> FAIL #####
+
