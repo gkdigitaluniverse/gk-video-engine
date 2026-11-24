@@ -28,6 +28,7 @@ jobs:
           curl -sL -o public/play.mp4 $B/play.mp4
           curl -sL -o public/voice.wav $B/voice.wav
           curl -sL -o public/bgm.mp3 $B/channel-bgm.mp3
+          curl -sL -o public/limits.png $B/limits.png
           ffmpeg -y -v error -i public/play.mp4 -c:v libx264 -preset ultrafast -crf 26 public/play_web.mp4 || cp public/play.mp4 public/play_web.mp4
           mv public/play_web.mp4 public/play.mp4
           ls -la public/
