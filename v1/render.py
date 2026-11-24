@@ -89,12 +89,13 @@ def browser_card(shot, t, blen, cw, ch):
     src = SHOTS.get(shot) or SHOTS["playground"]
     vw, vh = cw, ch-bar
     prog = min(1.0, t/max(blen,0.01))
-    z = 1.06 + 0.10*prog
-    nw, nh = int(vw*z), int(vh*z)
-    sx = (src.width-nw)//2 if src.width > nw else 0
-    sy = int(max(0,(src.height-nh))*0.35)
-    crop = src.crop((sx, sy, min(src.width, sx+nw), min(src.height, sy+nh)))
-    crop = crop.resize((vw, vh), Image.LANCZOS)
+    z = 1.0 + 0.035*prog                      # gentle push-in, never crops content
+    bw, bh = vw*z, vh*z
+    sc = min(bw/src.width, bh/src.height)     # CONTAIN: whole page always visible
+    nw, nh = max(1,int(src.width*sc)), max(1,int(src.height*sc))
+    crop = src.resize((nw, nh), Image.LANCZOS)
+    px = (vw-nw)//2; py = (vh-nh)//2
+    card.paste(crop, (0+px, bar+py))
     card.paste(crop, (0, bar))
     card.putalpha(round_mask((cw, ch), 24))
     return card
@@ -155,35 +156,38 @@ def frame(t):
 
     img = Image.new("RGB",(W,H),BG)
     if lay == "full":
-        card = browser_card(b["shot"], local, blen, W-56, 1240)
-        img.paste(card, (28, 200), card)
+        card = browser_card(b["shot"], local, blen, W-56, 1230)
+        img.paste(card, (28, 150), card)
         ov = Image.new("L",(W,H),0)
-        ImageDraw.Draw(ov).rectangle([0,1180,W,H], fill=210)
+        ImageDraw.Draw(ov).rectangle([0,1130,W,H], fill=215)
         ov = ov.filter(ImageFilter.GaussianBlur(70))
         img.paste(Image.new("RGB",(W,H),BG),(0,0),ov)
-        txt_pair(img, b["t1"], b["t2"], prog, 1330)
+        txt_pair(img, b["t1"], b["t2"], prog, 1240)
     elif lay == "giant":
-        card = browser_card(b["shot"], local, blen, W-120, 1000)
+        card = browser_card(b["shot"], local, blen, W-120, 1060)
         card.putalpha(card.getchannel("A").point(lambda v:int(v*0.30)))
         img.paste(card, (60, 120), card)
         d = ImageDraw.Draw(img)
+        panel = Image.new("RGBA", (W, 560), (0,0,0,0))
+        ImageDraw.Draw(panel).rounded_rectangle([40,0,W-40,560], radius=34, fill=(8,8,10,238))
+        img.paste(panel, (0, 560), panel)
         f, sz = fit(d, b["t2"], W-140, 118)
         fbig = F(min(190, int(sz*1.75)))
         w1 = d.textlength(b["t1"], font=fbig)
-        y = 640
+        y = 600
         d.text(((W-w1)/2, y), b["t1"], font=fbig, fill=INK, stroke_width=5, stroke_fill=INK)
         w2 = d.textlength(b["t2"], font=f)
         d.text(((W-w2)/2, y+230), b["t2"], font=f, fill=ACCENT, stroke_width=3, stroke_fill=ACCENT)
         uw = int(w2*min(1.0,prog/0.3))
         d.rectangle([(W-w2)/2, y+230+sz+30, (W-w2)/2+uw, y+230+sz+44], fill=AMBER)
     elif lay == "card_bot":
-        txt_pair(img, b["t1"], b["t2"], prog, 300)
-        card = browser_card(b["shot"], local, blen, W-80, 900)
-        img.paste(card, (40, 900), card)
+        txt_pair(img, b["t1"], b["t2"], prog, 210)
+        card = browser_card(b["shot"], local, blen, W-80, 1180)
+        img.paste(card, (40, 600), card)
     else:  # card_top
-        card = browser_card(b["shot"], local, blen, W-80, 1080)
-        img.paste(card, (40, 170), card)
-        txt_pair(img, b["t1"], b["t2"], prog, 1330)
+        card = browser_card(b["shot"], local, blen, W-80, 1210)
+        img.paste(card, (40, 160), card)
+        txt_pair(img, b["t1"], b["t2"], prog, 1420)
 
     chrome(img, idx, t)
     return img
