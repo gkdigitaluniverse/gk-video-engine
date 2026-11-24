@@ -14,9 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Install deps
+      - name: Install ffmpeg and deps
         working-directory: v8
-        run: npm install --no-audit --no-fund 2>&1 | tail -5
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          npm install --no-audit --no-fund 2>&1 | tail -8
+          ls node_modules/.bin/ | head -20
       - name: Fetch assets
         run: |
           cd v8
