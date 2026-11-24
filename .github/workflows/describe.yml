@@ -1,0 +1,27 @@
+name: describe
+on:
+  push:
+    paths: ["v4/**"]
+  workflow_dispatch:
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests
+      - name: Vivid description of the reference videos
+        env:
+          CK: ${{ secrets.COMPOSIO_KEY }}
+          TLK: ${{ secrets.TWELVELABS_KEY }}
+        run: python3 v4/describe.py > v4/DESC.txt 2>&1
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f v4/DESC.txt v4/DESC-*.md 2>/dev/null || git add -f v4/DESC.txt
+          git commit -m "describe: vivid visual read of the references" || true
+          git pull --rebase -q origin main || true
+          git push || true
