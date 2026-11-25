@@ -74,7 +74,7 @@ export const BEATS = [
   { s: 24.52, e: 28.21, kick: "(8) THE LIMIT / PUBLIC REPOS",
     l1: "OVER 50 MB", l2: "", box: "NO SCAN",
     hero: "count2", img: "docs-50mb.png", url: "docs.github.com/en/code-security",
-    num: 50, unit: "MB  ·  PUSH SKIPPED, NOT SCANNED",
+    num: 50, unit: "·  PUSH SKIPPED, NOT SCANNED",
     note: "A public-repo push above 50 MB is skipped by push protection.",
     facts: [["Limit", "50 MB PUSH"], ["Scope", "PUBLIC REPOS"], ["Then", "SKIPPED"]] },
 
@@ -129,7 +129,7 @@ const MONO = (s: number, w = 400, c = SOURCE): React.CSSProperties =>
 
 /* ---------- surface ---------- */
 const Surface: React.FC<{ f: number }> = ({ f }) => {
-  const off = (f * 0.55) % 38;
+  const off = (f * 1.35) % 38;
   return (
     <AbsoluteFill style={{ backgroundColor: CREAM }}>
       <svg width="1080" height="1920" style={{ position: "absolute" }}>
@@ -281,7 +281,7 @@ const ShotStrip: React.FC<{ img: string; local: number; top: number; h?: number;
       height: h, borderRadius: 16, overflow: "hidden", background: PAPER,
       boxShadow: "0 18px 44px rgba(17,17,17,0.16)", border: "2px solid #E3E1D8" }}>
       <Img src={staticFile("shots/" + img)} style={{ width: "100%", height: "100%",
-        objectFit: "cover", objectPosition: "top center", transform: `scale(${zoom})` }} />
+        objectFit: "cover", objectPosition: "top left", transform: `scale(${zoom})` }} />
     </div>
   );
 };
@@ -459,7 +459,9 @@ export const Main: React.FC = () => {
   const local = (t - beat.s) * fps;
   const span = (beat.e - beat.s) * fps;
 
-  const cam = interpolate(t, [0, 35.6], [1.0, 1.085]);
+  const drift = interpolate(t, [0, 35.6], [1.0, 1.045]);
+  const punch = interpolate(local, [0, span], [1.0, 1.095], { extrapolateRight: "clamp" });
+  const cam = drift * punch;
   const rot = (f / fps) * 0.55;
 
   const thumbOn = t >= THUMB_FROM && t < THUMB_TO;
