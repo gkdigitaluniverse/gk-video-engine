@@ -1,8 +1,6 @@
 name: publish1
 on:
-  push:
-    paths: ["pub/**"]
-  workflow_dispatch:
+  workflow_dispatch:   # push trigger removed: it deleted the previous video's FB post by accident
 jobs:
   p:
     runs-on: ubuntu-latest
