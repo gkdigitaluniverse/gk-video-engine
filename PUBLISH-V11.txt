@@ -1,0 +1,23 @@
+CreatePostInput: ['aiAssisted', 'assets', 'channelId', 'draftId', 'dueAt', 'ideaId', 'metadata', 'mode', 'needsApproval', 'saveToDraft', 'schedulingType', 'source', 'tagIds', 'text']
+InstagramPostMetadataInput: ['firstComment', 'geolocation', 'isAiGenerated', 'link', 'shouldShareToFeed', 'stickerFields', 'type']
+FacebookPostMetadataInput: ['annotations', 'firstComment', 'linkAttachment', 'type']
+
+##### 1 YOUTUBE #####
+{"data": {"createPost": {"__typename": "PostActionSuccess", "post": {"id": "6b06fff3a2969125d5314695", "text": "One hardcoded API key in a public repo is readable by anyone who opens that file.\nGitHub Push Protection stops the push before the secret ever reaches the repository.\n\nâ¢ It blocks supported secrets at push time â not after the leak\nâ¢ 532 partner patterns, and 465 of them are covered by push protection\nâ¢ What it misses: only a subset is blocked, and a public-repo push over 50 MB is skipped\nâ¢ The fix that always works: keep keys in environment variables, never in git\n\nSource: docs.github.com â checked 25 Nov 2026\n\nPush protection guide: https://docs.github.com/en/code-security/concepts/secret-security/push-protection\nWhat it scans and what it skips: https://docs.github.com/en/code-security/reference/secret-security/secret-scanning-scope\nAll supported patterns: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns\n\ngithub push protection, api key leak, github secret scanning, hardcoded api key,\ngithub security settings, env file, environment variables, git security,\ngithub tricks, code security basic
+RESULT: PASS
+
+##### 2 INSTAGRAM REEL #####
+{"errors": [{"message": "Variable \"$input\" got invalid value \"\" at \"input.metadata.instagram.geolocation\"; Expected value of type \"InstagramGeolocationInput\" to be an object, found: \"\".", "locations": [{"line": 1, "column": 21}], "extensions": {"code": "INTERNAL_SERVER_ERROR"}}]}
+RESULT: FAIL
+
+##### 3 INSTAGRAM STORY #####
+{"errors": [{"message": "Variable \"$input\" got invalid value \"\" at \"input.metadata.instagram.geolocation\"; Expected value of type \"InstagramGeolocationInput\" to be an object, found: \"\".", "locations": [{"line": 1, "column": 21}], "extensions": {"code": "INTERNAL_SERVER_ERROR"}}]}
+RESULT: FAIL
+
+##### 4 FACEBOOK REEL #####
+{"errors": [{"message": "Variable \"$input\" got invalid value \"\" at \"input.metadata.facebook.linkAttachment\"; Expected value of type \"LinkAttachmentInput\" to be an object, found: \"\".", "locations": [{"line": 1, "column": 21}], "extensions": {"code": "INTERNAL_SERVER_ERROR"}}]}
+RESULT: FAIL
+
+##### 5 FACEBOOK STORY #####
+{"errors": [{"message": "Variable \"$input\" got invalid value \"\" at \"input.metadata.facebook.linkAttachment\"; Expected value of type \"LinkAttachmentInput\" to be an object, found: \"\".", "locations": [{"line": 1, "column": 21}], "extensions": {"code": "INTERNAL_SERVER_ERROR"}}]}
+RESULT: FAIL
