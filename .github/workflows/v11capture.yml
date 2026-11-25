@@ -1,0 +1,30 @@
+name: v11 capture
+on:
+  push:
+    paths: ["v11/capture.js"]
+  workflow_dispatch:
+jobs:
+  cap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Playwright
+        working-directory: v11
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-audit --no-fund playwright@1.47.2
+          npx playwright install --with-deps chromium
+      - name: Capture
+        working-directory: v11
+        run: node capture.js 2>&1 | tee CAP.txt
+      - name: Publish shots
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          cd v11/public/shots && ls -la
+          gh release view run1 -R gkdigitaluniverse/gk-video-engine >/dev/null 2>&1 || \
+            gh release create run1 -R gkdigitaluniverse/gk-video-engine --title run1 --notes "render outputs"
+          gh release upload run1 v11/public/shots/*.png -R gkdigitaluniverse/gk-video-engine --clobber
