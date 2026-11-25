@@ -1,0 +1,32 @@
+name: sfx
+on:
+  push:
+    paths: ["v10/**"]
+  workflow_dispatch:
+jobs:
+  s:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Fetch Mixkit SFX
+        working-directory: v10
+        run: python sfx.py 2>&1 | tee SFX.txt
+      - name: Upload
+        if: always()
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          cd v10
+          ls -la sfx/ || true
+          gh release upload run1 sfx/*.mp3 -R gkdigitaluniverse/gk-video-engine --clobber || true
+      - name: Commit
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f v10/SFX.txt 2>/dev/null || true
+          git commit -m "sfx: mixkit" || true
+          git pull --rebase -q origin main || true
+          git push || true
