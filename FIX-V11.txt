@@ -1,0 +1,10 @@
+DeletePostInput: {"data": {"__type": {"inputFields": [{"name": "id", "type": {"name": null, "kind": "NON_NULL"}}]}}}
+fields: ['id']
+
+DELETE with id -> {"errors": [{"message": "Fragment cannot be spread here as objects of type \"DeletePostPayload\" can never be of type \"PostActionSuccess\".", "locations": [{"line": 4, "column": 5}], "extensions": {"code": "GRAPHQL_VALIDATION_FAILED"}}]}
+deleted: False
+!! could not delete the old YouTube post - not creating a second one
+
+##### 2 INSTAGRAM REEL (no first comment) #####
+{"data": {"createPost": {"__typename": "PostActionSuccess", "post": {"id": "6b07008c8b7db026c8b5bc3d"}}}}
+RESULT: PASS
