@@ -1,0 +1,43 @@
+name: v11 render
+on:
+  push:
+    paths: ["v11/src/**", "v11/package.json", "v11/index.ts"]
+  workflow_dispatch:
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Fonts
+        working-directory: v11
+        run: |
+          mkdir -p public/fonts
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf" -o public/fonts/Anton-Regular.ttf
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/spacemono/SpaceMono-Regular.ttf" -o public/fonts/SpaceMono-Regular.ttf
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/spacemono/SpaceMono-Bold.ttf" -o public/fonts/SpaceMono-Bold.ttf
+          ls -la public/fonts
+
+      - name: Real screenshots from the run1 release
+        working-directory: v11
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          mkdir -p public/shots
+          gh release download run1 -R gkdigitaluniverse/gk-video-engine -D public/shots -p "*.png" --clobber || true
+          ls -la public/shots | head -30
+
+      - name: Install
+        working-directory: v11
+        run: npm install --no-audit --no-fund
+
+      - name: Render
+        working-directory: v11
+        run: npx remotion render index.ts PushProt out/v11.mp4 --codec=h264 --crf=16 --concurrency=3 --muted
+
+      - name: Publish
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: gh release upload run1 v11/out/v11.mp4 -R gkdigitaluniverse/gk-video-engine --clobber

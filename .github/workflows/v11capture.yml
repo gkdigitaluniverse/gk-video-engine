@@ -24,7 +24,9 @@ jobs:
       - name: Publish shots
         env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
         run: |
-          cd v11/public/shots && ls -la
+          ls -la v11/public/shots
           gh release view run1 -R gkdigitaluniverse/gk-video-engine >/dev/null 2>&1 || \
             gh release create run1 -R gkdigitaluniverse/gk-video-engine --title run1 --notes "render outputs"
-          gh release upload run1 v11/public/shots/*.png -R gkdigitaluniverse/gk-video-engine --clobber
+          for f in v11/public/shots/*.png; do
+            gh release upload run1 "$f" -R gkdigitaluniverse/gk-video-engine --clobber
+          done
