@@ -502,3 +502,5 @@ export const Main: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+// build 1 — thumbnail committed, shots from release run1
