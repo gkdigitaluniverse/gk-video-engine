@@ -1,0 +1,14 @@
+DeletePostPayload: {"data": {"__type": {"kind": "UNION", "fields": null}}}
+MUTATION: {"name": "deleteSnippet", "args": [{"name": "input", "type": {"name": null, "kind": "NON_NULL", "ofType": {"name": "DeleteSnippetInput"}}}]}
+MUTATION: {"name": "deleteCollaborationNote", "args": [{"name": "input", "type": {"name": null, "kind": "NON_NULL", "ofType": {"name": "DeleteCollaborationNoteInput"}}}]}
+MUTATION: {"name": "deletePost", "args": [{"name": "input", "type": {"name": null, "kind": "NON_NULL", "ofType": {"name": "DeletePostInput"}}}]}
+MUTATION: {"name": "deleteContentItem", "args": [{"name": "input", "type": {"name": null, "kind": "NON_NULL", "ofType": {"name": "DeleteContentItemInput"}}}]}
+MUTATION: {"name": "deleteTag", "args": [{"name": "input", "type": {"name": null, "kind": "NON_NULL", "ofType": {"name": "DeleteTagInput"}}}]}
+MUTATION: {"name": "deletePostTemplate", "args": [{"name": "input", "type": {"name": null, "kind": "NON_NULL", "ofType": {"name": "DeletePostTemplateInput"}}}]}
+
+TRY payload-typename -> {"data": {"deletePost": {"__typename": "DeletePostSuccess"}}}
+deleted: True
+
+##### 1 YOUTUBE (new) #####
+{"data": {"createPost": {"__typename": "PostActionSuccess", "post": {"id": "6b0700b958090bfccaf4463f"}}}}
+RESULT: PASS
