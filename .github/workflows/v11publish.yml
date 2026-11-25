@@ -1,0 +1,25 @@
+name: v11 publish
+on:
+  push:
+    paths: ["pub/v11_publish.py"]
+  workflow_dispatch:
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests
+      - name: Publish five posts via Buffer
+        env:
+          CK: ${{ secrets.COMPOSIO_KEY }}
+        run: python3 pub/v11_publish.py > PUBLISH-V11.txt 2>&1
+      - name: Save output
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f PUBLISH-V11.txt && git commit -m "v11 publish output" || true
+          git pull --rebase -q origin main || true
+          git push || true
