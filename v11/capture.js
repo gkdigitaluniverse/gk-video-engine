@@ -45,3 +45,5 @@ const SHOTS = [
   }
   await b.close();
 })();
+
+// rerun 2 — upload path fixed
