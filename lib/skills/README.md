@@ -1,37 +1,24 @@
-# lib/skills — 18 skills, कौन सा किस कदम पर
+# lib/skills — सिर्फ़ वीडियो के skill
 
-## Ootto-AI/claude-content-skills (17)
-| skill | किस कदम पर | क्या करता है |
+**वॉइस एजेंट के skill यहाँ नहीं हैं।** script, hook, CTA, research — वह उसका काम है।
+यहाँ सिर्फ़ वह है जो **दृश्य** बनाने में लगता है।
+
+## मेरे skill (7)
+| skill | कदम | क्या |
 |---|---|---|
-| `agent-reach` | 3 | research — web/social/video से जानकारी |
-| `content-research` | 3 | विषय की खोज |
-| `trend-spotter` | 3 | चलन में है या नहीं |
-| `audience-personas` | 3 | किसके लिए बन रही है |
-| `hook-mining` | 4 | hook कहाँ से आए |
-| `viral-hook-writer` | 4 | पहले 3 सेकंड का hook |
-| `ab-hook-tester` | 4 | दो hook में कौन बेहतर |
-| `reel-scripter` | 4 | पूरी script |
-| `humanizer` | 4 | भाषा इंसानी लगे |
-| **`story-sequencer`** | **5** | **कहानी का क्रम** |
-| **`b-roll-shot-list`** | **5** | **हर line के ऊपर क्या दिखेगा — पूरा shot list** |
-| **`on-screen-text-writer`** | **5** | **स्क्रीन पर क्या लिखा जाए** |
+| **`b-roll-shot-list`** | **5** | हर line के ऊपर क्या दिखेगा — पूरा shot list |
+| **`on-screen-text-writer`** | **5** | स्क्रीन पर क्या लिखा जाए |
 | `cover-thumbnail-brief` | 6 | थंबनेल का brief |
-| `cta-writer` | 5 | आख़िरी line |
-| `reel-analyzer` | 14 | बनी हुई रील की जाँच |
-| `reel-builder` | 9 | रील का ढाँचा |
+| `reel-builder` | 9 | दृश्य का ढाँचा |
+| `reel-analyzer` | 13 | बनी हुई रील की जाँच |
 | `caption-and-hashtags` | 15 | description + hashtags |
+| `design-motion-principles` | 9 · 12 | motion के नियम + audit |
 
-## kylezantos/design-motion-principles (1 + references)
-| file | किस कदम पर | क्या |
-|---|---|---|
-| `SKILL.md` | 9 | motion के सिद्धांत |
-| `references/motion-cookbook.md` | 9 | तैयार motion recipes |
-| `references/emil-kowalski.md` · `jakub-krehel.md` · `jhey-tompkins.md` | 9 | तीन motion designers के नियम |
-| `references/anti-checklist.md` | 12 | क्या नहीं करना |
-| `references/audit-checklist.md` | 12 | जाँच की सूची |
-| `references/creation-gotchas.md` | 9 | कहाँ फँसते हैं |
-| `references/performance.md` | 9 | रफ़्तार |
-| `workflows/create.md` | 9 | बनाने का तरीका |
-| `workflows/audit.md` | 12 | जाँच का तरीका |
+## design-motion-principles के अंदर
+`SKILL.md` · `references/motion-cookbook.md` · `anti-checklist.md` · `audit-checklist.md` ·
+`creation-gotchas.md` · `performance.md` · `emil-kowalski.md` · `jakub-krehel.md` ·
+`jhey-tompkins.md` · `workflows/create.md` · `workflows/audit.md`
 
-**स्रोत:** `github.com/Ootto-AI/claude-content-skills` · `github.com/kylezantos/design-motion-principles`
+## जो हटा दिए — वॉइस एजेंट के हैं
+`reel-scripter` `viral-hook-writer` `hook-mining` `ab-hook-tester` `humanizer`
+`cta-writer` `story-sequencer` `agent-reach` `content-research` `trend-spotter` `audience-personas`
