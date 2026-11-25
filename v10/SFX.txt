@@ -1,0 +1,38 @@
+whoosh 20 ['https://assets.mixkit.co/active_storage/sfx/1489/1489-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/1491/1491-preview.mp3']
+transition 36 ['https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/1714/1714-preview.mp3']
+click 36 ['https://assets.mixkit.co/active_storage/sfx/1133/1133-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/275/275-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/1109/1109-preview.mp3']
+pop 11 ['https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3', 'https://assets.mixkit.co/active_storage/sfx/2364/2364-preview.mp3']
+[
+ [
+  "sfx/whoosh_0.mp3",
+  71724
+ ],
+ [
+  "sfx/whoosh_1.mp3",
+  44574
+ ],
+ [
+  "sfx/transition_0.mp3",
+  44574
+ ],
+ [
+  "sfx/transition_1.mp3",
+  27247
+ ],
+ [
+  "sfx/click_0.mp3",
+  14406
+ ],
+ [
+  "sfx/click_1.mp3",
+  10540
+ ],
+ [
+  "sfx/pop_0.mp3",
+  15239
+ ],
+ [
+  "sfx/pop_1.mp3",
+  13059
+ ]
+]
