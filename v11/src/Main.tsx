@@ -459,8 +459,8 @@ export const Main: React.FC = () => {
   const local = (t - beat.s) * fps;
   const span = (beat.e - beat.s) * fps;
 
-  const drift = interpolate(t, [0, 35.6], [1.0, 1.045]);
-  const punch = interpolate(local, [0, span], [1.0, 1.095], { extrapolateRight: "clamp" });
+  const drift = interpolate(t, [0, 35.6], [1.0, 1.010]);
+  const punch = interpolate(local, [0, span], [1.0, 1.040], { extrapolateRight: "clamp" });
   const cam = drift * punch;
   const rot = (f / fps) * 0.55;
 
