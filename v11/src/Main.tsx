@@ -358,20 +358,20 @@ const Rows: React.FC<{ rows: string[][]; red?: boolean; local: number; after?: s
       const op = interpolate(sp, [0, 0.6], [0, 1], { extrapolateRight: "clamp" });
       return (
         <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center",
-          background: PAPER, borderRadius: 14, padding: "26px 26px", marginBottom: 18, opacity: op,
+          background: PAPER, borderRadius: 14, padding: "42px 30px", marginBottom: 22, opacity: op,
           transform: `translateY(${y}px)`, boxShadow: "0 10px 26px rgba(17,17,17,0.10)" }}>
-          <div style={{ ...HEAD, fontSize: 42, color: INK }}>{a}</div>
+          <div style={{ ...HEAD, fontSize: 52, color: INK }}>{a}</div>
           <div style={{ ...MONO(21, 700, red ? RED : GREEN) }}>{b}</div>
         </div>
       );
     })}
     {after && (
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center",
-        background: MINT, borderRadius: 14, padding: "26px 26px", marginTop: 12,
+        background: MINT, borderRadius: 14, padding: "42px 30px", marginTop: 14,
         opacity: interpolate(local, [30, 42], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
         transform: `translateY(${interpolate(spring({ frame: Math.max(0, local - 30), fps: FPS,
           config: { damping: 15, stiffness: 120, mass: 0.7 } }), [0, 1], [34, 0])}px)` }}>
-        <div style={{ ...HEAD, fontSize: 42, color: INK }}>{after[0]}</div>
+        <div style={{ ...HEAD, fontSize: 52, color: INK }}>{after[0]}</div>
         <div style={{ ...MONO(21, 700, GREEN) }}>{after[1]}</div>
       </div>
     )}
@@ -388,10 +388,10 @@ const Checks: React.FC<{ rows: [string, boolean][]; code?: string; local: number
       const y = interpolate(sp, [0, 1], [40, 0]);
       return (
         <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center",
-          background: ok ? MINT : PAPER, borderRadius: 14, padding: "30px 26px", marginBottom: 20,
+          background: ok ? MINT : PAPER, borderRadius: 14, padding: "46px 30px", marginBottom: 24,
           opacity: interpolate(sp, [0, 0.6], [0, 1], { extrapolateRight: "clamp" }),
           transform: `translateY(${y}px)`, boxShadow: "0 10px 26px rgba(17,17,17,0.10)" }}>
-          <div style={{ ...HEAD, fontSize: 40, color: INK }}>{t}</div>
+          <div style={{ ...HEAD, fontSize: 50, color: INK }}>{t}</div>
           <div style={{ ...HEAD, fontSize: 48, color: ok ? GREEN : RED }}>{ok ? "✓" : "✗"}</div>
         </div>
       );
