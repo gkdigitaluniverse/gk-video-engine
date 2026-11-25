@@ -1,0 +1,25 @@
+name: v11 fix
+on:
+  push:
+    paths: ["pub/v11_fix2.py"]
+  workflow_dispatch:
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests
+      - name: Fix YouTube post and Instagram reel
+        env:
+          CK: ${{ secrets.COMPOSIO_KEY }}
+        run: python3 pub/v11_fix2.py > FIX2-V11.txt 2>&1
+      - name: Save output
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f FIX2-V11.txt && git commit -m "v11 fix2 output" || true
+          git pull --rebase -q origin main || true
+          git push || true
