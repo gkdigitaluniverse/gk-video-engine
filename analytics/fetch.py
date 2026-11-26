@@ -31,17 +31,46 @@ H = {"Authorization": f"Bearer {KEY}", "Content-Type": "application/json",
      "Accept": "application/json, text/event-stream"}
 _mid = [200]
 
-def _parse(text):
-    out = []
-    for line in text.splitlines():
+def _walk(obj, acc, depth=0):
+    """JSON ke andar chhupe hue saare 'text' payloads nikaalo (double-encoded bhi)."""
+    if depth > 6:
+        return
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k == "text" and isinstance(v, str):
+                acc.append(v)
+            else:
+                _walk(v, acc, depth + 1)
+    elif isinstance(obj, list):
+        for i in obj:
+            _walk(i, acc, depth + 1)
+    elif isinstance(obj, str):
+        t = obj.strip()
+        if t[:1] in "{[":
+            try:
+                _walk(json.loads(t), acc, depth + 1)
+            except Exception:
+                pass
+
+def harvest(raw):
+    """SSE stream ya plain JSON — dono se payloads nikaal do."""
+    acc = []
+    for line in raw.splitlines():
         line = line.strip()
         if line.startswith("data:"):
-            try: out.append(json.loads(line[5:].strip()))
-            except Exception: pass
-    if not out:
-        try: out.append(json.loads(text))
-        except Exception: pass
-    return out
+            s2 = line[5:].strip()
+            try:
+                _walk(json.loads(s2), acc)
+            except Exception:
+                pass
+    if not acc:
+        try:
+            _walk(json.loads(raw), acc)
+        except Exception:
+            pass
+    if not acc:
+        acc.append(raw[:4000])
+    return acc
 
 def init():
     if not KEY:
@@ -61,19 +90,21 @@ def rpc(method, params, timeout=280):
     _mid[0] += 1
     mid = _mid[0]
     r = S.post(URL, headers=H, json={"jsonrpc": "2.0", "id": mid, "method": method, "params": params}, timeout=timeout)
-    for m in _parse(r.text):
-        if m.get("id") == mid:
-            if "error" in m:
-                return {"__error__": m["error"], "__http__": r.status_code}
-            return m.get("result", {})
-    return {"__error__": {"message": r.text[:400]}, "__http__": r.status_code}
+    return r.text
 
-def text_of(res):
-    if "__error__" in res:
-        return json.dumps({"error": str(res["__error__"])[:400]})
-    return "\n".join(c.get("text", "") for c in (res.get("content") or []) if c.get("type") == "text")
+def text_of(raw):
+    """Sabse bada payload — jo actual data hota hai."""
+    ps = harvest(raw)
+    ps.sort(key=len, reverse=True)
+    return ps[0] if ps else ""
 
-def deep(d, keys=("data", "response")):
+def _as_json(txt):
+    try:
+        return json.loads(txt)
+    except Exception:
+        return None
+
+def deep(d):
     cur = d
     for _ in range(5):
         if isinstance(cur, dict):
@@ -90,24 +121,35 @@ def deep(d, keys=("data", "response")):
     return cur
 
 def run_tools(pairs):
-    """pairs = [(slug, args), ...] -> {slug: unwrapped result}"""
-    res = rpc("tools/call", {"name": "COMPOSIO_MULTI_EXECUTE_TOOL",
+    """pairs = [(slug, args)] -> {slug: unwrapped result}"""
+    raw = rpc("tools/call", {"name": "COMPOSIO_MULTI_EXECUTE_TOOL",
                              "arguments": {"tools": [{"tool_slug": s, "arguments": a} for s, a in pairs]}})
-    txt = text_of(res)
-    try:
-        j = json.loads(txt)
-    except Exception:
-        log("multi_execute raw:", txt[:300])
-        return {s: {"__error__": txt[:300]} for s, _ in pairs}
     out = {}
-    for item in (((j.get("data") or {}).get("results")) or []):
-        slug = item.get("tool_slug") or pairs[(item.get("index") or 0)][0]
-        resp = item.get("response") or {}
-        out[slug] = deep(resp) if not item.get("error") else {"__error__": str(item.get("error"))[:300]}
-        if item.get("error"):
-            log("  !", slug, str(item.get("error"))[:160])
-    for s, _ in pairs:
-        out.setdefault(s, {"__error__": "no result"})
+    for txt in harvest(raw):
+        j = _as_json(txt)
+        if not isinstance(j, dict):
+            continue
+        results = ((j.get("data") or {}).get("results")) if isinstance(j.get("data"), dict) else None
+        if not results and isinstance(j.get("results"), list):
+            results = j["results"]
+        if not isinstance(results, list):
+            continue
+        for item in results:
+            if not isinstance(item, dict):
+                continue
+            slug = item.get("tool_slug")
+            if not slug:
+                idx = item.get("index")
+                slug = pairs[idx][0] if isinstance(idx, int) and idx < len(pairs) else None
+            if not slug:
+                continue
+            if item.get("error"):
+                out[slug] = {"__error__": str(item.get("error"))[:300]}
+                log("  !", slug, str(item.get("error"))[:150])
+            else:
+                out[slug] = deep(item.get("response") or {})
+    for s2, _ in pairs:
+        out.setdefault(s2, {"__error__": "no result"})
     return out
 
 # ------------------------- Instagram -------------------------
@@ -257,16 +299,19 @@ def main():
     status = init()
     log("started", started)
 
-    tl = rpc("tools/list", {})
-    log("tools available:", len([t for t in (tl.get("tools") or [])]))
+    tl = text_of(rpc("tools/list", {}))
+    try:
+        n_tools = len((json.loads(tl) or {}).get("tools") or [])
+    except Exception:
+        n_tools = -1
+    log("tools available:", n_tools)
 
     schemas = {}
     slugs = ["INSTAGRAM_GET_USER_INFO", "INSTAGRAM_GET_IG_USER_MEDIA",
              "INSTAGRAM_GET_IG_MEDIA_INSIGHTS", "FACEBOOK_LIST_MANAGED_PAGES",
              "FACEBOOK_GET_PAGE_POSTS", "YOUTUBE_LIST_CHANNEL_VIDEOS",
              "YOUTUBE_GET_VIDEO_DETAILS_BATCH"]
-    res = rpc("tools/call", {"name": "COMPOSIO_GET_TOOL_SCHEMAS", "arguments": {"tool_slugs": slugs}})
-    txt = text_of(res)
+    txt = text_of(rpc("tools/call", {"name": "COMPOSIO_GET_TOOL_SCHEMAS", "arguments": {"tool_slugs": slugs}}))
     try:
         schemas = json.loads(txt)
     except Exception:
@@ -278,8 +323,7 @@ def main():
              "YOUTUBE_LIST_CHANNEL_VIDEOS", "YOUTUBE_GET_MY_CHANNEL", "YOUTUBE_LIST_VIDEOS",
              "YOUTUBE_SEARCH_LIST", "YOUTUBE_GET_CHANNEL_STATISTICS",
              "FACEBOOK_GET_PAGE_INSIGHTS", "FACEBOOK_GET_POST_INSIGHTS", "FACEBOOK_GET_PAGE_POSTS"]
-    res2 = rpc("tools/call", {"name": "COMPOSIO_GET_TOOL_SCHEMAS", "arguments": {"tool_slugs": probe}})
-    t2 = text_of(res2)
+    t2 = text_of(rpc("tools/call", {"name": "COMPOSIO_GET_TOOL_SCHEMAS", "arguments": {"tool_slugs": probe}}))
     try:
         pj = json.loads(t2)
     except Exception:
