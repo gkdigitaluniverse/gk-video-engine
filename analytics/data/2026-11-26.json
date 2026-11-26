@@ -1,0 +1,24 @@
+{
+ "run_at": "2026-11-26T13:24:14.317702Z",
+ "key_len": 23,
+ "data": {
+  "run_at": "2026-11-26T13:24:14.317702Z",
+  "http_init": 200,
+  "instagram": {
+   "user": null,
+   "media": [],
+   "insights": []
+  },
+  "facebook": {
+   "pages": [],
+   "posts": [],
+   "insights": []
+  },
+  "youtube": {
+   "channel": null,
+   "videos": [],
+   "note": "Channel-level data pehle 403 de raha tha (scope). Video IDs ke bina channel ki list nahi mil sakti — isliye yahan sirf note hai, koi anka nahi.",
+   "probe": "{'ok': True, 'text': 'MCP error -32602: Tool YOUTUBE_GET_VIDEO_DETAILS_BATCH not found'}"
+  }
+ }
+}

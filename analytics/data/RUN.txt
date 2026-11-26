@@ -1,0 +1,11 @@
+key length: 23
+init HTTP 200
+started 2026-11-26T13:24:14.317702Z
+tools available: 12
+schemas saved
+IG user: FAIL
+IG id: None
+IG media try {'limit': 25} -> {'ok': True, 'text': 'MCP error -32602: Tool INSTAGRAM_GET_IG_MEDIA not found'}
+IG media try {} -> {'ok': True, 'text': 'MCP error -32602: Tool INSTAGRAM_GET_IG_MEDIA not found'}
+FB pages: []
+YT probe: {'ok': True, 'text': 'MCP error -32602: Tool YOUTUBE_GET_VIDEO_DETAILS_BATCH not found'}

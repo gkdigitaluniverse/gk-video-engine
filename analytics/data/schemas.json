@@ -1,0 +1,361 @@
+{
+ "INSTAGRAM_GET_USER_INFO": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "INSTAGRAM_GET_USER_INFO": {
+     "toolkit": "INSTAGRAM",
+     "tool_slug": "INSTAGRAM_GET_USER_INFO",
+     "description": "Get Instagram Business Account info including profile details and statistics. Use \"me\" to query your own authenticated account, or provide the numeric Business Account ID of an account you manage. NOTE: followers_count and follows_count are returned for your own profile (ig_user_id=\"me\"). For other accounts, follower/follow counts are surfaced through the business_discovery edge rather than this direct-node action, so they may be null here.",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "fields": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Optional exact comma-separated projection of Instagram user fields. Supported profile fields include id, user_id, username, name, account_type, profile_picture_url, followers_count, follows_count, and media_count. When omitted, the action uses its existing profile field defaults."
+       },
+       "ig_user_id": {
+        "type": "string",
+        "description": "Instagram Business Account ID. IMPORTANT: You can only query Business/Creator accounts that you manage through Facebook Business Manager. Use \"me\" to query your own authenticated account. To query other accounts you manage, provide their numeric Business Account ID. Arbitrary public accounts cannot be queried. If not provided, defaults to \"me\"."
+       },
+       "graph_api_version": {
+        "type": "string",
+        "default": "v21.0",
+        "description": "The Facebook Graph API version to use for the request."
+       }
+      }
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_S8NcX4gOWxBP"
+ },
+ "INSTAGRAM_GET_IG_MEDIA": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "INSTAGRAM_GET_IG_MEDIA": {
+     "toolkit": "INSTAGRAM",
+     "tool_slug": "INSTAGRAM_GET_IG_MEDIA",
+     "description": "Get a published Instagram Media object (photo, video, story, reel, or carousel). Use when you need to retrieve detailed information about a specific Instagram post including engagement metrics, caption, media URLs, and metadata. NOTE: This action is for published media only. For unpublished container IDs (from INSTAGRAM_CREATE_MEDIA_CONTAINER), use INSTAGRAM_GET_POST_STATUS to check status instead.",
+     "input_schema": {
+      "type": "object",
+      "required": [
+       "ig_media_id"
+      ],
+      "properties": {
+       "fields": {
+        "type": "string",
+        "default": "id,caption,media_type,media_url,permalink,timestamp,like_count,comments_count,media_product_type,legacy_instagram_media_id,alt_text,is_ai_generated,is_shared_to_feed,media_audio_type,view_count,reposts_count,saved_count,shares_count,total_like_count,total_comments_count,total_views_count",
+        "description": "Comma-separated list of fields to return. Supported: id, caption, comments_count, is_comment_enabled, like_count, media_type, media_url, media_product_type, legacy_instagram_media_id, owner, permalink, shortcode, thumbnail_url, timestamp, username, alt_text, is_ai_generated, is_shared_to_feed, media_audio_type, view_count, reposts_count, saved_count, shares_count, total_like_count, total_comments_count, total_views_count, children, comments. For nested fields use 'children{media_url,media_type}'. UNSUPPORTED (cause errors): tagged_users, user_tags, location, filter_name, latitude, longitude, text â use 'caption' not 'text'. For insights metrics use INSTAGRAM_GET_IG_MEDIA_INSIGHTS. Tagged-media retrieval is unavailable through this Instagram Login toolkit. A MediaBuilder error means the ID is an unpublished container â use INSTAGRAM_GET_POST_STATUS."
+       },
+       "ig_media_id": {
+        "type": "string",
+        "examples": [
+         "17858625294504375"
+        ],
+        "description": "The numeric ID of the Instagram media object from the Graph API (e.g., '17858625294504375'). IMPORTANT: This must be a numeric string, NOT an alphanumeric shortcode from instagram.com/p/<shortcode>/ URLs (e.g., 'DUTi4n4D9wg' is NOT valid). Obtain numeric IDs from INSTAGRAM_GET_IG_USER_MEDIA or similar endpoints. For unpublished container IDs, use INSTAGRAM_GET_POST_STATUS instead."
+       },
+       "graph_api_version": {
+        "type": "string",
+        "default": "v21.0",
+        "description": "Instagram Graph API version to use"
+       }
+      },
+      "additionalProperties": true
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_OBk5HbnMz0a-"
+ },
+ "INSTAGRAM_GET_IG_MEDIA_INSIGHTS": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "INSTAGRAM_GET_IG_MEDIA_INSIGHTS": {
+     "toolkit": "INSTAGRAM",
+     "tool_slug": "INSTAGRAM_GET_IG_MEDIA_INSIGHTS",
+     "description": "Get performance insights for an Instagram media object, such as views, reach, likes, comments, saves and shares. Requires a Business or Creator account. Some metric names are normalized, and certain invalid or deprecated metrics are removed; the response reports removals and substitutions.",
+     "input_schema": {
+      "type": "object",
+      "required": [
+       "ig_media_id",
+       "metric"
+      ],
+      "properties": {
+       "metric": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "examples": [
+         [
+          "views",
+          "reach",
+          "likes",
+          "comments",
+          "saved"
+         ]
+        ],
+        "description": "List of metrics to retrieve. Must be provided as an array of strings, e.g., ['reach', 'saved', 'likes']. COMMONLY SUPPORTED METRICS: views, reach, saved, likes, comments, shares, total_interactions, reposts. REELS-SPECIFIC METRICS: ig_reels_video_view_total_time, ig_reels_avg_watch_time, reels_skip_rate, facebook_views, crossposted_views. FEED-AND-STORY METRICS: profile_activity. STORIES-SPECIFIC METRICS: link_clicks, replies, navigation, follows, profile_visits. DEPRECATED METRICS (will be filtered out): 'impressions', 'plays', 'video_views', 'clips_replays_count', 'ig_reels_aggregated_all_plays_count' (use 'views' instead); 'taps_forward', 'taps_back', 'exits' (Story navigation metrics deprecated in API v18+, use 'navigation' instead). INVALID METRIC NAMES (will be rejected): 'clicks', 'engagement' are NOT valid metric names."
+       },
+       "period": {
+        "type": "string",
+        "const": "lifetime",
+        "default": "lifetime",
+        "description": "The time period for metric aggregation. Instagram media insights automatically use 'lifetime'; other period values are not supported."
+       },
+       "breakdown": {
+        "enum": [
+         "action_type",
+         "story_navigation_action_type"
+        ],
+        "type": "string",
+        "description": "Optional breakdown dimension for supported metrics. Allowed values: 'action_type' (e.g. for profile_activity) and 'story_navigation_action_type' (for Story navigation). Only applicable to metrics that support breakdowns."
+       },
+       "ig_media_id": {
+        "type": "string",
+        "examples": [
+         "18044673371703564"
+        ],
+        "description": "The ID of the Instagram media object (photo, video, reel, carousel album) for which to retrieve insights"
+       },
+       "graph_api_version": {
+        "type": "string",
+        "default": "v21.0",
+        "description": "Instagram Graph API version to use"
+       }
+      }
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_isuHkresCkJy"
+ },
+ "FACEBOOK_LIST_MANAGED_PAGES": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "FACEBOOK_LIST_MANAGED_PAGES": {
+     "toolkit": "FACEBOOK",
+     "tool_slug": "FACEBOOK_LIST_MANAGED_PAGES",
+     "description": "Retrieves Facebook Pages managed by a user, with page details, access tokens and tasks when returned. Results are paginated using cursors; an empty result alone does not establish why no Pages were returned.",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "after": {
+        "type": "string",
+        "description": "Cursor string for forward pagination. Use the 'after' cursor from a previous response's paging.cursors.after field to retrieve the next page of results."
+       },
+       "limit": {
+        "type": "integer",
+        "default": 25,
+        "description": "Maximum number of pages to retrieve per request."
+       },
+       "before": {
+        "type": "string",
+        "description": "Cursor string for backward pagination. Use the 'before' cursor from a previous response's paging.cursors.before field to retrieve the previous page of results."
+       },
+       "fields": {
+        "type": "string",
+        "default": "id,name,access_token,category,tasks,about,link,picture",
+        "description": "Comma-separated list of fields to return for each managed page."
+       },
+       "user_id": {
+        "type": "string",
+        "default": "me",
+        "description": "The ID of the user whose managed pages to retrieve. Defaults to 'me' for current user."
+       }
+      }
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_qRENpuEodUor"
+ },
+ "FACEBOOK_GET_PAGE_POSTS": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "FACEBOOK_GET_PAGE_POSTS": {
+     "toolkit": "FACEBOOK",
+     "tool_slug": "FACEBOOK_GET_PAGE_POSTS",
+     "description": "Retrieves posts from a Facebook Page's feed using Graph API v26.0, with optional time filters. The response may include pagination information, but this tool does not accept a cursor or next URL for subsequent pages.",
+     "input_schema": {
+      "type": "object",
+      "required": [
+       "page_id"
+      ],
+      "properties": {
+       "limit": {
+        "type": "integer",
+        "default": 25,
+        "maximum": 100,
+        "minimum": 1,
+        "description": "Number of posts to return (max 100)"
+       },
+       "since": {
+        "type": "string",
+        "description": "Filter posts updated after this time. Accepts: Unix timestamp (e.g., '1705320000'), strtotime values (e.g., 'yesterday', '7 days ago', 'last week'), or datetime strings (e.g., '2024-01-15', '2024-01-15T12:00:00'). Datetime strings are automatically converted to Unix timestamps."
+       },
+       "until": {
+        "type": "string",
+        "description": "Filter posts updated before this time. Accepts: Unix timestamp (e.g., '1705320000'), strtotime values (e.g., 'yesterday', '7 days ago', 'last week'), or datetime strings (e.g., '2024-01-15', '2024-01-15T12:00:00'). Datetime strings are automatically converted to Unix timestamps."
+       },
+       "fields": {
+        "type": "string",
+        "default": "id,message,created_time,updated_time,permalink_url,attachments",
+        "description": "Comma-separated list of fields to return for each post. Supported fields include: id, message, created_time, updated_time, permalink_url, attachments, story, from, status_type, full_picture, shares, reactions, comments, is_hidden, is_published. For summary counts, use '.summary(true)' syntax (e.g., 'reactions.summary(true)', 'comments.summary(true)', 'likes.summary(true)'). Note: 'type', 'link', 'source', 'picture', 'name', 'caption', 'description', and 'icon' are deprecated since Graph API v3.3 and will be automatically removed if requested. Response nests engagement data: extract reactions.summary.total_count, comments.summary.total_count, and shares.count; treat missing keys as zero."
+       },
+       "page_id": {
+        "type": "string",
+        "description": "The ID of the Facebook Page. Can be provided as a string or number. Must be a Facebook Page ID, not a personal profile or user ID â use FACEBOOK_GET_USER_PAGES to obtain a valid Page ID."
+       },
+       "removed_deprecated_fields": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Internal field to track deprecated fields that were automatically removed."
+       }
+      }
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_sAIGFJ7WwjQ3"
+ },
+ "FACEBOOK_GET_GRAPH_OBJECT": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "FACEBOOK_GET_GRAPH_OBJECT": {
+     "toolkit": "FACEBOOK",
+     "tool_slug": "FACEBOOK_GET_GRAPH_OBJECT",
+     "description": "Read caller-selected fields from an identified Facebook Graph node using permissions already granted to the connection.",
+     "input_schema": {
+      "type": "object",
+      "required": [
+       "object_id"
+      ],
+      "properties": {
+       "fields": {
+        "type": "string",
+        "examples": [
+         "id,name"
+        ],
+        "description": "Optional comma-separated Graph fields to return for this object type. If omitted, Facebook returns the node's provider-default fields."
+       },
+       "object_id": {
+        "type": "string",
+        "examples": [
+         "me",
+         "123456789012345"
+        ],
+        "description": "Facebook Graph object ID, or me for the connected user."
+       }
+      }
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_Wpa14lL1ZlBI"
+ },
+ "YOUTUBE_GET_VIDEO_DETAILS_BATCH": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "YOUTUBE_GET_VIDEO_DETAILS_BATCH": {
+     "toolkit": "YOUTUBE",
+     "tool_slug": "YOUTUBE_GET_VIDEO_DETAILS_BATCH",
+     "description": "Retrieves multiple YouTube video resource parts in a single batch call. Use when you need cohort-level metrics for many videos to reduce quota usage and latency.",
+     "input_schema": {
+      "type": "object",
+      "required": [
+       "id"
+      ],
+      "properties": {
+       "hl": {
+        "type": "string",
+        "examples": [
+         "en"
+        ],
+        "description": "Language for localized metadata (snippet.localized); IETF language tag, e.g., 'en'."
+       },
+       "id": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "examples": [
+         [
+          "dQw4w9WgXcQ",
+          "eX2qFMC8cFo"
+         ]
+        ],
+        "minItems": 1,
+        "description": "List of YouTube video IDs to retrieve. At least one video ID is required. Accepts a list or comma-separated string. Also accepts 'videoIds' as an alias. The YouTube API limits each request to 50 video IDs; if more are provided, they will be automatically split into multiple requests and the results merged."
+       },
+       "parts": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "contentDetails",
+          "fileDetails",
+          "id",
+          "liveStreamingDetails",
+          "localizations",
+          "paidProductPlacementDetails",
+          "player",
+          "processingDetails",
+          "recordingDetails",
+          "snippet",
+          "statistics",
+          "status",
+          "suggestions",
+          "topicDetails"
+         ],
+         "type": "string"
+        },
+        "default": [
+         "snippet",
+         "statistics"
+        ],
+        "examples": [
+         [
+          "snippet",
+          "statistics"
+         ],
+         [
+          "snippet",
+          "contentDetails",
+          "statistics"
+         ]
+        ],
+        "minItems": 1,
+        "description": "Video resource properties to include. At least one part is required. Accepts a list of parts or a comma-separated string. Also accepts 'part' (singular) as an alias. Valid parts: snippet, contentDetails, statistics, status, player, topicDetails, recordingDetails, fileDetails, processingDetails, suggestions, liveStreamingDetails, localizations, paidProductPlacementDetails, id. Defaults to ['snippet', 'statistics'] if not specified."
+       }
+      }
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_yaFzmakrDX3T"
+ }
+}
