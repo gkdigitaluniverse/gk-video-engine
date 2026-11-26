@@ -151,3 +151,4 @@ for v in V:
         out = gql(q)
         ok = '"id"' in out and 'errors' not in out[:200]
         print(f"  {tag:9} {'OK' if ok else 'FAIL'}  {out[:230]}")
+# run2
