@@ -1,11 +1,13 @@
 key length: 23
 init HTTP 200
-started 2026-11-26T13:24:14.317702Z
+started 2026-11-26T13:25:19.497794Z
 tools available: 12
 schemas saved
-IG user: FAIL
-IG id: None
-IG media try {'limit': 25} -> {'ok': True, 'text': 'MCP error -32602: Tool INSTAGRAM_GET_IG_MEDIA not found'}
-IG media try {} -> {'ok': True, 'text': 'MCP error -32602: Tool INSTAGRAM_GET_IG_MEDIA not found'}
-FB pages: []
-YT probe: {'ok': True, 'text': 'MCP error -32602: Tool YOUTUBE_GET_VIDEO_DETAILS_BATCH not found'}
+IG user: {"account_type": "MEDIA_CREATOR", "biography": "developer", "composio_execution_message": null, "followers_count": 1, "follows_count": 0, "id": "29161770546783780", "media_count": 4, "name": "gk hackter", "user_id": "17841467354420035", "username": "gkhackter"}
+IG id: 29161770546783780
+IG media try ['ig_user_id', 'limit'] -> {"__error__": "no result"}
+IG media try ['ig_user_id', 'fields'] -> {"__error__": "no result"}
+FB pages: [{"id": "1270080059532814", "name": "Gk Hackter", "category": "Science, technology and engineering", "fans": 0, "followers": 0}]
+  ! FACEBOOK_GET_PAGE_POSTS {"error":{"message":"(#100) The value must be a valid insights metric","type":"OAuthException","code":100,"fbtrace_id":"Av4lW51nS8KmLnvlNh9rgf0"}}
+FB posts for 1270080059532814 -> {"__error__": "{\"error\":{\"message\":\"(#100) The value must be a valid insights metric\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Av4lW51nS8KmLnvlNh9rgf0\"}}"}
+YT channel videos: {"__error__": "no result"}

@@ -1,24 +1,43 @@
 {
- "run_at": "2026-11-26T13:24:14.317702Z",
+ "run_at": "2026-11-26T13:25:19.497794Z",
  "key_len": 23,
  "data": {
-  "run_at": "2026-11-26T13:24:14.317702Z",
+  "run_at": "2026-11-26T13:25:19.497794Z",
   "http_init": 200,
   "instagram": {
-   "user": null,
+   "user": {
+    "account_type": "MEDIA_CREATOR",
+    "biography": "developer",
+    "composio_execution_message": null,
+    "followers_count": 1,
+    "follows_count": 0,
+    "id": "29161770546783780",
+    "media_count": 4,
+    "name": "gk hackter",
+    "user_id": "17841467354420035",
+    "username": "gkhackter"
+   },
    "media": [],
-   "insights": []
+   "rows": []
   },
   "facebook": {
-   "pages": [],
-   "posts": [],
-   "insights": []
+   "pages": [
+    {
+     "id": "1270080059532814",
+     "name": "Gk Hackter",
+     "category": "Science, technology and engineering",
+     "fans": 0,
+     "followers": 0
+    }
+   ],
+   "rows": []
   },
   "youtube": {
-   "channel": null,
+   "channel_videos": {
+    "__error__": "no result"
+   },
    "videos": [],
-   "note": "Channel-level data pehle 403 de raha tha (scope). Video IDs ke bina channel ki list nahi mil sakti — isliye yahan sirf note hai, koi anka nahi.",
-   "probe": "{'ok': True, 'text': 'MCP error -32602: Tool YOUTUBE_GET_VIDEO_DETAILS_BATCH not found'}"
+   "note": "channel video list khaali ya 403 — upar ka jawab dekho"
   }
  }
 }
