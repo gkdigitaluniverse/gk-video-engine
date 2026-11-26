@@ -100,6 +100,26 @@ def salvage(raw):
             pass
     return out
 
+def payloads_from_raw(raw):
+    """SSE framing ko chhodo — raw text me jahan bhi "text":"<json>" mile,
+    us string literal ko theek se decode karo. Yahi sabse bharosemand raasta hai."""
+    out = []
+    i = 0
+    while i < len(raw):
+        m = re.search(r'"text"\s*:\s*"', raw[i:])
+        if not m:
+            break
+        start = i + m.end() - 1
+        try:
+            val, end = _DEC.raw_decode(raw[start:])
+        except Exception:
+            i = start + 1
+            continue
+        if isinstance(val, str) and val.strip()[:1] in "{[":
+            out.append(val)
+        i = start + end
+    return out
+
 def init():
     if not KEY:
         log("FATAL: COMPOSIO_KEY khaali hai")
@@ -122,7 +142,7 @@ def rpc(method, params, timeout=280):
 
 def text_of(raw):
     """Sabse bada payload — jo actual data hota hai."""
-    ps = harvest(raw) + salvage(raw)
+    ps = payloads_from_raw(raw) + harvest(raw) + salvage(raw)
     ps.sort(key=len, reverse=True)
     return ps[0] if ps else ""
 
@@ -154,7 +174,7 @@ def run_tools(pairs):
                              "arguments": {"tools": [{"tool_slug": s, "arguments": a} for s, a in pairs]}})
     out = {}
     found = 0
-    for txt in (harvest(raw) + salvage(raw)):
+    for txt in (payloads_from_raw(raw) + harvest(raw) + salvage(raw)):
         j = _as_json(txt)
         if not isinstance(j, dict):
             continue
@@ -181,7 +201,11 @@ def run_tools(pairs):
             else:
                 out[slug] = deep(item.get("response") or {})
     if not found:
-        log("  !! kuch parse nahi hua, raw ka shuru:", raw[:600].replace(chr(10), " "))
+        try:
+            open(os.path.join(OUT, "raw_debug.txt"), "w").write(raw[:200000])
+        except Exception:
+            pass
+        log("  !! kuch parse nahi hua — data/raw_debug.txt me raw likh diya")
     for s2, _ in pairs:
         out.setdefault(s2, {"__error__": "no result"})
     return out
