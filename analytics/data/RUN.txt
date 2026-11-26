@@ -1,6 +1,6 @@
 key length: 23
 init HTTP 200
-started 2026-11-26T13:36:39.428963Z
+started 2026-11-26T13:37:34.650336Z
 tools available: -1
 schemas saved
 EXISTS: INSTAGRAM_GET_IG_USER_MEDIA,INSTAGRAM_GET_USER_MEDIA,INSTAGRAM_GET_USER_INSIGHTS,YOUTUBE_LIST_CHANNEL_VIDEOS,YOUTUBE_GET_CHANNEL_STATISTICS,FACEBOOK_GET_PAGE_INSIGHTS,FACEBOOK_GET_POST_INSIGHTS,FACEBOOK_GET_PAGE_POSTS
@@ -16,5 +16,6 @@ FB post 1270080059532814_122122517247511062 insights: {"data": [{"description": 
 FB post 1270080059532814_122120114673511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122120114673511062/insi
 FB post 1270080059532814_122119646307511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122119646307511062/insi
 FB post 1270080059532814_122119243131511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122119243131511062/insi
-YT via YOUTUBE_LIST_CHANNEL_VIDEOS {"mine": true, "maxResults": 25, "part": "snippet,contentDetails,statistics"}
+YT via YOUTUBE_LIST_CHANNEL_VIDEOS {"mine": true, "maxResults": 25, "part": "contentDetails"}
+YT details: {"etag": "Ja3OXqwxdf6lgViFguCeH1r3qGA", "found_count": 3, "items": [{"contentDetails": {"caption": "false", "contentRating": {}, "definition": "hd", "dimension": "2d", "duration": "PT36S", "hasCustomThumbnail": false, "licensedContent": false, "projection": "rectangular"}, "etag": "2whbpKXx5NCZv2ppMpO4cp_oETc", "id": "J6hsqwtul-o", "kind": "youtube#video", "snippet": {"categoryId": "28", "channelI
 YT channel stats: {"channels": [{"id": "UCFW0BnicviKl3NsReW3sFsQ", "snippet": {"country": "IN", "customUrl": "@gkhackter", "description": "", "localized": {"description": "", "title": "gk hackter "}, "publishedAt": "2026-10-24T15:59:40.996441Z", "thumbnails": {"default": {"height": 88, "url": "https://yt3.ggpht.com/e

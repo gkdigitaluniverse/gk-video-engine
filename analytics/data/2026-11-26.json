@@ -1,8 +1,8 @@
 {
- "run_at": "2026-11-26T13:36:39.428963Z",
+ "run_at": "2026-11-26T13:37:34.650336Z",
  "key_len": 23,
  "data": {
-  "run_at": "2026-11-26T13:36:39.428963Z",
+  "run_at": "2026-11-26T13:37:34.650336Z",
   "http_init": 200,
   "instagram": {
    "user": {
@@ -24,9 +24,9 @@
      "is_ai_generated": true,
      "is_shared_to_feed": true,
      "media_type": "VIDEO",
-     "media_url": "https://scontent-iad3-2.cdninstagram.com/o1/v/t2/f2/m86/AQMgBadPC1Lue3SSUlAmAa71B5PXjX5jlhoqvqf6lq3s0C3_QJTXYY1hcAua6evujf9zzWDUG8pRymUu1kgSizs8Z1e8Cu-CNGeSV2k.mp4?_nc_cat=108&_nc_sid=5e9851&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_ohc=I7OBURm-HJIQ7kNvwHZydwH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTE1MDEwNjEyNzk3Nzg4MCwiYXNzZXRfYWdlX2RheXMiOjAsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjozNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=5ec438ab12e9cb65&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9FQkMyOUM2QTQ3MzU0MzlEQjk5RjJGODFFOTFFOERFM192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzRBMUM3MDdFODZCMzQyMDJBMDU1RjI5Rjc0QzVENUExX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACawtrKz_oCLBBUCKAJDMywXQEHMzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQLaPV1E5aVPGzHXjXWrfLubKIUGEkPSEcmCaNM5yjHN4GJUnnX_xTlLY0uUEjZefYEKTw96mom0&oh=00_AQR80VG-XKowzwYTtQZhou1WF92lEfx_hd5oZp84T5puJA&oe=6B09FDE5",
+     "media_url": "https://scontent-iad3-2.cdninstagram.com/o1/v/t2/f2/m86/AQMgBadPC1Lue3SSUlAmAa71B5PXjX5jlhoqvqf6lq3s0C3_QJTXYY1hcAua6evujf9zzWDUG8pRymUu1kgSizs8Z1e8Cu-CNGeSV2k.mp4?_nc_cat=108&_nc_sid=5e9851&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_ohc=I7OBURm-HJIQ7kNvwHZydwH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTE1MDEwNjEyNzk3Nzg4MCwiYXNzZXRfYWdlX2RheXMiOjAsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjozNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=5ec438ab12e9cb65&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9FQkMyOUM2QTQ3MzU0MzlEQjk5RjJGODFFOTFFOERFM192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzRBMUM3MDdFODZCMzQyMDJBMDU1RjI5Rjc0QzVENUExX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACawtrKz_oCLBBUCKAJDMywXQEHMzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQKveujl_VOa8gR_s9Fql16XCB5Hvcrvsm5DFUWTxpvOlpuhy_Z0bnHMjzXNDhuj-A8ck_7XIHdD&oh=00_AQTEnFrQJItAO29FNdg4uZ-hZdPPBHdSBDUJlw_irFVwsA&oe=6B09FDE5",
      "permalink": "https://www.instagram.com/reel/DgMQCixOsr-/",
-     "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.71878-15/930123953_1190020483970653_5144653037518149718_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=A9zW3rYtFVcQ7kNvwFO8w_7&_nc_oc=AdpXHPCmouQf6zb5uJuamOcH9G_wdCGbc8B_aUL0Mhl4sUjtFOpYaKlpZjfiGlCWFZU&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&_nc_tpa=Q5bMBQJgOV8B0p14IUgeelnOzblfxmJhr0OKb6nXp3NMD5LaXkMEx6R_MS4oyzG9F4_MwN_Eo3-WLA0x&_nc_ct=RQosPBUKFQoAAAA&oh=00_AQTqxP60EqJ8-EjCUaLU4gWw5pGN3jUokU1wr94wpQXI9Q&oe=6B0E18C9",
+     "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.71878-15/930123953_1190020483970653_5144653037518149718_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=A9zW3rYtFVcQ7kNvwFO8w_7&_nc_oc=AdpXHPCmouQf6zb5uJuamOcH9G_wdCGbc8B_aUL0Mhl4sUjtFOpYaKlpZjfiGlCWFZU&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&_nc_tpa=Q5bMBQLc9FbFOciZAhtJre9_iv6-EuMMyzla-qsJNoiSlHp5TEx78Og4JfgKTpejffjNhWBJWO-y_StJ&_nc_ct=RQosPBUKFQoAAAA&oh=00_AQT-Pb-dO9jVvtOGq3lGpVrmGp3OEf2f3P8f1TeEu4TxqQ&oe=6B0E18C9",
      "timestamp": "2026-11-26T04:30:55+0000",
      "username": "gkhackter"
     },
@@ -36,9 +36,9 @@
      "is_ai_generated": false,
      "is_shared_to_feed": true,
      "media_type": "VIDEO",
-     "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t2/f2/m86/AQMBCScyF8QGSb-CXpnZ7UKGo696sJmhN3PKH5eSRyVtucCmpplMYHlbRb0ahy-esIkdXTs8leNPOER_TqfE7XuHKhVIBUM4JQJy0uw.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=o1TOp85qYksQ7kNvwFwYO_z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5MzQ5NDM3OTQyNDUxNDgsImFzc2V0X2FnZV9kYXlzIjoyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=4f0134afadef5ef8&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zRjY5ODRDRjc5Njg0N0UwOTkxNTE3RjBEREZFOTcxQl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzI2MTY3Mzc5RDRCODQ3QzE5NEY0MzVBMDMyQUJFNEMyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACa4uOGekO_bPxUCKAJDMywXQEUIcrAgxJwYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQJbmn6EtqpVMEB0wcJ_y6KnXXusn1T_w5AHWWy_GsryjZI4WU5XVTJFaeZaXUZJvwawK0UT4rUU&_nc_enc=Ul3XyJTxuGPghms9xei5LNdJtv4d08rfJFlzzzuYApDb4sjK8p1ceiDuHJqnOQ6yZ2tO-lu-Lz6UhvFvGX1vDSZHPsu7bW9GEsMMAe3USfWS2QyHGvr9eqIceUDuXEfs3-UmopvcEBLJjiQ1&oh=00_AQT7wKhFP1IL3DAMGKmjpIjWZ4Ab8BDF8aLlVmWqqsJF4Q&oe=6B0A146B",
+     "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t2/f2/m86/AQMBCScyF8QGSb-CXpnZ7UKGo696sJmhN3PKH5eSRyVtucCmpplMYHlbRb0ahy-esIkdXTs8leNPOER_TqfE7XuHKhVIBUM4JQJy0uw.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=o1TOp85qYksQ7kNvwFwYO_z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5MzQ5NDM3OTQyNDUxNDgsImFzc2V0X2FnZV9kYXlzIjoyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=4f0134afadef5ef8&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zRjY5ODRDRjc5Njg0N0UwOTkxNTE3RjBEREZFOTcxQl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzI2MTY3Mzc5RDRCODQ3QzE5NEY0MzVBMDMyQUJFNEMyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACa4uOGekO_bPxUCKAJDMywXQEUIcrAgxJwYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQLvNVeOcp3I8u_wWlHkIqeDAG3Q2uUWLlTaUzlCAEI78bG92jCZD4MyuemcX7ZMNnYxz85CzTl3&_nc_enc=Uqavs9XuUoUYwNDhck3Vt34ofkXipNKfR5gUYR3TZDHsxi1XjKvnMNKM8G2oRtRAhA7rbbbYdLeVIsu4v_LA7qBVOajWIb_U1iw8L6xfXM55taQknYe8TcYlbLwlHh6vI9loFGfNXZ60lTQD&oh=00_AQTPEnvDqa02au02wfM1yd5nI3IBsTnGpcCH5JMStCZD4g&oe=6B0A146B",
      "permalink": "https://www.instagram.com/reel/DgHpnvjlGqv/",
-     "thumbnail_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/929279699_4700200170225478_5351353939116248250_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=MUlWGF8IAygQ7kNvwF3o9l9&_nc_oc=AdrRBwENTZ0C2jHKOuRKJ81Uons2d8pYZI-fRoVpWYNLD1DDEGeC9VnOyQAlIBvYQ28&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&_nc_tpa=Q5bMBQJusfjZNfrX9lxI1qmR0HJNRTkDyC865ERJKxRtrIDBsI0__9WVPgZajIYj3VTJ5h7itacAgNoO&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQR6z1UPCRp4vHYR681AoEz1Y4yshnJcgP8Zn1PamDwaqQ&oe=6B0E0C7C",
+     "thumbnail_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/929279699_4700200170225478_5351353939116248250_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=MUlWGF8IAygQ7kNvwF3o9l9&_nc_oc=AdrRBwENTZ0C2jHKOuRKJ81Uons2d8pYZI-fRoVpWYNLD1DDEGeC9VnOyQAlIBvYQ28&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&_nc_tpa=Q5bMBQL9KWWszrnSYcSe5vDE7HuxRgxmU9dP1XqOp60M2KjJ9BJRH88TJOeixZLOJTBGO-2Zd8BePs8s&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQS-rRvYiz9q5005CC61LdLxFjAgj3nd0TGqrlroxlB8LQ&oe=6B0E0C7C",
      "timestamp": "2026-11-24T09:38:04+0000",
      "username": "gkhackter"
     },
@@ -48,9 +48,9 @@
      "is_ai_generated": false,
      "is_shared_to_feed": true,
      "media_type": "VIDEO",
-     "media_url": "https://scontent-iad3-2.cdninstagram.com/o1/v/t2/f2/m86/AQP8SxG9r0cu2MuuOwgYDqYr7NfbjA8bPNHb6ay4tzCFx7VSxGtA7n3HaPtkqHHP1FuuaK8CpVOhlQBZC49yVbTDDU1u3FoQutoK1AA.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_ohc=mQkm5a11OOcQ7kNvwGEIakO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5MzM1NzgwNzcyNDUxNDgsImFzc2V0X2FnZV9kYXlzIjo4LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=964362ba110bc7be&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9GQkMwMjJEMDczODc0M0JGQTNFMkNGRjhCQzhEOUI4M192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0QxQTk3NjYzRjQwRTQxRUJCMjI0RjhERUE4REVGMUE1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACa4u8Tt0J_bPxUCKAJDMywXQEaiDEm6XjUYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQL7GA5SfpB6J86zMqxJjcahnGOFFWUy6_WtfQ7HutkQwc3aSQkt0L6SslmNzgDGsqPYJjzjqnQV&_nc_enc=Uq-3oJibx_Nw8vHVpus7KN92qpLhb0SD8glmC2ytY-JK7E5lQUHwlLKHrlMDsBkK9W--U4Ih6vlfEd2pehXFgXgV72P8XcBbp_lnsULzNStm2QULuNpJvOMKErESRaJqZp7N1kh803hvfFiW&oh=00_AQRMgfYu0Dr_6X3Y2WlZdoTXG1m5LrXfZDjFBvxcEkMAxQ&oe=6B0A02DB",
+     "media_url": "https://scontent-iad3-2.cdninstagram.com/o1/v/t2/f2/m86/AQP8SxG9r0cu2MuuOwgYDqYr7NfbjA8bPNHb6ay4tzCFx7VSxGtA7n3HaPtkqHHP1FuuaK8CpVOhlQBZC49yVbTDDU1u3FoQutoK1AA.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_ohc=mQkm5a11OOcQ7kNvwGEIakO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5MzM1NzgwNzcyNDUxNDgsImFzc2V0X2FnZV9kYXlzIjo4LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=964362ba110bc7be&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9GQkMwMjJEMDczODc0M0JGQTNFMkNGRjhCQzhEOUI4M192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0QxQTk3NjYzRjQwRTQxRUJCMjI0RjhERUE4REVGMUE1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACa4u8Tt0J_bPxUCKAJDMywXQEaiDEm6XjUYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQIhDsLkagOEACiYrmmqcJixHBtWraSO0A_nRW7SzjJ1zMdZjPjNdQfBcTLfVmqpmwHroqo4oXgi&_nc_enc=UtVlWq30oqiWkKnTQH2ZBstSu6-0K8I61btAtDTFHrH5e6Lvyh2QEtBnTWStk_YTdlAP7ZSa_ltbBqAHfX0Z1ZT-bfjz76-ujmexyOmIbqbfrcHqYO0lBfRdXjzA0pjqnzF52l4yksKcMNMU&oh=00_AQQkfP6aJU5q_SJY7KrxZIJ8jaae5wSj2-XGgM_YyLV_5Q&oe=6B0A02DB",
      "permalink": "https://www.instagram.com/reel/Df3ptArAPJq/",
-     "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/916022321_17933578221245148_1042324639997967477_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=j9m-M6SvuCQQ7kNvwGsk44q&_nc_oc=AdoJXIxLQvWiTDvdbmmb2il1fVLkkhK7IhbYbAV4wQDHH95G04mtBZffVSTtdMQK7Tc&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&_nc_tpa=Q5bMBQLUkMdMSyOAMpnWj4czVAHBlfaYdUD59OddMNE_TDWbnPYegyKDieAVSZszkC_bmozuX_Mh--xB&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQSnEbE-JFmr01fM2ZntwWvI0A-z5PtXklqrQfan6Mykjw&oe=6B0DF1A7",
+     "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/916022321_17933578221245148_1042324639997967477_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=j9m-M6SvuCQQ7kNvwGsk44q&_nc_oc=AdoJXIxLQvWiTDvdbmmb2il1fVLkkhK7IhbYbAV4wQDHH95G04mtBZffVSTtdMQK7Tc&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&_nc_tpa=Q5bMBQLdXCGObU-NPmDwSnLHM-gbHX9NH3cs30YeMppoOXHYY5GIJsbQeRo8dlheAWyzgNA2XcVQIWbw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQTILVrFpds5wyrcZhCqNvz1m-PJnTIX_KpvRXopNFnlpA&oe=6B0DF1A7",
      "timestamp": "2026-11-18T04:31:04+0000",
      "username": "gkhackter"
     },
@@ -60,9 +60,9 @@
      "is_ai_generated": true,
      "is_shared_to_feed": true,
      "media_type": "VIDEO",
-     "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t2/f2/m86/AQOcDgCS21qzQGQ6VTbCzbl1zCVPAU2bPVRU8dq4gpg91uwci5-bHAHmzJgYI2eNdIHJVS7id6tPb65KcfTykBdwcbhyUtknPAmTo2k.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=t2qKjppPSuYQ7kNvwGrPznk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzE2LmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjA4OTI5NzIxMTc1MzA5MywiYXNzZXRfYWdlX2RheXMiOjEyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=5287948c38b117e4&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC83NDg5QUNGOEI1RDc0Qjc4ODI3MTEyNDk1ODY5N0JFMF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzA3NjY0QkRERERENTQwMjdCODE5NzM4RTQzRUIzNjQ1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACaKipiijY22BxUCKAJDMywXQEYMzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQJUwGocUvpOaHp6oETKd4HHrZB65ssrIyTHTxEDu7kFJZLsGIOhbk00eG-RI_yXkRwD9oa0O6Pm&_nc_enc=Ut5xvvUCiUw9GfGMjrzzHzOMDr2xvBYILcfu6d-cqHF8O81icjDrM-RsOcaJtpn0AorpiPQwPAhHR4qjnldzcJGdg9WiHDJtJgsRcPOBwXsb5MY6tItoSrQ_M6W7c6XagAxZD9uqUpuVjJWp&oh=00_AQSyZ4JdeAd6_nADqAobOIom43B2kknZ8C8wT92N8e_Rcg&oe=6B0A253C",
+     "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t2/f2/m86/AQOcDgCS21qzQGQ6VTbCzbl1zCVPAU2bPVRU8dq4gpg91uwci5-bHAHmzJgYI2eNdIHJVS7id6tPb65KcfTykBdwcbhyUtknPAmTo2k.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=t2qKjppPSuYQ7kNvwGrPznk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzE2LmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjA4OTI5NzIxMTc1MzA5MywiYXNzZXRfYWdlX2RheXMiOjEyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=5287948c38b117e4&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC83NDg5QUNGOEI1RDc0Qjc4ODI3MTEyNDk1ODY5N0JFMF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzA3NjY0QkRERERENTQwMjdCODE5NzM4RTQzRUIzNjQ1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACaKipiijY22BxUCKAJDMywXQEYMzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQJ4I6NxBfALn3VeYwBaUFsi47NF5HUoFCBsYNTe9e1-zlzd0Hr3lFGT-0Bytz6xBc3NcywlNLSu&_nc_enc=UrqbaitQOPoQZ9EH6eZosdxnLBAfpKifnGxBA_c-c__sgRZymtfnpcqI2e1B_-1aeP_gZQGGfw2PMsrBsmycVxD_5st2KjozO-ZXfo1ufilbhcjjH1jre80bwXi4aEocqIJIDtguBaK0qfHH&oh=00_AQRMT8bWQzt61mIYsTZwsL2XroTz1ozLjRR7fYGuBHoQ1g&oe=6B0A253C",
      "permalink": "https://www.instagram.com/reel/DftLxgLKXQ8/",
-     "thumbnail_url": "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/898887859_2089298721752942_3645249814472741963_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=VEGiz-RTik4Q7kNvwEjt-cw&_nc_oc=AdpHZlqllAz0VYEWU8aERcIHKqP9eDdvN_0lPTPT3FdrExbJy5NGSaLvx0RtOIbbWHI&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=o-BpxmhAVA7zcd5ia0O5JA&_nc_tpa=Q5bMBQJL-rNTG-xFKL2vttod96k9ktS7lqyylS-CoCXOPgmHrVd8oinJE_3geM808EuLBFv7qmBcKKaQ&_nc_ct=RQosPBUKFQwAAAA&oh=00_AQQV7g-iPZvkeVRAad2_p4jhNLdzYHYQ9nFrHKjoxpNY7w&oe=6B0E0BC6",
+     "thumbnail_url": "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/898887859_2089298721752942_3645249814472741963_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=VEGiz-RTik4Q7kNvwEjt-cw&_nc_oc=AdpHZlqllAz0VYEWU8aERcIHKqP9eDdvN_0lPTPT3FdrExbJy5NGSaLvx0RtOIbbWHI&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=ddYSWzYFST3xyQXuBgzUEQ&_nc_tpa=Q5bMBQJvS_gO1g143gmKzHyLutetQLDm8Yvi3NbDDthfXv8MwOScrZlDsL8pbB5xh5RIt7eXwlbN4IJH&_nc_ct=RQosPBUKFQwAAAA&oh=00_AQRDOK1NHT2VARpAfREk-qi2L_7YZ6udh3Eh6MU5IIUqVw&oe=6B0E0BC6",
      "timestamp": "2026-11-14T02:58:46+0000",
      "username": "gkhackter"
     }
@@ -895,8 +895,238 @@
      "totalResults": 3
     }
    },
-   "videos": [],
-   "note": "channel video list khaali ya 403 — upar ka jawab dekho",
+   "videos": {
+    "etag": "Ja3OXqwxdf6lgViFguCeH1r3qGA",
+    "found_count": 3,
+    "items": [
+     {
+      "contentDetails": {
+       "caption": "false",
+       "contentRating": {},
+       "definition": "hd",
+       "dimension": "2d",
+       "duration": "PT36S",
+       "hasCustomThumbnail": false,
+       "licensedContent": false,
+       "projection": "rectangular"
+      },
+      "etag": "2whbpKXx5NCZv2ppMpO4cp_oETc",
+      "id": "J6hsqwtul-o",
+      "kind": "youtube#video",
+      "snippet": {
+       "categoryId": "28",
+       "channelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "channelTitle": "gk hackter ",
+       "defaultAudioLanguage": "hi",
+       "defaultLanguage": "en",
+       "description": "One hardcoded API key in a public repo is readable by anyone who opens that file.\nGitHub Push Protection stops the push before the secret ever reaches the repository.\n\n- It blocks supported secrets at push time, not after the leak\n- 532 partner patterns, and 465 of them are covered by push protection\n- What it misses: only a subset is blocked, and a public-repo push over 50 MB is skipped\n- The fix that always works: keep keys in environment variables, never in git\n\nSource: docs.github.com - checked 25 Nov 2026\n\nPush protection guide: https://docs.github.com/en/code-security/concepts/secret-security/push-protection\nWhat it scans and what it skips: https://docs.github.com/en/code-security/reference/secret-security/secret-scanning-scope\nAll supported patterns: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns\n\ngithub push protection, api key leak, github secret scanning, hardcoded api key,\ngithub security settings, env file, environment variables, git security,\ngithub tricks, code security basics\n\n#Shorts #GitHub #CyberSecurity #ApiSecurity",
+       "liveBroadcastContent": "none",
+       "localized": {
+        "description": "One hardcoded API key in a public repo is readable by anyone who opens that file.\nGitHub Push Protection stops the push before the secret ever reaches the repository.\n\n- It blocks supported secrets at push time, not after the leak\n- 532 partner patterns, and 465 of them are covered by push protection\n- What it misses: only a subset is blocked, and a public-repo push over 50 MB is skipped\n- The fix that always works: keep keys in environment variables, never in git\n\nSource: docs.github.com - checked 25 Nov 2026\n\nPush protection guide: https://docs.github.com/en/code-security/concepts/secret-security/push-protection\nWhat it scans and what it skips: https://docs.github.com/en/code-security/reference/secret-security/secret-scanning-scope\nAll supported patterns: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns\n\ngithub push protection, api key leak, github secret scanning, hardcoded api key,\ngithub security settings, env file, environment variables, git security,\ngithub tricks, code security basics\n\n#Shorts #GitHub #CyberSecurity #ApiSecurity",
+        "title": "Your API Key Is Public: GitHub Push Protection Explained #Shorts"
+       },
+       "publishedAt": "2026-11-26T04:30:39Z",
+       "thumbnails": {
+        "default": {
+         "height": 90,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/default.jpg",
+         "width": 120
+        },
+        "high": {
+         "height": 360,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/hqdefault.jpg",
+         "width": 480
+        },
+        "maxres": {
+         "height": 720,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/maxresdefault.jpg",
+         "width": 1280
+        },
+        "medium": {
+         "height": 180,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/mqdefault.jpg",
+         "width": 320
+        },
+        "standard": {
+         "height": 480,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/sddefault.jpg",
+         "width": 640
+        }
+       },
+       "title": "Your API Key Is Public: GitHub Push Protection Explained #Shorts"
+      },
+      "statistics": {
+       "commentCount": "0",
+       "dislikeCount": "0",
+       "favoriteCount": "0",
+       "likeCount": "0",
+       "viewCount": "20"
+      }
+     },
+     {
+      "contentDetails": {
+       "caption": "false",
+       "contentRating": {},
+       "definition": "hd",
+       "dimension": "2d",
+       "duration": "PT46S",
+       "hasCustomThumbnail": false,
+       "licensedContent": false,
+       "projection": "rectangular"
+      },
+      "etag": "j2wqCX9X_ii-1GrP9OfgptDxu1U",
+      "id": "BqCXiHSqhAw",
+      "kind": "youtube#video",
+      "snippet": {
+       "categoryId": "28",
+       "channelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "channelTitle": "gk hackter ",
+       "defaultLanguage": "hi",
+       "description": "One free command that cuts your AI token bill in half â without hurting answer quality.\nJuliusBrussee/caveman is an open-source skill and CLI (npx @caveman-ai/cli@latest) on GitHub that stops AI from writing long filler paragraphs and gives pure code and straight answers.\n\nIn this Short:\nâ¢ Normal AI vs Caveman: 63 tokens down to 20 tokens (68% fewer tokens)\nâ¢ Real repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% saved) + Caveman Learn UI (855k tokens saved) & chart-wrap-input benchmark\nâ¢ Works with 30+ AI tools (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research live benchmark: 54%â76% cheaper (1.4xâ2.4x lower cost)\nâ¢ Live GitHub REST API check: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B test (86 real coding tasks): 0% quality loss (p = 0.82)\n\nTimestamps:\n0:00 HOOK â¢ 0:05 Normal AI fluff â¢ 0:08 Token bill receipt â¢ 0:11 Free GitHub tool Caveman â¢ 0:14 Zero fluff demo â¢ 0:18 63 vs 20 tokens â¢ 0:23 Thumbnail frame â¢ 0:23 30+ AI tools CLI demo â¢ 0:28 54-76% cheaper (Adobe Research) â¢ 0:32 Live GitHub API 120,654 stars â¢ 0:37 JetBrains 0% quality loss â¢ 0:41 Comment CTA\n\nWant the exact command and setup steps? Comment CAVEMAN and follow!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit License\n\nâ\n\nà¤à¤ à¤«à¤¼à¥à¤°à¥ à¤à¤®à¤¾à¤à¤¡ à¤à¥ à¤à¤ªà¤à¤¾ AI à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤à¤§à¤¾ à¤à¤° à¤¦à¥à¤¤à¤¾ à¤¹à¥ â à¤¬à¤¿à¤¨à¤¾ à¤à¤µà¤¾à¤¬ à¤à¥ à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤à¤® à¤à¤¿à¤à¥¤\nGitHub à¤ªà¤° JuliusBrussee/caveman à¤à¤ open-source skill à¤à¤° CLI à¤à¥à¤² (npx @caveman-ai/cli@latest) à¤¹à¥ à¤à¥ AI à¤à¥ à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤ªà¥à¤°à¤¾à¤à¥à¤°à¤¾à¤« à¤¬à¤à¤¦ à¤à¤°à¤à¥ à¤¸à¥à¤§à¤¾ à¤à¥à¤¡ à¤à¤° à¤à¤¸à¤²à¥ à¤à¤µà¤¾à¤¬ à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ Normal AI à¤¬à¤¨à¤¾à¤® Caveman: 63 tokens à¤¸à¥ à¤à¤à¤à¤° 20 tokens (68% à¤à¤® à¤à¥à¤à¤¨)\nâ¢ à¤à¤¸à¤²à¥ repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% à¤¬à¤à¤¤) + Caveman Learn UI (855k tokens saved) à¤à¤° chart-wrap-input à¤¬à¥à¤à¤à¤®à¤¾à¤°à¥à¤\nâ¢ 30+ AI à¤à¥à¤²à¥à¤¸ à¤à¥ à¤¸à¤¾à¤¥ à¤à¤¾à¤® à¤à¤°à¤¤à¤¾ à¤¹à¥ (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research à¤²à¤¾à¤à¤µ à¤à¥à¤¸à¥à¤: 54%â76% à¤¸à¤¸à¥à¤¤à¤¾ (1.4xâ2.4x à¤à¤® à¤à¤°à¥à¤)\nâ¢ Live GitHub API à¤à¤¾à¤à¤: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B à¤à¥à¤¸à¥à¤ (86 à¤à¤¸à¤²à¥ coding tasks): 0% quality loss (p = 0.82)\n\nà¤à¤¾à¤à¤®à¤¸à¥à¤à¥à¤®à¥à¤ª:\n0:00 à¤¹à¥à¤ â¢ 0:05 à¤²à¤à¤¬à¤¾ AI à¤à¤µà¤¾à¤¬ â¢ 0:08 à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤°à¤¸à¥à¤¦ â¢ 0:11 à¤«à¥à¤°à¥ GitHub à¤à¥à¤² Caveman â¢ 0:14 à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤¶à¤¬à¥à¤¦ à¤à¤ â¢ 0:18 63 à¤¬à¤¨à¤¾à¤® 20 à¤à¥à¤à¤¨ â¢ 0:23 à¤¥à¤à¤¬à¤¨à¥à¤² à¤«à¥à¤°à¥à¤® â¢ 0:23 Claude, Codex, Gemini, Antigravity + 30 à¤à¥à¤²à¥à¤¸ â¢ 0:28 Adobe Research 54-76% à¤¬à¤à¤¤ â¢ 0:32 à¤²à¤¾à¤à¤µ GitHub 120,654 à¤¸à¥à¤à¤¾à¤°à¥à¤¸ â¢ 0:37 JetBrains 0% à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤²à¥à¤¸ â¢ 0:41 à¤à¤®à¥à¤à¤ CTA\n\nà¤à¤à¤° à¤à¤ªà¤à¥ à¤­à¥ à¤à¤¸à¤à¤¾ à¤ªà¥à¤°à¤¾ à¤à¤®à¤¾à¤à¤¡ à¤à¤° à¤¸à¥à¤à¤à¤ª à¤à¤¾à¤¹à¤¿à¤, à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ CAVEMAN à¤²à¤¿à¤à¤à¤° à¤«à¥à¤²à¥ à¤à¤° à¤²à¥!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit Licenseà¥¤",
+       "liveBroadcastContent": "none",
+       "localized": {
+        "description": "One free command that cuts your AI token bill in half â without hurting answer quality.\nJuliusBrussee/caveman is an open-source skill and CLI (npx @caveman-ai/cli@latest) on GitHub that stops AI from writing long filler paragraphs and gives pure code and straight answers.\n\nIn this Short:\nâ¢ Normal AI vs Caveman: 63 tokens down to 20 tokens (68% fewer tokens)\nâ¢ Real repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% saved) + Caveman Learn UI (855k tokens saved) & chart-wrap-input benchmark\nâ¢ Works with 30+ AI tools (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research live benchmark: 54%â76% cheaper (1.4xâ2.4x lower cost)\nâ¢ Live GitHub REST API check: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B test (86 real coding tasks): 0% quality loss (p = 0.82)\n\nTimestamps:\n0:00 HOOK â¢ 0:05 Normal AI fluff â¢ 0:08 Token bill receipt â¢ 0:11 Free GitHub tool Caveman â¢ 0:14 Zero fluff demo â¢ 0:18 63 vs 20 tokens â¢ 0:23 Thumbnail frame â¢ 0:23 30+ AI tools CLI demo â¢ 0:28 54-76% cheaper (Adobe Research) â¢ 0:32 Live GitHub API 120,654 stars â¢ 0:37 JetBrains 0% quality loss â¢ 0:41 Comment CTA\n\nWant the exact command and setup steps? Comment CAVEMAN and follow!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit License\n\nâ\n\nà¤à¤ à¤«à¤¼à¥à¤°à¥ à¤à¤®à¤¾à¤à¤¡ à¤à¥ à¤à¤ªà¤à¤¾ AI à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤à¤§à¤¾ à¤à¤° à¤¦à¥à¤¤à¤¾ à¤¹à¥ â à¤¬à¤¿à¤¨à¤¾ à¤à¤µà¤¾à¤¬ à¤à¥ à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤à¤® à¤à¤¿à¤à¥¤\nGitHub à¤ªà¤° JuliusBrussee/caveman à¤à¤ open-source skill à¤à¤° CLI à¤à¥à¤² (npx @caveman-ai/cli@latest) à¤¹à¥ à¤à¥ AI à¤à¥ à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤ªà¥à¤°à¤¾à¤à¥à¤°à¤¾à¤« à¤¬à¤à¤¦ à¤à¤°à¤à¥ à¤¸à¥à¤§à¤¾ à¤à¥à¤¡ à¤à¤° à¤à¤¸à¤²à¥ à¤à¤µà¤¾à¤¬ à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ Normal AI à¤¬à¤¨à¤¾à¤® Caveman: 63 tokens à¤¸à¥ à¤à¤à¤à¤° 20 tokens (68% à¤à¤® à¤à¥à¤à¤¨)\nâ¢ à¤à¤¸à¤²à¥ repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% à¤¬à¤à¤¤) + Caveman Learn UI (855k tokens saved) à¤à¤° chart-wrap-input à¤¬à¥à¤à¤à¤®à¤¾à¤°à¥à¤\nâ¢ 30+ AI à¤à¥à¤²à¥à¤¸ à¤à¥ à¤¸à¤¾à¤¥ à¤à¤¾à¤® à¤à¤°à¤¤à¤¾ à¤¹à¥ (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research à¤²à¤¾à¤à¤µ à¤à¥à¤¸à¥à¤: 54%â76% à¤¸à¤¸à¥à¤¤à¤¾ (1.4xâ2.4x à¤à¤® à¤à¤°à¥à¤)\nâ¢ Live GitHub API à¤à¤¾à¤à¤: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B à¤à¥à¤¸à¥à¤ (86 à¤à¤¸à¤²à¥ coding tasks): 0% quality loss (p = 0.82)\n\nà¤à¤¾à¤à¤®à¤¸à¥à¤à¥à¤®à¥à¤ª:\n0:00 à¤¹à¥à¤ â¢ 0:05 à¤²à¤à¤¬à¤¾ AI à¤à¤µà¤¾à¤¬ â¢ 0:08 à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤°à¤¸à¥à¤¦ â¢ 0:11 à¤«à¥à¤°à¥ GitHub à¤à¥à¤² Caveman â¢ 0:14 à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤¶à¤¬à¥à¤¦ à¤à¤ â¢ 0:18 63 à¤¬à¤¨à¤¾à¤® 20 à¤à¥à¤à¤¨ â¢ 0:23 à¤¥à¤à¤¬à¤¨à¥à¤² à¤«à¥à¤°à¥à¤® â¢ 0:23 Claude, Codex, Gemini, Antigravity + 30 à¤à¥à¤²à¥à¤¸ â¢ 0:28 Adobe Research 54-76% à¤¬à¤à¤¤ â¢ 0:32 à¤²à¤¾à¤à¤µ GitHub 120,654 à¤¸à¥à¤à¤¾à¤°à¥à¤¸ â¢ 0:37 JetBrains 0% à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤²à¥à¤¸ â¢ 0:41 à¤à¤®à¥à¤à¤ CTA\n\nà¤à¤à¤° à¤à¤ªà¤à¥ à¤­à¥ à¤à¤¸à¤à¤¾ à¤ªà¥à¤°à¤¾ à¤à¤®à¤¾à¤à¤¡ à¤à¤° à¤¸à¥à¤à¤à¤ª à¤à¤¾à¤¹à¤¿à¤, à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ CAVEMAN à¤²à¤¿à¤à¤à¤° à¤«à¥à¤²à¥ à¤à¤° à¤²à¥!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit Licenseà¥¤",
+        "title": "AI Companies In Trouble? 1 Free Command Cuts AI Token Costs In Half #Shorts #CavemanAI #AI #CodingAI"
+       },
+       "publishedAt": "2026-11-18T04:30:52Z",
+       "tags": [
+        "ai coding tools",
+        "caveman ai",
+        "claude code tips",
+        "codex cli",
+        "cut ai token bill",
+        "gemini cli",
+        "github trending 2026",
+        "gk hacktech",
+        "google antigravity",
+        "hindi tech channel",
+        "juliusbrussee caveman",
+        "open source ai tools",
+        "reduce ai api cost",
+        "tech shorts",
+        "token compression"
+       ],
+       "thumbnails": {
+        "default": {
+         "height": 90,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/default.jpg",
+         "width": 120
+        },
+        "high": {
+         "height": 360,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/hqdefault.jpg",
+         "width": 480
+        },
+        "maxres": {
+         "height": 720,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/maxresdefault.jpg",
+         "width": 1280
+        },
+        "medium": {
+         "height": 180,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/mqdefault.jpg",
+         "width": 320
+        },
+        "standard": {
+         "height": 480,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/sddefault.jpg",
+         "width": 640
+        }
+       },
+       "title": "AI Companies In Trouble? 1 Free Command Cuts AI Token Costs In Half #Shorts #CavemanAI #AI #CodingAI"
+      },
+      "statistics": {
+       "commentCount": "1",
+       "dislikeCount": "0",
+       "favoriteCount": "0",
+       "likeCount": "0",
+       "viewCount": "44"
+      }
+     },
+     {
+      "contentDetails": {
+       "caption": "false",
+       "contentRating": {},
+       "definition": "hd",
+       "dimension": "2d",
+       "duration": "PT45S",
+       "hasCustomThumbnail": true,
+       "licensedContent": false,
+       "projection": "rectangular"
+      },
+      "etag": "0ebpShBhoyE0AZCdYlT-hA9D0hU",
+      "id": "dmap-4NCZgI",
+      "kind": "youtube#video",
+      "snippet": {
+       "categoryId": "22",
+       "channelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "channelTitle": "gk hackter ",
+       "defaultAudioLanguage": "hi",
+       "defaultLanguage": "hi",
+       "description": "Now AI will run your computer â just like a human.\nVercel Labs has open-sourced agent-desktop on GitHub: a computer-use CLI that gives AI agents mouse, keyboard and full app control.\n\nIn this Short:\nâ¢ Real demo clip (credit: DanManReal, YouTube)\nâ¢ Real stock clips (Mixkit license)\nâ¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026)\nâ¢ Straight talk: what it is, what changed, the biggest benefit\n\nTimestamps:\n0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 Full computer control â¢ 0:12 AI was caged â¢ 0:16 Wall breaks â¢ 0:20 Real demo â¢ 0:29 Live stars â¢ 0:36 Comment CTA\n\nIf you want to learn how to use it, comment VIDEO and follow â the next video is exactly on this.\nCredits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0).\n\nâ\n\nà¤à¤¬ AI à¤à¤ªà¤à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° à¤à¥à¤¦ à¤à¤²à¤¾à¤à¤à¤¾ â à¤¬à¤¿à¤²à¥à¤à¥à¤² à¤à¤à¤¸à¤¾à¤¨ à¤à¥ à¤¤à¤°à¤¹à¥¤\nVercel Labs à¤¨à¥ GitHub à¤ªà¤° agent-desktop open-source à¤à¤¿à¤¯à¤¾ à¤¹à¥: computer-use CLI à¤à¥ AI agents à¤à¥ mouse, keyboard à¤à¤° app-control à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ à¤à¤¸à¤²à¥ demo clip (credit: DanManReal, YouTube)\nâ¢ à¤à¤¸à¤²à¥ stock clips (Mixkit license)\nâ¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026)\nâ¢ à¤¸à¥à¤§à¥ à¤¬à¤¾à¤¤: à¤à¥à¤¯à¤¾ à¤¹à¥, à¤à¥à¤¯à¤¾ à¤¬à¤¦à¤²à¤¾, à¤¸à¤¬à¤¸à¥ à¤¬à¤¡à¤¼à¤¾ à¤«à¤¼à¤¾à¤¯à¤¦à¤¾\n\nTimestamps:\n0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 à¤ªà¥à¤°à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° â¢ 0:12 AI à¤à¥à¤¦ à¤¥à¥ â¢ 0:16 à¤¦à¥à¤µà¤¾à¤° à¤à¥à¤à¥ â¢ 0:20 à¤à¤¸à¤²à¥ demo â¢ 0:29 live stars â¢ 0:36 à¤à¤®à¥à¤à¤ CTA\n\nà¤à¤à¤° à¤à¤¸à¥ à¤à¤¸à¥à¤¤à¥à¤®à¤¾à¤² à¤à¤°à¤¨à¤¾ à¤¸à¥à¤à¤¨à¤¾ à¤¹à¥ à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ VIDEO à¤²à¤¿à¤à¥ à¤à¤° follow à¤à¤° à¤²à¥ â à¤¨à¥à¤à¥à¤¸à¥à¤ à¤µà¥à¤¡à¤¿à¤¯à¥ à¤à¤¸à¥ à¤ªà¤° à¤à¤¨à¥ à¤µà¤¾à¤²à¥ à¤¹à¥à¥¤\nCredits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0)à¥¤\n\n#Shorts #AgentDesktop #VercelLabs #AIAgents #ComputerUse #HindiTech #GKHACKTECH\n\n\n\nagent desktop, vercel labs agent-desktop, AI agent desktop, computer use AI, AI agents, AI desktop automation, cli agent, github trending 2026, tech shorts, hindi tech channel, gk hacktech, computer use agent demo, open source AI",
+       "liveBroadcastContent": "none",
+       "localized": {
+        "description": "Now AI will run your computer â just like a human.\nVercel Labs has open-sourced agent-desktop on GitHub: a computer-use CLI that gives AI agents mouse, keyboard and full app control.\n\nIn this Short:\nâ¢ Real demo clip (credit: DanManReal, YouTube)\nâ¢ Real stock clips (Mixkit license)\nâ¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026)\nâ¢ Straight talk: what it is, what changed, the biggest benefit\n\nTimestamps:\n0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 Full computer control â¢ 0:12 AI was caged â¢ 0:16 Wall breaks â¢ 0:20 Real demo â¢ 0:29 Live stars â¢ 0:36 Comment CTA\n\nIf you want to learn how to use it, comment VIDEO and follow â the next video is exactly on this.\nCredits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0).\n\nâ\n\nà¤à¤¬ AI à¤à¤ªà¤à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° à¤à¥à¤¦ à¤à¤²à¤¾à¤à¤à¤¾ â à¤¬à¤¿à¤²à¥à¤à¥à¤² à¤à¤à¤¸à¤¾à¤¨ à¤à¥ à¤¤à¤°à¤¹à¥¤\nVercel Labs à¤¨à¥ GitHub à¤ªà¤° agent-desktop open-source à¤à¤¿à¤¯à¤¾ à¤¹à¥: computer-use CLI à¤à¥ AI agents à¤à¥ mouse, keyboard à¤à¤° app-control à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ à¤à¤¸à¤²à¥ demo clip (credit: DanManReal, YouTube)\nâ¢ à¤à¤¸à¤²à¥ stock clips (Mixkit license)\nâ¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026)\nâ¢ à¤¸à¥à¤§à¥ à¤¬à¤¾à¤¤: à¤à¥à¤¯à¤¾ à¤¹à¥, à¤à¥à¤¯à¤¾ à¤¬à¤¦à¤²à¤¾, à¤¸à¤¬à¤¸à¥ à¤¬à¤¡à¤¼à¤¾ à¤«à¤¼à¤¾à¤¯à¤¦à¤¾\n\nTimestamps:\n0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 à¤ªà¥à¤°à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° â¢ 0:12 AI à¤à¥à¤¦ à¤¥à¥ â¢ 0:16 à¤¦à¥à¤µà¤¾à¤° à¤à¥à¤à¥ â¢ 0:20 à¤à¤¸à¤²à¥ demo â¢ 0:29 live stars â¢ 0:36 à¤à¤®à¥à¤à¤ CTA\n\nà¤à¤à¤° à¤à¤¸à¥ à¤à¤¸à¥à¤¤à¥à¤®à¤¾à¤² à¤à¤°à¤¨à¤¾ à¤¸à¥à¤à¤¨à¤¾ à¤¹à¥ à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ VIDEO à¤²à¤¿à¤à¥ à¤à¤° follow à¤à¤° à¤²à¥ â à¤¨à¥à¤à¥à¤¸à¥à¤ à¤µà¥à¤¡à¤¿à¤¯à¥ à¤à¤¸à¥ à¤ªà¤° à¤à¤¨à¥ à¤µà¤¾à¤²à¥ à¤¹à¥à¥¤\nCredits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0)à¥¤\n\n#Shorts #AgentDesktop #VercelLabs #AIAgents #ComputerUse #HindiTech #GKHACKTECH\n\n\n\nagent desktop, vercel labs agent-desktop, AI agent desktop, computer use AI, AI agents, AI desktop automation, cli agent, github trending 2026, tech shorts, hindi tech channel, gk hacktech, computer use agent demo, open source AI",
+        "title": "ð±This AI Runs Your Computer For You? Agent Desktop Truth?"
+       },
+       "publishedAt": "2026-11-14T04:34:56Z",
+       "tags": [
+        "agent desktop"
+       ],
+       "thumbnails": {
+        "default": {
+         "height": 90,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/default.jpg",
+         "width": 120
+        },
+        "high": {
+         "height": 360,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/hqdefault.jpg",
+         "width": 480
+        },
+        "maxres": {
+         "height": 720,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/maxresdefault.jpg",
+         "width": 1280
+        },
+        "medium": {
+         "height": 180,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/mqdefault.jpg",
+         "width": 320
+        },
+        "standard": {
+         "height": 480,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/sddefault.jpg",
+         "width": 640
+        }
+       },
+       "title": "ð±This AI Runs Your Computer For You? Agent Desktop Truth?"
+      },
+      "statistics": {
+       "commentCount": "1",
+       "dislikeCount": "0",
+       "favoriteCount": "0",
+       "likeCount": "2",
+       "viewCount": "68"
+      }
+     }
+    ],
+    "kind": "youtube#videoListResponse",
+    "not_found_count": 0,
+    "not_found_video_ids": [],
+    "pageInfo": {
+     "resultsPerPage": 3,
+     "totalResults": 3
+    },
+    "partial_failure": false,
+    "requested_count": 3,
+    "requested_video_ids": [
+     "J6hsqwtul-o",
+     "BqCXiHSqhAw",
+     "dmap-4NCZgI"
+    ]
+   },
+   "note": "",
    "channel_stats": {
     "channels": [
      {
