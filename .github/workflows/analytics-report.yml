@@ -5,6 +5,11 @@ name: analytics-report
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - "analytics/TRIGGER.txt"
+      - "analytics/fetch.py"
+      - "analytics/README.md"
   # schedule:
   #   - cron: "0 22 * * *"   # roz 03:30 IST — pehle ek baar haath se chala kar dekho, phir kholo
 
