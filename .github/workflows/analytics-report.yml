@@ -1,0 +1,43 @@
+name: analytics-report
+
+# NAYA workflow — purane 26 workflows ko chhua nahi gaya.
+# Sirf padhta hai (YouTube / Instagram / Facebook), kuch publish ya delete nahi karta.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 22 * * *"   # roz 03:30 IST — pehle ek baar haath se chala kar dekho, phir kholo
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -q requests
+
+      - name: Fetch data
+        env:
+          COMPOSIO_KEY: ${{ secrets.COMPOSIO_KEY }}
+        run: python analytics/fetch.py
+
+      - name: Save result
+        if: always()
+        run: |
+          git config user.email "analytics@local"
+          git config user.name "analytics-bot"
+          git add analytics/data || true
+          git commit -qm "analytics: snapshot $(date -u +%Y-%m-%dT%H:%MZ)" || true
+          git push || true
+
+      - name: Show log
+        if: always()
+        run: cat analytics/data/RUN.txt || echo "no RUN.txt"
