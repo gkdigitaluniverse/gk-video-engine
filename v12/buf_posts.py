@@ -21,18 +21,25 @@ def gql(q, mid=[10]):
         if m.get("id")==mid[0]:
             for c in ((m.get("result") or {}).get("content") or []):
                 if c.get("type")=="text": return c.get("text","")
-    return r.text[:400]
+    return r.text[:300]
+def inner(out):
+    try:
+        j=json.loads(out); return j["data"]["data"]["data"]
+    except Exception: return None
 
 init()
+# channels
+d = inner(gql('query { channels { id name service } }'))
+print("CHANNELS:", json.dumps(d, ensure_ascii=False)[:800] if d else "err")
 
-# 1) what fields does Query have?
-out = gql('query { __schema { queryType { fields { name } } } }')
-try:
-    j=json.loads(out); d=j["data"]["data"]["data"]["__schema"]["queryType"]["fields"]
-    print("QUERY FIELDS:", [f["name"] for f in d])
-except Exception:
-    print("QF err", out[:500])
+# posts field args
+d = inner(gql('query { __type(name: "Query") { fields { name args { name type { name kind ofType { name kind } } } } } }'))
+if d:
+    for f in d["__type"]["fields"]:
+        if f["name"] == "posts":
+            print("\nPOSTS ARGS:", json.dumps(f["args"], ensure_ascii=False)[:900])
 
-# 2) accounts + channels
-out = gql('query { account { organizations { id name channels { id name service } } } }')
-print("\nCHANNELS:", out[:1500])
+# Post type fields
+d = inner(gql('query { __type(name: "Post") { fields { name type { name kind ofType { name } } } } }'))
+if d:
+    print("\nPOST FIELDS:", [x["name"] for x in d["__type"]["fields"]][:40])
