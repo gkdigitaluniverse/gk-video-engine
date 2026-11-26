@@ -1,5 +1,6 @@
 import os, json, requests
 K=os.environ["CK"]; URL="https://connect.composio.dev/mcp"
+ORG="6afe914c34b70aac8c250902"
 H={"Authorization":f"Bearer {K}","Content-Type":"application/json","Accept":"application/json, text/event-stream"}
 s=requests.Session()
 def parse(t):
@@ -27,16 +28,13 @@ def inner(o):
     except Exception: return None
 
 init()
-d = inner(gql('query { __type(name: "PostsInput") { inputFields { name type { name kind ofType { name } } } } }'))
-if d:
-    print("PostsInput:", [(f["name"], f["type"].get("name") or (f["type"].get("ofType") or {}).get("name")) for f in d["__type"]["inputFields"]])
-
-# try to fetch posts
-for q in [
-  'query { posts(input: {}) { edges { node { id dueAt status channelId channelService } } } }',
-  'query { posts(first: 50, input: {}) { edges { node { id dueAt status channelId channelService text } } } }',
-]:
-    o = gql(q)
-    print("\n---", q[:60])
-    print(o[:1200])
-    if "errors" not in o: break
+q = 'query { posts(first: 100, input: {organizationId: "%s"}) { edges { node { id dueAt status channelId channelService text } } } }' % ORG
+d = inner(gql(q))
+if d and d.get("posts"):
+    edges = d["posts"]["edges"]
+    print("TOTAL POSTS:", len(edges))
+    for e in edges:
+        n = e["node"]
+        print(f"  {str(n.get('dueAt')):26} {str(n.get('status')):12} {str(n.get('channelService')):10} {str(n.get('channelId'))[:20]:22} {(n.get('text') or '')[:40]}")
+else:
+    print("ERR/EMPTY:", json.dumps(d, ensure_ascii=False)[:600] if d else "no data")
