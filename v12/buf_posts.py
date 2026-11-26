@@ -22,24 +22,21 @@ def gql(q, mid=[10]):
             for c in ((m.get("result") or {}).get("content") or []):
                 if c.get("type")=="text": return c.get("text","")
     return r.text[:300]
-def inner(out):
-    try:
-        j=json.loads(out); return j["data"]["data"]["data"]
+def inner(o):
+    try: return json.loads(o)["data"]["data"]["data"]
     except Exception: return None
 
 init()
-# channels
-d = inner(gql('query { channels { id name service } }'))
-print("CHANNELS:", json.dumps(d, ensure_ascii=False)[:800] if d else "err")
-
-# posts field args
-d = inner(gql('query { __type(name: "Query") { fields { name args { name type { name kind ofType { name kind } } } } } }'))
+d = inner(gql('query { __type(name: "PostsInput") { inputFields { name type { name kind ofType { name } } } } }'))
 if d:
-    for f in d["__type"]["fields"]:
-        if f["name"] == "posts":
-            print("\nPOSTS ARGS:", json.dumps(f["args"], ensure_ascii=False)[:900])
+    print("PostsInput:", [(f["name"], f["type"].get("name") or (f["type"].get("ofType") or {}).get("name")) for f in d["__type"]["inputFields"]])
 
-# Post type fields
-d = inner(gql('query { __type(name: "Post") { fields { name type { name kind ofType { name } } } } }'))
-if d:
-    print("\nPOST FIELDS:", [x["name"] for x in d["__type"]["fields"]][:40])
+# try to fetch posts
+for q in [
+  'query { posts(input: {}) { edges { node { id dueAt status channelId channelService } } } }',
+  'query { posts(first: 50, input: {}) { edges { node { id dueAt status channelId channelService text } } } }',
+]:
+    o = gql(q)
+    print("\n---", q[:60])
+    print(o[:1200])
+    if "errors" not in o: break
