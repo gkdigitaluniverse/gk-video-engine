@@ -10,6 +10,7 @@ on:
       - "analytics/TRIGGER.txt"
       - "analytics/fetch.py"
       - "analytics/README.md"
+      - "analytics/debug_tools.py"
   # schedule:
   #   - cron: "0 22 * * *"   # roz 03:30 IST — pehle ek baar haath se chala kar dekho, phir kholo
 
@@ -28,6 +29,12 @@ jobs:
           python-version: "3.11"
 
       - run: pip install -q requests
+
+      - name: Debug tools (schema + raw)
+        continue-on-error: true
+        env:
+          COMPOSIO_KEY: ${{ secrets.COMPOSIO_KEY }}
+        run: cd analytics && python debug_tools.py
 
       - name: Fetch data
         env:
