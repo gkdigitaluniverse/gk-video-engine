@@ -300,14 +300,13 @@ def facebook():
             if isinstance(pi, dict):
                 ins = pi.get("data") or pi
             if not ins:
-                for mset in (FB_METRICS, FB_METRICS[:3], ["post_impressions"]):
-                    rr2 = run_tools([("FACEBOOK_GET_GRAPH_OBJECT",
-                                      {"object_id": post.get("id"),
-                                       "fields": "insights.metric(" + ",".join(mset) + ")"})])
-                    d2 = rr2.get("FACEBOOK_GET_GRAPH_OBJECT")
-                    if d2 and not (isinstance(d2, dict) and ("__error__" in d2 or "__fail__" in d2)):
-                        ins = d2
-                        break
+                rr2 = run_tools([("FACEBOOK_GET_POST_INSIGHTS",
+                                  {"post_id": post.get("id"),
+                                   "metrics": "post_media_view,post_total_media_view_unique",
+                                   "period": "lifetime"})])
+                d2 = rr2.get("FACEBOOK_GET_POST_INSIGHTS")
+                if d2 and not (isinstance(d2, dict) and ("__error__" in d2 or "__fail__" in d2)):
+                    ins = d2
             out["rows"].append({
                 "page": p.get("name"), "post_id": post.get("id"),
                 "at": post.get("created_time"), "link": post.get("permalink_url"),
@@ -326,9 +325,8 @@ def youtube():
     d = None
     for slug in ("YOUTUBE_LIST_CHANNEL_VIDEOS", "YOUTUBE_GET_MY_CHANNEL",
                  "YOUTUBE_LIST_VIDEOS", "YOUTUBE_SEARCH_LIST"):
-        for args in ({"mine": True, "maxResults": 25, "part": "snippet,statistics"},
-                     {"channelId": "mine", "maxResults": 25, "part": "snippet,statistics"},
-                     {"maxResults": 25, "part": "snippet,statistics"}):
+        for args in ({"mine": True, "maxResults": 25, "part": "snippet,contentDetails,statistics"},
+                     {"maxResults": 25, "part": "snippet,contentDetails,statistics"}):
             rr = run_tools([(slug, args)])
             cand = rr.get(slug)
             if cand and not (isinstance(cand, dict) and ("__error__" in cand or "__fail__" in cand)):
@@ -342,7 +340,7 @@ def youtube():
     items = []
     if isinstance(d, dict):
         items = d.get("items") or (d.get("data") or {}).get("items") or []
-    ids = [((i.get("contentDetails") or {}).get("videoId") or i.get("id")) for i in items if isinstance(i, dict)]
+    ids = [((i.get("contentDetails") or {}).get("videoId")) for i in items if isinstance(i, dict)]
     ids = [i for i in ids if i]
     if ids:
         rr = run_tools([("YOUTUBE_GET_VIDEO_DETAILS_BATCH", {"id": ids[:50], "parts": ["snippet", "statistics", "contentDetails"]})])
@@ -350,6 +348,10 @@ def youtube():
         log("YT details:", json.dumps(out["videos"])[:400])
     else:
         out["note"] = "channel video list khaali ya 403 — upar ka jawab dekho"
+
+    st = run_tools([("YOUTUBE_GET_CHANNEL_STATISTICS", {"mine": True, "part": "statistics,snippet"})])
+    out["channel_stats"] = st.get("YOUTUBE_GET_CHANNEL_STATISTICS")
+    log("YT channel stats:", json.dumps(out["channel_stats"])[:300])
     return out
 
 def main():
