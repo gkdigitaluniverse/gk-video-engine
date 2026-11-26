@@ -1,7 +1,16 @@
-MUTATIONS: ['createPinterestBoard', 'refreshPinterestBoards', 'createSnippet', 'deleteSnippet', 'updateSnippet', 'createCollaborationNote', 'deleteCollaborationNote', 'updateCollaborationNote', 'createPost', 'deletePost', 'editPost', 'movePostInQueue', 'publishPostNow', 'addPostToContentItem', 'createContentItem', 'createContentItemDraft', 'deleteContentItem', 'promoteContentItemDraftToPosts', 'removePostFromContentItem', 'updateContentItem', 'updateContentItemDraft', 'createTag', 'deleteTag', 'updateTag', 'shortenLink', 'createPostTemplate', 'deletePostTemplate', 'updatePostTemplate', 'createIdea']
-YT cloudflare 2026-11-29: OK {"successful":true,"data":{"data":{"data":{"createPost":{"__typename":"PostActionSuccess","post":{"id":"6b0847dc10b5c45646b59004","dueAt":"2026-11-29T04:30:00.000Z","status":"scheduled","channelService":"youtube"}}}},"status":200,
-YT sheets 2026-11-30: OK {"successful":true,"data":{"data":{"data":{"createPost":{"__typename":"PostActionSuccess","post":{"id":"6b0847dda9607f75558354c0","dueAt":"2026-11-30T04:30:00.000Z","status":"scheduled","channelService":"youtube"}}}},"status":200,
-DEL 6b0846691e13bd67eef3087f: {"successful":true,"data":{"data":{"errors":[{"message":"Cannot query field \"post\" on type \"DeletePostSuccess\".","locations":[{"line":1,"column":104}],"extensions":{"code":"GRA
-DEL 6b08466ba9607f7555829b06: {"successful":true,"data":{"data":{"errors":[{"message":"Cannot query field \"post\" on type \"DeletePostSuccess\".","locations":[{"line":1,"column":104}],"extensions":{"code":"GRA
-DEL 6b08466eee9d307b372d90de: {"successful":true,"data":{"data":{"errors":[{"message":"Cannot query field \"post\" on type \"DeletePostSuccess\".","locations":[{"line":1,"column":104}],"extensions":{"code":"GRA
-DEL 6b084670b2044ab9dfaf261b: {"successful":true,"data":{"data":{"errors":[{"message":"Cannot query field \"post\" on type \"DeletePostSuccess\".","locations":[{"line":1,"column":104}],"extensions":{"code":"GRA
+DEL 6b0846691e13bd67eef3087f: OK {"successful":true,"data":{"data":{"data":{"deletePost":{"__typename":"DeletePostSuccess"}}},"status":200,"headers":{"access-control-allow-credentials
+DEL 6b08466ba9607f7555829b06: OK {"successful":true,"data":{"data":{"data":{"deletePost":{"__typename":"DeletePostSuccess"}}},"status":200,"headers":{"access-control-allow-credentials
+DEL 6b08466eee9d307b372d90de: OK {"successful":true,"data":{"data":{"data":{"deletePost":{"__typename":"DeletePostSuccess"}}},"status":200,"headers":{"access-control-allow-credentials
+DEL 6b084670b2044ab9dfaf261b: OK {"successful":true,"data":{"data":{"data":{"deletePost":{"__typename":"DeletePostSuccess"}}},"status":200,"headers":{"access-control-allow-credentials
+
+FINAL SCHEDULED:
+   2026-11-29 10:00 facebook 6b084724b2044ab9dfaf6b89
+   2026-11-29 10:00 facebook 6b08472510b5c45646b54c4d
+   2026-11-29 10:00 instagram 6b08472283bf365a55b8de3d
+   2026-11-29 10:00 instagram 6b084723ee9d307b372dd8a5
+   2026-11-29 10:00 youtube 6b0847dc10b5c45646b59004
+   2026-11-30 10:00 facebook 6b08472aa9607f755582fa38
+   2026-11-30 10:00 facebook 6b08472bee9d307b372ddcda
+   2026-11-30 10:00 instagram 6b08472783bf365a55b8e55e
+   2026-11-30 10:00 instagram 6b084728a9607f755582f9d5
+   2026-11-30 10:00 youtube 6b0847dda9607f75558354c0
