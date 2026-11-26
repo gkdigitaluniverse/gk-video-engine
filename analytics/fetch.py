@@ -12,7 +12,7 @@ Kya NAHI karta: publish nahi karta, delete nahi karta, purani file nahi chhoota.
 Tools COMPOSIO_MULTI_EXECUTE_TOOL se chalte hain (individual tool name MCP par
 expose nahi hote — pehle run me yahi galti pakdi gayi).
 """
-import os, json, sys, re, datetime, traceback
+import os, json, sys, re, base64, datetime, traceback
 import requests
 
 URL = "https://connect.composio.dev/mcp"
@@ -325,7 +325,8 @@ def youtube():
     d = None
     for slug in ("YOUTUBE_LIST_CHANNEL_VIDEOS", "YOUTUBE_GET_MY_CHANNEL",
                  "YOUTUBE_LIST_VIDEOS", "YOUTUBE_SEARCH_LIST"):
-        for args in ({"mine": True, "maxResults": 25, "part": "snippet,contentDetails,statistics"},
+        for args in ({"mine": True, "maxResults": 25, "part": "contentDetails"},
+                     {"mine": True, "maxResults": 25, "part": "snippet,contentDetails,statistics"},
                      {"maxResults": 25, "part": "snippet,contentDetails,statistics"}):
             rr = run_tools([(slug, args)])
             cand = rr.get(slug)
@@ -340,7 +341,20 @@ def youtube():
     items = []
     if isinstance(d, dict):
         items = d.get("items") or (d.get("data") or {}).get("items") or []
-    ids = [((i.get("contentDetails") or {}).get("videoId")) for i in items if isinstance(i, dict)]
+    def vid(i):
+        cd = (i.get("contentDetails") or {}).get("videoId")
+        if cd:
+            return cd
+        pid = i.get("id") or ""
+        try:
+            d = base64.urlsafe_b64decode(pid + "=" * (-len(pid) % 4)).decode("utf8", "replace")
+            if "." in d:
+                return d.split(".", 1)[1]
+        except Exception:
+            pass
+        return None
+
+    ids = [vid(i) for i in items if isinstance(i, dict)]
     ids = [i for i in ids if i]
     if ids:
         rr = run_tools([("YOUTUBE_GET_VIDEO_DETAILS_BATCH", {"id": ids[:50], "parts": ["snippet", "statistics", "contentDetails"]})])
