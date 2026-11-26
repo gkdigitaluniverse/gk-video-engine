@@ -53,23 +53,33 @@ def _walk(obj, acc, depth=0):
                 pass
 
 def harvest(raw):
-    """SSE stream ya plain JSON — dono se payloads nikaal do."""
+    """SSE ko theek se padho: ek event ke saare 'data:' lines jodo, phir JSON parse.
+    (bade jawab server do-teen data lines me tod deta hai — isi se data kho raha tha)"""
     acc = []
+    buf = []
+    def flush():
+        if not buf:
+            return
+        payload = "\n".join(buf)
+        buf.clear()
+        try:
+            _walk(json.loads(payload), acc)
+        except Exception:
+            pass
     for line in raw.splitlines():
-        line = line.strip()
+        line = line.rstrip("\r")
         if line.startswith("data:"):
-            s2 = line[5:].strip()
-            try:
-                _walk(json.loads(s2), acc)
-            except Exception:
-                pass
+            buf.append(line[5:].lstrip())
+        elif line.strip() == "":
+            flush()
+    flush()
     if not acc:
         try:
             _walk(json.loads(raw), acc)
         except Exception:
             pass
     if not acc:
-        acc.append(raw[:4000])
+        acc.append(raw[:6000])
     return acc
 
 _DEC = json.JSONDecoder()
