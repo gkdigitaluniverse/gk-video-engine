@@ -1,0 +1,207 @@
+{
+ "meta_schemas": {
+  "successful": true,
+  "data": {
+   "success": true,
+   "tool_schemas": {
+    "COMPOSIO_MULTI_EXECUTE_TOOL": {
+     "toolkit": "COMPOSIO",
+     "tool_slug": "COMPOSIO_MULTI_EXECUTE_TOOL",
+     "description": "\n  Fast and parallel tool executor for tools discovered through COMPOSIO_SEARCH_TOOLS. Use this tool to execute up to 50 tools in parallel across apps only when they're logically independent (no ordering/output dependencies). Response contains structured outputs ready for immediate analysis - avoid reprocessing them via remote bash/workbench tools.\n\nPrerequisites:\n- Always use valid tool slugs and their arguments. NEVER invent tool slugs or argument fields. ALWAYS pass STRICTLY schema-compliant arguments with each tool execution.\n- Ensure an ACTIVE connection exists for the toolkits that are going to be executed. If none exists, MUST initiate one via COMPOSIO_MANAGE_CONNECTIONS before execution.\n- Only batch tools that are logically independent - no ordering, no output-to-input dependencies, and no intra-call chaining (tools in one call can't use each other's outputs). DO NOT pass dummy or placeholder inputs; always resolve required inputs using appropriate tools first.\n\nUsage guidelines:\n- If COMPOSIO_SEARCH_TOOLS returns a tool that can perform the task, prefer calling it via this executor. Do not write custom API calls or ad-hoc scripts for tasks that can be completed by available Composio tools.\n- Prefer parallel execution: group independent tools into a single multi-execute call where possible.\n- Predictively set sync_response_to_workbench=true if the response may be large or needed for later scripting. It still shows response inline; if the actual response data turns out small and easy to handle, keep everything inline and SKIP workbench usage.\n- Responses contain structured outputs for each tool. RULE: Small data - process yourself inline; large data - process in the workbench.\n- ALWAYS include inline references/links to sources in MARKDOWN format directly next to the relevant text. Eg provide slack thread links alongside with summary, render document links instead of raw IDs.\n\nRestrictions: Some tools or toolkits may be disabled in this environment. If the response indicates a restriction, inform the user and STOP execution immediately. Do NOT attempt workarounds or speculative actions.\n\n\n- CRITICAL: You MUST always include the 'memory' parameter - never omit it. Even if you think there's nothing to remember, include an empty object {} for memory.\n\nMemory Storage:\n- CRITICAL FORMAT: Memory must be a dictionary where keys are app names (strings) and values are arrays of strings. NEVER pass nested objects or dictionaries as values.\n- CORRECT format: {\"slack\": [\"Channel general has ID C1234567\"], \"gmail\": [\"John's email is john@example.com\"]}\n- Write memory entries in natural, descriptive language - NOT as key-value pairs. Use full sentences that clearly describe the relationship or information.\n- ONLY store information that will be valuable for future tool executions - focus on persistent data that saves API calls.\n- STORE: ID mappings, entity relationships, configs, stable identifiers.\n- DO NOT STORE: Action descriptions, temporary status updates, logs, or \"sent/fetched\" confirmations.\n- Examples of GOOD memory (store these):\n  * \"The important channel in Slack has ID C1234567 and is called #general\"\n  * \"The team's main repository is owned by user 'teamlead' with ID 98765\"\n  * \"The user prefers markdown docs with professional writing, no emojis\" (user_preference)\n- Examples of BAD memory (DON'T store these):\n  * \"Successfully sent email to john@example.com with message hi\"\n  * \"Fetching emails from last day (Sep 6, 2025) for analysis\"\n- Do not repeat the memories stored or found previously.\n",
+     "input_schema": {
+      "properties": {
+       "tools": {
+        "description": "List of logically independent tools to execute in parallel.",
+        "items": {
+         "properties": {
+          "tool_slug": {
+           "description": "The slug of the tool to execute â must be a valid tool slug; never invent.",
+           "examples": [
+            "GMAIL_SEND_EMAIL",
+            "SLACK_SEND_MESSAGE",
+            "GITHUB_CREATE_AN_ISSUE"
+           ],
+           "minLength": 1,
+           "type": "string"
+          },
+          "arguments": {
+           "additionalProperties": true,
+           "description": "The arguments to pass to the tool. Use exact field names and types; do not diverge from the tool's argument schema.",
+           "examples": [
+            {
+             "body": "This is a test",
+             "subject": "Hello",
+             "to": "test@gmail.com"
+            },
+            {
+             "channel": "#general",
+             "text": "Hello from Composio!"
+            },
+            {
+             "body": "Description of the issue",
+             "labels": [
+              "bug"
+             ],
+             "title": "Bug Report"
+            }
+           ],
+           "type": "object"
+          }
+         },
+         "required": [
+          "tool_slug",
+          "arguments"
+         ],
+         "type": "object"
+        },
+        "maxItems": 50,
+        "minItems": 1,
+        "type": "array"
+       },
+       "thought": {
+        "description": "One-sentence, concise, high-level rationale (no step-by-step).",
+        "type": "string"
+       },
+       "sync_response_to_workbench": {
+        "description": "Predictively set true when the response may be large or needed for later scripting. Saves the full response to the workbench while returning an inline preview. If the result is small, keep it inline. Default false.",
+        "type": "boolean"
+       },
+       "memory": {
+        "type": "object",
+        "description": "CRITICAL: Memory must be a dictionary with app names as keys and string arrays as values. NEVER use nested objects. Format: {\"app_name\": [\"string1\", \"string2\"]}. Store durable facts - stable IDs, mappings, roles, preferences. Exclude ephemeral data like message IDs or temp links. Use full sentences describing relationships. Always include this parameter.",
+        "additionalProperties": {
+         "type": "array",
+         "items": {
+          "type": "string",
+          "description": "Natural language memory string - e.g., \"John's user ID in Slack is 12345\", \"Venky's project MyProject has ID proj_abc123\""
+         }
+        }
+       },
+       "current_step": {
+        "description": "Short enum for current step of the workflow execution. Eg FETCHING_EMAILS, GENERATING_REPLIES. Always include to keep execution aligned with the workflow.",
+        "type": "string"
+       },
+       "current_step_metric": {
+        "description": "Progress metrics for the current step - use to track how far execution has advanced. Format as a string \"done/total units\" - example \"10/100 emails\", \"0/n messages\", \"3/10 pages\".",
+        "type": "string"
+       },
+       "session_id": {
+        "description": "Pass the session_id if you received one from a prior COMPOSIO_SEARCH_TOOLS call.",
+        "type": "string"
+       }
+      },
+      "required": [
+       "tools",
+       "sync_response_to_workbench"
+      ],
+      "type": "object"
+     }
+    },
+    "COMPOSIO_SEARCH_TOOLS": {
+     "toolkit": "COMPOSIO",
+     "tool_slug": "COMPOSIO_SEARCH_TOOLS",
+     "description": "\n  Tool Server Info: Composio connects 500+ appsâSlack, GitHub, Notion, Google Workspace (Gmail, Sheets, Drive, Calendar), Microsoft (Outlook, Teams), X/Twitter, Figma, Web Search / Deep research, Browser tool (scrape URLs, browser automation), Meta apps (Instagram, Meta Ads), TikTok, and moreâfor seamless cross-app automation.\n  Use this tool to discover relevant tools plus the recommended plan and common pitfalls for reliable execution.\n  Always call this tool first whenever a user mentions or implies an external app, service, or workflowânever say \"I don't have access to X/Y app\" before calling it.\n\nUsage guidelines:\n  - Use this tool whenever kicking off a task. Re-run it when you need additional tools/plans due to missing details, errors, or a changed use case.\n  - Use search_strategy: \"auto\" normally. If the returned plan does not match the current request or an expected tool is missing, retry the same queries with search_strategy: \"tool_search\" to bypass cached plans and run direct tool search.\n  - If the user pivots to a different use case in same chat, you MUST call this tool again with the new use case and generate a new session_id.\n  - Specify the use_case with a normalized description of the problem, query, or task. Be clear and precise. Queries can be simple single-app actions or multiple linked queries for complex cross-app workflows.\n  - Pass known_fields along with use_case as a string of keyâvalue hints (for example, \"channel_name: general\") to help the search resolve missing details such as IDs.\n  \n\nSplitting guidelines (Important):\n  1. Atomic queries: 1 query = 1 tool call. Include hidden prerequisites (e.g., add \"get Linear issue\" before \"update Linear issue\").\n  2. Include app names: If user names a toolkit, include it in every sub query so intent stays scoped (e.g., \"fetch Gmail emails\", \"reply to Gmail email\").\n  3. English input: Translate non-English prompts while preserving intent and identifiers.\n\n  Example:\n  User query: \"send an email to John welcoming him and create a meeting invite for tomorrow\"\n  Search call: queries: [\n    {use_case: \"send an email to someone\", known_fields: \"recipient_name: John\"},\n    {use_case: \"create a meeting invite\", known_fields: \"meeting_date: tomorrow\"}\n  ]\n\nPlan review checklist (Important):\n  - The response includes a detailed execution plan and common pitfalls. You MUST review this plan carefully, adapt it to your current context, and generate your own final step-by-step plan before execution. Execute the steps in order to ensure reliable and accurate execution. Skipping or ignoring required steps can lead to unexpected failures.\n  - Check the plan and pitfalls for input parameter nuances (required fields, IDs, formats, limits). Before executing any tool, you MUST review its COMPLETE input schema and provide STRICTLY schema-compliant arguments to avoid invalid-input errors.\n  - Determine whether pagination is needed; if a response returns a pagination token and completeness is implied, paginate until exhaustion and do not return partial results.\n\nResponse:\n  - Tools & Input Schemas: The response lists toolkits (apps) and tools suitable for the task, along with their tool_slug, description, input schema / schemaRef, and related tools for prerequisites, alternatives, or next steps.\n    - NOTE: Tools with schemaRef instead of input_schema require you to call COMPOSIO_GET_TOOL_SCHEMAS first to load their full input_schema before use.\n  - Connection Info: If a toolkit has an active connection, the response includes it along with any available current user information. If no active connection exists, you MUST initiate a new connection via COMPOSIO_MANAGE_CONNECTIONS with the correct toolkit name. DO NOT execute any toolkit tool without an ACTIVE connection.\n  - Time Info: The response includes the current UTC time for reference. You can reference UTC time from the response if needed.\n  \n  - The tools returned to you through this are to be called via COMPOSIO_MULTI_EXECUTE_TOOL. Ensure each tool execution specifies the correct tool_slug and arguments exactly as defined by the tool's input schema.\n    - The response includes a memory parameter containing relevant information about the use case and the known fields that can be used to determine the flow of execution. Any user preferences in memory must be adhered to.\n\nSESSION: ALWAYS set this parameter, first for any workflow. Pass session: {generate_id: true} for new workflows OR session: {id: \"EXISTING_ID\"} to continue. ALWAYS use the returned session_id in ALL subsequent meta tool calls.\n    ",
+     "input_schema": {
+      "properties": {
+       "queries": {
+        "type": "array",
+        "description": "Structured English search queries to process in parallel. Split independent app/API actions into separate queries, including hidden prerequisites. Each query returns 4-6 tools.",
+        "items": {
+         "type": "object",
+         "properties": {
+          "use_case": {
+           "description": "Provide a normalized English description of the complete use case to enable precise planning. Focus on the specific action and intended outcome. Include any specific apps if mentioned by user in each use_case. Do NOT include personal identifiers (names, emails, IDs) here â put those in known_fields.",
+           "examples": [
+            "send an email to someone",
+            "search issues with label in jira toolkit",
+            "put issue details in a google sheet",
+            "post a formatted message to slack channel"
+           ],
+           "type": "string",
+           "maxLength": 1024
+          },
+          "known_fields": {
+           "type": "string",
+           "description": "Provide known workflow inputs as a single English string of comma-separated key:value pairs (not an array). Keep 1-2 short, structured items - stable identifiers, names, emails, or settings only. Omit if not relevant. No free-form or long text (messages, notes, descriptions).",
+           "examples": [
+            "channel_name:pod-sdk",
+            "channel_id:123",
+            "invitee_names:John,Maria, timezone:Asia/Kolkata"
+           ]
+          }
+         },
+         "required": [
+          "use_case"
+         ]
+        },
+        "minItems": 1
+       },
+       "session": {
+        "type": "object",
+        "description": "Session context for correlating meta tool calls within a workflow. Always pass this parameter. Use {generate_id: true} for new workflows or {id: \"EXISTING_ID\"} to continue existing workflows.",
+        "properties": {
+         "id": {
+          "type": "string",
+          "description": "Existing session identifier for the current workflow to reuse across calls."
+         },
+         "generate_id": {
+          "type": "boolean",
+          "description": "Set to true for the first search call of a new usecase/workflow to generate a new session ID. When user pivots to a different task, set this true. If omitted or false with an existing session.id, the provided session ID will be reused."
+         }
+        }
+       },
+       "model": {
+        "type": "string",
+        "description": "Client LLM model name (recommended). Used to optimize planning/search behavior. Ignored if omitted or invalid.",
+        "examples": [
+         "gpt-5.2",
+         "claude-4.5-sonnet"
+        ]
+       },
+       "search_strategy": {
+        "type": "string",
+        "enum": [
+         "auto",
+         "tool_search"
+        ],
+        "default": "auto",
+        "description": "Search path to use. Use auto normally. If the returned plan does not match the current request or an expected tool is missing, retry with tool_search to bypass cached plans and run direct tool search."
+       }
+      },
+      "required": [
+       "queries"
+      ],
+      "type": "object"
+     }
+    }
+   }
+  },
+  "error": null,
+  "log_id": "log_43UJYfzGO-5M"
+ },
+ "search": [
+  {
+   "args": {
+    "queries": [
+     {
+      "use_case": "list my instagram media and reels insights"
+     }
+    ]
+   },
+   "raw": "{\"successful\":true,\"data\":{\"results\":[{\"index\":1,\"use_case\":\"list my instagram media and reels insights\",\"execution_guidance\":\"IMPORTANT: Follow the recommended plan below. Extract steps before execution, adapt to your current context, execute sequentially with current_step parameter, and check known pitfalls to avoid errors.\",\"recommended_plan_steps\":[\"One INSTAGRAM_GET_IG_USER_MEDIA call: ig_user_id='me', limit=100, fields='id,caption,media_type,media_product_type,permalink,timestamp,like_count,comments_count,insights.metric(views,reach,saved,shares,total_interactions)'. For a date window add since=<Unix seconds of the first day> and until=<Unix seconds of the day after the last day>.\",\"Read each post's metrics from insights.data[].values[0].value and rank or sum in the answer. Follow paging.cursors.after only if the window holds more than 100 posts.\",\"Account-level numbers (followers, profile views, account reach) come from INSTAGRAM_GET_USER_INSIGHTS, not from summing posts.\"],\"known_pitfalls\":[\"Don't call INSTAGRAM_GET_IG_MEDIA_INSIGHTS once per post: the nested insights.metric(...) field returns the same lifetime values for every post in the page.\",\"Don't page the whole feed and filter timestamps yourself: since/until (Unix seconds, UTC) narrow the listing server-side.\",\"In the nested field each post returns only the metrics its media type supports, so a mixed list doesn't fail; impressions and plays are deprecated, use views.\",\"Media posted before the account became a business account has no insights; if the call fails for that reason, narrow since/until to later posts.\"],\"difficulty\":\"easy\",\"primary_tool_slugs\":[\"INSTAGRAM_GET_IG_USER_MEDIA\"],\"related_tool_slugs\":[\"INSTAGRAM_GET_IG_MEDIA_INSIGHTS\",\"INSTAGRAM_GET_USER_INSIGHTS\"],\"toolkits\":[\"instagram\"],\"plan_id\":\"c7200c32e1df449b897549247ff70acf\",\"cached_plan_usecase\":\"usecase: Get all Instagram media posts with insights metrics (views, reach, likes, saves, shares, comments) for the connected Instagram business/creator account. known: None. apps: instagram\"}],\"toolkit_connection_statuses\":[{\"toolkit\":\"instagram\",\"description\":\"Instagram is a social media platform for sharing photos, videos, and stories. Only supports Instagram Business and Creator accounts, not Instagram Personal accounts.\",\"has_active_connection\":true,\"accounts\":[{\"id\":\"instagram_quiles-adorer\",\"user_info\":{\"id\":\"29161770546783780\",\"username\":\"gkhackter\"},\"status\":\"ACTIVE\",\"created_at\":\"2026-11-23T15:28:33.864Z\",\"is_default\":true,"
+  },
+  {
+   "args": {
+    "query": "list my instagram media and reels insights"
+   },
+   "raw": "{\"successful\":true,\"data\":{\"results\":[{\"index\":1,\"use_case\":\"list my instagram media and reels insights\",\"execution_guidance\":\"IMPORTANT: Follow the recommended plan below. Extract steps before execution, adapt to your current context, execute sequentially with current_step parameter, and check known pitfalls to avoid errors.\",\"recommended_plan_steps\":[\"One INSTAGRAM_GET_IG_USER_MEDIA call: ig_user_id='me', limit=100, fields='id,caption,media_type,media_product_type,permalink,timestamp,like_count,comments_count,insights.metric(views,reach,saved,shares,total_interactions)'. For a date window add since=<Unix seconds of the first day> and until=<Unix seconds of the day after the last day>.\",\"Read each post's metrics from insights.data[].values[0].value and rank or sum in the answer. Follow paging.cursors.after only if the window holds more than 100 posts.\",\"Account-level numbers (followers, profile views, account reach) come from INSTAGRAM_GET_USER_INSIGHTS, not from summing posts.\"],\"known_pitfalls\":[\"Don't call INSTAGRAM_GET_IG_MEDIA_INSIGHTS once per post: the nested insights.metric(...) field returns the same lifetime values for every post in the page.\",\"Don't page the whole feed and filter timestamps yourself: since/until (Unix seconds, UTC) narrow the listing server-side.\",\"In the nested field each post returns only the metrics its media type supports, so a mixed list doesn't fail; impressions and plays are deprecated, use views.\",\"Media posted before the account became a business account has no insights; if the call fails for that reason, narrow since/until to later posts.\"],\"difficulty\":\"easy\",\"primary_tool_slugs\":[\"INSTAGRAM_GET_IG_USER_MEDIA\"],\"related_tool_slugs\":[\"INSTAGRAM_GET_IG_MEDIA_INSIGHTS\",\"INSTAGRAM_GET_USER_INSIGHTS\"],\"toolkits\":[\"instagram\"],\"plan_id\":\"c7200c32e1df449b897549247ff70acf\",\"cached_plan_usecase\":\"usecase: Get all Instagram media posts with insights metrics (views, reach, likes, saves, shares, comments) for the connected Instagram business/creator account. known: None. apps: instagram\"}],\"toolkit_connection_statuses\":[{\"toolkit\":\"instagram\",\"description\":\"Instagram is a social media platform for sharing photos, videos, and stories. Only supports Instagram Business and Creator accounts, not Instagram Personal accounts.\",\"has_active_connection\":true,\"accounts\":[{\"id\":\"instagram_quiles-adorer\",\"user_info\":{\"id\":\"29161770546783780\",\"username\":\"gkhackter\"},\"status\":\"ACTIVE\",\"created_at\":\"2026-11-23T15:28:33.864Z\",\"is_default\":true,"
+  },
+  {
+   "args": {
+    "use_case": "list my instagram media and reels insights"
+   },
+   "raw": "{\"successful\":true,\"data\":{\"results\":[{\"index\":1,\"use_case\":\"list my instagram media and reels insights\",\"execution_guidance\":\"IMPORTANT: Follow the recommended plan below. Extract steps before execution, adapt to your current context, execute sequentially with current_step parameter, and check known pitfalls to avoid errors.\",\"recommended_plan_steps\":[\"One INSTAGRAM_GET_IG_USER_MEDIA call: ig_user_id='me', limit=100, fields='id,caption,media_type,media_product_type,permalink,timestamp,like_count,comments_count,insights.metric(views,reach,saved,shares,total_interactions)'. For a date window add since=<Unix seconds of the first day> and until=<Unix seconds of the day after the last day>.\",\"Read each post's metrics from insights.data[].values[0].value and rank or sum in the answer. Follow paging.cursors.after only if the window holds more than 100 posts.\",\"Account-level numbers (followers, profile views, account reach) come from INSTAGRAM_GET_USER_INSIGHTS, not from summing posts.\"],\"known_pitfalls\":[\"Don't call INSTAGRAM_GET_IG_MEDIA_INSIGHTS once per post: the nested insights.metric(...) field returns the same lifetime values for every post in the page.\",\"Don't page the whole feed and filter timestamps yourself: since/until (Unix seconds, UTC) narrow the listing server-side.\",\"In the nested field each post returns only the metrics its media type supports, so a mixed list doesn't fail; impressions and plays are deprecated, use views.\",\"Media posted before the account became a business account has no insights; if the call fails for that reason, narrow since/until to later posts.\"],\"difficulty\":\"easy\",\"primary_tool_slugs\":[\"INSTAGRAM_GET_IG_USER_MEDIA\"],\"related_tool_slugs\":[\"INSTAGRAM_GET_IG_MEDIA_INSIGHTS\",\"INSTAGRAM_GET_USER_INSIGHTS\"],\"toolkits\":[\"instagram\"],\"plan_id\":\"c7200c32e1df449b897549247ff70acf\",\"cached_plan_usecase\":\"usecase: Get all Instagram media posts with insights metrics (views, reach, likes, saves, shares, comments) for the connected Instagram business/creator account. known: None. apps: instagram\"}],\"toolkit_connection_statuses\":[{\"toolkit\":\"instagram\",\"description\":\"Instagram is a social media platform for sharing photos, videos, and stories. Only supports Instagram Business and Creator accounts, not Instagram Personal accounts.\",\"has_active_connection\":true,\"accounts\":[{\"id\":\"instagram_quiles-adorer\",\"user_info\":{\"id\":\"29161770546783780\",\"username\":\"gkhackter\"},\"status\":\"ACTIVE\",\"created_at\":\"2026-11-23T15:28:33.864Z\",\"is_default\":true,"
+  }
+ ],
+ "multi_raw": "{\"error\": \"{'message': ': connected\\\\n\\\\n: connected\\\\n\\\\nevent: message\\\\ndata: {\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":205,\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"{\\\\\\\\\\\"successful\\\\\\\\\\\":true,\\\\\\\\\\\"data\\\\\\\\\\\":{\\\\\\\\\\\"results\\\\\\\\\\\":[{\\\\\\\\\\\"response\\\\\\\\\\\":{\\\\\\\\\\\"successful\\\\\\\\\\\":true,\\\\\\\\\\\"data\\\\\\\\\\\":{\\\\\\\\\\\"data\\\\\\\\\\\":[{\\\\\\\\\\\"caption\\\\\\\\\\\":\\\\\\\\\\\"Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\\\\\\\\\\\\\\\\nGitHub Push Protection push ko wahin rok deta hai, repo ta\"}"
+}
