@@ -1,28 +1,46 @@
 key length: 23
 init HTTP 200
-started 2026-11-26T13:27:39.964864Z
+started 2026-11-26T13:33:47.722020Z
 tools available: -1
 schemas saved
 EXISTS: INSTAGRAM_GET_IG_USER_MEDIA,INSTAGRAM_GET_USER_MEDIA,INSTAGRAM_GET_USER_INSIGHTS,YOUTUBE_LIST_CHANNEL_VIDEOS,YOUTUBE_GET_CHANNEL_STATISTICS,FACEBOOK_GET_PAGE_INSIGHTS,FACEBOOK_GET_POST_INSIGHTS,FACEBOOK_GET_PAGE_POSTS
 IG user: {"account_type": "MEDIA_CREATOR", "biography": "developer", "composio_execution_message": null, "followers_count": 1, "follows_count": 0, "id": "29161770546783780", "media_count": 4, "name": "gk hackter", "user_id": "17841467354420035", "username": "gkhackter"}
 IG id: 29161770546783780
+  !! kuch parse nahi hua, raw ka shuru: : connected  : connected  event: message data: {"jsonrpc":"2.0","id":205,"result":{"content":[{"type":"text","text":"{\"successful\":true,\"data\":{\"results\":[{\"response\":{\"successful\":true,\"data\":{\"data\":[{\"caption\":\"Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle.\\n\\n- Supported secret push ke waqt hi block hota hai, leak ke baad nahi\\n- 532 partner patterns, unme se 465 push protection se cover\\n- Kami: sirf ek subset block hota hai, aur public repo mein 50 MB se bada pu
 IG media try INSTAGRAM_GET_IG_USER_MEDIA ['ig_user_id', 'limit'] -> {"__error__": "no result"}
+  !! kuch parse nahi hua, raw ka shuru: : connected  : connected  event: message data: {"jsonrpc":"2.0","id":206,"result":{"content":[{"type":"text","text":"{\"successful\":true,\"data\":{\"results\":[{\"response\":{\"successful\":true,\"data\":{\"data\":[{\"caption\":\"Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle.\\n\\n- Supported secret push ke waqt hi block hota hai, leak ke baad nahi\\n- 532 partner patterns, unme se 465 push protection se cover\\n- Kami: sirf ek subset block hota hai, aur public repo mein 50 MB se bada pu
 IG media try INSTAGRAM_GET_IG_USER_MEDIA ['ig_user_id', 'fields'] -> {"__error__": "no result"}
+  !! kuch parse nahi hua, raw ka shuru: : connected  : connected  event: message data: {"jsonrpc":"2.0","id":207,"result":{"content":[{"type":"text","text":"{\"successful\":true,\"data\":{\"results\":[{\"response\":{\"successful\":true,\"data\":{\"data\":[{\"caption\":\"Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle.\\n\\n- Supported secret push ke waqt hi block hota hai, leak ke baad nahi\\n- 532 partner patterns, unme se 465 push protection se cover\\n- Kami: sirf ek subset block hota hai, aur public repo mein 50 MB se bada pu
 IG media try INSTAGRAM_GET_USER_MEDIA ['ig_user_id', 'limit'] -> {"__error__": "no result"}
+  !! kuch parse nahi hua, raw ka shuru: : connected  : connected  event: message data: {"jsonrpc":"2.0","id":208,"result":{"content":[{"type":"text","text":"{\"successful\":true,\"data\":{\"results\":[{\"response\":{\"successful\":true,\"data\":{\"data\":[{\"caption\":\"Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle.\\n\\n- Supported secret push ke waqt hi block hota hai, leak ke baad nahi\\n- 532 partner patterns, unme se 465 push protection se cover\\n- Kami: sirf ek subset block hota hai, aur public repo mein 50 MB se bada pu
 IG media try INSTAGRAM_GET_USER_MEDIA ['ig_user_id', 'fields'] -> {"__error__": "no result"}
+  ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
+  ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
   ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
 IG media try INSTAGRAM_LIST_IG_MEDIA ['ig_user_id', 'limit'] -> {"__error__": "Tool INSTAGRAM_LIST_IG_MEDIA not found"}
   ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
+  ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
+  ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
 IG media try INSTAGRAM_LIST_IG_MEDIA ['ig_user_id', 'fields'] -> {"__error__": "Tool INSTAGRAM_LIST_IG_MEDIA not found"}
+  ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
+  ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
   ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
 IG media try INSTAGRAM_GET_MEDIA_LIST ['ig_user_id', 'limit'] -> {"__error__": "Tool INSTAGRAM_GET_MEDIA_LIST not found"}
   ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
+  ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
+  ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
 IG media try INSTAGRAM_GET_MEDIA_LIST ['ig_user_id', 'fields'] -> {"__error__": "Tool INSTAGRAM_GET_MEDIA_LIST not found"}
+  ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
+  ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
   ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
 IG media try INSTAGRAM_GET_IG_MEDIA_LIST ['ig_user_id', 'limit'] -> {"__error__": "Tool INSTAGRAM_GET_IG_MEDIA_LIST not found"}
   ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
+  ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
+  ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
 IG media try INSTAGRAM_GET_IG_MEDIA_LIST ['ig_user_id', 'fields'] -> {"__error__": "Tool INSTAGRAM_GET_IG_MEDIA_LIST not found"}
 FB pages: [{"id": "1270080059532814", "name": "Gk Hackter", "category": "Science, technology and engineering", "fans": 0, "followers": 0}]
+  !! kuch parse nahi hua, raw ka shuru: : connected  : connected  event: message data: {"jsonrpc":"2.0","id":216,"result":{"content":[{"type":"text","text":"{\"successful\":true,\"data\":{\"results\":[{\"response\":{\"successful\":true,\"data\":{\"data\":[{\"comments\":{\"data\":[],\"summary\":{\"total_count\":0}},\"created_time\":\"2026-11-26T04:31:17+0000\",\"full_picture\":\"https://scontent-iad3-1.xx.fbcdn.net/v/t15.5256-10/899686332_2343761032842611_2374100839477632047_n.jpg?_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Q0Ffmus9bxsQ7kNvwGfB62F&_nc_oc=Adp3LUzvpJK3jiJrW39h1e_tUNDt154YirtRmntlJ67peUNtVwQE83S
 FB posts for 1270080059532814 -> {"__error__": "no result"}
+  !! kuch parse nahi hua, raw ka shuru: : connected  : connected  event: message data: {"jsonrpc":"2.0","id":217,"result":{"content":[{"type":"text","text":"{\"successful\":true,\"data\":{\"results\":[{\"response\":{\"successful\":true,\"data\":{\"etag\":\"Me7bZzZcLiXQAwPO8B6C8ZCKw2M\",\"items\":[{\"etag\":\"TgV2-fgyfikzsSVl8FpOwYSHBh0\",\"id\":\"VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v\",\"kind\":\"youtube#playlistItem\",\"snippet\":{\"channelId\":\"UCFW0BnicviKl3NsReW3sFsQ\",\"channelTitle\":\"gk hackter\",\"description\":\"One hardcoded API key in a public repo is readable by anyone who opens that file.\\nGitHub Push Prot
 YT try YOUTUBE_LIST_CHANNEL_VIDEOS {"mine": true, "maxResults": 25, "part": "snippet,statistics -> {"__error__": "no result"}
 YT via YOUTUBE_LIST_CHANNEL_VIDEOS {"channelId": "mine", "maxResults": 25, "part": "snippet,statistics"}
