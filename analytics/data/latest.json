@@ -1,8 +1,8 @@
 {
- "run_at": "2026-11-26T13:34:33.075732Z",
+ "run_at": "2026-11-26T13:35:29.534696Z",
  "key_len": 23,
  "data": {
-  "run_at": "2026-11-26T13:34:33.075732Z",
+  "run_at": "2026-11-26T13:35:29.534696Z",
   "http_init": 200,
   "instagram": {
    "user": {
@@ -17,8 +17,550 @@
     "user_id": "17841467354420035",
     "username": "gkhackter"
    },
-   "media": [],
-   "rows": []
+   "media": [
+    {
+     "caption": "Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle.\n\n- Supported secret push ke waqt hi block hota hai, leak ke baad nahi\n- 532 partner patterns, unme se 465 push protection se cover\n- Kami: sirf ek subset block hota hai, aur public repo mein 50 MB se bada push skip\n- Pakka fix: keys environment variables mein, git mein kabhi nahi\n\nSource: docs.github.com - checked 25 Nov 2026\nGuide: https://docs.github.com/en/code-security/concepts/secret-security/push-protection\n\ngithub push protection, api key leak, github secret scanning, hardcoded api key,\ngithub security settings, env file, environment variables, git security,\ngithub tricks, code security basics\n\n#Shorts #GitHub #CyberSecurity #ApiSecurity #CodingTips #DevTips",
+     "id": "18171426397477618",
+     "is_ai_generated": true,
+     "is_shared_to_feed": true,
+     "media_type": "VIDEO",
+     "media_url": "https://scontent-iad3-2.cdninstagram.com/o1/v/t2/f2/m86/AQMgBadPC1Lue3SSUlAmAa71B5PXjX5jlhoqvqf6lq3s0C3_QJTXYY1hcAua6evujf9zzWDUG8pRymUu1kgSizs8Z1e8Cu-CNGeSV2k.mp4?_nc_cat=108&_nc_sid=5e9851&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_ohc=I7OBURm-HJIQ7kNvwHZydwH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTE1MDEwNjEyNzk3Nzg4MCwiYXNzZXRfYWdlX2RheXMiOjAsInZpX3VzZWNhc2VfaWQiOjEwMDk5LCJkdXJhdGlvbl9zIjozNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=5ec438ab12e9cb65&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9FQkMyOUM2QTQ3MzU0MzlEQjk5RjJGODFFOTFFOERFM192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzRBMUM3MDdFODZCMzQyMDJBMDU1RjI5Rjc0QzVENUExX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACawtrKz_oCLBBUCKAJDMywXQEHMzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQJuTETfBICH2n0jHMHTn56apK8CM9NOcppz7EHjjZGIDeDLedq5Rdi6L1H5SpVFhC-ICqMowiHh&oh=00_AQSEIIdnsPUWqGSXmExIfYEeAA_30jIMu0tVXx4lWmn_iw&oe=6B09FDE5",
+     "permalink": "https://www.instagram.com/reel/DgMQCixOsr-/",
+     "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.71878-15/930123953_1190020483970653_5144653037518149718_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=A9zW3rYtFVcQ7kNvwFO8w_7&_nc_oc=AdpXHPCmouQf6zb5uJuamOcH9G_wdCGbc8B_aUL0Mhl4sUjtFOpYaKlpZjfiGlCWFZU&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&_nc_tpa=Q5bMBQLc1wU7yiy37R40tn6Dygnt1w3NDPQ0EJoteLsB5bTfVNfAMnRE_rhB9pc1YmsDVnGK2f6zk1wn&_nc_ct=RQosPBUKFQoAAAA&oh=00_AQRpDTTBSMgcZuLZrz5i74z3wqjvshT2GENoiF7IVou7Hw&oe=6B0E18C9",
+     "timestamp": "2026-11-26T04:30:55+0000",
+     "username": "gkhackter"
+    },
+    {
+     "caption": "Cloudflare Workers Playground: account banaye bina code likho, live preview dekho. Free plan mein 100,000 requests roz aur har request ko 10 ms CPU. Link: https://workers.cloudflare.com/playground\n\n#cloudflare #workers #webdevelopment #coding #hindi #techtips",
+     "id": "18136041943681903",
+     "is_ai_generated": false,
+     "is_shared_to_feed": true,
+     "media_type": "VIDEO",
+     "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t2/f2/m86/AQMBCScyF8QGSb-CXpnZ7UKGo696sJmhN3PKH5eSRyVtucCmpplMYHlbRb0ahy-esIkdXTs8leNPOER_TqfE7XuHKhVIBUM4JQJy0uw.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=o1TOp85qYksQ7kNvwFwYO_z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5MzQ5NDM3OTQyNDUxNDgsImFzc2V0X2FnZV9kYXlzIjoyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=4f0134afadef5ef8&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zRjY5ODRDRjc5Njg0N0UwOTkxNTE3RjBEREZFOTcxQl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzI2MTY3Mzc5RDRCODQ3QzE5NEY0MzVBMDMyQUJFNEMyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACa4uOGekO_bPxUCKAJDMywXQEUIcrAgxJwYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQIclp__9ud5k38ytOIVHZDQ_PJLMntokM7XqbXBosJu8NZvtg0MkkMEpqwycO8Cjxi1vCz0aqy-&_nc_enc=UsX-QBqNt9OEC3dNb1CAUEdWQunM_LS4CFp5jNY3KEymekJMOP4QRNMUUBFpJ_7SOJLrEmWWiFa5BMKI1ibRB7od50q9UPjp1CaC4ho4avbaZB4bkY4pqB0y0FdfSTxIQ5_YuPkAz2wRcYYp&oh=00_AQS1_FOXl9ZmR6w2_BZnWyOu-57J33lMXxVcMCgDwWOQZQ&oe=6B0A146B",
+     "permalink": "https://www.instagram.com/reel/DgHpnvjlGqv/",
+     "thumbnail_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/929279699_4700200170225478_5351353939116248250_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=MUlWGF8IAygQ7kNvwF3o9l9&_nc_oc=AdrRBwENTZ0C2jHKOuRKJ81Uons2d8pYZI-fRoVpWYNLD1DDEGeC9VnOyQAlIBvYQ28&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&_nc_tpa=Q5bMBQLb9yVz_Uefc9bmxi3ga_v6dhT3dmpyyn5kR18H3mq__gmAZOQuBR9lYt44OJAvDv7arz6qUMbn&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQSp4f2gCMKUqB28pRVlvuQrTpxIs00WOG3eb-xFFu1JJg&oe=6B0E0C7C",
+     "timestamp": "2026-11-24T09:38:04+0000",
+     "username": "gkhackter"
+    },
+    {
+     "caption": "AI Companies In Trouble? 1 Free Command Cuts AI Token Costs In Half\n\nOne free command that cuts your AI token bill in half â without hurting answer quality.\nJuliusBrussee/caveman is an open-source skill and CLI (npx @caveman-ai/cli@latest) on GitHub that stops AI from writing long filler paragraphs and gives pure code and straight answers.\n\nIn this Short:\nâ¢ Normal AI vs Caveman: 63 tokens down to 20 tokens (68% fewer tokens)\nâ¢ Real repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% saved) + Caveman Learn UI & chart-wrap-input\nâ¢ Works with 30+ AI tools (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research live test: 54%â76% cheaper (1.4xâ2.4x lower cost)\nâ¢ Live GitHub REST API check: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B test (86 real coding tasks): 0% quality loss (p = 0.82)\n\nWant the exact command and setup steps? Comment CAVEMAN and follow!\n\nâ\n\nà¤à¤ à¤«à¤¼à¥à¤°à¥ à¤à¤®à¤¾à¤à¤¡ à¤à¥ à¤à¤ªà¤à¤¾ AI à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤à¤§à¤¾ à¤à¤° à¤¦à¥à¤¤à¤¾ à¤¹à¥ â à¤¬à¤¿à¤¨à¤¾ à¤à¤µà¤¾à¤¬ à¤à¥ à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤à¤® à¤à¤¿à¤à¥¤\nGitHub à¤ªà¤° JuliusBrussee/caveman à¤à¤ open-source skill à¤à¤° CLI à¤à¥à¤² (npx @caveman-ai/cli@latest) à¤¹à¥ à¤à¥ AI à¤à¥ à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤ªà¥à¤°à¤¾à¤à¥à¤°à¤¾à¤« à¤¬à¤à¤¦ à¤à¤°à¤à¥ à¤¸à¥à¤§à¤¾ à¤à¥à¤¡ à¤à¤° à¤à¤¸à¤²à¥ à¤à¤µà¤¾à¤¬ à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ Normal AI à¤¬à¤¨à¤¾à¤® Caveman: 63 tokens à¤¸à¥ à¤à¤à¤à¤° 20 tokens (68% à¤à¤® à¤à¥à¤à¤¨)\nâ¢ à¤à¤¸à¤²à¥ repo demo: 16,098 â 1,091 tokens (93% à¤¬à¤à¤¤) + Caveman Learn UI à¤à¤° chart-wrap-input\nâ¢ 30+ AI à¤à¥à¤²à¥à¤¸ à¤à¥ à¤¸à¤¾à¤¥ à¤à¤¾à¤® à¤à¤°à¤¤à¤¾ à¤¹à¥ (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research à¤²à¤¾à¤à¤µ à¤à¥à¤¸à¥à¤: 54%â76% à¤¸à¤¸à¥à¤¤à¤¾ (1.4xâ2.4x à¤à¤® à¤à¤°à¥à¤)\nâ¢ Live GitHub API à¤à¤¾à¤à¤: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B à¤à¥à¤¸à¥à¤ (86 à¤à¤¸à¤²à¥ coding tasks): 0% quality loss (p = 0.82)\n\nà¤à¤à¤° à¤à¤ªà¤à¥ à¤­à¥ à¤à¤¸à¤à¤¾ à¤ªà¥à¤°à¤¾ à¤à¤®à¤¾à¤à¤¡ à¤à¤° à¤¸à¥à¤à¤à¤ª à¤à¤¾à¤¹à¤¿à¤, à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ CAVEMAN à¤²à¤¿à¤à¤à¤° à¤«à¥à¤²à¥ à¤à¤° à¤²à¥!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit Licenseà¥¤",
+     "id": "18149455345587454",
+     "is_ai_generated": false,
+     "is_shared_to_feed": true,
+     "media_type": "VIDEO",
+     "media_url": "https://scontent-iad3-2.cdninstagram.com/o1/v/t2/f2/m86/AQP8SxG9r0cu2MuuOwgYDqYr7NfbjA8bPNHb6ay4tzCFx7VSxGtA7n3HaPtkqHHP1FuuaK8CpVOhlQBZC49yVbTDDU1u3FoQutoK1AA.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_ohc=mQkm5a11OOcQ7kNvwGEIakO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MTc5MzM1NzgwNzcyNDUxNDgsImFzc2V0X2FnZV9kYXlzIjo4LCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=964362ba110bc7be&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9GQkMwMjJEMDczODc0M0JGQTNFMkNGRjhCQzhEOUI4M192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyL0QxQTk3NjYzRjQwRTQxRUJCMjI0RjhERUE4REVGMUE1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACa4u8Tt0J_bPxUCKAJDMywXQEaiDEm6XjUYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQLG0Y2UCFOFSvVJiPQAPacJ7RoNQgv-aP2Yp-8cDdoX9_G7CTTwn6M2yfDuLTQxU3LcR1VJFqVP&_nc_enc=Ur-VdYZtx5S9fuMsBIpqauqyUwXVKs2bBZ_J6KMnyLcYhhFQZ2DiiygEEWh5gtcbzl6HzYgrS6WW5arAHX5GKauJyj32noyf8zcYrqJZpS5wuKQnyOEQaldzQ2kzowzGL5536OSi-FHTGpTe&oh=00_AQT5vV2A_mUrEUTYlbYIKqiSFCHUGkyzSQIyKIm6Mfg0Gw&oe=6B0A02DB",
+     "permalink": "https://www.instagram.com/reel/Df3ptArAPJq/",
+     "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/916022321_17933578221245148_1042324639997967477_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=j9m-M6SvuCQQ7kNvwGsk44q&_nc_oc=AdoJXIxLQvWiTDvdbmmb2il1fVLkkhK7IhbYbAV4wQDHH95G04mtBZffVSTtdMQK7Tc&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&_nc_tpa=Q5bMBQKr6XyizIl_jClHcfnEoYkuT-8W3EMfGHDVdTw_FKvmi082v8LjtnDVCPX_QP3YxEUxxeI5dMem&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQTJsH3UkElcXbBbxh0_VzT7JXuHnv3d2UJkrfD6UUI8uA&oe=6B0DF1A7",
+     "timestamp": "2026-11-18T04:31:04+0000",
+     "username": "gkhackter"
+    },
+    {
+     "caption": "This AI Runs Your Computer For You? Agent Desktop Truth + Live Stars\n\n.\n\nNow AI will run your computer â just like a human. Vercel Labs has open-sourced agent-desktop on GitHub: a computer-use CLI that gives AI agents mouse, keyboard and full app control. In this Short: â¢ Real demo clip (credit: DanManReal, YouTube) â¢ Real stock clips (Mixkit license) â¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026) â¢ Straight talk: what it is, what changed, the biggest benefit Timestamps: 0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 Full computer control â¢ 0:12 AI was caged â¢ 0:16 Wall breaks â¢ 0:20 Real demo â¢ 0:29 Live stars â¢ 0:36 Comment CTA If you want to learn how to use it, comment VIDEO and follow â the next video is exactly on this. Credits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0). â à¤à¤¬ AI à¤à¤ªà¤à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° à¤à¥à¤¦ à¤à¤²à¤¾à¤à¤à¤¾ â à¤¬à¤¿à¤²à¥à¤à¥à¤² à¤à¤à¤¸à¤¾à¤¨ à¤à¥ à¤¤à¤°à¤¹à¥¤ Vercel Labs à¤¨à¥ GitHub à¤ªà¤° agent-desktop open-source à¤à¤¿à¤¯à¤¾ à¤¹à¥: computer-use CLI à¤à¥ AI agents à¤à¥ mouse, keyboard à¤à¤° app-control à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤ à¤à¤¸ Short à¤®à¥à¤: â¢ à¤à¤¸à¤²à¥ demo clip (credit: DanManReal, YouTube) â¢ à¤à¤¸à¤²à¥ stock clips (Mixkit license) â¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026) â¢ à¤¸à¥à¤§à¥ à¤¬à¤¾à¤¤: à¤à¥à¤¯à¤¾ à¤¹à¥, à¤à¥à¤¯à¤¾ à¤¬à¤¦à¤²à¤¾, à¤¸à¤¬à¤¸à¥ à¤¬à¤¡à¤¼à¤¾ à¤«à¤¼à¤¾à¤¯à¤¦à¤¾ Timestamps: 0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 à¤ªà¥à¤°à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° â¢ 0:12 AI à¤à¥à¤¦ à¤¥à¥ â¢ 0:16 à¤¦à¥à¤µà¤¾à¤° à¤à¥à¤à¥ â¢ 0:20 à¤à¤¸à¤²à¥ demo â¢ 0:29 live stars â¢ 0:36 à¤à¤®à¥à¤à¤ CTA à¤à¤à¤° à¤à¤¸à¥ à¤à¤¸à¥à¤¤à¥à¤®à¤¾à¤² à¤à¤°à¤¨à¤¾ à¤¸à¥à¤à¤¨à¤¾ à¤¹à¥ à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ VIDEO à¤²à¤¿à¤à¥ à¤à¤° follow à¤à¤° à¤²à¥ â à¤¨à¥à¤à¥à¤¸à¥à¤ à¤µà¥à¤¡à¤¿à¤¯à¥ à¤à¤¸à¥ à¤ªà¤° à¤à¤¨à¥ à¤µà¤¾à¤²à¥ à¤¹à¥à¥¤ Credits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0)à¥¤ #Shorts #AgentDesktop #VercelLabs #AIAgents #C",
+     "id": "18131612206696461",
+     "is_ai_generated": true,
+     "is_shared_to_feed": true,
+     "media_type": "VIDEO",
+     "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t2/f2/m86/AQOcDgCS21qzQGQ6VTbCzbl1zCVPAU2bPVRU8dq4gpg91uwci5-bHAHmzJgYI2eNdIHJVS7id6tPb65KcfTykBdwcbhyUtknPAmTo2k.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=t2qKjppPSuYQ7kNvwGrPznk&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzE2LmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6MjA4OTI5NzIxMTc1MzA5MywiYXNzZXRfYWdlX2RheXMiOjEyLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6NDQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=5287948c38b117e4&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC83NDg5QUNGOEI1RDc0Qjc4ODI3MTEyNDk1ODY5N0JFMF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzA3NjY0QkRERERENTQwMjdCODE5NzM4RTQzRUIzNjQ1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwOIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRJjb3B5X3NhbXBsZV9ncm91cHMBMRUAACaKipiijY22BxUCKAJDMywXQEYMzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HZeadAQA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&edm=ANo9K5cEAAAA&_nc_map=urlgen_bucketless&_nc_zt=28&_nc_tpa=Q5bMBQK0hKZeLCYXu4NlCGXwdK7WTI1Y7szt7bTO_kZMhh0I6jTn6L9A0_0yvJOjJ7J-kBQWXS79_y51&_nc_enc=Uq6Y_Rvy3u0FkwCslcvhJsuMf3RIQM73OBW4HaKWkNq4MRbLUTKiSMihw_9PhEsv4BsPGq19bRItlmn3t1LnvOgWWKJKcTs1ZuQMOkKNHGunKomgUSMT6p6ZjnSEqJOj1h8XaBaHOOS4psM3&oh=00_AQSgWJMwiAa3UqRpWPkn6VIgIJZSORWbB9qAtzk90-aV0g&oe=6B0A253C",
+     "permalink": "https://www.instagram.com/reel/DftLxgLKXQ8/",
+     "thumbnail_url": "https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/898887859_2089298721752942_3645249814472741963_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=VEGiz-RTik4Q7kNvwEjt-cw&_nc_oc=AdpHZlqllAz0VYEWU8aERcIHKqP9eDdvN_0lPTPT3FdrExbJy5NGSaLvx0RtOIbbWHI&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=28IuUfZVGeHUclqM5pWfpw&_nc_tpa=Q5bMBQJtBp0i-ZFeB-C3_ZqQr7QJ0yyN0HVsr1IyQvQ2nJNI0-HZTIi0egyvXhZLYFtZ2ECNSy6qi3yg&_nc_ct=RQosPBUKFQwAAAA&oh=00_AQSjx-4XAa1FLjWQKNhrDmx9P1RxBcX8fQsG9B_8tWuy2Q&oe=6B0E0BC6",
+     "timestamp": "2026-11-14T02:58:46+0000",
+     "username": "gkhackter"
+    }
+   ],
+   "rows": [
+    {
+     "id": "18171426397477618",
+     "type": "VIDEO",
+     "product": null,
+     "at": "2026-11-26T04:30:55+0000",
+     "link": "https://www.instagram.com/reel/DgMQCixOsr-/",
+     "caption": "Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle",
+     "likes": null,
+     "comments": null,
+     "insights": {
+      "composio_execution_message": "Deprecated metrics removed: plays. Use 'views' instead of 'impressions' for view/display counts. Final metrics: reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, views",
+      "data": [
+       {
+        "description": "The number of unique accounts that have seen this reel, at least once. Reach is different from impressions, which may include multiple views of your reel by the same accounts. This metric is estimated.",
+        "id": "18171426397477618/insights/reach/lifetime",
+        "name": "reach",
+        "period": "lifetime",
+        "title": "Accounts reached",
+        "values": [
+         {
+          "value": 21
+         }
+        ]
+       },
+       {
+        "description": "The number of likes on your reel.",
+        "id": "18171426397477618/insights/likes/lifetime",
+        "name": "likes",
+        "period": "lifetime",
+        "title": "Likes",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of comments on your reel.",
+        "id": "18171426397477618/insights/comments/lifetime",
+        "name": "comments",
+        "period": "lifetime",
+        "title": "Comments",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of saves of your reel.",
+        "id": "18171426397477618/insights/saved/lifetime",
+        "name": "saved",
+        "period": "lifetime",
+        "title": "Saved",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of shares of your reel.",
+        "id": "18171426397477618/insights/shares/lifetime",
+        "name": "shares",
+        "period": "lifetime",
+        "title": "Shares",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of likes, saves, comments and shares on your reels minus the number of unlikes, unsaves and deleted comments.",
+        "id": "18171426397477618/insights/total_interactions/lifetime",
+        "name": "total_interactions",
+        "period": "lifetime",
+        "title": "Reels interactions",
+        "values": [
+         {
+          "value": 2
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels average watch time",
+        "id": "18171426397477618/insights/ig_reels_avg_watch_time/lifetime",
+        "name": "ig_reels_avg_watch_time",
+        "period": "lifetime",
+        "title": "Reels Average Watch Time (milliseconds)",
+        "values": [
+         {
+          "value": 3982
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels video view watch time",
+        "id": "18171426397477618/insights/ig_reels_video_view_total_time/lifetime",
+        "name": "ig_reels_video_view_total_time",
+        "period": "lifetime",
+        "title": "Video View Total Time (milliseconds)",
+        "values": [
+         {
+          "value": 207115
+         }
+        ]
+       },
+       {
+        "description": "The number of times your reels was played or displayed.",
+        "id": "18171426397477618/insights/views/lifetime",
+        "name": "views",
+        "period": "lifetime",
+        "title": "Views",
+        "values": [
+         {
+          "value": 51
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "id": "18136041943681903",
+     "type": "VIDEO",
+     "product": null,
+     "at": "2026-11-24T09:38:04+0000",
+     "link": "https://www.instagram.com/reel/DgHpnvjlGqv/",
+     "caption": "Cloudflare Workers Playground: account banaye bina code likho, live preview dekho. Free plan mein 100,000 requests roz aur har request ko 10 ms CPU. L",
+     "likes": null,
+     "comments": null,
+     "insights": {
+      "composio_execution_message": "Deprecated metrics removed: plays. Use 'views' instead of 'impressions' for view/display counts. Final metrics: reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, views",
+      "data": [
+       {
+        "description": "The number of unique accounts that have seen this reel, at least once. Reach is different from impressions, which may include multiple views of your reel by the same accounts. This metric is estimated.",
+        "id": "18136041943681903/insights/reach/lifetime",
+        "name": "reach",
+        "period": "lifetime",
+        "title": "Accounts reached",
+        "values": [
+         {
+          "value": 73
+         }
+        ]
+       },
+       {
+        "description": "The number of likes on your reel.",
+        "id": "18136041943681903/insights/likes/lifetime",
+        "name": "likes",
+        "period": "lifetime",
+        "title": "Likes",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of comments on your reel.",
+        "id": "18136041943681903/insights/comments/lifetime",
+        "name": "comments",
+        "period": "lifetime",
+        "title": "Comments",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of saves of your reel.",
+        "id": "18136041943681903/insights/saved/lifetime",
+        "name": "saved",
+        "period": "lifetime",
+        "title": "Saved",
+        "values": [
+         {
+          "value": 2
+         }
+        ]
+       },
+       {
+        "description": "The number of shares of your reel.",
+        "id": "18136041943681903/insights/shares/lifetime",
+        "name": "shares",
+        "period": "lifetime",
+        "title": "Shares",
+        "values": [
+         {
+          "value": 3
+         }
+        ]
+       },
+       {
+        "description": "The number of likes, saves, comments and shares on your reels minus the number of unlikes, unsaves and deleted comments.",
+        "id": "18136041943681903/insights/total_interactions/lifetime",
+        "name": "total_interactions",
+        "period": "lifetime",
+        "title": "Reels interactions",
+        "values": [
+         {
+          "value": 6
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels average watch time",
+        "id": "18136041943681903/insights/ig_reels_avg_watch_time/lifetime",
+        "name": "ig_reels_avg_watch_time",
+        "period": "lifetime",
+        "title": "Reels Average Watch Time (milliseconds)",
+        "values": [
+         {
+          "value": 4133
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels video view watch time",
+        "id": "18136041943681903/insights/ig_reels_video_view_total_time/lifetime",
+        "name": "ig_reels_video_view_total_time",
+        "period": "lifetime",
+        "title": "Video View Total Time (milliseconds)",
+        "values": [
+         {
+          "value": 442280
+         }
+        ]
+       },
+       {
+        "description": "The number of times your reels was played or displayed.",
+        "id": "18136041943681903/insights/views/lifetime",
+        "name": "views",
+        "period": "lifetime",
+        "title": "Views",
+        "values": [
+         {
+          "value": 112
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "id": "18149455345587454",
+     "type": "VIDEO",
+     "product": null,
+     "at": "2026-11-18T04:31:04+0000",
+     "link": "https://www.instagram.com/reel/Df3ptArAPJq/",
+     "caption": "AI Companies In Trouble? 1 Free Command Cuts AI Token Costs In Half\n\nOne free command that cuts your AI token bill in half â without hurting answer ",
+     "likes": null,
+     "comments": null,
+     "insights": {
+      "composio_execution_message": "Deprecated metrics removed: plays. Use 'views' instead of 'impressions' for view/display counts. Final metrics: reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, views",
+      "data": [
+       {
+        "description": "The number of unique accounts that have seen this reel, at least once. Reach is different from impressions, which may include multiple views of your reel by the same accounts. This metric is estimated.",
+        "id": "18149455345587454/insights/reach/lifetime",
+        "name": "reach",
+        "period": "lifetime",
+        "title": "Accounts reached",
+        "values": [
+         {
+          "value": 97
+         }
+        ]
+       },
+       {
+        "description": "The number of likes on your reel.",
+        "id": "18149455345587454/insights/likes/lifetime",
+        "name": "likes",
+        "period": "lifetime",
+        "title": "Likes",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of comments on your reel.",
+        "id": "18149455345587454/insights/comments/lifetime",
+        "name": "comments",
+        "period": "lifetime",
+        "title": "Comments",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of saves of your reel.",
+        "id": "18149455345587454/insights/saved/lifetime",
+        "name": "saved",
+        "period": "lifetime",
+        "title": "Saved",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of shares of your reel.",
+        "id": "18149455345587454/insights/shares/lifetime",
+        "name": "shares",
+        "period": "lifetime",
+        "title": "Shares",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of likes, saves, comments and shares on your reels minus the number of unlikes, unsaves and deleted comments.",
+        "id": "18149455345587454/insights/total_interactions/lifetime",
+        "name": "total_interactions",
+        "period": "lifetime",
+        "title": "Reels interactions",
+        "values": [
+         {
+          "value": 2
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels average watch time",
+        "id": "18149455345587454/insights/ig_reels_avg_watch_time/lifetime",
+        "name": "ig_reels_avg_watch_time",
+        "period": "lifetime",
+        "title": "Reels Average Watch Time (milliseconds)",
+        "values": [
+         {
+          "value": 4121
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels video view watch time",
+        "id": "18149455345587454/insights/ig_reels_video_view_total_time/lifetime",
+        "name": "ig_reels_video_view_total_time",
+        "period": "lifetime",
+        "title": "Video View Total Time (milliseconds)",
+        "values": [
+         {
+          "value": 428600
+         }
+        ]
+       },
+       {
+        "description": "The number of times your reels was played or displayed.",
+        "id": "18149455345587454/insights/views/lifetime",
+        "name": "views",
+        "period": "lifetime",
+        "title": "Views",
+        "values": [
+         {
+          "value": 102
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "id": "18131612206696461",
+     "type": "VIDEO",
+     "product": null,
+     "at": "2026-11-14T02:58:46+0000",
+     "link": "https://www.instagram.com/reel/DftLxgLKXQ8/",
+     "caption": "This AI Runs Your Computer For You? Agent Desktop Truth + Live Stars\n\n.\n\nNow AI will run your computer â just like a human. Vercel Labs has open-sou",
+     "likes": null,
+     "comments": null,
+     "insights": {
+      "composio_execution_message": "Deprecated metrics removed: plays. Use 'views' instead of 'impressions' for view/display counts. Final metrics: reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, views",
+      "data": [
+       {
+        "description": "The number of unique accounts that have seen this reel, at least once. Reach is different from impressions, which may include multiple views of your reel by the same accounts. This metric is estimated.",
+        "id": "18131612206696461/insights/reach/lifetime",
+        "name": "reach",
+        "period": "lifetime",
+        "title": "Accounts reached",
+        "values": [
+         {
+          "value": 117
+         }
+        ]
+       },
+       {
+        "description": "The number of likes on your reel.",
+        "id": "18131612206696461/insights/likes/lifetime",
+        "name": "likes",
+        "period": "lifetime",
+        "title": "Likes",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of comments on your reel.",
+        "id": "18131612206696461/insights/comments/lifetime",
+        "name": "comments",
+        "period": "lifetime",
+        "title": "Comments",
+        "values": [
+         {
+          "value": 0
+         }
+        ]
+       },
+       {
+        "description": "The number of saves of your reel.",
+        "id": "18131612206696461/insights/saved/lifetime",
+        "name": "saved",
+        "period": "lifetime",
+        "title": "Saved",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of shares of your reel.",
+        "id": "18131612206696461/insights/shares/lifetime",
+        "name": "shares",
+        "period": "lifetime",
+        "title": "Shares",
+        "values": [
+         {
+          "value": 1
+         }
+        ]
+       },
+       {
+        "description": "The number of likes, saves, comments and shares on your reels minus the number of unlikes, unsaves and deleted comments.",
+        "id": "18131612206696461/insights/total_interactions/lifetime",
+        "name": "total_interactions",
+        "period": "lifetime",
+        "title": "Reels interactions",
+        "values": [
+         {
+          "value": 2
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels average watch time",
+        "id": "18131612206696461/insights/ig_reels_avg_watch_time/lifetime",
+        "name": "ig_reels_avg_watch_time",
+        "period": "lifetime",
+        "title": "Reels Average Watch Time (milliseconds)",
+        "values": [
+         {
+          "value": 4953
+         }
+        ]
+       },
+       {
+        "description": "This body communicates the definition for reels video view watch time",
+        "id": "18131612206696461/insights/ig_reels_video_view_total_time/lifetime",
+        "name": "ig_reels_video_view_total_time",
+        "period": "lifetime",
+        "title": "Video View Total Time (milliseconds)",
+        "values": [
+         {
+          "value": 609257
+         }
+        ]
+       },
+       {
+        "description": "The number of times your reels was played or displayed.",
+        "id": "18131612206696461/insights/views/lifetime",
+        "name": "views",
+        "period": "lifetime",
+        "title": "Views",
+        "values": [
+         {
+          "value": 125
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
   },
   "facebook": {
    "pages": [
@@ -30,23 +572,209 @@
      "followers": 0
     }
    ],
-   "rows": []
+   "rows": [
+    {
+     "page": "Gk Hackter",
+     "post_id": "1270080059532814_122122517247511062",
+     "at": "2026-11-26T04:31:17+0000",
+     "link": "https://www.facebook.com/reel/1797734761334953/",
+     "message": "Ek hardcoded API key public repo mein - jo bhi file kholega, padh lega.\nGitHub Push Protection push ko wahin rok deta hai, repo tak pahunchne se pehle.\n\n- Suppo",
+     "likes": 0,
+     "comments": 0,
+     "shares": null,
+     "insights": null
+    },
+    {
+     "page": "Gk Hackter",
+     "post_id": "1270080059532814_122120114673511062",
+     "at": "2026-11-18T04:31:08+0000",
+     "link": "https://www.facebook.com/reel/1161997506292504/",
+     "message": "AI Companies In Trouble? 1 Free Command Cuts AI Token Costs In Half\n\nOne free command that cuts your AI token bill in half â without hurting answer quality.\nJ",
+     "likes": 0,
+     "comments": 1,
+     "shares": null,
+     "insights": null
+    },
+    {
+     "page": "Gk Hackter",
+     "post_id": "1270080059532814_122119646307511062",
+     "at": "2026-11-16T14:50:58+0000",
+     "link": "https://www.facebook.com/reel/1078394825217231/",
+     "message": "à¤à¤¬ AI à¤à¤ªà¤à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° à¤à¥à¤¦ à¤à¤²à¤¾ à¤¸à¤à¤¤à¤¾ à¤¹à¥ â à¤¬à¤¿à¤²à¥à¤à¥à¤² à¤à¤à¤¸à¤¾à¤¨ à¤à¥ à¤¤à¤°à¤¹!\n\nVercel Labs",
+     "likes": 0,
+     "comments": 0,
+     "shares": null,
+     "insights": null
+    },
+    {
+     "page": "Gk Hackter",
+     "post_id": "1270080059532814_122119243131511062",
+     "at": "2026-11-15T06:56:50+0000",
+     "link": "https://www.facebook.com/122121992907511062/posts/122119243131511062?substory_index=1875394176815689",
+     "message": "",
+     "likes": 0,
+     "comments": 0,
+     "shares": null,
+     "insights": null
+    }
+   ]
   },
   "youtube": {
    "channel_videos": {
-    "etag": "",
-    "items": [],
+    "etag": "Me7bZzZcLiXQAwPO8B6C8ZCKw2M",
+    "items": [
+     {
+      "etag": "TgV2-fgyfikzsSVl8FpOwYSHBh0",
+      "id": "VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v",
+      "kind": "youtube#playlistItem",
+      "snippet": {
+       "channelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "channelTitle": "gk hackter",
+       "description": "One hardcoded API key in a public repo is readable by anyone who opens that file.\nGitHub Push Protection stops the push before the secret ever reaches the repository.\n\n- It blocks supported secrets at push time, not after the leak\n- 532 partner patterns, and 465 of them are covered by push protection\n- What it misses: only a subset is blocked, and a public-repo push over 50 MB is skipped\n- The fix that always works: keep keys in environment variables, never in git\n\nSource: docs.github.com - checked 25 Nov 2026\n\nPush protection guide: https://docs.github.com/en/code-security/concepts/secret-security/push-protection\nWhat it scans and what it skips: https://docs.github.com/en/code-security/reference/secret-security/secret-scanning-scope\nAll supported patterns: https://docs.github.com/en/code-security/reference/secret-security/supported-secret-scanning-patterns\n\ngithub push protection, api key leak, github secret scanning, hardcoded api key,\ngithub security settings, env file, environment variables, git security,\ngithub tricks, code security basics\n\n#Shorts #GitHub #CyberSecurity #ApiSecurity",
+       "playlistId": "UUFW0BnicviKl3NsReW3sFsQ",
+       "position": 0,
+       "publishedAt": "2026-11-26T04:30:39Z",
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "J6hsqwtul-o"
+       },
+       "thumbnails": {
+        "default": {
+         "height": 90,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/default.jpg",
+         "width": 120
+        },
+        "high": {
+         "height": 360,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/hqdefault.jpg",
+         "width": 480
+        },
+        "maxres": {
+         "height": 720,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/maxresdefault.jpg",
+         "width": 1280
+        },
+        "medium": {
+         "height": 180,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/mqdefault.jpg",
+         "width": 320
+        },
+        "standard": {
+         "height": 480,
+         "url": "https://i.ytimg.com/vi/J6hsqwtul-o/sddefault.jpg",
+         "width": 640
+        }
+       },
+       "title": "Your API Key Is Public: GitHub Push Protection Explained #Shorts",
+       "videoOwnerChannelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "videoOwnerChannelTitle": "gk hackter "
+      }
+     },
+     {
+      "etag": "9NtoqoHnU0DjqFuY-FobgU6luYU",
+      "id": "VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLkJxQ1hpSFNxaEF3",
+      "kind": "youtube#playlistItem",
+      "snippet": {
+       "channelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "channelTitle": "gk hackter",
+       "description": "One free command that cuts your AI token bill in half â without hurting answer quality.\nJuliusBrussee/caveman is an open-source skill and CLI (npx @caveman-ai/cli@latest) on GitHub that stops AI from writing long filler paragraphs and gives pure code and straight answers.\n\nIn this Short:\nâ¢ Normal AI vs Caveman: 63 tokens down to 20 tokens (68% fewer tokens)\nâ¢ Real repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% saved) + Caveman Learn UI (855k tokens saved) & chart-wrap-input benchmark\nâ¢ Works with 30+ AI tools (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research live benchmark: 54%â76% cheaper (1.4xâ2.4x lower cost)\nâ¢ Live GitHub REST API check: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B test (86 real coding tasks): 0% quality loss (p = 0.82)\n\nTimestamps:\n0:00 HOOK â¢ 0:05 Normal AI fluff â¢ 0:08 Token bill receipt â¢ 0:11 Free GitHub tool Caveman â¢ 0:14 Zero fluff demo â¢ 0:18 63 vs 20 tokens â¢ 0:23 Thumbnail frame â¢ 0:23 30+ AI tools CLI demo â¢ 0:28 54-76% cheaper (Adobe Research) â¢ 0:32 Live GitHub API 120,654 stars â¢ 0:37 JetBrains 0% quality loss â¢ 0:41 Comment CTA\n\nWant the exact command and setup steps? Comment CAVEMAN and follow!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit License\n\nâ\n\nà¤à¤ à¤«à¤¼à¥à¤°à¥ à¤à¤®à¤¾à¤à¤¡ à¤à¥ à¤à¤ªà¤à¤¾ AI à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤à¤§à¤¾ à¤à¤° à¤¦à¥à¤¤à¤¾ à¤¹à¥ â à¤¬à¤¿à¤¨à¤¾ à¤à¤µà¤¾à¤¬ à¤à¥ à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤à¤® à¤à¤¿à¤à¥¤\nGitHub à¤ªà¤° JuliusBrussee/caveman à¤à¤ open-source skill à¤à¤° CLI à¤à¥à¤² (npx @caveman-ai/cli@latest) à¤¹à¥ à¤à¥ AI à¤à¥ à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤ªà¥à¤°à¤¾à¤à¥à¤°à¤¾à¤« à¤¬à¤à¤¦ à¤à¤°à¤à¥ à¤¸à¥à¤§à¤¾ à¤à¥à¤¡ à¤à¤° à¤à¤¸à¤²à¥ à¤à¤µà¤¾à¤¬ à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ Normal AI à¤¬à¤¨à¤¾à¤® Caveman: 63 tokens à¤¸à¥ à¤à¤à¤à¤° 20 tokens (68% à¤à¤® à¤à¥à¤à¤¨)\nâ¢ à¤à¤¸à¤²à¥ repo demo (caveman-demo.gif): 16,098 â 1,091 tokens (93% à¤¬à¤à¤¤) + Caveman Learn UI (855k tokens saved) à¤à¤° chart-wrap-input à¤¬à¥à¤à¤à¤®à¤¾à¤°à¥à¤\nâ¢ 30+ AI à¤à¥à¤²à¥à¤¸ à¤à¥ à¤¸à¤¾à¤¥ à¤à¤¾à¤® à¤à¤°à¤¤à¤¾ à¤¹à¥ (Claude Code, Codex CLI, Gemini CLI, Antigravity)\nâ¢ Adobe Research à¤²à¤¾à¤à¤µ à¤à¥à¤¸à¥à¤: 54%â76% à¤¸à¤¸à¥à¤¤à¤¾ (1.4xâ2.4x à¤à¤® à¤à¤°à¥à¤)\nâ¢ Live GitHub API à¤à¤¾à¤à¤: 120,654 stars, 7,044 forks, Apache-2.0\nâ¢ JetBrains Lab A/B à¤à¥à¤¸à¥à¤ (86 à¤à¤¸à¤²à¥ coding tasks): 0% quality loss (p = 0.82)\n\nà¤à¤¾à¤à¤®à¤¸à¥à¤à¥à¤®à¥à¤ª:\n0:00 à¤¹à¥à¤ â¢ 0:05 à¤²à¤à¤¬à¤¾ AI à¤à¤µà¤¾à¤¬ â¢ 0:08 à¤à¥à¤à¤¨ à¤¬à¤¿à¤² à¤°à¤¸à¥à¤¦ â¢ 0:11 à¤«à¥à¤°à¥ GitHub à¤à¥à¤² Caveman â¢ 0:14 à¤«à¤¼à¤¾à¤²à¤¤à¥ à¤¶à¤¬à¥à¤¦ à¤à¤ â¢ 0:18 63 à¤¬à¤¨à¤¾à¤® 20 à¤à¥à¤à¤¨ â¢ 0:23 à¤¥à¤à¤¬à¤¨à¥à¤² à¤«à¥à¤°à¥à¤® â¢ 0:23 Claude, Codex, Gemini, Antigravity + 30 à¤à¥à¤²à¥à¤¸ â¢ 0:28 Adobe Research 54-76% à¤¬à¤à¤¤ â¢ 0:32 à¤²à¤¾à¤à¤µ GitHub 120,654 à¤¸à¥à¤à¤¾à¤°à¥à¤¸ â¢ 0:37 JetBrains 0% à¤à¥à¤µà¤¾à¤²à¤¿à¤à¥ à¤²à¥à¤¸ â¢ 0:41 à¤à¤®à¥à¤à¤ CTA\n\nà¤à¤à¤° à¤à¤ªà¤à¥ à¤­à¥ à¤à¤¸à¤à¤¾ à¤ªà¥à¤°à¤¾ à¤à¤®à¤¾à¤à¤¡ à¤à¤° à¤¸à¥à¤à¤à¤ª à¤à¤¾à¤¹à¤¿à¤, à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ CAVEMAN à¤²à¤¿à¤à¤à¤° à¤«à¥à¤²à¥ à¤à¤° à¤²à¥!\nCredits: Music: Spaceship by Lesion X (CC BY 3.0) â¢ Repo, UI & Demo: JuliusBrussee/caveman (Apache-2.0) â¢ SFX: Mixkit Licenseà¥¤",
+       "playlistId": "UUFW0BnicviKl3NsReW3sFsQ",
+       "position": 1,
+       "publishedAt": "2026-11-18T04:30:52Z",
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "BqCXiHSqhAw"
+       },
+       "thumbnails": {
+        "default": {
+         "height": 90,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/default.jpg",
+         "width": 120
+        },
+        "high": {
+         "height": 360,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/hqdefault.jpg",
+         "width": 480
+        },
+        "maxres": {
+         "height": 720,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/maxresdefault.jpg",
+         "width": 1280
+        },
+        "medium": {
+         "height": 180,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/mqdefault.jpg",
+         "width": 320
+        },
+        "standard": {
+         "height": 480,
+         "url": "https://i.ytimg.com/vi/BqCXiHSqhAw/sddefault.jpg",
+         "width": 640
+        }
+       },
+       "title": "AI Companies In Trouble? 1 Free Command Cuts AI Token Costs In Half #Shorts #CavemanAI #AI #CodingAI",
+       "videoOwnerChannelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "videoOwnerChannelTitle": "gk hackter "
+      }
+     },
+     {
+      "etag": "NYwtTO5Q9mFnPPmXK_B9SoRlZ3I",
+      "id": "VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLmRtYXAtNE5DWmdJ",
+      "kind": "youtube#playlistItem",
+      "snippet": {
+       "channelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "channelTitle": "gk hackter",
+       "description": "Now AI will run your computer â just like a human.\nVercel Labs has open-sourced agent-desktop on GitHub: a computer-use CLI that gives AI agents mouse, keyboard and full app control.\n\nIn this Short:\nâ¢ Real demo clip (credit: DanManReal, YouTube)\nâ¢ Real stock clips (Mixkit license)\nâ¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026)\nâ¢ Straight talk: what it is, what changed, the biggest benefit\n\nTimestamps:\n0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 Full computer control â¢ 0:12 AI was caged â¢ 0:16 Wall breaks â¢ 0:20 Real demo â¢ 0:29 Live stars â¢ 0:36 Comment CTA\n\nIf you want to learn how to use it, comment VIDEO and follow â the next video is exactly on this.\nCredits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0).\n\nâ\n\nà¤à¤¬ AI à¤à¤ªà¤à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° à¤à¥à¤¦ à¤à¤²à¤¾à¤à¤à¤¾ â à¤¬à¤¿à¤²à¥à¤à¥à¤² à¤à¤à¤¸à¤¾à¤¨ à¤à¥ à¤¤à¤°à¤¹à¥¤\nVercel Labs à¤¨à¥ GitHub à¤ªà¤° agent-desktop open-source à¤à¤¿à¤¯à¤¾ à¤¹à¥: computer-use CLI à¤à¥ AI agents à¤à¥ mouse, keyboard à¤à¤° app-control à¤¦à¥à¤¤à¤¾ à¤¹à¥à¥¤\n\nà¤à¤¸ Short à¤®à¥à¤:\nâ¢ à¤à¤¸à¤²à¥ demo clip (credit: DanManReal, YouTube)\nâ¢ à¤à¤¸à¤²à¥ stock clips (Mixkit license)\nâ¢ GitHub OG card + live API check: 23,119 stars (10-Nov-2026)\nâ¢ à¤¸à¥à¤§à¥ à¤¬à¤¾à¤¤: à¤à¥à¤¯à¤¾ à¤¹à¥, à¤à¥à¤¯à¤¾ à¤¬à¤¦à¤²à¤¾, à¤¸à¤¬à¤¸à¥ à¤¬à¤¡à¤¼à¤¾ à¤«à¤¼à¤¾à¤¯à¤¦à¤¾\n\nTimestamps:\n0:00 HOOK â¢ 0:04 GitHub repo â¢ 0:08 à¤ªà¥à¤°à¤¾ à¤à¤à¤ªà¥à¤¯à¥à¤à¤° â¢ 0:12 AI à¤à¥à¤¦ à¤¥à¥ â¢ 0:16 à¤¦à¥à¤µà¤¾à¤° à¤à¥à¤à¥ â¢ 0:20 à¤à¤¸à¤²à¥ demo â¢ 0:29 live stars â¢ 0:36 à¤à¤®à¥à¤à¤ CTA\n\nà¤à¤à¤° à¤à¤¸à¥ à¤à¤¸à¥à¤¤à¥à¤®à¤¾à¤² à¤à¤°à¤¨à¤¾ à¤¸à¥à¤à¤¨à¤¾ à¤¹à¥ à¤¤à¥ à¤à¤®à¥à¤à¤ à¤®à¥à¤ VIDEO à¤²à¤¿à¤à¥ à¤à¤° follow à¤à¤° à¤²à¥ â à¤¨à¥à¤à¥à¤¸à¥à¤ à¤µà¥à¤¡à¤¿à¤¯à¥ à¤à¤¸à¥ à¤ªà¤° à¤à¤¨à¥ à¤µà¤¾à¤²à¥ à¤¹à¥à¥¤\nCredits: demo Â© DanManReal (YouTube, short excerpt + commentary); clips Â© Mixkit; repo card Â© GitHub/Vercel Labs (Apache-2.0)à¥¤\n\n#Shorts #AgentDesktop #VercelLabs #AIAgents #ComputerUse #HindiTech #GKHACKTECH\n\n\n\nagent desktop, vercel labs agent-desktop, AI agent desktop, computer use AI, AI agents, AI desktop automation, cli agent, github trending 2026, tech shorts, hindi tech channel, gk hacktech, computer use agent demo, open source AI",
+       "playlistId": "UUFW0BnicviKl3NsReW3sFsQ",
+       "position": 2,
+       "publishedAt": "2026-11-14T04:34:56Z",
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "dmap-4NCZgI"
+       },
+       "thumbnails": {
+        "default": {
+         "height": 90,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/default.jpg",
+         "width": 120
+        },
+        "high": {
+         "height": 360,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/hqdefault.jpg",
+         "width": 480
+        },
+        "maxres": {
+         "height": 720,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/maxresdefault.jpg",
+         "width": 1280
+        },
+        "medium": {
+         "height": 180,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/mqdefault.jpg",
+         "width": 320
+        },
+        "standard": {
+         "height": 480,
+         "url": "https://i.ytimg.com/vi/dmap-4NCZgI/sddefault.jpg",
+         "width": 640
+        }
+       },
+       "title": "ð±This AI Runs Your Computer For You? Agent Desktop Truth?",
+       "videoOwnerChannelId": "UCFW0BnicviKl3NsReW3sFsQ",
+       "videoOwnerChannelTitle": "gk hackter "
+      }
+     }
+    ],
     "kind": "youtube#playlistItemListResponse",
-    "next_page_token": null,
-    "page_info": {
-     "results_per_page": 0,
-     "total_results": 0
-    },
-    "prev_page_token": null,
-    "region_code": null
+    "pageInfo": {
+     "resultsPerPage": 25,
+     "totalResults": 3
+    }
    },
-   "videos": [],
-   "note": "channel video list khaali ya 403 — upar ka jawab dekho"
+   "videos": {
+    "__error__": "None of the 3 requested video IDs returned results. Video IDs: ['VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLkJxQ1hpSFNxaEF3', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLmRtYXAtNE5DWmdJ']. Possible reasons: videos may be private, deleted, region-restricted, or the IDs"
+   },
+   "note": ""
   }
  }
 }
