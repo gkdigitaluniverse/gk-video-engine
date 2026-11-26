@@ -130,16 +130,22 @@ def instagram():
     log("IG id:", ig_id)
 
     media = []
-    for args in ({"ig_user_id": ig_id or "me", "limit": 25},
-                 {"ig_user_id": ig_id or "me", "fields": "id,caption,media_type,media_product_type,permalink,timestamp,like_count,comments_count"}):
-        rr = run_tools([("INSTAGRAM_GET_IG_USER_MEDIA", args)])
-        d = rr.get("INSTAGRAM_GET_IG_USER_MEDIA")
-        lst = d.get("data") if isinstance(d, dict) else d
-        if isinstance(lst, list) and lst:
-            media = lst
-            log("IG media:", len(media), "via", list(args))
+    cands = ["INSTAGRAM_GET_IG_USER_MEDIA", "INSTAGRAM_GET_USER_MEDIA",
+             "INSTAGRAM_LIST_IG_MEDIA", "INSTAGRAM_GET_MEDIA_LIST",
+             "INSTAGRAM_GET_IG_MEDIA_LIST"]
+    for slug in cands:
+        for args in ({"ig_user_id": ig_id or "me", "limit": 25},
+                     {"ig_user_id": ig_id or "me", "fields": "id,caption,media_type,media_product_type,permalink,timestamp,like_count,comments_count"}):
+            rr = run_tools([(slug, args)])
+            d = rr.get(slug)
+            lst = d.get("data") if isinstance(d, dict) else d
+            if isinstance(lst, list) and lst:
+                media = lst
+                log("IG media:", len(media), "via", slug)
+                break
+            log("IG media try", slug, list(args), "->", json.dumps(d)[:160])
+        if media:
             break
-        log("IG media try", list(args), "->", json.dumps(d)[:200])
     out["media"] = media
 
     for m in media[:20]:
@@ -164,9 +170,9 @@ def instagram():
 
 # ------------------------- Facebook -------------------------
 FB_FIELDS = ("id,message,created_time,permalink_url,full_picture,"
-             "shares,reactions.summary(total_count),comments.summary(total_count),"
-             "insights.metric(post_impressions,post_impressions_unique,"
-             "post_video_avg_time_watched,post_video_view_time,post_clicks,post_reactions_by_type_total)")
+             "shares,reactions.summary(total_count),comments.summary(total_count)")
+FB_METRICS = ["post_impressions", "post_impressions_unique", "post_engaged_users",
+              "post_clicks", "post_video_avg_time_watched", "post_video_view_time"]
 
 def facebook():
     out = {"pages": [], "rows": []}
@@ -193,6 +199,15 @@ def facebook():
             pi = post.get("insights")
             if isinstance(pi, dict):
                 ins = pi.get("data") or pi
+            if not ins:
+                for mset in (FB_METRICS, FB_METRICS[:3], ["post_impressions"]):
+                    rr2 = run_tools([("FACEBOOK_GET_GRAPH_OBJECT",
+                                      {"object_id": post.get("id"),
+                                       "fields": "insights.metric(" + ",".join(mset) + ")"})])
+                    d2 = rr2.get("FACEBOOK_GET_GRAPH_OBJECT")
+                    if d2 and not (isinstance(d2, dict) and ("__error__" in d2 or "__fail__" in d2)):
+                        ins = d2
+                        break
             out["rows"].append({
                 "page": p.get("name"), "post_id": post.get("id"),
                 "at": post.get("created_time"), "link": post.get("permalink_url"),
@@ -208,11 +223,22 @@ def facebook():
 # ------------------------- YouTube -------------------------
 def youtube():
     out = {"channel_videos": None, "videos": [], "note": ""}
-    rr = run_tools([("YOUTUBE_LIST_CHANNEL_VIDEOS", {"mine": True, "maxResults": 25, "part": "snippet,statistics"})])
-    d = rr.get("YOUTUBE_LIST_CHANNEL_VIDEOS")
+    d = None
+    for slug in ("YOUTUBE_LIST_CHANNEL_VIDEOS", "YOUTUBE_GET_MY_CHANNEL",
+                 "YOUTUBE_LIST_VIDEOS", "YOUTUBE_SEARCH_LIST"):
+        for args in ({"mine": True, "maxResults": 25, "part": "snippet,statistics"},
+                     {"channelId": "mine", "maxResults": 25, "part": "snippet,statistics"},
+                     {"maxResults": 25, "part": "snippet,statistics"}):
+            rr = run_tools([(slug, args)])
+            cand = rr.get(slug)
+            if cand and not (isinstance(cand, dict) and ("__error__" in cand or "__fail__" in cand)):
+                d = cand
+                log("YT via", slug, json.dumps(args)[:80])
+                break
+            log("YT try", slug, json.dumps(args)[:60], "->", json.dumps(cand)[:140])
+        if d:
+            break
     out["channel_videos"] = d
-    log("YT channel videos:", json.dumps(d)[:400])
-
     items = []
     if isinstance(d, dict):
         items = d.get("items") or (d.get("data") or {}).get("items") or []
@@ -247,6 +273,24 @@ def main():
         schemas = {"raw": txt[:3000]}
     json.dump(schemas, open(os.path.join(OUT, "schemas.json"), "w"), ensure_ascii=False, indent=1)
     log("schemas saved")
+    probe = ["INSTAGRAM_GET_IG_USER_MEDIA", "INSTAGRAM_GET_USER_MEDIA", "INSTAGRAM_LIST_IG_MEDIA",
+             "INSTAGRAM_GET_MEDIA_LIST", "INSTAGRAM_GET_USER_INSIGHTS", "INSTAGRAM_GET_ACCOUNT_INSIGHTS",
+             "YOUTUBE_LIST_CHANNEL_VIDEOS", "YOUTUBE_GET_MY_CHANNEL", "YOUTUBE_LIST_VIDEOS",
+             "YOUTUBE_SEARCH_LIST", "YOUTUBE_GET_CHANNEL_STATISTICS",
+             "FACEBOOK_GET_PAGE_INSIGHTS", "FACEBOOK_GET_POST_INSIGHTS", "FACEBOOK_GET_PAGE_POSTS"]
+    res2 = rpc("tools/call", {"name": "COMPOSIO_GET_TOOL_SCHEMAS", "arguments": {"tool_slugs": probe}})
+    t2 = text_of(res2)
+    try:
+        pj = json.loads(t2)
+    except Exception:
+        pj = {"raw": t2[:2000]}
+    json.dump(pj, open(os.path.join(OUT, "probe.json"), "w"), ensure_ascii=False, indent=1)
+    ok = []
+    ts = (pj.get("data") or {}).get("tool_schemas") or {}
+    for k in probe:
+        if k in ts:
+            ok.append(k)
+    log("EXISTS:", ",".join(ok))
 
     result = {"run_at": started, "http_init": status}
     for name, fn in (("instagram", instagram), ("facebook", facebook), ("youtube", youtube)):
