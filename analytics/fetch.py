@@ -12,7 +12,7 @@ Kya NAHI karta: publish nahi karta, delete nahi karta, purani file nahi chhoota.
 Tools COMPOSIO_MULTI_EXECUTE_TOOL se chalte hain (individual tool name MCP par
 expose nahi hote — pehle run me yahi galti pakdi gayi).
 """
-import os, json, sys, datetime, traceback
+import os, json, sys, re, datetime, traceback
 import requests
 
 URL = "https://connect.composio.dev/mcp"
@@ -72,6 +72,24 @@ def harvest(raw):
         acc.append(raw[:4000])
     return acc
 
+_DEC = json.JSONDecoder()
+
+def salvage(raw):
+    """Jab MCP jawab ko error ke andar double-escape karke bhejta hai — usme se
+    asli JSON nikaal lo. (yahi galti pehle 3 run me data kho rahi thi)"""
+    out = []
+    t = raw
+    for _ in range(4):
+        t = t.replace('\\\\"', '"').replace('\\"', '"').replace("\\\\n", "\n")
+    for m in re.finditer(r'\{"(successful|data|results)"', t):
+        try:
+            obj, _end = _DEC.raw_decode(t[m.start():])
+            if isinstance(obj, dict):
+                out.append(json.dumps(obj))
+        except Exception:
+            pass
+    return out
+
 def init():
     if not KEY:
         log("FATAL: COMPOSIO_KEY khaali hai")
@@ -94,7 +112,7 @@ def rpc(method, params, timeout=280):
 
 def text_of(raw):
     """Sabse bada payload — jo actual data hota hai."""
-    ps = harvest(raw)
+    ps = harvest(raw) + salvage(raw)
     ps.sort(key=len, reverse=True)
     return ps[0] if ps else ""
 
@@ -125,29 +143,35 @@ def run_tools(pairs):
     raw = rpc("tools/call", {"name": "COMPOSIO_MULTI_EXECUTE_TOOL",
                              "arguments": {"tools": [{"tool_slug": s, "arguments": a} for s, a in pairs]}})
     out = {}
-    for txt in harvest(raw):
+    found = 0
+    for txt in (harvest(raw) + salvage(raw)):
         j = _as_json(txt)
         if not isinstance(j, dict):
             continue
-        results = ((j.get("data") or {}).get("results")) if isinstance(j.get("data"), dict) else None
-        if not results and isinstance(j.get("results"), list):
-            results = j["results"]
+        d = j.get("data") if isinstance(j.get("data"), dict) else j
+        results = d.get("results") if isinstance(d, dict) else None
         if not isinstance(results, list):
             continue
-        for item in results:
+        for pos, item in enumerate(results):
             if not isinstance(item, dict):
                 continue
             slug = item.get("tool_slug")
             if not slug:
                 idx = item.get("index")
-                slug = pairs[idx][0] if isinstance(idx, int) and idx < len(pairs) else None
+                if isinstance(idx, int) and idx < len(pairs):
+                    slug = pairs[idx][0]
+                elif pos < len(pairs):
+                    slug = pairs[pos][0]
             if not slug:
                 continue
+            found += 1
             if item.get("error"):
                 out[slug] = {"__error__": str(item.get("error"))[:300]}
                 log("  !", slug, str(item.get("error"))[:150])
             else:
                 out[slug] = deep(item.get("response") or {})
+    if not found:
+        log("  !! kuch parse nahi hua, raw ka shuru:", raw[:600].replace(chr(10), " "))
     for s2, _ in pairs:
         out.setdefault(s2, {"__error__": "no result"})
     return out
