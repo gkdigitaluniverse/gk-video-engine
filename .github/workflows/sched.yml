@@ -1,0 +1,24 @@
+name: sched
+on:
+  push:
+    paths: ["v12/sched.py"]
+  workflow_dispatch:
+jobs:
+  r:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -q requests
+      - env:
+          CK: ${{ secrets.COMPOSIO_KEY }}
+        run: python v12/sched.py > v12/SCHED.txt 2>&1 || true
+      - run: |
+          git config user.email a@b && git config user.name a
+          git add -A && git commit -qm "sched: output" || true
+          git push || true
