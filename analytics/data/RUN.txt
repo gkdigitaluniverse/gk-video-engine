@@ -1,13 +1,28 @@
 key length: 23
 init HTTP 200
-started 2026-11-26T13:25:19.497794Z
+started 2026-11-26T13:26:00.504432Z
 tools available: 12
 schemas saved
+EXISTS: INSTAGRAM_GET_IG_USER_MEDIA,INSTAGRAM_GET_USER_MEDIA,INSTAGRAM_GET_USER_INSIGHTS,YOUTUBE_LIST_CHANNEL_VIDEOS,YOUTUBE_GET_CHANNEL_STATISTICS,FACEBOOK_GET_PAGE_INSIGHTS,FACEBOOK_GET_POST_INSIGHTS,FACEBOOK_GET_PAGE_POSTS
 IG user: {"account_type": "MEDIA_CREATOR", "biography": "developer", "composio_execution_message": null, "followers_count": 1, "follows_count": 0, "id": "29161770546783780", "media_count": 4, "name": "gk hackter", "user_id": "17841467354420035", "username": "gkhackter"}
 IG id: 29161770546783780
-IG media try ['ig_user_id', 'limit'] -> {"__error__": "no result"}
-IG media try ['ig_user_id', 'fields'] -> {"__error__": "no result"}
+IG media try INSTAGRAM_GET_IG_USER_MEDIA ['ig_user_id', 'limit'] -> {"__error__": "no result"}
+IG media try INSTAGRAM_GET_IG_USER_MEDIA ['ig_user_id', 'fields'] -> {"__error__": "no result"}
+IG media try INSTAGRAM_GET_USER_MEDIA ['ig_user_id', 'limit'] -> {"__error__": "no result"}
+IG media try INSTAGRAM_GET_USER_MEDIA ['ig_user_id', 'fields'] -> {"__error__": "no result"}
+  ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
+IG media try INSTAGRAM_LIST_IG_MEDIA ['ig_user_id', 'limit'] -> {"__error__": "Tool INSTAGRAM_LIST_IG_MEDIA not found"}
+  ! INSTAGRAM_LIST_IG_MEDIA Tool INSTAGRAM_LIST_IG_MEDIA not found
+IG media try INSTAGRAM_LIST_IG_MEDIA ['ig_user_id', 'fields'] -> {"__error__": "Tool INSTAGRAM_LIST_IG_MEDIA not found"}
+  ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
+IG media try INSTAGRAM_GET_MEDIA_LIST ['ig_user_id', 'limit'] -> {"__error__": "Tool INSTAGRAM_GET_MEDIA_LIST not found"}
+  ! INSTAGRAM_GET_MEDIA_LIST Tool INSTAGRAM_GET_MEDIA_LIST not found
+IG media try INSTAGRAM_GET_MEDIA_LIST ['ig_user_id', 'fields'] -> {"__error__": "Tool INSTAGRAM_GET_MEDIA_LIST not found"}
+  ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
+IG media try INSTAGRAM_GET_IG_MEDIA_LIST ['ig_user_id', 'limit'] -> {"__error__": "Tool INSTAGRAM_GET_IG_MEDIA_LIST not found"}
+  ! INSTAGRAM_GET_IG_MEDIA_LIST Tool INSTAGRAM_GET_IG_MEDIA_LIST not found
+IG media try INSTAGRAM_GET_IG_MEDIA_LIST ['ig_user_id', 'fields'] -> {"__error__": "Tool INSTAGRAM_GET_IG_MEDIA_LIST not found"}
 FB pages: [{"id": "1270080059532814", "name": "Gk Hackter", "category": "Science, technology and engineering", "fans": 0, "followers": 0}]
-  ! FACEBOOK_GET_PAGE_POSTS {"error":{"message":"(#100) The value must be a valid insights metric","type":"OAuthException","code":100,"fbtrace_id":"Av4lW51nS8KmLnvlNh9rgf0"}}
-FB posts for 1270080059532814 -> {"__error__": "{\"error\":{\"message\":\"(#100) The value must be a valid insights metric\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Av4lW51nS8KmLnvlNh9rgf0\"}}"}
-YT channel videos: {"__error__": "no result"}
+FB posts for 1270080059532814 -> {"__error__": "no result"}
+YT try YOUTUBE_LIST_CHANNEL_VIDEOS {"mine": true, "maxResults": 25, "part": "snippet,statistics -> {"__error__": "no result"}
+YT via YOUTUBE_LIST_CHANNEL_VIDEOS {"channelId": "mine", "maxResults": 25, "part": "snippet,statistics"}

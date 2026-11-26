@@ -1,0 +1,431 @@
+{
+ "successful": false,
+ "data": {
+  "success": false,
+  "tool_schemas": {
+   "FACEBOOK_GET_PAGE_INSIGHTS": {
+    "toolkit": "FACEBOOK",
+    "tool_slug": "FACEBOOK_GET_PAGE_INSIGHTS",
+    "description": "Retrieves analytics and insights for a Facebook Page, including follower, media view and engagement metrics. Some requested legacy metrics are replaced with different supported metrics, while unsupported metrics may be removed or rejected; check the returned metric names and execution message.",
+    "input_schema": {
+     "type": "object",
+     "required": [
+      "page_id"
+     ],
+     "properties": {
+      "since": {
+       "type": "string",
+       "description": "Start of date range as Unix timestamp (e.g., '1704067200'), ISO 8601 datetime (e.g., '2024-10-01T00:00:00+0000', '2024-10-01'), or strtotime-compatible string (e.g., 'yesterday', '-7 days'). Maximum range is 90 days when combined with 'until'."
+      },
+      "until": {
+       "type": "string",
+       "description": "End of date range as Unix timestamp (e.g., '1704672000'), ISO 8601 datetime (e.g., '2025-01-29T05:12:31+0000', '2025-01-29'), or strtotime-compatible string (e.g., 'now', '-1 day'). Maximum range is 90 days when combined with 'since'."
+      },
+      "period": {
+       "type": "string",
+       "default": "day",
+       "description": "Period for the metrics: day, week, days_28, month, lifetime Using `lifetime` with bounded `since`/`until` ranges produces misleading or empty results. Standardize all date inputs to UTC."
+      },
+      "metrics": {
+       "type": "string",
+       "default": "page_follows,page_daily_follows_unique,page_daily_unfollows_unique,page_media_view,page_post_engagements,page_video_views,page_total_actions",
+       "description": "Comma-separated list of metrics to retrieve. VALID METRICS: page_follows (total followers), page_daily_follows_unique (new follows), page_daily_unfollows_unique (unfollows), page_media_view (content views), page_post_engagements (engagement count), page_video_views (video views), page_total_actions (CTA clicks), page_actions_post_reactions_total (reactions breakdown), page_total_media_view_unique (unique media viewers). DEPRECATED (will be auto-replaced): page_impressions_unique -> page_total_media_view_unique, page_impressions -> page_media_view, page_fans -> page_follows, page_engaged_users -> page_post_engagements, page_fan_adds -> page_daily_follows_unique. Individual reaction metrics (page_actions_post_reactions_like_total, etc.) are deprecated; use page_actions_post_reactions_total instead. Not all metric/period combinations are valid; incompatible combinations return empty data â reduce metrics list or adjust period if this occurs."
+      },
+      "page_id": {
+       "type": "string",
+       "description": "The ID of the Facebook Page Must be a numeric Page ID; page names, URLs, and personal profile IDs are invalid."
+      }
+     }
+    }
+   },
+   "FACEBOOK_GET_PAGE_POSTS": {
+    "toolkit": "FACEBOOK",
+    "tool_slug": "FACEBOOK_GET_PAGE_POSTS",
+    "description": "Retrieves posts from a Facebook Page's feed using Graph API v26.0, with optional time filters. The response may include pagination information, but this tool does not accept a cursor or next URL for subsequent pages.",
+    "input_schema": {
+     "type": "object",
+     "required": [
+      "page_id"
+     ],
+     "properties": {
+      "limit": {
+       "type": "integer",
+       "default": 25,
+       "maximum": 100,
+       "minimum": 1,
+       "description": "Number of posts to return (max 100)"
+      },
+      "since": {
+       "type": "string",
+       "description": "Filter posts updated after this time. Accepts: Unix timestamp (e.g., '1705320000'), strtotime values (e.g., 'yesterday', '7 days ago', 'last week'), or datetime strings (e.g., '2024-01-15', '2024-01-15T12:00:00'). Datetime strings are automatically converted to Unix timestamps."
+      },
+      "until": {
+       "type": "string",
+       "description": "Filter posts updated before this time. Accepts: Unix timestamp (e.g., '1705320000'), strtotime values (e.g., 'yesterday', '7 days ago', 'last week'), or datetime strings (e.g., '2024-01-15', '2024-01-15T12:00:00'). Datetime strings are automatically converted to Unix timestamps."
+      },
+      "fields": {
+       "type": "string",
+       "default": "id,message,created_time,updated_time,permalink_url,attachments",
+       "description": "Comma-separated list of fields to return for each post. Supported fields include: id, message, created_time, updated_time, permalink_url, attachments, story, from, status_type, full_picture, shares, reactions, comments, is_hidden, is_published. For summary counts, use '.summary(true)' syntax (e.g., 'reactions.summary(true)', 'comments.summary(true)', 'likes.summary(true)'). Note: 'type', 'link', 'source', 'picture', 'name', 'caption', 'description', and 'icon' are deprecated since Graph API v3.3 and will be automatically removed if requested. Response nests engagement data: extract reactions.summary.total_count, comments.summary.total_count, and shares.count; treat missing keys as zero."
+      },
+      "page_id": {
+       "type": "string",
+       "description": "The ID of the Facebook Page. Can be provided as a string or number. Must be a Facebook Page ID, not a personal profile or user ID â use FACEBOOK_GET_USER_PAGES to obtain a valid Page ID."
+      },
+      "removed_deprecated_fields": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "description": "Internal field to track deprecated fields that were automatically removed."
+      }
+     }
+    }
+   },
+   "FACEBOOK_GET_POST_INSIGHTS": {
+    "toolkit": "FACEBOOK",
+    "tool_slug": "FACEBOOK_GET_POST_INSIGHTS",
+    "description": "Retrieves media-view and unique media-viewer insights for a Facebook post. Some legacy metric names are mapped to these metrics, while certain removed metrics are rejected.",
+    "input_schema": {
+     "type": "object",
+     "required": [
+      "post_id"
+     ],
+     "properties": {
+      "period": {
+       "type": "string",
+       "description": "Period for the metrics (only applicable for some metrics): lifetime Supports since/until parameters in UTC; convert from user timezone to avoid misleading aggregates when comparing posts across time windows."
+      },
+      "metrics": {
+       "type": "string",
+       "default": "post_media_view",
+       "description": "Comma-separated list of metrics to retrieve. Valid metrics: post_media_view (media views) and post_total_media_view_unique (unique media viewers). Note: Older metrics like post_impressions, post_impressions_unique, post_clicks, post_engagements, post_engaged_users, post_reactions_by_type_total were deprecated by Facebook as of November 15, 2025 and are no longer supported. Request only needed metrics to reduce payload size and avoid rate limit errors (error codes 4/613) when iterating over many posts."
+      },
+      "post_id": {
+       "type": "string",
+       "description": "The ID of the post to get insights for"
+      }
+     }
+    }
+   },
+   "INSTAGRAM_GET_IG_USER_MEDIA": {
+    "toolkit": "INSTAGRAM",
+    "tool_slug": "INSTAGRAM_GET_IG_USER_MEDIA",
+    "description": "List one cursor-paginated page of user media with selected fields; use ig_user_id='me' for the authenticated account.",
+    "input_schema": {
+     "type": "object",
+     "required": [
+      "ig_user_id"
+     ],
+     "properties": {
+      "after": {
+       "type": "string",
+       "description": "Forward-pagination cursor from paging.cursors.after in the previous response; omit for the first page."
+      },
+      "limit": {
+       "type": "integer",
+       "default": 25,
+       "maximum": 100,
+       "minimum": 1,
+       "description": "Maximum number of media objects to return in this page (default 25, maximum 100)."
+      },
+      "since": {
+       "type": "integer",
+       "description": "Unix timestamp - filter results to media created after this time. If both 'since' and 'until' are provided, 'since' must be less than 'until'."
+      },
+      "until": {
+       "type": "integer",
+       "description": "Unix timestamp - filter results to media created before this time. If both 'since' and 'until' are provided, 'since' must be less than 'until'."
+      },
+      "before": {
+       "type": "string",
+       "description": "Cursor for backward pagination - retrieve media before this cursor"
+      },
+      "fields": {
+       "type": "string",
+       "default": "id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username,legacy_instagram_media_id,alt_text,is_ai_generated,is_shared_to_feed,media_audio_type,view_count,reposts_count,saved_count,shares_count,total_like_count,total_comments_count,total_views_count",
+       "description": "Comma-separated projection of fields to select for each media object. Available fields: id, caption, media_type, media_url, permalink, thumbnail_url, timestamp, username, comments_count, like_count, legacy_instagram_media_id, is_comment_enabled, owner, shortcode, media_product_type, alt_text, is_ai_generated, is_shared_to_feed, media_audio_type, view_count, reposts_count, saved_count, shares_count, total_like_count, total_comments_count, total_views_count, children{media_url,media_type,thumbnail_url}. Reels appear as media_type=VIDEO and media_product_type=REELS; filter both fields to identify reels. media_url is a direct file URL; permalink is the user-facing share link. Optional fields like caption and like_count may be null or absent in the response."
+      },
+      "ig_user_id": {
+       "type": "string",
+       "examples": [
+        "me",
+        "17841405793187218"
+       ],
+       "minLength": 2,
+       "description": "Instagram Business or Creator Account ID. Use 'me' for the authenticated user, or provide the numeric IG User ID obtained from the Instagram Graph API (typically 17 digits, e.g., '17841405793187218'). Facebook Page IDs are not supported or automatically converted."
+      },
+      "graph_api_version": {
+       "type": "string",
+       "default": "v21.0",
+       "description": "Instagram Graph API version to use (e.g., 'v21.0')"
+      },
+      "auto_resolve_fb_page_id": {
+       "type": "boolean",
+       "default": true,
+       "description": "Deprecated no-op retained for backwards compatibility. On Instagram Login the host follows the token (graph.instagram.com) and Facebook Page IDs are not resolved. Provide an Instagram Business or Creator Account ID directly (or 'me')."
+      }
+     }
+    }
+   },
+   "INSTAGRAM_GET_USER_INSIGHTS": {
+    "toolkit": "INSTAGRAM",
+    "tool_slug": "INSTAGRAM_GET_USER_INSIGHTS",
+    "description": "Get Instagram account-level insights and analytics (profile views, reach, follower count, etc.). Requires a Business or Creator account; personal accounts are not supported. Returned timestamps are in UTC. metric_type (time_series or total_value): When set to total_value, the API returns a total_value object instead of values. breakdown: Only applicable when metric_type=total_value and only for supported metrics. timeframe: Required for demographics-related metrics and overrides since/until for those metrics.",
+    "input_schema": {
+     "type": "object",
+     "properties": {
+      "since": {
+       "type": "integer",
+       "description": "Start of time range (inclusive) as a Unix timestamp (seconds). Also accepts date strings (YYYY-MM-DD or ISO 8601 format) which will be converted to timestamps."
+      },
+      "until": {
+       "type": "integer",
+       "description": "End of time range (inclusive) as a Unix timestamp (seconds). Also accepts date strings (YYYY-MM-DD or ISO 8601 format) which will be converted to timestamps."
+      },
+      "metric": {
+       "type": "array",
+       "items": {
+        "enum": [
+         "reach",
+         "follower_count",
+         "online_followers",
+         "accounts_engaged",
+         "total_interactions",
+         "likes",
+         "comments",
+         "shares",
+         "saves",
+         "replies",
+         "follows_and_unfollows",
+         "profile_links_taps",
+         "views",
+         "profile_views",
+         "website_clicks",
+         "engaged_audience_demographics",
+         "reached_audience_demographics",
+         "follower_demographics",
+         "reposts",
+         "threads_likes",
+         "threads_replies",
+         "threads_followers",
+         "threads_follower_demographics",
+         "threads_views",
+         "threads_clicks",
+         "threads_reposts",
+         "quotes",
+         "content_views"
+        ],
+        "type": "string",
+        "description": "Valid metrics for Instagram account-level insights.\n\nCore: reach, follower_count, online_followers.\nEngagement: accounts_engaged, total_interactions, likes, comments, shares, saves,\nreplies. Activity: follows_and_unfollows, profile_links_taps, views, profile_views,\nwebsite_clicks. Demographics (need timeframe): engaged_audience_demographics,\nreached_audience_demographics, follower_demographics. Also: reposts.\nThreads (served by this endpoint too): threads_likes, threads_replies,\nthreads_followers, threads_follower_demographics, threads_views, threads_clicks,\nthreads_reposts, quotes, content_views.\n\nA metric may return an EMPTY result instead of an error when the account has no such\ndata (follower_count/online_followers are suppressed under 100 followers; Threads\nmetrics need a linked Threads profile). Empty is valid, not a failure.\n\nRejected by Meta - do not request: impressions, email_contacts, phone_call_clicks,\ntext_message_clicks, get_directions_clicks."
+       },
+       "description": "List or comma-separated metrics. Valid: reach, follower_count, online_followers, accounts_engaged, total_interactions, likes, comments, shares, saves, replies, follows_and_unfollows, profile_links_taps, views, profile_views, website_clicks, reposts, threads_likes, threads_replies, threads_followers, threads_views, threads_clicks, threads_reposts, quotes, content_views, and the demographics metrics engaged_audience_demographics, reached_audience_demographics, follower_demographics, and threads_follower_demographics. All demographics metrics require `timeframe`. All metrics in one call must share a period. Empty results are valid when data is unavailable (follower_count/online_followers require 100 followers; Threads metrics require a linked Threads profile). Rejected by Meta, do not request: impressions, email_contacts, phone_call_clicks, text_message_clicks, get_directions_clicks, audience_*."
+      },
+      "period": {
+       "enum": [
+        "day",
+        "lifetime"
+       ],
+       "type": "string",
+       "default": "day",
+       "description": "Valid period values for Instagram user insights aggregation.\n\nAvailable periods:\n- day: Daily aggregation (time-series metrics)\n- lifetime: Lifetime aggregation (for audience/demographics metrics)\n\nNote: 'week' and 'days_28' are no longer supported for IG user insights."
+      },
+      "breakdown": {
+       "type": "string",
+       "description": "Breakdown to use when metric_type=total_value. Allowed values: contact_button_type, follow_type, media_product_type, age, city, country, gender."
+      },
+      "timeframe": {
+       "enum": [
+        "this_month",
+        "this_week"
+       ],
+       "type": "string",
+       "description": "Valid timeframe values for demographics-related Instagram user insights.\n\nRequired for engaged_audience_demographics, reached_audience_demographics,\nfollower_demographics, and threads_follower_demographics metrics. Overrides\nsince/until parameters when specified.\n\nNote: As of 2025, Instagram deprecated the following timeframe values for demographics metrics:\nlast_14_days, last_30_days, last_90_days, and prev_month. Only this_week and this_month are\ncurrently supported by the Instagram Graph API.\n\nAll demographics metrics use period=lifetime and require the timeframe parameter."
+      },
+      "ig_user_id": {
+       "type": "string",
+       "description": "Instagram Business Account ID - must be a numeric ID (e.g., '17841400008460056'). Content API IDs with 'ca_' prefix are not supported. Optional, defaults to current user."
+      },
+      "metric_type": {
+       "type": "string",
+       "description": "Aggregation type for results. Allowed values: time_series, total_value."
+      },
+      "graph_api_version": {
+       "type": "string",
+       "default": "v21.0",
+       "description": "The Facebook Graph API version to use for the request."
+      }
+     }
+    }
+   },
+   "INSTAGRAM_GET_USER_MEDIA": {
+    "toolkit": "INSTAGRAM",
+    "tool_slug": "INSTAGRAM_GET_USER_MEDIA",
+    "description": "DEPRECATED: Use INSTAGRAM_GET_IG_USER_MEDIA instead. Get Instagram user's media (posts, photos, videos). Only works for connected Business or Creator accounts; personal accounts return no data. Response data is nested under `data.data`; unwrap before processing. Items mix images, videos, carousels, and reels â filter by `media_type` and `media_product_type`. Use `media_url` for file download, `permalink` for share links. Fields like `caption`, `like_count` may be null. Timestamps are UTC ISO 8601. HTTP 429 with `Retry-After` header indicates rate limiting.",
+    "input_schema": {
+     "type": "object",
+     "properties": {
+      "after": {
+       "type": "string",
+       "description": "Cursor for pagination - get media after this cursor Chain calls using `paging.cursors.after` from the response to paginate; set an upper bound (e.g., ~300 posts) to avoid unbounded loops."
+      },
+      "limit": {
+       "type": "integer",
+       "default": 25,
+       "maximum": 100,
+       "minimum": 1,
+       "description": "Number of media items to return (max 100) A single call may not return all media; paginate via `after` for complete results."
+      },
+      "ig_user_id": {
+       "type": "string",
+       "description": "Numeric Instagram Business Account ID (NOT username). Must be a numeric ID like '17841405793187218'. Omit or leave empty to get the current authenticated user's media. To find an account's numeric ID, use the INSTAGRAM_GET_USER_INFO action."
+      },
+      "graph_api_version": {
+       "type": "string",
+       "default": "v21.0",
+       "description": "The Facebook Graph API version to use for the request."
+      }
+     }
+    }
+   },
+   "YOUTUBE_GET_CHANNEL_STATISTICS": {
+    "toolkit": "YOUTUBE",
+    "tool_slug": "YOUTUBE_GET_CHANNEL_STATISTICS",
+    "description": "Gets detailed statistics for YouTube channels including subscriber counts, view counts, and video counts. Channels can be identified using their ID, handle (e.g., @Google), or username.",
+    "input_schema": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string",
+       "examples": [
+        "UCddiUEpeqJcYeBxX1IVBKvQ",
+        "UCddiUEpeqJcYeBxX1IVBKvQ,UCK8sQmJBp8GCxrOtXWBpyEA"
+       ],
+       "description": "Comma-separated list of YouTube channel IDs (e.g., 'UCddiUEpeqJcYeBxX1IVBKvQ'). Channel IDs typically start with 'UC'. The YouTube Data API v3 supports up to 50 channel IDs per request; if more than 50 IDs are provided, they will be automatically split into multiple batches and the results will be merged. At least one of 'id', 'forHandle', 'forUsername', or 'mine' must be provided. Do NOT pass 'mine' as the value for this parameter - use the 'mine' boolean parameter instead to fetch the authenticated user's channel."
+      },
+      "mine": {
+       "type": "boolean",
+       "examples": [
+        true
+       ],
+       "description": "Set to true to retrieve the channel owned by the authenticated user. This is a boolean filter parameter. At least one of 'id', 'forHandle', 'forUsername', or 'mine' must be provided. Cannot be combined with other filter parameters."
+      },
+      "part": {
+       "type": "string",
+       "default": "statistics",
+       "examples": [
+        "statistics",
+        "snippet,statistics"
+       ],
+       "description": "Comma-separated list of channel resource properties to include. Use 'statistics' for subscriber count."
+      },
+      "forHandle": {
+       "type": "string",
+       "examples": [
+        "@Google",
+        "GoogleDevelopers"
+       ],
+       "description": "YouTube channel handle (e.g., '@Google' or 'GoogleDevelopers'). The '@' symbol is optional. Use this parameter when you know the channel's handle but not its ID. At least one of 'id', 'forHandle', 'forUsername', or 'mine' must be provided."
+      },
+      "forUsername": {
+       "type": "string",
+       "examples": [
+        "Google"
+       ],
+       "description": "YouTube username to identify the channel. Use this parameter when you know the channel's legacy username but not its ID. At least one of 'id', 'forHandle', 'forUsername', or 'mine' must be provided."
+      }
+     }
+    }
+   },
+   "YOUTUBE_LIST_CHANNEL_VIDEOS": {
+    "toolkit": "YOUTUBE",
+    "tool_slug": "YOUTUBE_LIST_CHANNEL_VIDEOS",
+    "description": "Lists videos from a YouTube channel identified by channel ID, handle, supported channel URL, or the authenticated user's channel. Results are paginated, with 1â50 videos per page. An empty result can mean the channel ID was not found or that no uploads playlist was available.",
+    "input_schema": {
+     "type": "object",
+     "properties": {
+      "mine": {
+       "type": "boolean",
+       "description": "Set to true to list videos from the authenticated user's channel. When true, channelId is automatically set to 'me'. Either channelId or mine must be provided."
+      },
+      "part": {
+       "type": "string",
+       "default": "snippet",
+       "examples": [
+        "snippet"
+       ],
+       "description": "This parameter specifies which parts of the playlist item resource to return. The snippet includes basic video details like ID, title, description, and thumbnails."
+      },
+      "channelId": {
+       "type": "string",
+       "examples": [
+        "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+        "@Google",
+        "me",
+        "https://www.youtube.com/@Google"
+       ],
+       "maxLength": 2048,
+       "minLength": 1,
+       "description": "The YouTube channel identifier (exactly 24 characters for UC IDs). Accepts: (1) channel ID starting with 'UC' followed by 22 characters (e.g., 'UC_x5XG1OV2P6uZZ5FSM9Ttw'), (2) channel handle starting with '@' (e.g., '@Google'), (3) 'me' for the authenticated user's channel, or (4) YouTube channel URLs with /@handle or /channel/UC... format. Do NOT pass OAuth tokens, API keys, or other credentials here - only channel identifiers. Legacy /user/username URLs are supported but legacy /c/ custom URLs are not. Either channelId or mine must be provided."
+      },
+      "pageToken": {
+       "type": "string",
+       "examples": [
+        "CAUQAA"
+       ],
+       "description": "Token for pagination; use `nextPageToken` from a previous response for the next page, or `prevPageToken` for the previous page. Page tokens are opaque, ephemeral values that must come directly from a previous LIST_CHANNEL_VIDEOS response and cannot be constructed or reused across different queries."
+      },
+      "maxResults": {
+       "type": "integer",
+       "default": 5,
+       "maximum": 50,
+       "minimum": 1,
+       "examples": [
+        "5"
+       ],
+       "description": "The maximum number of videos to return per page."
+      }
+     }
+    }
+   }
+  },
+  "not_found": [
+   "INSTAGRAM_LIST_IG_MEDIA",
+   "INSTAGRAM_GET_MEDIA_LIST",
+   "INSTAGRAM_GET_ACCOUNT_INSIGHTS",
+   "YOUTUBE_GET_MY_CHANNEL",
+   "YOUTUBE_LIST_VIDEOS",
+   "YOUTUBE_SEARCH_LIST"
+  ],
+  "suggestions": {
+   "INSTAGRAM_LIST_IG_MEDIA": [
+    "INSTAGRAM_GET_IG_MEDIA",
+    "INSTAGRAM_GET_USER_MEDIA",
+    "INSTAGRAM_POST_IG_USER_MEDIA"
+   ],
+   "INSTAGRAM_GET_MEDIA_LIST": [
+    "INSTAGRAM_GET_IG_MEDIA"
+   ],
+   "INSTAGRAM_GET_ACCOUNT_INSIGHTS": [
+    "INSTAGRAM_GET_POST_INSIGHTS",
+    "INSTAGRAM_GET_USER_INSIGHTS",
+    "INSTAGRAM_GET_IG_MEDIA_INSIGHTS"
+   ],
+   "YOUTUBE_GET_MY_CHANNEL": [
+    "YOUTUBE_UPDATE_CHANNEL",
+    "YOUTUBE_LIST_CHANNELS"
+   ],
+   "YOUTUBE_LIST_VIDEOS": [
+    "YOUTUBE_RATE_VIDEO",
+    "YOUTUBE_LIST_CHANNELS",
+    "YOUTUBE_UPDATE_VIDEO"
+   ],
+   "YOUTUBE_SEARCH_LIST": [
+    "YOUTUBE_SEARCH_YOU_TUBE"
+   ]
+  },
+  "not_found_message": "Some tool slugs were not found. Check the suggestions for possible matches and call again with the correct slugs to get their schemas."
+ },
+ "error": "Some tools were not found",
+ "log_id": "log_llAS-CbKVGjy"
+}

@@ -1,8 +1,8 @@
 {
- "run_at": "2026-11-26T13:25:19.497794Z",
+ "run_at": "2026-11-26T13:26:00.504432Z",
  "key_len": 23,
  "data": {
-  "run_at": "2026-11-26T13:25:19.497794Z",
+  "run_at": "2026-11-26T13:26:00.504432Z",
   "http_init": 200,
   "instagram": {
    "user": {
@@ -34,7 +34,16 @@
   },
   "youtube": {
    "channel_videos": {
-    "__error__": "no result"
+    "etag": "",
+    "items": [],
+    "kind": "youtube#playlistItemListResponse",
+    "next_page_token": null,
+    "page_info": {
+     "results_per_page": 0,
+     "total_results": 0
+    },
+    "prev_page_token": null,
+    "region_code": null
    },
    "videos": [],
    "note": "channel video list khaali ya 403 — upar ka jawab dekho"
