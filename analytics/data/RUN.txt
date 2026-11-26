@@ -1,7 +1,7 @@
 key length: 23
 init HTTP 200
-started 2026-11-26T13:26:54.478085Z
-tools available: 12
+started 2026-11-26T13:27:39.964864Z
+tools available: -1
 schemas saved
 EXISTS: INSTAGRAM_GET_IG_USER_MEDIA,INSTAGRAM_GET_USER_MEDIA,INSTAGRAM_GET_USER_INSIGHTS,YOUTUBE_LIST_CHANNEL_VIDEOS,YOUTUBE_GET_CHANNEL_STATISTICS,FACEBOOK_GET_PAGE_INSIGHTS,FACEBOOK_GET_POST_INSIGHTS,FACEBOOK_GET_PAGE_POSTS
 IG user: {"account_type": "MEDIA_CREATOR", "biography": "developer", "composio_execution_message": null, "followers_count": 1, "follows_count": 0, "id": "29161770546783780", "media_count": 4, "name": "gk hackter", "user_id": "17841467354420035", "username": "gkhackter"}
