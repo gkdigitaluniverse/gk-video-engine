@@ -1,6 +1,6 @@
 key length: 23
 init HTTP 200
-started 2026-11-26T13:35:29.534696Z
+started 2026-11-26T13:36:39.428963Z
 tools available: -1
 schemas saved
 EXISTS: INSTAGRAM_GET_IG_USER_MEDIA,INSTAGRAM_GET_USER_MEDIA,INSTAGRAM_GET_USER_INSIGHTS,YOUTUBE_LIST_CHANNEL_VIDEOS,YOUTUBE_GET_CHANNEL_STATISTICS,FACEBOOK_GET_PAGE_INSIGHTS,FACEBOOK_GET_POST_INSIGHTS,FACEBOOK_GET_PAGE_POSTS
@@ -12,61 +12,9 @@ IG insights 18136041943681903 -> {"composio_execution_message": "Deprecated metr
 IG insights 18149455345587454 -> {"composio_execution_message": "Deprecated metrics removed: plays. Use 'views' instead of 'impressions' for view/display counts. Final metrics: reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watc
 IG insights 18131612206696461 -> {"composio_execution_message": "Deprecated metrics removed: plays. Use 'views' instead of 'impressions' for view/display counts. Final metrics: reach, likes, comments, saved, shares, total_interactions, ig_reels_avg_watc
 FB pages: [{"id": "1270080059532814", "name": "Gk Hackter", "category": "Science, technology and engineering", "fans": 0, "followers": 0}]
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-FB post 1270080059532814_122122517247511062 insights: null
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-FB post 1270080059532814_122120114673511062 insights: null
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-FB post 1270080059532814_122119646307511062 insights: null
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-  ! FACEBOOK_GET_GRAPH_OBJECT Facebook rejected the Graph object request.
-FB post 1270080059532814_122119243131511062 insights: null
-YT via YOUTUBE_LIST_CHANNEL_VIDEOS {"mine": true, "maxResults": 25, "part": "snippet,statistics"}
-  ! YOUTUBE_GET_VIDEO_DETAILS_BATCH None of the 3 requested video IDs returned results. Video IDs: ['VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRL
-  ! YOUTUBE_GET_VIDEO_DETAILS_BATCH None of the 3 requested video IDs returned results. Video IDs: ['VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRL
-  ! YOUTUBE_GET_VIDEO_DETAILS_BATCH None of the 3 requested video IDs returned results. Video IDs: ['VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRL
-  ! YOUTUBE_GET_VIDEO_DETAILS_BATCH None of the 3 requested video IDs returned results. Video IDs: ['VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRL
-YT details: {"__error__": "None of the 3 requested video IDs returned results. Video IDs: ['VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLko2aHNxd3R1bC1v', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLkJxQ1hpSFNxaEF3', 'VVVGVzBCbmljdmlLbDNOc1JlVzNzRnNRLmRtYXAtNE5DWmdJ']. Possible reasons: videos may be private, deleted, region-restricted, or the IDs"}
+FB post 1270080059532814_122122517247511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122122517247511062/insi
+FB post 1270080059532814_122120114673511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122120114673511062/insi
+FB post 1270080059532814_122119646307511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122119646307511062/insi
+FB post 1270080059532814_122119243131511062 insights: {"data": [{"description": "The number of times that your Page's post entered a person's screen. The post can be a status, photo, link, video and more.", "id": "1270080059532814_122119243131511062/insi
+YT via YOUTUBE_LIST_CHANNEL_VIDEOS {"mine": true, "maxResults": 25, "part": "snippet,contentDetails,statistics"}
+YT channel stats: {"channels": [{"id": "UCFW0BnicviKl3NsReW3sFsQ", "snippet": {"country": "IN", "customUrl": "@gkhackter", "description": "", "localized": {"description": "", "title": "gk hackter "}, "publishedAt": "2026-10-24T15:59:40.996441Z", "thumbnails": {"default": {"height": 88, "url": "https://yt3.ggpht.com/e
