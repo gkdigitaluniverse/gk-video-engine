@@ -1,0 +1,81 @@
+name: insiderforce-blueprint-render
+on:
+  push:
+    paths: ["insiderforce-blueprint/src/**", "insiderforce-blueprint/public/ai/**", "insiderforce-blueprint/package.json", "insiderforce-blueprint/index.ts", ".github/workflows/insiderforce-blueprint-render.yml"]
+  workflow_dispatch:
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Download Fonts & Real GitHub Screenshots + Real Audio from run1
+        working-directory: insiderforce-blueprint
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          mkdir -p public/fonts public/shots out /tmp/audio_src
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf" -o public/fonts/Inter-Bold.ttf
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/spacemono/SpaceMono-Bold.ttf" -o public/fonts/SpaceMono-Bold.ttf
+          gh release download run1 -R gkdigitaluniverse/gk-video-engine -D public/shots -p "docs-*.png" -p "awesome-532.png" -p "repo-security.png" --clobber
+          gh release download run1 -R gkdigitaluniverse/gk-video-engine -D /tmp/audio_src -p "2026-11-25-github-push-protection-FINAL.mp4" --clobber
+          ls -lh public/shots public/ai
+
+      - name: Install Dependencies & Typecheck
+        working-directory: insiderforce-blueprint
+        run: |
+          npm install --no-audit --no-fund
+          npx tsc --noEmit
+
+      - name: Render Video (Remotion)
+        working-directory: insiderforce-blueprint
+        run: |
+          npx remotion render index.ts InsiderForceDemo out/video_silent.mp4 --codec=h264 --crf=18 --concurrency=3 --muted
+
+      - name: Mux Real Voiceover Audio & Extract 6 QC Stills
+        working-directory: insiderforce-blueprint
+        run: |
+          ffmpeg -y \
+            -i out/video_silent.mp4 \
+            -i /tmp/audio_src/2026-11-25-github-push-protection-FINAL.mp4 \
+            -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest \
+            out/github-push-protection-insiderforce-FINAL.mp4
+
+          ffmpeg -y -ss 2.0  -i out/github-push-protection-insiderforce-FINAL.mp4 -vframes 1 out/still_01_hook.png
+          ffmpeg -y -ss 6.0  -i out/github-push-protection-insiderforce-FINAL.mp4 -vframes 1 out/still_02_shield.png
+          ffmpeg -y -ss 10.5 -i out/github-push-protection-insiderforce-FINAL.mp4 -vframes 1 out/still_03_flow.png
+          ffmpeg -y -ss 17.5 -i out/github-push-protection-insiderforce-FINAL.mp4 -vframes 1 out/still_04_lens.png
+          ffmpeg -y -ss 21.0 -i out/github-push-protection-insiderforce-FINAL.mp4 -vframes 1 out/still_05_532.png
+          ffmpeg -y -ss 30.5 -i out/github-push-protection-insiderforce-FINAL.mp4 -vframes 1 out/still_06_vault.png
+
+          {
+            echo "Render Date (UTC): $(date -u)"
+            ffprobe -v error -show_entries format=duration,size,bit_rate -of default=noprint_wrappers=1 out/github-push-protection-insiderforce-FINAL.mp4
+            ls -lh out/
+          } > out/RENDER-LOG.txt
+
+      - name: Upload Final MP4 to GitHub Release
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          gh release view insiderforce-blueprint-v1 -R gkdigitaluniverse/gk-video-engine >/dev/null 2>&1 || \
+            gh release create insiderforce-blueprint-v1 -R gkdigitaluniverse/gk-video-engine --title "GK HACKTER Motion Graphics Blueprint v1" --notes "Pure motion-graphics + AI 3D + real screenshots remake of GitHub Push Protection (zero 2D avatar)."
+          gh release upload insiderforce-blueprint-v1 insiderforce-blueprint/out/github-push-protection-insiderforce-FINAL.mp4 -R gkdigitaluniverse/gk-video-engine --clobber
+
+      - name: Commit QC Stills & Render Log
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f insiderforce-blueprint/out/still_*.png insiderforce-blueprint/out/RENDER-LOG.txt 2>/dev/null || true
+          git commit -m "insiderforce-blueprint: add QC stills and render log" || true
+          git pull --rebase -q origin main || true
+          git push || true
