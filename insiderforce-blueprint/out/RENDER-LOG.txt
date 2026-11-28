@@ -1,0 +1,14 @@
+Render Date (UTC): Sat Nov 28 08:37:27 UTC 2026
+duration=35.600000
+size=7928566
+bit_rate=1781700
+total 17M
+-rw-r--r-- 1 runner runner   97 Nov 28 08:37 RENDER-LOG.txt
+-rw-r--r-- 1 runner runner 7.6M Nov 28 08:37 github-push-protection-insiderforce-FINAL.mp4
+-rw-r--r-- 1 runner runner 402K Nov 28 08:37 still_01_hook.png
+-rw-r--r-- 1 runner runner 447K Nov 28 08:37 still_02_shield.png
+-rw-r--r-- 1 runner runner 343K Nov 28 08:37 still_03_flow.png
+-rw-r--r-- 1 runner runner 437K Nov 28 08:37 still_04_lens.png
+-rw-r--r-- 1 runner runner 458K Nov 28 08:37 still_05_532.png
+-rw-r--r-- 1 runner runner 374K Nov 28 08:37 still_06_vault.png
+-rw-r--r-- 1 runner runner 6.8M Nov 28 08:37 video_silent.mp4
