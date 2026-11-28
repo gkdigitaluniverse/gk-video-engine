@@ -1,0 +1,26 @@
+name: gemini-dropbox-probe
+on:
+  push:
+    paths: ["gemini-dropbox-probe/**"]
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests
+      - name: Run Dropbox & Composio read-only probe
+        env:
+          CK: ${{ secrets.COMPOSIO_KEY }}
+        run: python3 gemini-dropbox-probe/probe_dropbox.py > gemini-dropbox-probe/REPORT.txt 2>&1
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f gemini-dropbox-probe/REPORT.txt
+          git commit -m "gemini-dropbox-probe: read-only report" || true
+          git pull --rebase -q origin main || true
+          git push || true
