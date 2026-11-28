@@ -10,8 +10,10 @@ interface AIHeroVisualProps {
 }
 
 /**
- * Renders an AI-generated 3D studio hero asset (generated on #F2F2F2 matte gray)
- * seamlessly blended onto our studio canvas via `mixBlendMode: "multiply"` with subtle 3D levitation.
+ * Renders an AI-generated 3D studio hero asset seamlessly onto our matte #F2F2F2 canvas:
+ * - Uses `mixBlendMode: "multiply"` + slight contrast/brightness lift so #F2F2F2 studio paper
+ *   matches the exact canvas value.
+ * - Applies a soft radial CSS mask so zero square box edges ever appear.
  */
 export const AIHeroVisual: React.FC<AIHeroVisualProps> = ({
   fileName,
@@ -24,6 +26,9 @@ export const AIHeroVisual: React.FC<AIHeroVisualProps> = ({
   const subtleZoom = interpolate(localFrame, [0, 120], [1.0, 1.07], {
     extrapolateRight: "clamp",
   });
+
+  const radialMask =
+    "radial-gradient(ellipse 68% 68% at 50% 50%, #000000 58%, rgba(0,0,0,0.4) 76%, transparent 94%)";
 
   return (
     <div
@@ -44,7 +49,9 @@ export const AIHeroVisual: React.FC<AIHeroVisualProps> = ({
           height: "100%",
           objectFit: "contain",
           mixBlendMode: "multiply",
-          borderRadius: 28,
+          filter: "brightness(1.06) contrast(1.05)",
+          maskImage: radialMask,
+          WebkitMaskImage: radialMask,
         }}
       />
     </div>
