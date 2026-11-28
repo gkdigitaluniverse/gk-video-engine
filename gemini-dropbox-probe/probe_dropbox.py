@@ -49,22 +49,6 @@ def unwrap(m):
     except Exception:
         return m
 
-print("=== 1. Check Connections (dropbox, instagram, facebook, youtube, buffer) ===")
-for tk in ("dropbox", "instagram", "facebook", "youtube", "buffer"):
-    res = unwrap(call("COMPOSIO_MANAGE_CONNECTIONS", {"toolkits": [{"name": tk, "action": "list"}]}))
-    info = (res.get("data") or {}).get("results", {}).get(tk, {}) if isinstance(res, dict) else res
-    print(f"{tk}: status={info.get('status') if isinstance(info, dict) else info}")
-    if isinstance(info, dict) and info.get("accounts"):
-        for a in info["accounts"]:
-            print(f"  account id={a.get('id')} status={a.get('status')} user_info={a.get('user_info')}")
-
-print("\n=== 2. Search Dropbox tools ===")
-srch = unwrap(call("COMPOSIO_SEARCH_TOOLS", {
-    "queries": [{"use_case": "list files in dropbox folder and read file contents", "known_fields": ""}]
-}))
-print(json.dumps(srch, ensure_ascii=False)[:2500])
-
-print("\n=== 3. Proxy list /gkhackter on Dropbox API ===")
 def dbx_rpc(endpoint, body):
     return unwrap(call("COMPOSIO_PROXY_EXECUTE", {
         "toolkit_slug": "dropbox",
@@ -73,27 +57,46 @@ def dbx_rpc(endpoint, body):
         "body": body,
     }))
 
-for path in ("/gkhackter", "/gkhackter/incoming", "/gkhackter/done", "/gkhackter/logs"):
-    print(f"\n--- LIST {path} ---")
-    res = dbx_rpc("https://api.dropboxapi.com/2/files/list_folder", {"path": path, "recursive": False})
-    if isinstance(res, dict) and res.get("successful") and isinstance(res.get("data"), dict):
-        d = res["data"]
-        entries = d.get("entries") or (d.get("response_data") or {}).get("entries")
-        if entries is not None:
-            for e in entries:
-                print(f"  [{e.get('.tag')}] {e.get('path_display')} (size={e.get('size', '-')}, modified={e.get('server_modified', '-')})")
-        else:
-            print(json.dumps(res, ensure_ascii=False)[:1500])
-    else:
-        print(json.dumps(res, ensure_ascii=False)[:1500])
+print("=== FULL RECURSIVE TREE OF /gkhackter ===")
+all_entries = []
+res = dbx_rpc("https://api.dropboxapi.com/2/files/list_folder", {"path": "/gkhackter", "recursive": True})
+d = ((res.get("data") or {}).get("data") or {})
+all_entries.extend(d.get("entries", []))
+while d.get("has_more") and d.get("cursor"):
+    res = dbx_rpc("https://api.dropboxapi.com/2/files/list_folder/continue", {"cursor": d["cursor"]})
+    d = ((res.get("data") or {}).get("data") or {})
+    all_entries.extend(d.get("entries", []))
 
-print("\n=== 4. Download tools.md & LEDGER.md from /gkhackter/ via Dropbox content API ===")
-for fpath in ("/gkhackter/tools.md", "/gkhackter/LEDGER.md", "/gkhackter/0-STRUCTURE.md"):
-    print(f"\n--- READ {fpath} ---")
-    res = unwrap(call("COMPOSIO_PROXY_EXECUTE", {
-        "toolkit_slug": "dropbox",
-        "endpoint": "https://content.dropboxapi.com/2/files/download",
-        "method": "POST",
-        "headers": {"Dropbox-API-Arg": json.dumps({"path": fpath})},
-    }))
-    print(json.dumps(res, ensure_ascii=False)[:3000])
+for e in sorted(all_entries, key=lambda x: x.get("path_display", "")):
+    tag = e.get(".tag")
+    sz = e.get("size", "-")
+    mod = (e.get("server_modified") or "-")[:16]
+    print(f"[{tag:6}] {e.get('path_display')}  ({sz} bytes, {mod})")
+
+def read_text_file(path, max_chars=4000):
+    res = dbx_rpc("https://api.dropboxapi.com/2/files/get_temporary_link", {"path": path})
+    link = ((res.get("data") or {}).get("data") or {}).get("link")
+    if not link:
+        return f"ERROR getting link: {json.dumps(res)[:400]}"
+    resp = requests.get(link, timeout=60)
+    return resp.text[:max_chars]
+
+print("\n=== READ /gkhackter/tools.md ===")
+print(read_text_file("/gkhackter/tools.md", 6000))
+
+# Also check if there's any new incoming package or Hacker-Series README/index
+md_files = [e["path_display"] for e in all_entries if e.get(".tag") == "file" and e["path_display"].endswith(".md")]
+hs_files = [p for p in md_files if "/Hacker-Series/" in p][:5]
+if hs_files:
+    print("\n=== SAMPLE /gkhackter/Hacker-Series/ FILES ===")
+    for p in hs_files:
+        print(f"\n--- {p} ---")
+        print(read_text_file(p, 1200))
+
+# Check latest incoming handoff.md
+handoffs = sorted([p for p in md_files if p.endswith("/handoff.md")])
+if handoffs:
+    print("\n=== LATEST INCOMING HANDOFFS ===")
+    for p in handoffs[-2:]:
+        print(f"\n--- {p} ---")
+        print(read_text_file(p, 1500))
