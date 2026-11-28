@@ -1,39 +1,405 @@
-=== 1. Check Connections (dropbox, instagram, facebook, youtube, buffer) ===
-dropbox: status=active
-  account id=dropbox_snuck-undark status=active user_info={'account_id': 'dbid:AABPE_mpQdPP12pP7NoYM-Gyos-9FojUKqk', 'account_type': 'basic', 'display_name': 'RP UAS', 'email': 'rpusa9211@gmail.com'}
-instagram: status=active
-  account id=instagram_quiles-adorer status=active user_info={'id': '29161770546783780', 'username': 'gkhackter'}
-facebook: status=active
-  account id=facebook_unwise-planch status=active user_info={'id': '122119689777512928', 'name': 'Hackter Gk'}
-youtube: status=active
-  account id=youtube_easier-algoid status=active user_info=None
-buffer: status=active
-  account id=buffer_cheer-vitis status=active user_info=None
+=== FULL RECURSIVE TREE OF /gkhackter ===
+[folder] /gkhackter  (- bytes, -)
+[file  ] /gkhackter/0-STRUCTURE.md  (4945 bytes, 2026-11-26T13:55)
+[file  ] /gkhackter/1-PIPELINE.md  (19796 bytes, 2026-11-26T14:43)
+[file  ] /gkhackter/2-STYLE.md  (8182 bytes, 2026-11-25T09:17)
+[file  ] /gkhackter/3-CHECK.md  (13245 bytes, 2026-11-26T13:55)
+[file  ] /gkhackter/4-CHANNEL.md  (22696 bytes, 2026-11-26T15:13)
+[file  ] /gkhackter/EXAMPLE-sheets-upload.md  (6565 bytes, 2026-11-25T15:26)
+[folder] /gkhackter/Hacker-Series  (- bytes, -)
+[file  ] /gkhackter/Hacker-Series/HACKER-SERIES-LEDGER.md  (26676 bytes, 2026-11-27T02:22)
+[file  ] /gkhackter/Hacker-Series/HACKER-SERIES.md  (13958 bytes, 2026-11-27T02:22)
+[file  ] /gkhackter/Hacker-Series/START-HERE.md  (17436 bytes, 2026-11-27T02:22)
+[file  ] /gkhackter/LEDGER.md  (3373 bytes, 2026-11-26T14:59)
+[file  ] /gkhackter/MESSAGE-FOR-VOICE-AGENT.md  (4476 bytes, 2026-11-25T14:31)
+[file  ] /gkhackter/POSTING-OPTIONS.md  (7018 bytes, 2026-11-25T14:14)
+[file  ] /gkhackter/PROMPT-FOR-VOICE-AGENT.md  (18838 bytes, 2026-11-28T04:37)
+[file  ] /gkhackter/START-PROMPT.txt  (2493 bytes, 2026-11-26T13:21)
+[file  ] /gkhackter/UPLOAD-SETTINGS.md  (15662 bytes, 2026-11-25T15:26)
+[folder] /gkhackter/done  (- bytes, -)
+[file  ] /gkhackter/done/2026-11-24-cloudflare-playground-FINAL.mp4  (11911164 bytes, 2026-11-24T09:43)
+[file  ] /gkhackter/done/2026-11-25-github-push-protection-FINAL.mp4  (34111100 bytes, 2026-11-25T09:15)
+[file  ] /gkhackter/done/2026-11-25-github-push-protection-thumbnail.png  (235447 bytes, 2026-11-25T09:15)
+[folder] /gkhackter/incoming  (- bytes, -)
+[folder] /gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo  (- bytes, -)
+[file  ] /gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo/beatsheet.md.paper  (200 bytes, 2026-11-24T03:17)
+[file  ] /gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo/handoff.md.paper  (200 bytes, 2026-11-24T04:04)
+[file  ] /gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo/research.md.paper  (200 bytes, 2026-11-24T02:40)
+[file  ] /gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo/script.md.paper  (200 bytes, 2026-11-24T03:17)
+[folder] /gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select  (- bytes, -)
+[file  ] /gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select/beatsheet.md  (200 bytes, 2026-11-24T15:48)
+[file  ] /gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select/handoff.md  (200 bytes, 2026-11-24T14:25)
+[file  ] /gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select/research.md  (200 bytes, 2026-11-24T14:24)
+[file  ] /gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select/script.md  (200 bytes, 2026-11-24T15:01)
+[folder] /gkhackter/incoming/2026-11-25-1926-cashfree-agent-wallet  (- bytes, -)
+[file  ] /gkhackter/incoming/2026-11-25-1926-cashfree-agent-wallet/beatsheet.md  (3386 bytes, 2026-11-25T13:59)
+[file  ] /gkhackter/incoming/2026-11-25-1926-cashfree-agent-wallet/handoff.md  (3386 bytes, 2026-11-25T13:59)
+[file  ] /gkhackter/incoming/2026-11-25-1926-cashfree-agent-wallet/research.md  (3386 bytes, 2026-11-25T13:59)
+[file  ] /gkhackter/incoming/2026-11-25-1926-cashfree-agent-wallet/script.md  (3386 bytes, 2026-11-25T13:59)
+[folder] /gkhackter/incoming/2026-11-25-github-push-protection  (- bytes, -)
+[file  ] /gkhackter/incoming/2026-11-25-github-push-protection/STYLE-CARD.md  (2670 bytes, 2026-11-25T09:18)
+[file  ] /gkhackter/incoming/2026-11-25-github-push-protection/UPLOAD.md  (5609 bytes, 2026-11-25T15:39)
+[file  ] /gkhackter/incoming/2026-11-25-github-push-protection/metadata.md  (1920 bytes, 2026-11-25T09:18)
+[file  ] /gkhackter/incoming/2026-11-25-github-push-protection/visual.md  (8903 bytes, 2026-11-25T09:18)
+[folder] /gkhackter/incoming/connection-test  (- bytes, -)
+[file  ] /gkhackter/incoming/connection-test/Dropbox Write Test - GK HACKTER.paper  (200 bytes, 2026-11-23T15:12)
+[folder] /gkhackter/logs  (- bytes, -)
+[file  ] /gkhackter/logs/2026-11-25-github-push-protection-log.md  (3274 bytes, 2026-11-25T09:17)
+[file  ] /gkhackter/logs/clips.md  (1871 bytes, 2026-11-25T09:18)
+[file  ] /gkhackter/logs/facts.md  (4292 bytes, 2026-11-25T09:17)
+[file  ] /gkhackter/logs/qa.md  (1880 bytes, 2026-11-25T09:18)
+[file  ] /gkhackter/tools.md  (29445 bytes, 2026-11-26T15:16)
 
-=== 2. Search Dropbox tools ===
-{"successful": true, "data": {"results": [{"index": 1, "use_case": "list files in dropbox folder and read file contents", "execution_guidance": "IMPORTANT: Follow the recommended plan below. Extract steps before execution, adapt to your current context, execute sequentially with current_step parameter, and check known pitfalls to avoid errors.", "recommended_plan_steps": ["One DROPBOX_DOWNLOAD_ZIP call with path='/<folder>' (the folder's path_display, or 'id:<folder_id>'). The response's zip_content.s3url is a single download link to a zip of every file in that folder and all its subfolders; no listing is needed first.", "In COMPOSIO_REMOTE_WORKBENCH, download the s3url, open it with zipfile, skip names ending in '/', and read or parse each member there (member names are '<folder name>/<subfolder>/<file>'). Aggregate in the same cell and answer from it; stop there."], "known_pitfalls": ["Calling DROPBOX_READ_FILE once per file: each call returns only a download link, not the content, so N files cost N calls plus N downloads, and skipping any file gives a wrong total. Keep READ_FILE for one or a few named files.", "A non-recursive DROPBOX_LIST_FILES_IN_FOLDER shows only the top level, so files inside subfolders are easy to miss; the zip already contains every depth.", "DOWNLOAD_ZIP needs a folder: a file path fails with not_folder and the Dropbox root ('') is rejected, so zip each top-level folder instead. Limits: folder under 20 GB, each file under 4 GB, fewer than 10,000 entries; for folders of large media where you need only a few files, list them and READ_FILE just those."], "difficulty": "easy", "primary_tool_slugs": ["DROPBOX_DOWNLOAD_ZIP"], "related_tool_slugs": ["DROPBOX_READ_FILE", "DROPBOX_LIST_FILES_IN_FOLDER"], "toolkits": ["dropbox"], "plan_id": "e16e2c9338649d4918410aab53615c69", "cached_plan_usecase": "usecase: List files in a Dropbox folder and read each file's content. known: None. apps: dropbox"}], "toolkit_connection_statuses": [{"toolkit": "dropbox", "description": "Dropbox is a cloud storage service offering file syncing, sharing, and collaboration across devices with version control and robust integrations", "has_active_connection": true, "accounts": [{"id": "dropbox_snuck-undark", "user_info": {"account_id": "dbid:AABPE_mpQdPP12pP7NoYM-Gyos-9FojUKqk", "account_type": "basic", "display_name": "RP UAS", "email": "rpusa9211@gmail.com"}, "status": "ACTIVE", "created_at": "2026-11-28T07:17:17.617Z", "is_default": true, "account_type": "PRI
+=== READ /gkhackter/tools.md ===
+SHORTS — 33 sources ki pakki library ("tools.md")
 
-=== 3. Proxy list /gkhackter on Dropbox API ===
+VOICE AGENT — MANDATORY TOOL RULES
 
---- LIST /gkhackter ---
-{"successful": true, "data": {"data": {"cursor": "AAYfpSIGkLhYSw3l5HaH32v4gQDl_U6sEvTu_VXeEFwN9wgf4km8PE74zW6nrd8u6eeNNLmxEZyCVGb_evaeLYz7UO5daWXBpjzF9asaFU_EK362mRNTxdh944GdoyljPxUeZfSQCsWSTX93hq1z8PYPmm5Xb1h7RT2LaKgxq6rG9NJB5egc-XzbSKFlMY6ejebet8Pv-pbDnfT_TptqV5ATXJZwClMoE4t26IYoG0I2UA", "entries": [{".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAbQ", "name": "incoming", "path_display": "/gkhackter/incoming", "path_lower": "/gkhackter/incoming", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAbg", "name": "done", "path_display": "/gkhackter/done", "path_lower": "/gkhackter/done", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAdQ", "name": "logs", "path_display": "/gkhackter/logs", "path_lower": "/gkhackter/logs", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAA2w", "name": "Hacker-Series", "path_display": "/gkhackter/Hacker-Series", "path_lower": "/gkhackter/hacker-series", "property_groups": []}, {".tag": "file", "client_modified": "2026-11-25T09:17:53Z", "content_hash": "dc5fd98ea0db3d3320739bebe070a11404388301ceba43a9e4db79eab11d001a", "id": "id:JDu-VWSWBc4AAAAAAAAAww", "is_downloadable": true, "name": "2-STYLE.md", "path_display": "/gkhackter/2-STYLE.md", "path_lower": "/gkhackter/2-style.md", "property_groups": [], "rev": "01661164d40751e0000000347e74eb1", "server_modified": "2026-11-25T09:17:53Z", "size": 8182}, {".tag": "file", "client_modified": "2026-11-25T14:14:27Z", "content_hash": "0806
+Voice Agent का काम केवल इन चरणों तक सीमित है:
 
---- LIST /gkhackter/incoming ---
-{"successful": true, "data": {"data": {"cursor": "AAYE6-OBOARM1l9rXAaqAzp6bH5Ms1CDMI7UvcZPY-LkMe5Ia-uXqeJSatPZCorgd52KxnclCfSceYZY_SPA3KOS6P2zC_ooPd06fbysOnh5VkKW_fJUIKe4DuMAjSp5E_luH11INpJiFJODRosVBpGbSSdEbI8IuZyc8XadGADb8lReWUxxgyGA_af1HxZ8STBNu7y6D5CWFkxnhLsr8HinSEgFqG2ySaMoA80MgFfkax6x8jt0IxUMIdBu8FdJ2zc", "entries": [{".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAcg", "name": "connection-test", "path_display": "/gkhackter/incoming/connection-test", "path_lower": "/gkhackter/incoming/connection-test", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAeA", "name": "2026-11-24-0805-cloudflare-playground-demo", "path_display": "/gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo", "path_lower": "/gkhackter/incoming/2026-11-24-0805-cloudflare-playground-demo", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAiQ", "name": "2026-11-24-1946-google-sheets-multi-select", "path_display": "/gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select", "path_lower": "/gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAAzA", "name": "2026-11-25-github-push-protection", "path_display": "/gkhackter/incoming/2026-11-25-github-push-protection", "path_lower": "/gkhackter/incoming/2026-11-25-github-push-protection", "property_groups": []}, {".tag": "folder", "id": "id:JDu-VWSWBc4AAAAAAAAA0Q", "name": "2026-11-25-1926-cashfree-agent-wallet", "path
+1. Topic Research
+2. Official Sources Verification
+3. Hindi Script Writing
+4. 12-word Hook Verification
+5. ElevenLabs Aarush Voice Generation
+6. Actual Audio Duration Verification
+7. Beatsheet और Handoff तैयार करना
 
---- LIST /gkhackter/done ---
-{"successful": true, "data": {"data": {"cursor": "AAZOCzGn3VwyKz6kYiB6g5t8EiHtmgLL5nvYNyD4NtuW3P3ENgn001tyLJPIZ3vZ_UWbYLjnPVO3ctJEz2svRKil5IYae3DGDIp7_X70RH0pzxTif_fmaF-Qgd1O3fRqVcuI8OjndtMLY3X87S6eEwOwqkxdy-wUR1pG-ccCLn-_iAfPeHVuFYn6mB2Fx6OZflPfC7RtcLW6vodzECUVaYJPaBUIWVQr25Ki1u32Ked1cQ", "entries": [{".tag": "file", "client_modified": "2026-11-24T09:43:38Z", "content_hash": "0309c371016528f0c6cc53ff93ffdc8eb631884e8156a068842049cfe5f39995", "id": "id:JDu-VWSWBc4AAAAAAAAAgw", "is_downloadable": true, "name": "2026-11-24-cloudflare-playground-FINAL.mp4", "path_display": "/gkhackter/done/2026-11-24-cloudflare-playground-FINAL.mp4", "path_lower": "/gkhackter/done/2026-11-24-cloudflare-playground-final.mp4", "property_groups": [], "rev": "01661028b8948f90000000347e74eb1", "server_modified": "2026-11-24T09:43:39Z", "size": 11911164}, {".tag": "file", "client_modified": "2026-11-25T09:15:19Z", "content_hash": "8846fdd0b8ee54469c4714385a354d42c65837cc2819239435afaa2be4c0f972", "id": "id:JDu-VWSWBc4AAAAAAAAAxg", "is_downloadable": true, "name": "2026-11-25-github-push-protection-FINAL.mp4", "path_display": "/gkhackter/done/2026-11-25-github-push-protection-FINAL.mp4", "path_lower": "/gkhackter/done/2026-11-25-github-push-protection-final.mp4", "property_groups": [], "rev": "0166116441805340000000347e74eb1", "server_modified": "2026-11-25T09:15:19Z", "size": 34111100}, {".tag": "file", "client_modified": "2026-11-25T09:15:31Z", "content_hash": "af4fb15b4dceb12be9817578478f7d18ce9e7a7
+Voice Agent को Video Editing, FFmpeg Rendering, Playwright Screen Recording, Stock Footage, Sound Effects, Thumbnail या Video QA Tools चलाने की जरूरत नहीं है।
 
---- LIST /gkhackter/logs ---
-{"successful": true, "data": {"data": {"cursor": "AAaLG7bqKb9A7Ru3LIUFefL0kTMZjkT7TdeB1VfQffHkqYwBotsqyFH32kBy_CmQkCnbPa2BLq-eYpm9OCyidbVW8pmNZifvZJJk_OXA-bNMsUjVgKPsVcd1DkVtOnlpgZ429bLjI-UZMMrdZT7sdLaAOoDwhHIkcG1WVzWW3rP1sdRj2r6TGv_1r2nOSYv95TBCGSxjB92N0yEPrQbLa5zC_4qPsmQBWyGcMuAXx0jFFQ", "entries": [{".tag": "file", "client_modified": "2026-11-25T09:17:52Z", "content_hash": "db0363d52dcedcba8cb80b82be149282267695d57b57b5ccb516a978285b34c2", "id": "id:JDu-VWSWBc4AAAAAAAAAyA", "is_downloadable": true, "name": "facts.md", "path_display": "/gkhackter/logs/facts.md", "path_lower": "/gkhackter/logs/facts.md", "property_groups": [], "rev": "01661164d37d72e0000000347e74eb1", "server_modified": "2026-11-25T09:17:52Z", "size": 4292}, {".tag": "file", "client_modified": "2026-11-25T09:17:53Z", "content_hash": "85caa7d893b6c6fb89dfb65c22a15314cb8c459f5a85afdfc81a33f27147c6bf", "id": "id:JDu-VWSWBc4AAAAAAAAAyQ", "is_downloadable": true, "name": "2026-11-25-github-push-protection-log.md", "path_display": "/gkhackter/logs/2026-11-25-github-push-protection-log.md", "path_lower": "/gkhackter/logs/2026-11-25-github-push-protection-log.md", "property_groups": [], "rev": "01661164d4717db0000000347e74eb1", "server_modified": "2026-11-25T09:17:53Z", "size": 3274}, {".tag": "file", "client_modified": "2026-11-25T09:18:15Z", "content_hash": "59e46de8af075ffc28c27cdd4d33f52071e636f2ab8166dbbd30aaa3789844d9", "id": "id:JDu-VWSWBc4AAAAAAAAAyg", "is_downloadable": true, "name": "qa.md", "path_display"
+किसी Tool का उपयोग केवल तभी करो जब वह Voice Agent के वास्तविक काम में जरूरी हो।
 
-=== 4. Download tools.md & LEDGER.md from /gkhackter/ via Dropbox content API ===
+हर वीडियो में सभी Tools चलाना अनिवार्य नहीं है।
 
---- READ /gkhackter/tools.md ---
-{"successful": false, "data": {}, "error": "Invalid request for COMPOSIO_PROXY_EXECUTE: Validation error: Unrecognized key(s) in object: 'headers'", "log_id": "log_6gtisax0QVSd"}
+VOICE AGENT WORKFLOW
 
---- READ /gkhackter/LEDGER.md ---
-{"successful": false, "data": {}, "error": "Invalid request for COMPOSIO_PROXY_EXECUTE: Validation error: Unrecognized key(s) in object: 'headers'", "log_id": "log_ObO946dRURzr"}
+Step 1 — Topic Selection
 
---- READ /gkhackter/0-STRUCTURE.md ---
-{"successful": false, "data": {}, "error": "Invalid request for COMPOSIO_PROXY_EXECUTE: Validation error: Unrecognized key(s) in object: 'headers'", "log_id": "log_Tnxm4mkd9A3h"}
+सबसे पहले "LEDGER.md" पढ़ो। पिछली तीन Entries की Categories देखकर Category Rotation का पालन करो। पिछली तीन Categories में से कोई Category दोबारा मत चुनो।
+
+विषय चुनने के लिए नीचे दिया Priority-Based Selection System अनिवार्य है। केवल Trending Topic न मिलने के कारण वीडियो बनाना बंद मत करो।
+
+Priority 1 — Trending Technology Topic
+
+सबसे पहले वर्तमान Trending Technology Topics खोजो।
+
+प्राथमिकता:
+
+- पिछले 7 दिनों में लॉन्च हुए AI Tools और नए फीचर्स
+- नए GitHub Projects और Repositories
+- नए Software और Technology Updates
+- महत्वपूर्ण Releases और Announcements
+- तेजी से लोकप्रिय हो रहे Practical Technology Tools
+- वास्तविक उपयोगकर्ता अपनाने या चर्चा में वृद्धि वाले प्रोजेक्ट
+
+Trending का दावा करने से पहले कम-से-कम दो स्वतंत्र Trend Signals खोजो। कम-से-कम एक ताज़ा या प्राथमिक स्रोत होना चाहिए, जैसे Official Announcement, Changelog, GitHub Activity, Google Trends या विश्वसनीय Tech Publication।
+
+पिछले 30 दिनों के विषय पर तभी विचार करो जब उसकी वर्तमान Momentum का प्रमाण हो।
+
+पुराना लोकप्रिय टूल, पुरानी खबर, केवल अधिक Search Results या अधिक GitHub Stars Trending होने का प्रमाण नहीं हैं।
+
+Priority 2 — Useful but Underrated Topic
+
+यदि उपयुक्त Trending Topic नहीं मिलता, तो ऐसा उपयोगी विषय चुनो जिसे हिंदी YouTube पर कम Creator कवर कर रहे हों।
+
+उदाहरण:
+
+- कम चर्चित लेकिन उपयोगी AI Tools
+- कम पहचाने गए Practical GitHub Projects
+- उपयोगी Software और Digital Tools
+- Android और PC की कम ज्ञात लेकिन उपयोगी Settings
+- छोटे व्यवसाय, पढ़ाई और Productivity के Tools
+- ऐसी Technology जो दर्शक की वास्तविक समस्या हल करे
+
+कम कवरेज का दावा करने से पहले YouTube पर संबंधित हिंदी वीडियो की खोज करो। केवल कम Search Results को अंतिम प्रमाण मत मानो।
+
+विषय की वास्तविक उपयोगिता और दावों की विश्वसनीयता भी जाँचो।
+
+Priority 3 — Evergreen Useful Topic
+
+यदि कोई उपयुक्त Trending या Underrated Topic नहीं मिलता, तो एक मजबूत Evergreen Topic चुनो।
+
+उदाहरण:
+
+- AI Tools का व्यावहारिक उपयोग
+- GitHub Repositories और Open-source Projects
+- Android और PC की उपयोगी Settings
+- Cybersecurity Basics
+- Study और Productivity Tools
+- छोटे व्यवसायों के Digital Tools
+- Software और Technology के Practical Tutorials
+- Free और Paid Tools की ईमानदार तुलना
+
+Evergreen विषय दर्शक की वास्तविक समस्या हल करने वाला होना चाहिए। केवल सामान्य परिभाषा, सतही जानकारी या कमजोर दोहराई हुई जानकारी पर वीडियो मत बनाओ।
+
+Priority 4 — Useful GitHub Repository
+
+यदि ऊपर की प्राथमिकताओं में कोई अच्छा विषय नहीं मिलता, तो GitHub पर उपयोगी Repository खोजो।
+
+Repository की जाँच करो:
+
+- यह वास्तव में क्या काम करती है?
+- क्या मुख्य फीचर वास्तविक और उपयोगी है?
+- क्या Project सक्रिय है या कम-से-कम काम करने योग्य है?
+- हाल की Commits, Releases और Activity क्या बताती हैं?
+- License उपलब्ध है और उसकी शर्तें क्या हैं?
+- क्या इसके काम को README, Official Documentation या वास्तविक Demo से साबित किया जा सकता है?
+- क्या सामान्य दर्शक इसकी उपयोगिता समझ सकता है?
+
+Trending GitHub Repository को प्राथमिकता दो, लेकिन केवल Stars देखकर उसे उपयोगी या सुरक्षित घोषित मत करो।
+
+Daily Topic Rule
+
+हर निर्धारित रन का लक्ष्य एक उपयोगी वीडियो तैयार करना है।
+
+Topic Selection का क्रम:
+
+1. Trending Technology Topic
+2. Useful but Underrated Topic
+3. Evergreen Useful Topic
+4. Useful GitHub Repository
+
+यदि Priority 1 में योग्य विषय नहीं मिलता, तो Priority 2 पर जाओ। इसी तरह अगले स्तर पर आगे बढ़ो।
+
+किसी भी स्तर पर केवल वीडियो बनाने के लिए Filler Topic, कमजोर जानकारी या बिना प्रमाण वाला विषय मत चुनो।
+
+यदि किसी विषय के बारे में पर्याप्त विश्वसनीय जानकारी नहीं मिलती, तो उसे छोड़कर अगला विकल्प जाँचो।
+
+एक स्तर पर विषय न मिलने का अर्थ यह नहीं है कि पूरा वीडियो रन रोक देना है।
+
+Category Rotation
+
+- "LEDGER.md" की पिछली तीन Entries की Categories हमेशा जाँचो।
+- पिछली तीन Categories में से कोई Category दोबारा मत चुनो।
+- Trending Topic होने पर भी Category Rotation लागू रहेगा।
+- यदि किसी Category में विषय उपलब्ध नहीं है, तो दूसरी योग्य Category में विषय खोजो।
+- Category Rotation और Topic Priority दोनों का एक साथ पालन करो।
+
+Channel Fit
+
+हर Topic GK HACKTECH के दायरे में होना चाहिए।
+
+स्वीकृत क्षेत्र:
+
+- AI Tools
+- GitHub Repositories
+- Phone और PC Tricks
+- Practical Technology
+- Useful Digital Tools
+- Software Updates
+- Technology Comparisons
+- Cybersecurity Basics
+- Study और Productivity Tools
+
+Politics, Religion, Celebrity, Sports, Gossip, General Entertainment और बिना प्रमाण वाले AI Future Claims नहीं चुनने हैं।
+
+किसी दूसरे क्षेत्र का विषय केवल Trending होने के कारण स्वीकार नहीं करना है।
+
+Topic Selection Evidence
+
+"research.md" में "Topic Selection & Evidence" नाम का सेक्शन अनिवार्य रूप से शामिल करो।
+
+इसमें दर्ज करो:
+
+- चुना गया Topic
+- Priority: Trending / Underrated / Evergreen / GitHub Repository
+- Category
+- विषय चुनने का कारण
+- Trending Topic है तो कम-से-कम दो Trend Signals और उनकी तारीख़
+- Underrated Topic है तो कम कवरेज जाँचने का आधार
+- Evergreen Topic है तो दर्शक की वास्तविक समस्या और उपयोगिता
+- GitHub Repository है तो उसका URL, Activity और License की जाँच
+- दर्शक को मिलने वाला वास्तविक फायदा
+- मुख्य दावों के Primary Sources
+- विषय की ईमानदार सीमा या कमी
+
+विषय Trending न हो तो उसे Trending मत लिखो।
+
+Step 2 — Research
+
+tools.md में उपलब्ध उपयोगी Research Sources और आधिकारिक वेबसाइटों से जानकारी जाँचो। हर महत्वपूर्ण दावे, नंबर और फीचर का स्रोत URL तथा जाँच का समय दर्ज करो।
+
+Step 3 — Script
+
+प्राकृतिक और बातचीत जैसी हिंदी में स्क्रिप्ट लिखो। S1 Hook ठीक 12 बोले जाने वाले शब्दों का होना चाहिए। पूरी स्क्रिप्ट की वास्तविक बोलने की अवधि 30–60 सेकंड के बीच हो
+
+=== SAMPLE /gkhackter/Hacker-Series/ FILES ===
+
+--- /gkhackter/Hacker-Series/START-HERE.md ---
+GK HACKTER — 100 DAYS ETHICAL HACKER
+
+MASTER INSTRUCTIONS — START HERE
+
+यह GK HACKTER की 100-दिन की Practical Ethical Hacking Series का मुख्य निर्देश है।
+
+इस फाइल को पढ़े बिना इस Series का कोई काम शुरू नहीं करना है।
+
+मुख्य उद्देश्य:
+
+दर्शक को 100 दिनों में Ethical Hacking की मजबूत Practical Foundation देना। केवल टूल के नाम और परिभाषाएँ बताना पर्याप्त नहीं है। हर वीडियो में वास्तविक उपयोग, काम करने का तरीका और सीखने योग्य बात होनी चाहिए।
+
+---
+
+1. सबसे पहले कौन-सी फाइलें पढ़नी हैं?
+
+हर नए Series Run में नीचे दिए क्रम का पालन करो।
+
+1. "/gkhackter/Hacker-Series/START-HERE.md"
+2. "/gkhackter/Hacker-Series/HACKER-SERIES.md"
+3. "/gkhackter/Hacker-Series/HACKER-SERIES-LEDGER.md"
+4. "/gkhackter/4-CHANNEL.md"
+5. "/gkhackter/tools.md"
+6. "/gkhackter/PROMPT-FOR-VOICE-AGENT.md"
+
+सभी फाइलें पूरी पढ़ो।
+
+किसी फाइल का कंटेंट उपलब्ध नहीं है तो अनुमान मत लगाओ। समस्या रिपोर्ट करो।
+
+---
+
+2. Series और सामान्य चैनल वीडियो अलग हैं
+
+GK HACKTECH पर सामान्य Technology Videos और 100 Days Ethical Hacker Series दो अलग Content Tracks हैं।
+
+इस Series के लिए:
+
+- अलग Curriculum लागू होगा।
+- अलग Series Ledger लागू होगा।
+- Day Number अनिवार्य होगा।
+- हर दिन का Learning Objective स्पष्ट होगा।
+- पिछले दिनों के Practica
+
+--- /gkhackter/Hacker-Series/HACKER-SERIES.md ---
+इसमें पूरे 100 दिनों का Curriculum और हर दिन का मुख्य Learning Objective रहेगा।
+
+GK HACKTER — 100 DAYS OF MAKING YOU AN ETHICAL HACKER
+
+Series Curriculum
+
+उद्देश्य: 100 दिनों में दर्शकों को Cybersecurity और Ethical Hacking की Practical Foundation देना।
+
+यह Curriculum एक Learning Journey है। हर Day का वास्तविक Tool, Feature और Demo Research के बाद ही Final होगा।
+
+किसी Tool का नाम Curriculum में होने का अर्थ यह नहीं है कि उसका हर Feature Free है या हर System पर उपलब्ध है।
+
+---
+
+PHASE 1 — CYBERSECURITY FOUNDATIONS
+
+Day 01–10
+
+उद्देश्य: Cybersecurity, Networking और Ethical Hacking की बुनियादी समझ।
+
+Day| Topic| Learning Objective
+01| Ethical Hacking क्या है?| Authorized Security Testing और उसकी सीमाएँ समझना
+02| IP Address| Private और Public IP का अंतर समझना
+03| MAC Address| Network Interface की पहचान समझना
+04| DNS| Domain Name से IP Resolution समझना
+05| HTTP और HTTPS| Web Communication और Encryption का अंतर
+06| TCP और UDP| दोनों Protocols के Practical उपयोग समझना
+07| Common Network Ports| Port और Service Mapping समझना
+08| Subnet और Gateway| Local Network Communication समझना
+09| Linux Terminal Basics| Security Lab में जरूरी Commands
+10| Virtual Machines| सुरक्षित Testing Environment तैया
+
+--- /gkhackter/Hacker-Series/HACKER-SERIES-LEDGER.md ---
+यह सबसे महत्वपूर्ण Tracking File है। इसका काम केवल Day Number गिनना नहीं, बल्कि एक ही Practical काम को बार-बार वीडियो में आने से रोकना है।
+
+GK HACKTER — HACKER SERIES LEDGER
+
+यह 100 Days Ethical Hacking Series का मुख्य Progress और Duplicate Prevention Ledger है।
+
+इसे Voice Agent और Series Workflow के अनुसार अपडेट किया जाएगा।
+
+सामान्य GK HACKTECH Video Agent Ledger से यह अलग है।
+
+---
+
+1. Series Status
+
+Field| Value
+Series Name| 100 Days of Making You an Ethical Hacker
+Channel| GK HACKTER / GK HACKTECH
+Total Days| 100
+Completed Days| 0
+Published Days| 0
+Current Day| 1
+Current Status| NOT_STARTED
+Last Updated| NOT_STARTED
+Main Language| Hindi
+On-Screen Language| English
+Target Duration| 30–60 Seconds
+Milestone| 1,000 Subscribers — Responsible Tor/Dark Web Learning
+
+---
+
+2. Status Definitions
+
+Status| Meaning
+NOT_STARTED| अभी काम शुरू नहीं हुआ
+RESEARCH_IN_PROGRESS| Research चल रही है
+RESEARCH_VERIFIED| Research और Sources जाँचे गए
+SCRIPT_READY| Script तैयार है
+SCRIPT_APPROVED| Script जाँच के बाद स्वीकार हुई
+VOICE_GENERATED| Voice तैयार और Duration जाँची गई
+VIDEO_IN_PROGRESS| Video Agent काम कर रहा है
+VIDEO_COMPLETED| Video तैयार और QA पास
+PUBLISHED| वास्तविक Platform पर Publish हुआ
+BLO
+
+=== LATEST INCOMING HANDOFFS ===
+
+--- /gkhackter/incoming/2026-11-24-1946-google-sheets-multi-select/handoff.md ---
+{
+		"url": "https://www.dropbox.com/cloud_docs/view/e6tOkvYRcrNT0K82Qq_7h",
+		"content_access_token": "cap_pid_cloud_docs:AIAAAI4CsOt4VScuxa4G3nl8L7Q0PPjiKdg_lfmQQSAHv68ZA3Q5Y550luSxfBlFIn6tjUlA9C8"
+}
+
+--- /gkhackter/incoming/2026-11-25-1926-cashfree-agent-wallet/handoff.md ---
+# वॉइस एजेंट को भेजने के लिए — कॉपी करके भेज दो
+
+---
+
+तुम अपनी तरफ़ से ये तीन चीज़ें जोड़ लो। वीडियो एजेंट तुम्हारी कोई फाइल नहीं छुएगा।
+
+## 1. handoff.md में ये चार लाइनें और डालो
+
+```
+history_item_id: <ElevenLabs का generation id>
+voice_url_expiry_ist: <link कब तक चलेगा>
+numbers_checked: <हर आंकड़े का स्रोत URL + तारीख़>
+not_covered: <क्या नहीं कवर किया>
+```
+
+**क्यों `history_item_id`:** link तीन घंटे में मर जाता है। पिछली बार 403 आया था,
+और आवाज़ सिर्फ़ history से बची थी। id होगी तो आवाज़ कभी नहीं खोएगी।
+
+## 2. script.md और असली आवाज़ — एक होनी चाहिए
+
+पिछली बार script.md में S3 पर लिखा था "Node.js", और आवाज़ में "पहले प्रोजेक्ट सेटअप और
+डिप्लॉय करना पड़ता था"। दोनों अलग थे। वीडियो एजेंट आवाज़ से चलता है, फाइल से नहीं —
+तो स्क्रीन और आवाज़ अलग-अलग हो जाते हैं।
+
+**जो बोलोगे, बिल्कुल वही script.md में लिखो।** शब्द-दर-शब्द।
+
+## 3. फाइल सादे `.md` में लिखो, Dropbox Paper में नहीं
+
+Paper में लिखी फाइल सीधे नहीं पढ़ी जाती — export करना पड़ता है।
+चार फाइलें: `research.md`, `script.md`, `handoff.md` — सादे markdown में।
+
+---
+
+## तुम्हारा काम — याद रखने के लिए
+
+```
+विषय चुनना · research · script · hook · CTA · आवाज़ बनाना  →  तुम्हारा
+आंकड़े जाँचना · समय नापना · दृश्य-लेख · थंबनेल · दृश्य · पब्लिश  →  वीडियो एजेंट का
+```
+
+वीडियो एजेंट तुम्हारी script नहीं बदलेगा। सिर्फ़ **जाँचेगा** — और अगर कोई आंकड़ा
+स्रोत से नहीं मिला, तो वह लाइन **हटा देगा** और `handoff.md` में नोट कर देगा।
+उसका कारण: स्क्रीन पर झूठा आंकड़ा नहीं जा सकता।
+
+---
+
+**बस इतना।** तुम्हारी बाकी फाइलें, तुम्हारा brief, तु
