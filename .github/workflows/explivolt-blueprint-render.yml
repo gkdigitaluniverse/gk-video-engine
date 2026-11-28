@@ -1,0 +1,79 @@
+name: explivolt-blueprint-render
+on:
+  push:
+    paths: ["explivolt-blueprint/src/**", "explivolt-blueprint/package.json", "explivolt-blueprint/index.ts", ".github/workflows/explivolt-blueprint-render.yml"]
+  workflow_dispatch:
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Download Fonts
+        working-directory: explivolt-blueprint
+        run: |
+          mkdir -p public/fonts out
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf" -o public/fonts/Inter-Bold.ttf
+          curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/spacemono/SpaceMono-Bold.ttf" -o public/fonts/SpaceMono-Bold.ttf
+          ls -lh public/fonts
+
+      - name: Install Dependencies & Typecheck
+        working-directory: explivolt-blueprint
+        run: |
+          npm install --no-audit --no-fund
+          npx tsc --noEmit
+
+      - name: Render Video (Remotion)
+        working-directory: explivolt-blueprint
+        run: |
+          npx remotion render index.ts ExplivoltDemo out/video_silent.mp4 --codec=h264 --crf=18 --concurrency=3 --muted
+
+      - name: Mix Voiceover + Ducked BGM & Extract QC Stills
+        working-directory: explivolt-blueprint
+        run: |
+          ffmpeg -y \
+            -i out/video_silent.mp4 \
+            -i ../v1/voice.wav \
+            -stream_loop -1 -i ../v1/channel-bgm.mp3 \
+            -filter_complex "[1:a]loudnorm=I=-14:TP=-1.5:LRA=11[vo];[2:a]volume=0.09,afade=t=out:st=40:d=2[bgm];[vo][bgm]amix=inputs=2:duration=first:dropout_transition=2,alimiter=limit=0.95[aout]" \
+            -map 0:v -map "[aout]" -c:v copy -c:a aac -b:a 192k -shortest \
+            out/cloudflare-playground-explivolt-FINAL.mp4
+
+          ffmpeg -y -ss 1.5  -i out/cloudflare-playground-explivolt-FINAL.mp4 -vframes 1 out/still_01_hook.png
+          ffmpeg -y -ss 8.0  -i out/cloudflare-playground-explivolt-FINAL.mp4 -vframes 1 out/still_02_nosetup.png
+          ffmpeg -y -ss 20.0 -i out/cloudflare-playground-explivolt-FINAL.mp4 -vframes 1 out/still_03_livetest.png
+          ffmpeg -y -ss 28.0 -i out/cloudflare-playground-explivolt-FINAL.mp4 -vframes 1 out/still_04_limits.png
+          ffmpeg -y -ss 36.0 -i out/cloudflare-playground-explivolt-FINAL.mp4 -vframes 1 out/still_05_catch.png
+          ffmpeg -y -ss 41.0 -i out/cloudflare-playground-explivolt-FINAL.mp4 -vframes 1 out/still_06_cta.png
+
+          {
+            echo "Render Date (UTC): $(date -u)"
+            ffprobe -v error -show_entries format=duration,size,bit_rate -of default=noprint_wrappers=1 out/cloudflare-playground-explivolt-FINAL.mp4
+            ls -lh out/
+          } > out/RENDER-LOG.txt
+
+      - name: Upload Final MP4 to GitHub Release
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          gh release view explivolt-blueprint-v1 -R gkdigitaluniverse/gk-video-engine >/dev/null 2>&1 || \
+            gh release create explivolt-blueprint-v1 -R gkdigitaluniverse/gk-video-engine --title "Explivolt Blueprint Demo v1" --notes "Rendered Explivolt-style remake of Cloudflare Workers Playground using existing v1/voice.wav."
+          gh release upload explivolt-blueprint-v1 explivolt-blueprint/out/cloudflare-playground-explivolt-FINAL.mp4 -R gkdigitaluniverse/gk-video-engine --clobber
+
+      - name: Commit QC Stills & Render Log
+        if: always()
+        run: |
+          git config user.email ci@local && git config user.name ci
+          git add -f explivolt-blueprint/out/still_*.png explivolt-blueprint/out/RENDER-LOG.txt 2>/dev/null || true
+          git commit -m "explivolt-blueprint: add QC stills and render log" || true
+          git pull --rebase -q origin main || true
+          git push || true
