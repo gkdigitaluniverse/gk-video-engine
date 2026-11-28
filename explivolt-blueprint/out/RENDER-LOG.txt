@@ -1,0 +1,14 @@
+Render Date (UTC): Sat Nov 28 07:48:07 UTC 2026
+duration=42.100000
+size=5252557
+bit_rate=998110
+total 12M
+-rw-r--r-- 1 runner runner   96 Nov 28 07:48 RENDER-LOG.txt
+-rw-r--r-- 1 runner runner 5.1M Nov 28 07:48 cloudflare-playground-explivolt-FINAL.mp4
+-rw-r--r-- 1 runner runner 355K Nov 28 07:48 still_01_hook.png
+-rw-r--r-- 1 runner runner 356K Nov 28 07:48 still_02_nosetup.png
+-rw-r--r-- 1 runner runner 349K Nov 28 07:48 still_03_livetest.png
+-rw-r--r-- 1 runner runner 421K Nov 28 07:48 still_04_limits.png
+-rw-r--r-- 1 runner runner 371K Nov 28 07:48 still_05_catch.png
+-rw-r--r-- 1 runner runner 369K Nov 28 07:48 still_06_cta.png
+-rw-r--r-- 1 runner runner 4.0M Nov 28 07:48 video_silent.mp4
